@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atlas Global de Desastres · Capa de visualización temática</title>
+
+  <meta
+    name="description"
+    content="Mapa mundial 3D interactivo de desastres naturales (EM-DAT). Capa temática con coloración, intensidad, elevación y deformación de la superficie."
+  />
+
+  <!-- MapLibre GL JS: globo 3D, elevación (fill-extrusion) y relieve temático -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css"
+  />
+
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- ==================== MAPA ==================== -->
+    <main class="mapa-contenedor">
+      <div id="mapa" aria-label="Mapa mundial 3D de desastres naturales"></div>
+
+      <!-- Encabezado flotante -->
+      <header class="encabezado">
+        <div class="encabezado__texto">
+          <p class="encabezado__kicker">ANÁLISIS GEOESPACIAL · EM-DAT</p>
+          <h1>Atlas Global de Desastres</h1>
+          <p class="encabezado__subtitulo">
+            Capa de visualización temática sobre mapa 3D
+          </p>
+        </div>
+        <div class="encabezado__insignia">
+          <span class="punto-vivo" aria-hidden="true"></span>
+          <span id="insignia-modo">Coloración · Intensidad · Elevación</span>
+        </div>
+      </header>
+
+      <!-- Leyenda dinámica -->
+      <section class="leyenda" aria-live="polite">
+        <div class="leyenda__cabecera">
+          <h2 id="leyenda-titulo">Número de desastres</h2>
+          <span id="leyenda-unidad" class="leyenda__unidad">eventos</span>
+        </div>
+        <div id="leyenda-barra" class="leyenda__barra"></div>
+        <div class="leyenda__escala">
+          <span id="leyenda-min">0</span>
+          <span id="leyenda-max">—</span>
+        </div>
+        <div class="leyenda__recursos">
+          <span class="chip" data-recurso="color">Color</span>
+          <span class="chip" data-recurso="elevacion">Elevación</span>
+          <span class="chip" data-recurso="deformacion">Deformación</span>
+        </div>
+      </section>
+
+      <!-- Selector globo / plano -->
+      <div class="control-vista">
+        <button id="btn-globo" class="boton-vista activo" type="button">
+          Globo
+        </button>
+        <button id="btn-plano" class="boton-vista" type="button">
+          Plano
+        </button>
+      </div>
+
+      <!-- Tooltip flotante -->
+      <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+      <!-- Barra de estado -->
+      <footer class="estado">
+        <span id="estado-texto">Cargando capa temática…</span>
+      </footer>
+    </main>
+
+    <!-- ==================== PANEL LATERAL ==================== -->
+    <aside class="panel" aria-label="Controles de la capa temática">
+      <div class="panel__scroll">
+        <!-- Tarjetas resumen -->
+        <section class="tarjetas" id="tarjetas-resumen"></section>
+
+        <!-- Controles temáticos -->
+        <!-- Representación temática -->
+        <section class="bloque">
+          <h2 class="bloque__titulo">Representación temática</h2>
+        <!-- Filtros y controles interactivos -->
+        <section class="bloque">
+          <h2 class="bloque__titulo">Filtros y controles interactivos</h2>
+          <p class="bloque__ayuda">
+            Filtra los desastres por periodo y por tipo para actualizar el mapa.
+          </p>
+
+          <label class="campo">
+            <span>Periodo de tiempo</span>
+            <div class="rango">
+              <input id="filtro-anio-min" type="range" min="2000" max="2026" step="1" value="2000" />
+              <input id="filtro-anio-max" type="range" min="2000" max="2026" step="1" value="2026" />
+            </div>
+            <span class="campo__valor" id="valor-periodo">2000 – 2026</span>
+          </label>
+
+          <label class="campo">
+            <span>Tipo de desastre</span>
+            <select id="selector-tipo">
+              <option value="todos">Todos los tipos</option>
+            </select>
+          </label>
+
+          <div class="campo checkbox">
+            <input id="chk-aplicar-filtros" type="checkbox" checked />
+            <span>Aplicar filtros al mapa</span>
+          </div>
+
+          <button class="boton-reset" id="btn-reset-filtros" type="button">Restablecer filtros</button>
+          <p class="bloque__nota" id="nota-filtros">Mostrando todos los desastres del periodo completo.</p>
+        </section>
+
+          <label class="campo">
+            <span>Variable de coloración</span>
+            <select id="selector-color"></select>
+          </label>
+
+          <label class="campo">
+            <span>Variable de elevación / deformación</span>
+            <select id="selector-elevacion"></select>
+          </label>
+
+          <div class="campo">
+            <span>Recurso visual 3D</span>
+            <div class="segmentado" role="radiogroup" aria-label="Recurso visual">
+              <button
+                class="segmento activo"
+                data-recurso="elevacion"
+                type="button"
+                role="radio"
+                aria-checked="true"
+              >
+                Elevación
+              </button>
+              <button
+                class="segmento"
+                data-recurso="deformacion"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                Deformación
+              </button>
+              <button
+                class="segmento"
+                data-recurso="ninguno"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                Ninguno
+              </button>
+            </div>
+          </div>
+
+          <label class="campo">
+            <span>Intensidad del color (saturación de la escala)</span>
+            <input id="intensidad" type="range" min="0" max="100" value="60" />
+          </label>
+
+          <label class="campo">
+            <span>Altura máxima del relieve</span>
+            <input id="escala-altura" type="range" min="10000" max="1200000"
+                   step="10000" value="400000" />
+            <span class="campo__valor" id="valor-altura">400 km</span>
+          </label>
+
+          <label class="campo">
+            <span>Escala de la variable</span>
+            <select id="selector-escala">
+              <option value="auto">Automática (según variable)</option>
+              <option value="lineal">Lineal</option>
+              <option value="log">Logarítmica</option>
+            </select>
+          </label>
+
+          <label class="campo checkbox">
+            <input id="chk-sin-datos" type="checkbox" checked />
+            <span>Mostrar territorios sin indicadores</span>
+          </label>
+        </section>
+
+        <!-- Leyenda de colores -->
+        <section class="bloque">
+          <h2 class="bloque__titulo">Paleta temática</h2>
+          <div id="paleta" class="paleta"></div>
+          <p class="bloque__nota" id="nota-escala"></p>
+        </section>
+
+        <!-- Ficha del territorio -->
+        <section class="bloque">
+          <h2 class="bloque__titulo">Ficha del territorio</h2>
+          <div id="ficha" class="ficha"></div>
+        </section>
+
+        <!-- Nota metodológica -->
+        <section class="bloque nota">
+          <p class="nota__titulo">NOTA METODOLÓGICA</p>
+          <p id="nota-metodologica"></p>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/escalas.js"></script>
+  <script src="js/leyenda.js"></script>
+  <script src="js/estado.js"></script>
+  <script src="js/capa_tematica.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

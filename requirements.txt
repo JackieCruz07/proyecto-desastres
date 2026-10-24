@@ -1,0 +1,26 @@
+# Dependencias del proyecto — Análisis y exploración de datos
+# Actividades 1–3 (preprocesamiento, mapa base y capa temática).
+
+# --- Análisis y procesamiento de datos --------------------------------
+pandas>=2.0
+numpy>=1.26
+
+# --- Datos geográficos ------------------------------------------------
+geopandas>=0.14
+pyogrio>=0.7
+shapely>=2.0
+
+# --- Lectura de formatos ----------------------------------------------
+openpyxl>=3.1
+
+# --- Visualización (Actividad 1: EDA; Actividad 2: mapa base) ---------
+matplotlib>=3.8
+plotly>=5.20
+dash>=2.16
+
+# --- Nombres de países en español -------------------------------------
+pycountry>=23.12
+babel>=2.14
+
+# --- Capturas de pantalla para los reportes (opcional) ----------------
+# playwright>=1.40

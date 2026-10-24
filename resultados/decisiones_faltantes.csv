@@ -1,0 +1,24 @@
+Grupo,Columna,Faltantes,Porcentaje_faltante
+Identificacion y clasificacion,DisNo.,0,0.0
+Identificacion y clasificacion,ISO,0,0.0
+Identificacion y clasificacion,Country,0,0.0
+Identificacion y clasificacion,Disaster Type,0,0.0
+Identificacion y clasificacion,Disaster Subtype,0,0.0
+Identificacion y clasificacion,Start Year,0,0.0
+Identificacion y clasificacion,End Year,0,0.0
+Impacto humano,Total Deaths,3072,28.17
+Impacto humano,No. Injured,7720,70.78
+Impacto humano,No. Affected,3678,33.72
+Impacto humano,No. Homeless,9635,88.34
+Impacto humano,Total Affected,2077,19.04
+Impacto economico,Total Damage ('000 US$),7560,69.31
+Impacto economico,"Total Damage, Adjusted ('000 US$)",7595,69.63
+Ubicacion,Latitude,9043,82.91
+Ubicacion,Longitude,9043,82.91
+Ubicacion,Location,541,4.96
+Ubicacion,River Basin,9581,87.84
+Campos secundarios,Reconstruction Costs ('000 US$),10874,99.7
+Campos secundarios,"Reconstruction Costs, Adjusted ('000 US$)",10875,99.71
+Campos secundarios,AID Contribution ('000 US$),10426,95.59
+Campos secundarios,Insured Damage ('000 US$),10184,93.37
+Campos secundarios,"Insured Damage, Adjusted ('000 US$)",10187,93.4

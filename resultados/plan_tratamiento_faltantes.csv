@@ -1,0 +1,30 @@
+﻿Columna,Valores_faltantes,Porcentaje_faltante,Tratamiento_propuesto
+"Reconstruction Costs, Adjusted ('000 US$)",10875,99.71,Evaluar utilidad por su elevada ausencia.
+Reconstruction Costs ('000 US$),10874,99.7,Evaluar utilidad por su elevada ausencia.
+AID Contribution ('000 US$),10426,95.59,Evaluar utilidad por su elevada ausencia.
+"Insured Damage, Adjusted ('000 US$)",10187,93.4,Evaluar utilidad por su elevada ausencia.
+Insured Damage ('000 US$),10184,93.37,Evaluar utilidad por su elevada ausencia.
+No. Homeless,9635,88.34,Conservar faltantes; no asumir cero personas sin hogar.
+River Basin,9581,87.84,Conservar si es útil para el análisis geográfico.
+Latitude,9043,82.91,Conservar faltantes; revisar disponibilidad de coordenadas.
+Longitude,9043,82.91,Conservar faltantes; revisar disponibilidad de coordenadas.
+Event Name,8192,75.11,Conservar faltantes; no inventar nombres.
+No. Injured,7720,70.78,Conservar faltantes; no asumir cero personas lesionadas.
+"Total Damage, Adjusted ('000 US$)",7595,69.63,Conservar faltantes; analizar solo valores reportados.
+Total Damage ('000 US$),7560,69.31,Evaluar según su significado y utilidad para el análisis.
+Magnitude,7418,68.01,Evaluar según su significado y utilidad para el análisis.
+Associated Types,7212,66.12,Evaluar según su significado y utilidad para el análisis.
+Origin,6720,61.61,Evaluar según su significado y utilidad para el análisis.
+External IDs,6591,60.43,Evaluar según su significado y utilidad para el análisis.
+No. Affected,3678,33.72,Conservar faltantes; no asumir cero personas afectadas.
+GADM Admin Units,3082,28.26,Evaluar según su significado y utilidad para el análisis.
+Total Deaths,3072,28.17,Conservar faltantes; no asumir cero fallecimientos.
+Admin Units,2553,23.41,Evaluar según su significado y utilidad para el análisis.
+Total Affected,2077,19.04,Conservar faltantes; no asumir cero personas afectadas.
+Start Day,1564,14.34,Evaluar según su significado y utilidad para el análisis.
+End Day,1482,13.59,Evaluar según su significado y utilidad para el análisis.
+Magnitude Scale,1127,10.33,Evaluar según su significado y utilidad para el análisis.
+Location,541,4.96,Evaluar según su significado y utilidad para el análisis.
+End Month,172,1.58,Evaluar según su significado y utilidad para el análisis.
+CPI,166,1.52,Evaluar según su significado y utilidad para el análisis.
+Start Month,73,0.67,Evaluar según su significado y utilidad para el análisis.

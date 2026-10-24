@@ -1,0 +1,56 @@
+﻿DisNo.,Country,Disaster Type,Start Year,Start Month,Start Day,End Year,End Month,End Day,Diferencia_anio_identificador,Fecha_inicio_calendario_invalida,Fecha_fin_calendario_invalida,Inicio_posterior_a_fin,Fecha_completa_invertida
+2024-0962-AGO,Angola,Epidemic,2025,1.0,7.0,2025,10.0,,True,False,False,False,False
+1988-0424-VEN,Venezuela (Bolivarian Republic of),Storm,2026,9.0,11.0,1988,9.0,11.0,True,False,False,True,True
+2026-0221-IDN,Indonesia,Earthquake,2026,4.0,2.0,2026,3.0,2.0,False,False,False,True,True
+1995-0275-NPL,Nepal,Storm,2026,11.0,10.0,1995,11.0,11.0,True,False,False,True,True
+1999-9388-DJI,Djibouti,Drought,2001,6.0,,2001,,,True,False,False,False,False
+2018-9277-CRI,Costa Rica,Drought,2019,3.0,,2019,3.0,,True,False,False,False,False
+2014-9580-SLV,El Salvador,Drought,2015,4.0,,2016,12.0,,True,False,False,False,False
+2014-0530-MWI,Malawi,Epidemic,2015,2.0,,2015,6.0,,True,False,False,False,False
+2014-0529-BOL,Bolivia (Plurinational State of),Flood,2015,1.0,15.0,2015,1.0,31.0,True,False,False,False,False
+2025-0075-AUS,Australia,Flood,2024,2.0,29.0,2025,2.0,5.0,True,False,False,False,False
+2025-0593-LAO,Lao People's Democratic Republic,Storm,2024,7.0,19.0,2024,7.0,20.0,True,False,False,False,False
+2012-0509-NPL,Nepal,Extreme temperature,2013,1.0,1.0,2013,1.0,20.0,True,False,False,False,False
+1999-9388-SOM,Somalia,Drought,2000,1.0,,2001,,,True,False,False,False,False
+2005-0713-DEU,Germany,Extreme temperature,2006,1.0,22.0,2006,1.0,28.0,True,False,False,False,False
+2005-0713-LVA,Latvia,Extreme temperature,2006,1.0,,2006,1.0,,True,False,False,False,False
+2005-0713-SCG,Serbia Montenegro,Extreme temperature,2006,1.0,,2006,1.0,,True,False,False,False,False
+2008-0633-BEL,Belgium,Extreme temperature,2009,1.0,,2009,1.0,,True,False,False,False,False
+2008-0633-DEU,Germany,Extreme temperature,2009,1.0,5.0,2009,1.0,,True,False,False,False,False
+2008-0633-PRT,Portugal,Extreme temperature,2009,1.0,,2009,1.0,,True,False,False,False,False
+2009-0595-IND,India,Extreme temperature,2010,1.0,2.0,2010,1.0,13.0,True,False,False,False,False
+2010-0680-BRA,Brazil,Epidemic,2011,1.0,,2011,,,True,False,False,False,False
+2001-9122-MOZ,Mozambique,Drought,2002,3.0,,2002,,,True,False,False,False,False
+1999-9388-SDN,Sudan,Drought,2000,1.0,,2001,,,True,False,False,False,False
+2005-0713-EST,Estonia,Extreme temperature,2006,1.0,,2006,1.0,,True,False,False,False,False
+2005-0713-MDA,Republic of Moldova,Extreme temperature,2006,1.0,20.0,2006,1.0,24.0,True,False,False,False,False
+2005-0713-ROU,Romania,Extreme temperature,2006,1.0,20.0,2006,1.0,28.0,True,False,False,False,False
+2005-0713-RUS,Russian Federation,Extreme temperature,2006,1.0,,2006,1.0,,True,False,False,False,False
+2005-0713-UKR,Ukraine,Extreme temperature,2006,1.0,16.0,2006,2.0,6.0,True,False,False,False,False
+2005-0754-SYC,Seychelles,Epidemic,2006,1.0,,2006,3.0,,True,False,False,False,False
+2010-0557-VEN,Venezuela (Bolivarian Republic of),Epidemic,2011,1.0,,2011,1.0,,True,False,False,False,False
+2010-0680-PRY,Paraguay,Epidemic,2011,1.0,,2011,,,True,False,False,False,False
+2010-9082-BDI,Burundi,Drought,2011,,,2011,,,True,False,False,False,False
+2010-9082-ETH,Ethiopia,Drought,2011,1.0,,2012,1.0,,True,False,False,False,False
+2011-9663-SDN,Sudan,Drought,2012,,,2012,,,True,False,False,False,False
+2014-9580-CRI,Costa Rica,Drought,2015,8.0,,2015,8.0,,True,False,False,False,False
+2018-0469-MHL,Marshall Islands,Storm,2019,1.0,5.0,2019,1.0,5.0,True,False,False,False,False
+2019-0630-SDN,Sudan,Infestation,2020,2.0,,2020,2.0,,True,False,False,False,False
+2020-9609-SOM,Somalia,Drought,2021,3.0,,2022,12.0,,True,False,False,False,False
+2008-0633-UKR,Ukraine,Extreme temperature,2009,1.0,,2009,1.0,,True,False,False,False,False
+2008-0633-FRA,France,Extreme temperature,2009,1.0,6.0,2009,1.0,8.0,True,False,False,False,False
+2008-0633-ROU,Romania,Extreme temperature,2009,1.0,1.0,2009,1.0,15.0,True,False,False,False,False
+2011-9663-SOM,Somalia,Drought,2012,,,2012,,,True,False,False,False,False
+2019-0630-DJI,Djibouti,Infestation,2020,2.0,,2020,2.0,,True,False,False,False,False
+2019-0630-ERI,Eritrea,Infestation,2020,2.0,,2020,2.0,,True,False,False,False,False
+2019-0630-KEN,Kenya,Infestation,2020,2.0,,2020,2.0,,True,False,False,False,False
+2019-0630-TZA,United Republic of Tanzania,Infestation,2020,2.0,3.0,2020,2.0,,True,False,False,False,False
+2019-0630-UGA,Uganda,Infestation,2020,2.0,,2020,2.0,,True,False,False,False,False
+2005-0713-BGR,Bulgaria,Extreme temperature,2006,1.0,22.0,2006,1.0,25.0,True,False,False,False,False
+2005-0713-BLR,Belarus,Extreme temperature,2006,1.0,,2006,1.0,,True,False,False,False,False
+2005-0754-COM,Comoros,Epidemic,2006,,,2006,,,True,False,False,False,False
+2005-0754-MUS,Mauritius,Epidemic,2006,1.0,,2006,3.0,,True,False,False,False,False
+2010-9082-KEN,Kenya,Drought,2011,1.0,,2011,1.0,,True,False,False,False,False
+2010-9082-UGA,Uganda,Drought,2011,3.0,,2011,,,True,False,False,False,False
+2011-9663-ETH,Ethiopia,Drought,2012,,,2012,,,True,False,False,False,False
+2014-0530-ZWE,Zimbabwe,Epidemic,2015,2.0,,2015,2.0,,True,False,False,False,False

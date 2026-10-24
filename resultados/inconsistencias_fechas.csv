@@ -1,0 +1,4 @@
+DisNo.,Country,Disaster Type,Start Year,Start Month,Start Day,End Year,End Month,End Day,Mes_inicio_invalido,Mes_fin_invalido,Dia_inicio_invalido,Dia_fin_invalido,Dia_inicio_sin_mes,Dia_fin_sin_mes,Anio_inicio_despues_fin,Mes_inicio_despues_fin,Dia_inicio_despues_fin
+1988-0424-VEN,Venezuela (Bolivarian Republic of),Storm,2026,9.0,11.0,1988,9.0,11.0,False,False,False,False,False,False,True,False,False
+2026-0221-IDN,Indonesia,Earthquake,2026,4.0,2.0,2026,3.0,2.0,False,False,False,False,False,False,False,True,False
+1995-0275-NPL,Nepal,Storm,2026,11.0,10.0,1995,11.0,11.0,False,False,False,False,False,False,True,False,False

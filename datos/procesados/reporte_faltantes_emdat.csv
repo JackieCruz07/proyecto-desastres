@@ -1,0 +1,48 @@
+Columna,Tipo_dato,Cantidad_faltante,Porcentaje_faltante,Valores_disponibles
+"Reconstruction Costs, Adjusted ('000 US$)",float64,10875,99.70661043366646,32
+Reconstruction Costs ('000 US$),float64,10874,99.69744200971853,33
+AID Contribution ('000 US$),float64,10426,95.58998808104887,481
+"Insured Damage, Adjusted ('000 US$)",float64,10187,93.39873475749518,720
+Insured Damage ('000 US$),float64,10184,93.37122948565141,723
+No. Homeless,float64,9635,88.3377647382415,1272
+River Basin,object,9581,87.84266984505363,1326
+Longitude,float64,9043,82.91005776107087,1864
+Latitude,float64,9043,82.91005776107087,1864
+Event Name,object,8192,75.1077289813881,2715
+No. Injured,float64,7720,70.78023287796827,3187
+"Total Damage, Adjusted ('000 US$)",float64,7595,69.63417988447786,3312
+Total Damage ('000 US$),float64,7560,69.31328504630055,3347
+Magnitude,float64,7418,68.01136884569543,3489
+Associated Types,object,7212,66.12267351242322,3695
+Origin,object,6720,61.61180893004492,4187
+External IDs,object,6591,60.42908224076281,4316
+No. Affected,float64,3678,33.72146328046209,7229
+GADM Admin Units,object,3082,28.257082607499772,7825
+Total Deaths,float64,3072,28.16539836802054,7835
+Admin Units,object,2553,23.406986339048316,8354
+Total Affected,float64,2077,19.042816539836803,8830
+Start Day,float64,1564,14.339415054552124,9343
+End Day,float64,1482,13.587604290822409,9425
+Magnitude Scale,object,1127,10.332813789309618,9780
+Location,object,541,4.960117355826534,10366
+End Month,float64,172,1.5769689190428167,10735
+CPI,float64,166,1.5219583753552763,10741
+Start Month,float64,73,0.6692949481984046,10834
+DisNo.,object,0,0.0,10907
+Historic,object,0,0.0,10907
+Subregion,object,0,0.0,10907
+Region,object,0,0.0,10907
+ISO,object,0,0.0,10907
+Country,object,0,0.0,10907
+Disaster Group,object,0,0.0,10907
+Disaster Subgroup,object,0,0.0,10907
+Disaster Type,object,0,0.0,10907
+Disaster Subtype,object,0,0.0,10907
+Classification Key,object,0,0.0,10907
+End Year,int64,0,0.0,10907
+OFDA/BHA Response,object,0,0.0,10907
+Appeal,object,0,0.0,10907
+Declaration,object,0,0.0,10907
+Start Year,int64,0,0.0,10907
+Entry Date,object,0,0.0,10907
+Last Update,object,0,0.0,10907

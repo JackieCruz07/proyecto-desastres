@@ -1,0 +1,601 @@
+/* =========================================================================
+   Atlas Global de Desastres — hoja de estilos principal
+   Actividad 3: capa de visualización temática sobre mapa 3D
+   Organizada por secciones: variables, estructura, encabezado, leyenda,
+   controles, panel lateral, ficha, tooltip y diseño adaptable.
+   ========================================================================= */
+
+/* ---------------------------- 1. VARIABLES ---------------------------- */
+:root {
+  --fondo: #e5ecf8;
+  --superficie: #ffffff;
+  --superficie-2: #f6f9fd;
+  --borde: #c9d3e6;
+  --texto: #16233a;
+  --secundario: #475569;
+  --azul: #1d4ed8;
+  --turquesa: #0f766e;
+  --naranja: #b45309;
+  --rojo: #dc2626;
+  --sombra: 0 10px 30px rgba(15, 35, 70, 0.16);
+  --radio: 14px;
+  --panel-ancho: 372px;
+}
+
+/* ---------------------------- 2. ESTRUCTURA --------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--panel-ancho);
+  height: 100vh;
+  width: 100%;
+}
+
+/* ---------------------------- 3. MAPA --------------------------- */
+.mapa-contenedor {
+  position: relative;
+  overflow: hidden;
+}
+
+#mapa {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---------------------------- 4. ENCABEZADO --------------------------- */
+.encabezado {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 6;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--sombra);
+  max-width: calc(100% - 36px);
+}
+
+.encabezado__kicker {
+  margin: 0 0 6px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--turquesa);
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: clamp(19px, 2.1vw, 27px);
+  letter-spacing: -0.6px;
+}
+
+.encabezado__subtitulo {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--secundario);
+}
+
+.encabezado__insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--turquesa);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  padding: 8px 12px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.punto-vivo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--turquesa);
+  box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.7);
+  animation: pulso 2.2s infinite;
+}
+
+@keyframes pulso {
+  70% {
+    box-shadow: 0 0 0 9px rgba(13, 148, 136, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0);
+  }
+}
+
+/* ---------------------------- 5. LEYENDA --------------------------- */
+.leyenda {
+  position: absolute;
+  left: 18px;
+  bottom: 56px;
+  z-index: 6;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 14px 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--sombra);
+}
+
+.leyenda__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.leyenda__cabecera h2 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.leyenda__unidad {
+  font-size: 10px;
+  color: var(--secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.leyenda__barra {
+  height: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--borde);
+}
+
+.leyenda__escala {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--secundario);
+  margin-top: 6px;
+}
+
+.leyenda__recursos {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-size: 10px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--borde);
+  color: var(--secundario);
+}
+
+.chip.activo {
+  color: var(--texto);
+  border-color: var(--turquesa);
+  background: rgba(13, 148, 136, 0.12);
+}
+
+/* ---------------------------- 6. CONTROL DE VISTA --------------------- */
+.control-vista {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 6;
+  display: flex;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--borde);
+  border-radius: 30px;
+  padding: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.boton-vista {
+  border: none;
+  background: transparent;
+  color: var(--secundario);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 15px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.boton-reset {
+  width: 100%;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  border-radius: 10px;
+  padding: 9px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.rango {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* ---------------------------- 7. TOOLTIP --------------------------- */
+.tooltip {
+  position: absolute;
+  z-index: 8;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-size: 12px;
+  line-height: 1.6;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  max-width: 250px;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip__titulo {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.tooltip__fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--secundario);
+}
+
+.tooltip__fila strong {
+  color: var(--texto);
+  font-weight: 600;
+}
+
+/* ---------------------------- 8. ESTADO ---------------------------- */
+.estado {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  padding: 9px 18px;
+  font-size: 11px;
+  color: var(--secundario);
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--borde);
+  display: flex;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+}
+
+/* ---------------------------- 9. PANEL LATERAL --------------------- */
+.panel {
+  background: var(--superficie);
+  border-left: 1px solid var(--borde);
+  overflow: hidden;
+}
+
+.panel__scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--borde) transparent;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.tarjeta {
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 13px;
+}
+
+.tarjeta__titulo {
+  font-size: 10px;
+  color: var(--secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 7px;
+}
+
+.tarjeta__valor {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.tarjeta__nota {
+  font-size: 10px;
+  color: var(--secundario);
+  margin-top: 4px;
+}
+
+.bloque {
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.bloque__titulo {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.bloque__ayuda,
+.bloque__nota {
+  margin: 0 0 14px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--secundario);
+}
+
+.bloque__nota {
+  margin: 12px 0 0;
+}
+
+/* ---------------------------- 10. CAMPOS --------------------------- */
+.campo {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.campo > span {
+  display: block;
+  font-size: 11px;
+  color: var(--secundario);
+  margin-bottom: 7px;
+}
+
+.campo select,
+.campo input[type="range"] {
+  width: 100%;
+}
+
+.campo select {
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  padding: 9px 10px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.campo input[type="range"] {
+  accent-color: var(--turquesa);
+}
+
+.campo__valor {
+  display: block;
+  font-size: 11px;
+  color: var(--turquesa);
+  margin-top: 5px;
+}
+
+.campo.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.campo.checkbox span {
+  margin: 0;
+  font-size: 12px;
+  color: var(--texto);
+}
+
+.campo.checkbox input {
+  accent-color: var(--turquesa);
+  width: 15px;
+  height: 15px;
+}
+
+.segmentado {
+  display: flex;
+  gap: 6px;
+}
+
+.segmento {
+  flex: 1;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--secundario);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 4px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.segmento.activo {
+  background: var(--turquesa);
+  border-color: var(--turquesa);
+  color: #ffffff;
+}
+
+/* ---------------------------- 11. PALETA --------------------------- */
+.paleta {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+}
+
+.paleta__muestra {
+  flex: 1;
+  height: 26px;
+}
+
+/* ---------------------------- 12. FICHA ---------------------------- */
+.ficha__vacio {
+  text-align: center;
+  padding: 22px 8px;
+  color: var(--secundario);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.ficha__nombre {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.ficha__codigo {
+  font-size: 11px;
+  color: var(--secundario);
+  margin-bottom: 14px;
+}
+
+.ficha__estado {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  padding: 5px 9px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.ficha__estado.con-datos {
+  color: var(--turquesa);
+  background: rgba(13, 148, 136, 0.12);
+  border: 1px solid rgba(13, 148, 136, 0.35);
+}
+
+.ficha__estado.sin-datos {
+  color: var(--naranja);
+  background: rgba(194, 116, 10, 0.12);
+  border: 1px solid rgba(194, 116, 10, 0.35);
+}
+
+.ficha__metricas {
+  display: grid;
+  gap: 8px;
+}
+
+.metrica {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  background: var(--superficie);
+  border-left: 3px solid var(--azul);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.metrica__nombre {
+  font-size: 11px;
+  color: var(--secundario);
+}
+
+.metrica__valor {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ficha__observacion {
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--secundario);
+  border-top: 1px solid var(--borde);
+  padding-top: 12px;
+}
+
+/* ---------------------------- 13. NOTA ------------------------------ */
+.nota__titulo {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--turquesa);
+  margin: 0 0 8px;
+}
+
+.nota p:last-child {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--secundario);
+}
+
+/* ---------------------------- 14. ADAPTABLE ------------------------ */
+@media (max-width: 1100px) {
+  #app {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 62vh auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .panel {
+    border-left: none;
+    border-top: 1px solid var(--borde);
+  }
+
+  .panel__scroll {
+    height: auto;
+    overflow: visible;
+  }
+
+  .leyenda {
+    width: 240px;
+    bottom: 52px;
+  }
+
+  .encabezado__insignia {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .encabezado {
+    right: 18px;
+  }
+
+  .leyenda {
+    display: none;
+  }
+
+  .tarjetas {
+    grid-template-columns: 1fr;
+  }
+}

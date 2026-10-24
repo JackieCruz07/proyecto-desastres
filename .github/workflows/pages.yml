@@ -1,0 +1,39 @@
+name: Publicar app en GitHub Pages
+
+# Cada vez que subas cambios a main, la app se vuelve a publicar sola.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Pages
+        uses: actions/configure-pages@v5
+
+      # Se publica solo la carpeta app/ (index.html + css + js + datos).
+      - name: Empaquetar la aplicación
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: app
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

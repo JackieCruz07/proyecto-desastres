@@ -1,0 +1,56 @@
+﻿DisNo.,Country,Disaster Type,Anio_DisNo,Start Year,End Year,Fecha_inicio,Fecha_fin,Anio_ID_difiere_inicio,Inicio_posterior_fin
+2024-0962-AGO,Angola,Epidemic,2024,2025,2025,2025-01-07,,True,False
+1988-0424-VEN,Venezuela (Bolivarian Republic of),Storm,1988,2026,1988,2026-09-11,1988-09-11,True,True
+2026-0221-IDN,Indonesia,Earthquake,2026,2026,2026,2026-04-02,2026-03-02,False,True
+1995-0275-NPL,Nepal,Storm,1995,2026,1995,2026-11-10,1995-11-11,True,True
+1999-9388-DJI,Djibouti,Drought,1999,2001,2001,,,True,False
+2018-9277-CRI,Costa Rica,Drought,2018,2019,2019,,,True,False
+2014-9580-SLV,El Salvador,Drought,2014,2015,2016,,,True,False
+2014-0530-MWI,Malawi,Epidemic,2014,2015,2015,,,True,False
+2014-0529-BOL,Bolivia (Plurinational State of),Flood,2014,2015,2015,2015-01-15,2015-01-31,True,False
+2025-0075-AUS,Australia,Flood,2025,2024,2025,2024-02-29,2025-02-05,True,False
+2025-0593-LAO,Lao People's Democratic Republic,Storm,2025,2024,2024,2024-07-19,2024-07-20,True,False
+2012-0509-NPL,Nepal,Extreme temperature,2012,2013,2013,2013-01-01,2013-01-20,True,False
+1999-9388-SOM,Somalia,Drought,1999,2000,2001,,,True,False
+2005-0713-DEU,Germany,Extreme temperature,2005,2006,2006,2006-01-22,2006-01-28,True,False
+2005-0713-LVA,Latvia,Extreme temperature,2005,2006,2006,,,True,False
+2005-0713-SCG,Serbia Montenegro,Extreme temperature,2005,2006,2006,,,True,False
+2008-0633-BEL,Belgium,Extreme temperature,2008,2009,2009,,,True,False
+2008-0633-DEU,Germany,Extreme temperature,2008,2009,2009,2009-01-05,,True,False
+2008-0633-PRT,Portugal,Extreme temperature,2008,2009,2009,,,True,False
+2009-0595-IND,India,Extreme temperature,2009,2010,2010,2010-01-02,2010-01-13,True,False
+2010-0680-BRA,Brazil,Epidemic,2010,2011,2011,,,True,False
+2001-9122-MOZ,Mozambique,Drought,2001,2002,2002,,,True,False
+1999-9388-SDN,Sudan,Drought,1999,2000,2001,,,True,False
+2005-0713-EST,Estonia,Extreme temperature,2005,2006,2006,,,True,False
+2005-0713-MDA,Republic of Moldova,Extreme temperature,2005,2006,2006,2006-01-20,2006-01-24,True,False
+2005-0713-ROU,Romania,Extreme temperature,2005,2006,2006,2006-01-20,2006-01-28,True,False
+2005-0713-RUS,Russian Federation,Extreme temperature,2005,2006,2006,,,True,False
+2005-0713-UKR,Ukraine,Extreme temperature,2005,2006,2006,2006-01-16,2006-02-06,True,False
+2005-0754-SYC,Seychelles,Epidemic,2005,2006,2006,,,True,False
+2010-0557-VEN,Venezuela (Bolivarian Republic of),Epidemic,2010,2011,2011,,,True,False
+2010-0680-PRY,Paraguay,Epidemic,2010,2011,2011,,,True,False
+2010-9082-BDI,Burundi,Drought,2010,2011,2011,,,True,False
+2010-9082-ETH,Ethiopia,Drought,2010,2011,2012,,,True,False
+2011-9663-SDN,Sudan,Drought,2011,2012,2012,,,True,False
+2014-9580-CRI,Costa Rica,Drought,2014,2015,2015,,,True,False
+2018-0469-MHL,Marshall Islands,Storm,2018,2019,2019,2019-01-05,2019-01-05,True,False
+2019-0630-SDN,Sudan,Infestation,2019,2020,2020,,,True,False
+2020-9609-SOM,Somalia,Drought,2020,2021,2022,,,True,False
+2008-0633-UKR,Ukraine,Extreme temperature,2008,2009,2009,,,True,False
+2008-0633-FRA,France,Extreme temperature,2008,2009,2009,2009-01-06,2009-01-08,True,False
+2008-0633-ROU,Romania,Extreme temperature,2008,2009,2009,2009-01-01,2009-01-15,True,False
+2011-9663-SOM,Somalia,Drought,2011,2012,2012,,,True,False
+2019-0630-DJI,Djibouti,Infestation,2019,2020,2020,,,True,False
+2019-0630-ERI,Eritrea,Infestation,2019,2020,2020,,,True,False
+2019-0630-KEN,Kenya,Infestation,2019,2020,2020,,,True,False
+2019-0630-TZA,United Republic of Tanzania,Infestation,2019,2020,2020,2020-02-03,,True,False
+2019-0630-UGA,Uganda,Infestation,2019,2020,2020,,,True,False
+2005-0713-BGR,Bulgaria,Extreme temperature,2005,2006,2006,2006-01-22,2006-01-25,True,False
+2005-0713-BLR,Belarus,Extreme temperature,2005,2006,2006,,,True,False
+2005-0754-COM,Comoros,Epidemic,2005,2006,2006,,,True,False
+2005-0754-MUS,Mauritius,Epidemic,2005,2006,2006,,,True,False
+2010-9082-KEN,Kenya,Drought,2010,2011,2011,,,True,False
+2010-9082-UGA,Uganda,Drought,2010,2011,2011,,,True,False
+2011-9663-ETH,Ethiopia,Drought,2011,2012,2012,,,True,False
+2014-0530-ZWE,Zimbabwe,Epidemic,2014,2015,2015,,,True,False

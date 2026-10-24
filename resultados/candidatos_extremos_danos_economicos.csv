@@ -1,0 +1,457 @@
+DisNo.,Country,Disaster Type,Disaster Subtype,Event Name,Start Year,Total Deaths,"Total Damage, Adjusted ('000 US$)"
+2011-0082-JPN,Japan,Earthquake,Tsunami,,2011,19846.0,300561348.0
+2005-0467-USA,United States of America,Storm,Tropical cyclone,Katrina,2005,1833.0,206065474.0
+2008-0192-CHN,China,Earthquake,Ground movement,,2008,87476.0,127100952.0
+2017-0362-USA,United States of America,Storm,Tropical cyclone,Hurricane Harvey,2017,88.0,124774087.0
+2022-0614-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Ian',2022,152.0,110007737.0
+2017-0383-PRI,Puerto Rico,Storm,Tropical cyclone,Hurricane 'Maria',2017,64.0,89311978.0
+2024-0693-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Helene',2024,219.0,82105029.0
+2021-0551-USA,United States of America,Storm,Tropical cyclone,Tropical storm 'Ida',2021,96.0,77227433.0
+2017-0381-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Irma',2017,97.0,74864452.0
+2012-0410-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Sandy',2012,158.0,70111391.0
+2011-0326-THA,Thailand,Flood,Riverine flood,,2011,813.0,57249781.0
+2025-0008-USA,United States of America,Wildfire,Wildfire (General),"'Palisades', 'Eaton', 'Sunset', 'Kenneth', 'Hurs't, 'Lidia' fires",2025,31.0,53000000.0
+2004-0532-JPN,Japan,Earthquake,Ground movement,,2004,40.0,47724716.0
+2021-0411-DEU,Germany,Flood,Flood (General),,2021,226.0,47524574.0
+2008-0384-USA,United States of America,Storm,Tropical cyclone,Hurricane Ike,2008,82.0,44859160.0
+2010-0091-CHL,Chile,Earthquake,Tsunami,,2010,562.0,44292803.0
+2024-0722-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Milton',2024,32.0,38999889.0
+2023-0054-TUR,Türkiye,Earthquake,Ground movement,,2023,53000.0,35923858.0
+2021-0096-USA,United States of America,Storm,Blizzard/Winter storm,,2021,235.0,35643430.0
+2008-0020-CHN,China,Extreme temperature,Severe winter conditions,,2008,129.0,31550942.0
+2004-0462-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Ivan',2004,52.0,30680175.0
+2016-0241-CHN,China,Flood,Flood (General),,2016,289.0,29510553.0
+2012-9489-USA,United States of America,Drought,Drought,,2012,,28044556.0
+2004-0415-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Charley',2004,10.0,27271266.0
+2016-0121-JPN,Japan,Earthquake,Ground movement,,2016,49.0,26827775.0
+2010-0239-CHN,China,Flood,Riverine flood,,2010,1691.0,26575682.0
+2023-0464-CHN,China,Storm,Tropical cyclone,Tropical cyclone 'Doksuri' (Egay),2023,56.0,26414602.0
+2005-0547-USA,United States of America,Storm,Tropical cyclone,Rita,2005,10.0,26376381.0
+2022-9209-USA,United States of America,Drought,Drought,,2022,136.0,24201702.0
+2005-0585-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Wilma""",2005,4.0,23573890.0
+2012-0142-ITA,Italy,Earthquake,Ground movement,,2012,7.0,22155200.0
+2014-0343-IND,India,Flood,Riverine flood,,2014,298.0,21758767.0
+2011-0068-NZL,New Zealand,Earthquake,Ground movement,,2011,181.0,21468668.0
+2019-0492-JPN,Japan,Storm,Tropical cyclone,Tropical cylone 'Hagibis',2019,99.0,21407672.0
+2018-0409-USA,United States of America,Wildfire,Forest fire,Camp Fire,2018,88.0,21154588.0
+2020-0322-CHN,China,Flood,Flood (General),,2020,280.0,21146808.0
+2002-0467-DEU,Germany,Flood,Flood (General),,2002,27.0,20761854.0
+2018-0373-USA,United States of America,Storm,Tropical cyclone,Hurricane Michael,2018,49.0,20513540.0
+2011-0172-USA,United States of America,Storm,Tornado,,2011,176.0,20037423.0
+2021-0428-CHN,China,Flood,Flood (General),,2021,352.0,19603887.0
+2007-0258-JPN,Japan,Earthquake,Ground movement,,2007,9.0,19408894.0
+2004-0455-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Frances',2004,47.0,18748996.0
+2018-0342-USA,United States of America,Storm,Tropical cyclone,Hurricane Florence,2018,53.0,17949347.0
+2013-0205-DEU,Germany,Flood,Riverine flood,,2013,4.0,17827594.0
+2017-0434-USA,United States of America,Wildfire,"Land fire (Brush, Bush, Pasture)","Tubbs, Atlas, Nuns Fires",2017,43.0,17074349.0
+2020-0211-IND,India,Storm,Tropical cyclone,Cyclone 'Amphan',2020,90.0,16793053.0
+2022-0405-PAK,Pakistan,Flood,Flood (General),,2022,1739.0,16501160.0
+2020-0376-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Laura',2020,33.0,16171089.0
+2018-0326-JPN,Japan,Storm,Tropical cyclone,Typhoon Jebi,2018,17.0,16026203.0
+2011-0145-USA,United States of America,Storm,Tornado,,2011,354.0,15743690.0
+2025-0979-THA,Thailand,Flood,Flood (General),,2025,276.0,15600000.0
+2024-0001-JPN,Japan,Earthquake,Ground movement,,2024,699.0,15394693.0
+2004-0459-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Songda' (Nina),2004,41.0,15340087.0
+2023-9868-USA,United States of America,Drought,Drought,,2023,247.0,15320469.0
+2000-0671-ITA,Italy,Flood,Riverine flood,,2000,25.0,14956699.0
+2008-0627-USA,United States of America,Flood,Riverine flood,,2008,24.0,14953053.0
+2010-0341-PAK,Pakistan,Flood,Flash flood,,2010,1985.0,14026054.0
+2000-0606-JPN,Japan,Flood,Coastal flood,,2000,18.0,13909730.0
+2013-0433-PHL,Philippines,Storm,Tropical cyclone,Typhoon Haiyan (Yolanda),2013,7354.0,13819840.0
+2003-0315-CHN,China,Flood,Riverine flood,,2003,430.0,13808182.0
+2020-0441-USA,United States of America,Wildfire,Forest fire,August Complex fire,2020,32.0,13683229.0
+2004-0473-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Jeanne',2004,6.0,13635633.0
+2016-0292-USA,United States of America,Flood,Flood (General),,2016,13.0,13413888.0
+2016-0355-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Matthew',2016,49.0,13413888.0
+2023-0675-MEX,Mexico,Storm,Tropical cyclone,Tropical storm 'Otis',2023,84.0,12679009.0
+2019-0387-CHN,China,Storm,Tropical cyclone,Tropical cyclone Lekima (Hanna),2019,72.0,12592748.0
+2019-0116-USA,United States of America,Flood,Riverine flood,,2019,5.0,12592748.0
+2019-0331-IND,India,Flood,Flood (General),,2019,1900.0,12592748.0
+2024-0475-CHN,China,Flood,Flood (General),,2024,77.0,12315754.0
+2025-0917-JAM,Jamaica,Storm,Tropical cyclone,Hurricane 'Melissa',2025,62.0,12230000.0
+2018-0190-JPN,Japan,Flood,Flood (General),,2018,246.0,12179914.0
+2010-0017-HTI,Haiti,Earthquake,Ground movement,,2010,222570.0,11811414.0
+2019-0521-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Faxai',2019,3.0,11459401.0
+2011-9363-USA,United States of America,Drought,Drought,,2011,,11449956.0
+2024-0796-ESP,Spain,Flood,Flood (General),,2024,232.0,11289441.0
+2012-0292-CHN,China,Flood,Riverine flood,,2012,151.0,11217823.0
+2000-0572-PRK,Democratic People's Republic of Korea,Storm,Tropical cyclone,"Prapiroon ""12""",2000,46.0,11217525.0
+2000-0662-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2000,3.0,11030566.0
+2025-0223-MMR,Myanmar,Earthquake,Ground movement,,2025,3820.0,11000000.0
+2001-0242-USA,United States of America,Storm,Tropical cyclone,Tropical storm 'Allison',2001,41.0,10909213.0
+2010-0656-AUS,Australia,Flood,Riverine flood,,2010,35.0,10777915.0
+2021-9846-USA,United States of America,Drought,Drought,,2021,,10693029.0
+2008-0352-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Gustav""",2008,43.0,10467137.0
+2011-0328-USA,United States of America,Storm,Tropical cyclone,Hurricane Irene,2011,46.0,10448085.0
+2023-0293-ITA,Italy,Flood,Flood (General),,2023,15.0,10301695.0
+2022-0153-JPN,Japan,Earthquake,Ground movement,,2022,3.0,9680681.0
+2010-0463-NZL,New Zealand,Earthquake,Ground movement,,2010,,9596774.0
+2014-0392-IND,India,Storm,Tropical cyclone,Cyclone Hudhud,2014,53.0,9519461.0
+2023-0054-SYR,Syrian Arab Republic,Earthquake,Ground movement,,2023,5670.0,9403598.0
+2025-0182-USA,United States of America,Storm,Tornado,,2025,43.0,9400000.0
+2013-0116-CHN,China,Earthquake,Ground movement,,2013,198.0,9397491.0
+2020-0304-IND,India,Flood,Flood (General),,2020,1922.0,9329474.0
+2013-0429-CHN,China,Storm,Tropical cyclone,Tropical storm Fitow,2013,8.0,9259293.0
+2015-9617-VNM,Viet Nam,Drought,Drought,,2015,,9168604.0
+2011-0227-CHN,China,Flood,Riverine flood,,2011,467.0,9159965.0
+2021-0105-JPN,Japan,Earthquake,Ground movement,,2021,1.0,9148480.0
+2003-0139-USA,United States of America,Storm,Tornado,,2003,6.0,8750432.0
+2003-0245-DZA,Algeria,Earthquake,Ground movement,,2003,2266.0,8750432.0
+2005-0575-PAK,Pakistan,Earthquake,Ground movement,,2005,73338.0,8572324.0
+2007-0019-DEU,Germany,Storm,Extra-tropical storm,Storm 'Kyrill',2007,11.0,8539913.0
+2020-0106-HRV,Croatia,Earthquake,Ground movement,,2020,1.0,8458723.0
+2020-0580-USA,United States of America,Storm,Derecho,,2020,4.0,8458723.0
+2003-0331-CHN,China,Flood,Riverine flood,,2003,30.0,8452917.0
+2022-9524-CHN,China,Drought,Drought,,2022,,8360588.0
+2005-0585-MEX,Mexico,Storm,Tropical cyclone,"Hurricane ""Wilma""",2005,7.0,8242619.0
+2014-0061-JPN,Japan,Storm,Blizzard/Winter storm,,2014,37.0,8023545.0
+2017-0387-MEX,Mexico,Earthquake,Ground movement,,2017,369.0,7880469.0
+2017-0245-CHN,China,Flood,Flood (General),,2017,78.0,7880469.0
+2013-0190-CAN,Canada,Flood,Riverine flood,,2013,4.0,7877309.0
+2003-0459-KOR,Republic of Korea,Storm,Tropical cyclone,Typhoon 'Maemi' (Pogi),2003,130.0,7875389.0
+2020-0438-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Sally',2020,8.0,7836758.0
+2019-0209-CHN,China,Flood,Flood (General),,2019,300.0,7807504.0
+2020-0572-HRV,Croatia,Earthquake,Ground movement,,2020,8.0,7741473.0
+2003-0391-FRA,France,Extreme temperature,Heat wave,,2003,19490.0,7700380.0
+2003-0391-ITA,Italy,Extreme temperature,Heat wave,,2003,20089.0,7700380.0
+2004-0659-IDN,Indonesia,Earthquake,Tsunami,,2004,165708.0,7587548.0
+2002-0557-KOR,Republic of Korea,Storm,Tropical cyclone,Typhoon 'Rusa',2002,184.0,7517223.0
+2023-0600-MAR,Morocco,Earthquake,Ground movement,,2023,2946.0,7396088.0
+2024-0422-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Beryl',2024,46.0,7389453.0
+2022-0103-AUS,Australia,Flood,Flood (General),,2022,22.0,7260511.0
+2020-0296-JPN,Japan,Flood,Flood (General),,2020,82.0,7214793.0
+2024-0269-BRA,Brazil,Flood,Flood (General),,2024,209.0,7184190.0
+2015-0144-NPL,Nepal,Earthquake,Ground movement,,2015,8831.0,7027905.0
+2012-0060-USA,United States of America,Storm,Tornado,,2012,41.0,7011139.0
+2003-0210-USA,United States of America,Storm,Tornado,,2003,45.0,7000346.0
+2018-0348-CHN,China,Storm,Tropical cyclone,Tropical storm Rumbia,2018,53.0,6923320.0
+2007-0268-CHN,China,Flood,Riverine flood,,2007,535.0,6871766.0
+2013-0317-CHN,China,Flood,Riverine flood,,2013,118.0,6854641.0
+2014-9025-BRA,Brazil,Drought,Drought,,2014,,6799615.0
+2014-0281-CHN,China,Earthquake,Ground movement,,2014,731.0,6799615.0
+2024-0296-USA,United States of America,Storm,Tornado,,2024,3.0,6773665.0
+2016-0313-ITA,Italy,Earthquake,Ground movement,,2016,296.0,6706944.0
+2018-0468-USA,United States of America,Wildfire,Wildfire (General),Woolsey Fire,2018,2.0,6666900.0
+2021-0825-FRA,France,Extreme temperature,Cold wave,,2021,,6653440.0
+2013-0547-DEU,Germany,Storm,Hail,,2013,,6633523.0
+2011-0610-USA,United States of America,Flood,Riverine flood,,2011,9.0,6583725.0
+2023-0610-LBY,Libya,Storm,Storm (General),Storm 'Daniel',2023,13200.0,6550821.0
+2013-0259-CHN,China,Flood,Riverine flood,,2013,233.0,6386977.0
+2023-0122-USA,United States of America,Storm,Storm (General),,2023,13.0,6339504.0
+2012-0601-USA,United States of America,Storm,Severe weather,,2012,1.0,6310025.0
+2010-0088-FRA,France,Storm,Extra-tropical storm,Storm 'Xynthia',2010,53.0,6245285.0
+2007-0278-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2007,7.0,6210846.0
+2007-0247-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2007,6.0,6210846.0
+2024-9268-BRA,Brazil,Drought,Drought,,2024,,6209193.0
+2021-0797-USA,United States of America,Storm,Tornado,,2021,93.0,6178195.0
+2003-0786-USA,United States of America,Wildfire,Forest fire,,2003,4.0,6125302.0
+2015-9210-USA,United States of America,Drought,Drought,,2015,,6112403.0
+2011-0370-CHN,China,Flood,Riverine flood,,2011,117.0,6082789.0
+2007-0164-OMN,Oman,Storm,Tropical cyclone,Cyclone 'Gonu',2007,76.0,6055575.0
+2024-0173-USA,United States of America,Storm,Tornado,,2024,3.0,6055246.0
+2016-0257-CHN,China,Flood,Flood (General),,2016,289.0,6036249.0
+2008-0184-MMR,Myanmar,Storm,Tropical cyclone,Cyclone 'Nargis',2008,138366.0,5981221.0
+2020-0581-CHN,China,Flood,Flood (General),,2020,92.0,5970863.0
+2020-0312-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Isaias',2020,16.0,5970863.0
+2002-9853-USA,United States of America,Drought,Drought,,2002,,5906390.0
+2003-0468-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Isabel',2003,16.0,5897791.0
+2004-0462-CYM,Cayman Islands,Storm,Tropical cyclone,Hurricane 'Ivan',2004,2.0,5846414.0
+2023-0192-USA,United States of America,Storm,Tornado,,2023,31.0,5811212.0
+2023-0524-USA,United States of America,Wildfire,Wildfire (General),'Lahaina' wildfire,2023,128.0,5811212.0
+2013-0358-MEX,Mexico,Storm,Tropical cyclone,Hurricane Manuel,2013,169.0,5804333.0
+2025-0623-CHN,China,Flood,Flood (General),,2025,91.0,5800000.0
+2018-0353-JPN,Japan,Storm,Tropical cyclone,Typhoon Trami,2018,4.0,5769433.0
+2010-0494-MEX,Mexico,Storm,Tropical cyclone,Hurricane 'Karl',2010,12.0,5758064.0
+2014-0227-CHN,China,Storm,Tropical cyclone,Typhoon Rammasun (Glenda),2014,71.0,5756517.0
+2015-0490-CHN,China,Storm,Tropical cyclone,Typhoon Mujigae,2015,20.0,5704909.0
+2012-0503-USA,United States of America,Storm,Severe weather,,2012,28.0,5608911.0
+2023-0370-USA,United States of America,Storm,Storm (General),,2023,8.0,5599896.0
+2020-9585-USA,United States of America,Drought,Drought,,2020,45.0,5597684.0
+2002-0350-CHN,China,Flood,Flash flood,,2002,793.0,5548427.0
+2024-9796-USA,United States of America,Drought,Drought,,2024,,5542089.0
+2022-0316-CHN,China,Flood,Flood (General),,2022,48.0,5500387.0
+2005-0409-IND,India,Flood,Riverine flood,,2005,1200.0,5489584.0
+2006-0417-IND,India,Flood,Riverine flood,,2006,350.0,5413848.0
+2009-9655-CHN,China,Drought,Drought,,2009,,5402307.0
+2017-0381-MAF,Saint Martin (French Part),Storm,Tropical cyclone,Hurricane 'Irma',2017,12.0,5384987.0
+2016-0172-CAN,Canada,Wildfire,Forest fire,Fort McMurray wildfires,2016,,5365555.0
+2006-0362-CHN,China,Storm,Tropical cyclone,Bilis,2006,820.0,5310043.0
+2014-0192-USA,United States of America,Storm,Lightning/Thunderstorms,,2014,,5303700.0
+2016-0395-NZL,New Zealand,Earthquake,Tsunami,,2016,2.0,5231416.0
+2016-0123-USA,United States of America,Storm,Lightning/Thunderstorms,,2016,1.0,5231416.0
+2025-0377-USA,United States of America,Storm,Tornado,,2025,28.0,5200000.0
+2011-0609-USA,United States of America,Storm,Storm (General),,2011,9.0,5009356.0
+2001-0322-CHN,China,Storm,Tropical cyclone,tropical stroms 'Durian' and 'Utor' (Feria),2001,33.0,4987328.0
+2020-0446-IND,India,Flood,Flood (General),,2020,152.0,4975720.0
+2006-0279-IDN,Indonesia,Earthquake,Ground movement,,2006,5778.0,4950717.0
+2024-0307-USA,United States of America,Storm,Severe weather,,2024,5.0,4926302.0
+2009-0014-FRA,France,Storm,Extra-tropical storm,Storm 'Klaus',2009,11.0,4802050.0
+2025-9185-BRA,Brazil,Drought,Drought,,2025,,4800000.0
+2001-0033-IND,India,Earthquake,Ground movement,,2001,20005.0,4769144.0
+2012-0612-USA,United States of America,Storm,Lightning/Thunderstorms,,2012,,4767575.0
+2007-0521-MEX,Mexico,Flood,Riverine flood,,2007,22.0,4658135.0
+2006-9741-CHN,China,Drought,Drought,,2006,134.0,4647286.0
+2022-0674-NGA,Nigeria,Flood,Flood (General),,2022,603.0,4620325.0
+2022-0293-IND,India,Flood,Flood (General),,2022,2035.0,4620325.0
+2024-0299-DEU,Germany,Flood,Flood (General),,2024,12.0,4618408.0
+2005-0011-SWE,Sweden,Storm,Extra-tropical storm,Storm 'Erwin' (Gudrun),2005,9.0,4615867.0
+2017-0352-CHN,China,Storm,Tropical cyclone,Typhoon 'Hato',2017,8.0,4596940.0
+2025-0256-USA,United States of America,Storm,Severe weather,,2025,25.0,4550000.0
+2010-0193-POL,Poland,Flood,Riverine flood,,2010,16.0,4547394.0
+2023-0300-GUM,Guam,Storm,Tropical cyclone,Typhoon 'Mawar',2023,2.0,4543312.0
+2015-9574-THA,Thailand,Drought,Drought,,2015,,4482429.0
+2017-0284-CHN,China,Storm,Lightning/Thunderstorms,,2017,36.0,4465599.0
+2019-0417-USA,United States of America,Storm,Tropical cyclone,Tropical storm ' Imelda',2019,5.0,4407462.0
+2022-9211-BRA,Brazil,Drought,Drought,,2022,,4400309.0
+2018-9075-ARG,Argentina,Drought,Drought,,2018,,4359127.0
+2020-0148-USA,United States of America,Storm,Tornado,,2020,38.0,4353755.0
+2020-0483-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Zeta',2020,6.0,4353755.0
+2023-0332-USA,United States of America,Storm,Tornado,,2023,3.0,4331995.0
+2002-0479-CZE,Czechia,Flood,Riverine flood,,2002,18.0,4295556.0
+2002-0489-AUT,Austria,Flood,Riverine flood,,2002,9.0,4295556.0
+2011-0388-NZL,New Zealand,Earthquake,Ground movement,,2011,1.0,4293734.0
+2011-0444-USA,United States of America,Storm,Blizzard/Winter storm,,2011,29.0,4293734.0
+2013-0142-USA,United States of America,Storm,Tornado,,2013,29.0,4284150.0
+2019-0412-BHS,Bahamas,Storm,Tropical cyclone,Tropical cyclone 'Dorian',2019,356.0,4281534.0
+2003-0440-CHN,China,Flood,Riverine flood,,2003,123.0,4270211.0
+2004-0298-IND,India,Flood,Riverine flood,,2004,900.0,4261135.0
+2024-0522-CHN,China,Storm,Tropical cyclone,Typhoon 'Gaemi' (Carina) and 'Butchoy' (Prapiroon),2024,129.0,4228409.0
+2018-0183-JPN,Japan,Earthquake,Ground movement,,2018,5.0,4166813.0
+2013-0007-IDN,Indonesia,Flood,Riverine flood,,2013,34.0,4145952.0
+2005-0567-MEX,Mexico,Storm,Tropical cyclone,Stan,2005,36.0,4121309.0
+2025-1000-LKA,Sri Lanka,Storm,Tropical cyclone,Tropical storm 'Ditwah',2025,823.0,4100000.0
+2015-0073-USA,United States of America,Storm,Blizzard/Winter storm,,2015,30.0,4074935.0
+2015-9618-IND,India,Drought,Drought,,2015,,4074935.0
+2017-0203-USA,United States of America,Storm,Hail,,2017,,4071575.0
+2017-0084-PER,Peru,Flood,Flood (General),,2017,184.0,4071575.0
+2016-0236-CHN,China,Flood,Flood (General),,2016,68.0,4024166.0
+2016-9369-CHN,China,Drought,Drought,,2016,,4024166.0
+2023-0324-USA,United States of America,Storm,Storm (General),,2023,5.0,4015019.0
+2006-0437-CHN,China,Storm,Tropical cyclone,Saomai,2006,441.0,4008484.0
+2025-0977-IDN,Indonesia,Storm,Tropical cyclone,Tropical storm 'Senyar',2025,1345.0,4000000.0
+2006-0504-JPN,Japan,Storm,Tropical cyclone,Shanshan (13),2006,10.0,3992514.0
+2010-0196-USA,United States of America,Storm,Tornado,,2010,5.0,3986352.0
+2014-0390-CHN,China,Storm,Tropical cyclone,Typhoon Kalmaegi (Luis),2014,9.0,3943777.0
+2017-0381-VGB,British Virgin Islands,Storm,Tropical cyclone,Hurricane 'Irma',2017,9.0,3940234.0
+2002-0310-USA,United States of America,Storm,Tornado,,2002,10.0,3937593.0
+2021-0832-USA,United States of America,Wildfire,Wildfire (General),Middle Fork and the Marshall wildfires,2021,2.0,3920777.0
+2004-0524-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Tokage' (Siony),2004,89.0,3920245.0
+2024-0005-USA,United States of America,Storm,Blizzard/Winter storm,,2024,61.0,3899989.0
+2007-0519-USA,United States of America,Wildfire,"Land fire (Brush, Bush, Pasture)",,2007,8.0,3881779.0
+2022-0205-ZAF,South Africa,Flood,Flood (General),,2022,544.0,3850271.0
+2018-9476-USA,United States of America,Drought,Drought,,2018,,3846289.0
+2005-0335-IND,India,Flood,Riverine flood,,2005,239.0,3791605.0
+2009-0287-USA,United States of America,Storm,Tornado,,2009,16.0,3751602.0
+2009-0136-ITA,Italy,Earthquake,Ground movement,,2009,300.0,3751602.0
+2004-0298-BGD,Bangladesh,Flood,Riverine flood,,2004,730.0,3749799.0
+2004-0412-CHN,China,Storm,Tropical cyclone,Typhoon 'Rananim' (Karen),2004,188.0,3732755.0
+2020-9582-BRA,Brazil,Drought,Drought,,2020,,3731790.0
+2023-0565-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Idalia',2023,5.0,3698044.0
+2021-9078-CHN,China,Drought,Drought,,2021,,3683154.0
+2021-0251-USA,United States of America,Storm,Severe weather,,2021,,3683154.0
+2021-0435-IND,India,Flood,Flood (General),,2021,1282.0,3683154.0
+2005-0351-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Dennis""",2005,5.0,3676208.0
+2003-0829-USA,United States of America,Storm,Storm (General),,2003,13.0,3675181.0
+2015-0212-USA,United States of America,Flood,Flash flood,,2015,32.0,3667442.0
+2018-0295-IND,India,Flood,Flash flood,,2018,504.0,3657154.0
+2001-0099-USA,United States of America,Earthquake,Ground movement,,2001,1.0,3636404.0
+2020-0412-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Delta',2020,4.0,3607397.0
+2020-0582-USA,United States of America,Storm,Severe weather,,2020,,3607397.0
+2020-0190-USA,United States of America,Storm,Tornado,,2020,,3607397.0
+2024-0340-USA,United States of America,Storm,Severe weather,,2024,23.0,3592095.0
+2002-0724-USA,United States of America,Storm,Tropical cyclone,Lili,2002,,3579630.0
+2002-9611-AUS,Australia,Drought,Drought,,2002,,3579630.0
+2011-0070-AUS,Australia,Storm,Tropical cyclone,"Tropical Cyclone ""Yasi""",2011,1.0,3578111.0
+2011-0347-PAK,Pakistan,Flood,Riverine flood,,2011,509.0,3578111.0
+2007-0556-BGD,Bangladesh,Storm,Tropical cyclone,Cyclone 'Sidr',2007,4234.0,3571236.0
+2021-9569-BRA,Brazil,Drought,Drought,,2021,,3564343.0
+2021-0433-USA,United States of America,Wildfire,Forest fire,Dixie fire,2021,3.0,3564343.0
+2021-0295-IND,India,Storm,Tropical cyclone,Cyclone 'Yaas',2021,19.0,3564343.0
+2005-0344-CHN,China,Flood,Riverine flood,,2005,235.0,3560811.0
+2017-0105-AUS,Australia,Storm,Tropical cyclone,Debbie,2017,12.0,3546211.0
+2017-0564-USA,United States of America,Storm,Tornado,,2017,1.0,3546211.0
+2022-0193-USA,United States of America,Storm,Tornado,,2022,3.0,3520248.0
+2012-0363-PAK,Pakistan,Flood,Riverine flood,,2012,480.0,3505570.0
+2012-0197-CHN,China,Flood,Riverine flood,,2012,132.0,3505570.0
+2025-0165-AUS,Australia,Storm,Tropical cyclone,Tropical cyclone 'Alfred',2025,1.0,3500000.0
+2010-9701-CHN,China,Drought,Drought,,2010,,3499131.0
+2016-0355-CUB,Cuba,Storm,Tropical cyclone,Hurricane 'Matthew',2016,,3487611.0
+2010-0187-USA,United States of America,Storm,Severe weather,,2010,30.0,3469603.0
+2005-0451-CHE,Switzerland,Flood,Riverine flood,,2005,6.0,3461900.0
+2023-0497-SVN,Slovenia,Flood,Flood (General),,2023,6.0,3441382.0
+2004-0445-JPN,Japan,Storm,Tropical cyclone,Chaba,2004,14.0,3408908.0
+2014-0009-USA,United States of America,Extreme temperature,Cold wave,,2014,21.0,3399807.0
+2014-9408-CHN,China,Drought,Drought,,2014,,3399807.0
+2014-0333-MEX,Mexico,Storm,Tropical cyclone,Hurricane Odile,2014,6.0,3399807.0
+2005-0380-ESP,Spain,Wildfire,Forest fire,,2005,11.0,3379474.0
+2015-9328-CHN,China,Drought,Drought,,2015,,3346880.0
+2004-0339-JPN,Japan,Flood,Flash flood,,2004,21.0,3323686.0
+2009-0421-IDN,Indonesia,Earthquake,Ground movement,,2009,1195.0,3301410.0
+2022-0157-USA,United States of America,Storm,Tornado,,2022,5.0,3300232.0
+2008-0243-CHN,China,Flood,Riverine flood,,2008,176.0,3289672.0
+2024-0351-USA,United States of America,Storm,Severe weather,,2024,2.0,3284201.0
+2017-9550-USA,United States of America,Drought,Drought,,2017,,3283529.0
+2017-0381-SXM,Sint Maarten (Dutch part),Storm,Tropical cyclone,Hurricane 'Irma',2017,4.0,3283529.0
+2019-0484-USA,United States of America,Storm,Severe weather,,2019,4.0,3274114.0
+2009-0429-IND,India,Flood,Riverine flood,,2009,355.0,3226378.0
+2002-0674-DEU,Germany,Storm,Extra-tropical storm,Storm 'Jeanett',2002,11.0,3221667.0
+2016-0179-FRA,France,Flood,Riverine flood,,2016,4.0,3219333.0
+2016-0125-USA,United States of America,Storm,Lightning/Thunderstorms,,2016,6.0,3219333.0
+2019-0413-ESP,Spain,Flood,Riverine flood,,2019,7.0,3148187.0
+2019-0125-IRN,Iran (Islamic Republic of),Flood,Flood (General),,2019,70.0,3148187.0
+2005-0492-CHN,China,Storm,Tropical cyclone,Talim,2005,159.0,3132195.0
+2023-0239-USA,United States of America,Storm,Storm (General),,2023,1.0,3116923.0
+2020-0082-USA,United States of America,Storm,Tornado,,2020,25.0,3109825.0
+2007-0663-USA,United States of America,Storm,Storm (General),,2007,23.0,3105423.0
+2025-9077-USA,United States of America,Drought,Drought,,2025,89.0,3100000.0
+2008-0352-CUB,Cuba,Storm,Tropical cyclone,"Hurricane ""Gustav""",2008,,3098273.0
+2016-0552-USA,United States of America,Flood,Flood (General),,2016,5.0,3085194.0
+2016-0342-CHN,China,Storm,Tropical cyclone,Typhoon Ferdie (Meranti),2016,,3085194.0
+2016-0087-USA,United States of America,Storm,Severe weather,,2016,,3085194.0
+2022-0212-USA,United States of America,Storm,Tornado,,2022,1.0,3080217.0
+2024-0653-CZE,Czechia,Storm,Storm (General),Storm 'Boris',2024,13.0,3078939.0
+2024-0573-CAN,Canada,Storm,Tropical cyclone,Tropical cyclone 'Debby',2024,1.0,3078939.0
+2023-0176-USA,United States of America,Storm,Tornado,,2023,25.0,3064094.0
+2023-0206-USA,United States of America,Storm,Tornado,,2023,5.0,3064094.0
+2013-0548-USA,United States of America,Storm,Severe weather,,2013,2.0,3040365.0
+2003-0376-PRT,Portugal,Wildfire,Forest fire,,2003,14.0,3027650.0
+2013-0274-PHL,Philippines,Flood,Riverine flood,,2013,31.0,3026545.0
+2017-0382-MEX,Mexico,Earthquake,Ground movement,,2017,98.0,3020846.0
+2017-9296-ITA,Italy,Drought,Drought,,2017,,3020846.0
+2009-0601-USA,United States of America,Storm,Tornado,,2009,1.0,3001281.0
+2025-0416-PAK,Pakistan,Flood,Flash flood,,2025,1037.0,3000000.0
+2014-9023-USA,United States of America,Drought,Drought,,2014,,2991831.0
+2008-0524-USA,United States of America,Wildfire,Wildfire (General),,2008,,2990611.0
+2015-0504-IND,India,Flood,Flood (General),,2015,325.0,2988286.0
+2022-0818-USA,United States of America,Storm,Blizzard/Winter storm,Storm 'Elliott',2022,98.0,2970209.0
+2023-0079-NZL,New Zealand,Storm,Tropical cyclone,Cyclone 'Gabrielle',2023,11.0,2958435.0
+2010-0260-MEX,Mexico,Storm,Tropical cyclone,"Tropical storm ""Alex""",2010,22.0,2952854.0
+2010-0045-USA,United States of America,Storm,Blizzard/Winter storm,,2010,2.0,2952854.0
+2018-0111-USA,United States of America,Storm,Blizzard/Winter storm,,2018,9.0,2948821.0
+2013-0272-CHN,China,Storm,Tropical cyclone,Tropical storm Utor (Labuyo),2013,88.0,2929806.0
+2024-0004-USA,United States of America,Storm,Severe weather,,2024,5.0,2924992.0
+2013-0184-USA,United States of America,Storm,Tornado,,2013,27.0,2902166.0
+2017-0563-USA,United States of America,Storm,Hail,,2017,2.0,2889505.0
+2017-0511-USA,United States of America,Wildfire,Wildfire (General),'Thomas',2017,2.0,2889505.0
+2003-0391-DEU,Germany,Extreme temperature,Heat wave,,2003,9355.0,2887643.0
+2005-0510-CHN,China,Storm,Tropical cyclone,'Khanun',2005,25.0,2884917.0
+2011-0646-USA,United States of America,Flood,Riverine flood,,2011,5.0,2862489.0
+2011-0134-USA,United States of America,Storm,Tornado,,2011,46.0,2862489.0
+2023-9872-CHN,China,Drought,Drought,,2023,,2852777.0
+2009-0014-ESP,Spain,Storm,Extra-tropical storm,Storm 'Klaus',2009,14.0,2851217.0
+2004-9705-BRA,Brazil,Drought,Drought,,2004,,2812349.0
+2012-0410-CUB,Cuba,Storm,Tropical cyclone,Hurricane 'Sandy',2012,11.0,2804456.0
+2012-0313-USA,United States of America,Storm,Tropical cyclone,Hurricane Isaac,2012,1.0,2804456.0
+2000-0240-USA,United States of America,Wildfire,Forest fire,,2000,,2804381.0
+2000-0714-GBR,United Kingdom of Great Britain and Northern Ireland,Storm,Severe weather,Storm 'Oratia' (Tora),2000,12.0,2804381.0
+2014-0164-SRB,Serbia,Flood,Riverine flood,,2014,51.0,2785479.0
+2024-0582-CAN,Canada,Storm,Hail,,2024,,2771045.0
+2024-0205-USA,United States of America,Flood,Flood (General),,2024,1.0,2771045.0
+2013-0008-AUS,Australia,Storm,Tropical cyclone,Ex-Tropical cyclone Oswald,2013,6.0,2763968.0
+2022-0325-USA,United States of America,Storm,Derecho,,2022,2.0,2750193.0
+2022-0603-PRI,Puerto Rico,Storm,Tropical cyclone,Hurricane 'Fiona',2022,25.0,2750193.0
+2001-0013-SLV,El Salvador,Earthquake,Ground movement,,2001,844.0,2727303.0
+2005-0367-PRT,Portugal,Wildfire,Forest fire,,2005,15.0,2720064.0
+2014-0343-PAK,Pakistan,Flood,Riverine flood,,2014,255.0,2719846.0
+2014-0126-USA,United States of America,Storm,Severe weather,,2014,40.0,2719846.0
+2024-0193-USA,United States of America,Storm,Severe weather,,2024,5.0,2719729.0
+2011-0029-USA,United States of America,Storm,Blizzard/Winter storm,,2011,39.0,2719365.0
+2007-0392-GRC,Greece,Wildfire,Forest fire,,2007,65.0,2717245.0
+2015-0459-USA,United States of America,Storm,Tropical cyclone,Joaquin,2015,25.0,2716623.0
+2015-0248-CHN,China,Flood,Riverine flood,,2015,16.0,2716623.0
+2015-0558-USA,United States of America,Storm,Tornado,,2015,50.0,2716623.0
+2016-0179-DEU,Germany,Flood,Riverine flood,,2016,7.0,2682778.0
+2016-0124-USA,United States of America,Flood,Flash flood,,2016,9.0,2682778.0
+2016-0117-ECU,Ecuador,Earthquake,Ground movement,,2016,672.0,2682778.0
+2016-0355-HTI,Haiti,Storm,Tropical cyclone,Hurricane 'Matthew',2016,546.0,2682778.0
+2012-0614-USA,United States of America,Storm,Lightning/Thunderstorms,,2012,,2664233.0
+2010-0352-RUS,Russian Federation,Wildfire,"Land fire (Brush, Bush, Pasture)",,2010,53.0,2657568.0
+2023-9651-BRA,Brazil,Drought,Drought,,2023,,2641460.0
+2017-0253-USA,United States of America,Storm,Lightning/Thunderstorms,,2017,,2626823.0
+2013-0354-USA,United States of America,Flood,Riverine flood,,2013,9.0,2625770.0
+2003-0586-FRA,France,Flood,Flash flood,,2003,9.0,2625130.0
+2000-0576-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Saomai' (Osang),2000,9.0,2617422.0
+2020-0238-USA,United States of America,Storm,Severe weather,,2020,2.0,2612253.0
+2020-0212-USA,United States of America,Flood,Flood (General),,2020,1.0,2612253.0
+2011-0352-JPN,Japan,Storm,Tropical cyclone,Typhoon Roke,2011,13.0,2604865.0
+2024-0189-TWN,Taiwan (Province of China),Earthquake,Ground movement,,2024,20.0,2596572.0
+2024-0573-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Debby',2024,17.0,2565782.0
+2006-0171-USA,United States of America,Storm,Hail,,2006,12.0,2555209.0
+2009-0140-USA,United States of America,Storm,Tornado,,2009,9.0,2551089.0
+2025-0292-USA,United States of America,Storm,Severe weather,,2025,5.0,2550000.0
+2023-9234-ESP,Spain,Drought,Drought,,2023,,2535802.0
+2022-0567-CHN,China,Earthquake,Ground movement,,2022,118.0,2530178.0
+2012-0156-USA,United States of America,Storm,Tornado,,2012,6.0,2524010.0
+2019-0545-AUS,Australia,Wildfire,"Land fire (Brush, Bush, Pasture)",Currowan,2019,32.0,2518550.0
+2019-0028-AUS,Australia,Flood,Riverine flood,,2019,3.0,2518550.0
+2019-0110-MOZ,Mozambique,Storm,Tropical cyclone,Cyclone 'Idai',2019,603.0,2518550.0
+2007-0245-PAK,Pakistan,Storm,Tropical cyclone,Cyclone 'Yemyin',2007,242.0,2515393.0
+2024-0685-MEX,Mexico,Storm,Tropical cyclone,Hurricane 'John',2024,24.0,2514467.0
+2025-0472-USA,United States of America,Storm,Severe weather,,2025,9.0,2500000.0
+2017-0070-USA,United States of America,Storm,Tornado,,2017,4.0,2495482.0
+2021-0169-AUS,Australia,Flood,Flood (General),,2021,2.0,2495040.0
+2010-0492-IND,India,Flood,Riverine flood,,2010,200.0,2480397.0
+2024-0518-USA,United States of America,Storm,Storm (General),,2024,2.0,2463151.0
+2008-0210-USA,United States of America,Storm,Tornado,,2008,7.0,2392489.0
+2021-0498-CHN,China,Storm,Tropical cyclone,Typoon 'In-Fa',2021,5.0,2376229.0
+2021-0411-BEL,Belgium,Flood,Flood (General),,2021,39.0,2376229.0
+2021-0741-CAN,Canada,Flood,Flood (General),,2021,4.0,2376229.0
+2021-0018-JPN,Japan,Storm,Blizzard/Winter storm,,2021,23.0,2376229.0
+2012-9606-UKR,Ukraine,Drought,Drought,,2012,,2369765.0
+2023-0294-MMR,Myanmar,Storm,Tropical cyclone,Cyclone 'Mocha',2023,148.0,2366748.0
+2025-0154-USA,United States of America,Storm,Severe weather,,2025,6.0,2350000.0
+2003-0518-USA,United States of America,Wildfire,Forest fire,'Cedar' fire,2003,15.0,2329365.0
+2023-0426-USA,United States of America,Flood,Flood (General),,2023,10.0,2324485.0
+2023-0288-USA,United States of America,Storm,Storm (General),,2023,1.0,2324485.0
+2024-0518-CAN,Canada,Storm,Storm (General),,2024,,2309204.0
+2005-0351-CUB,Cuba,Storm,Tropical cyclone,"Hurricane ""Dennis""",2005,16.0,2307933.0
+2012-0552-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2012,4.0,2285631.0
+2004-9704-PRT,Portugal,Drought,Drought,,2004,,2280791.0
+2016-0150-USA,United States of America,Storm,Tornado,,2016,2.0,2280361.0
+2019-0164-IND,India,Storm,Tropical cyclone,Cyclone 'Fani',2019,50.0,2279287.0
+2021-0815-USA,United States of America,Storm,Severe weather,,2021,5.0,2257417.0
+2021-0016-ESP,Spain,Storm,Blizzard/Winter storm,Storm 'Filomena!,2021,5.0,2257417.0
+2009-0644-USA,United States of America,Storm,Lightning/Thunderstorms,,2009,6.0,2250961.0
+2004-0659-LKA,Sri Lanka,Earthquake,Tsunami,,2004,35399.0,2243914.0
+2018-0198-CHN,China,Flood,Flood (General),,2018,112.0,2243668.0
+2012-0548-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2012,1.0,2243565.0
+2008-0653-DEU,Germany,Storm,Severe weather,Hilal,2008,3.0,2242958.0
+2008-0384-CUB,Cuba,Storm,Tropical cyclone,Hurricane Ike,2008,7.0,2242958.0
+2017-0136-USA,United States of America,Flood,Flood (General),,2017,20.0,2232799.0
+2010-0233-FRA,France,Flood,Flash flood,,2010,26.0,2214640.0
+2010-0612-USA,United States of America,Storm,Storm (General),,2010,11.0,2214640.0
+2013-0117-USA,United States of America,Storm,Severe weather,,2013,4.0,2211174.0
+2022-0604-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Nanmadol',2022,5.0,2200155.0
+2014-0317-USA,United States of America,Flood,Riverine flood,,2014,2.0,2175877.0
+2014-0540-USA,United States of America,Storm,Lightning/Thunderstorms,,2014,2.0,2175877.0
+2012-0122-USA,United States of America,Storm,Tornado,,2012,,2173453.0
+2002-9854-CHN,China,Drought,Drought,,2002,,2165676.0
+2011-0397-TUR,Türkiye,Earthquake,Ground movement,,2011,604.0,2146867.0
+2011-0630-CAN,Canada,Wildfire,Forest fire,,2011,1.0,2146867.0
+2016-0023-CHN,China,Extreme temperature,Cold wave,,2016,5.0,2146222.0
+2016-0085-USA,United States of America,Storm,Severe weather,,2016,7.0,2146222.0
+2005-0011-DNK,Denmark,Storm,Extra-tropical storm,Storm 'Erwin' (Gudrun),2005,4.0,2143081.0
+2021-0669-CHN,China,Flood,Flash flood,,2021,18.0,2138606.0
+2002-0574-FRA,France,Flood,Flash flood,,2002,25.0,2129880.0
+2009-0321-CHN,China,Storm,Tropical cyclone,Typhoon Morakot (Kiko),2009,8.0,2124298.0
+2012-0282-CHN,China,Storm,Tropical cyclone,Typhoon Haikui,2012,3.0,2103342.0
+2013-0406-MEX,Mexico,Storm,Tropical cyclone,Hurricane Ingrid,2013,23.0,2072976.0
+2013-0276-PAK,Pakistan,Flood,Riverine flood,,2013,234.0,2072976.0
+2013-0572-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2013,2.0,2072976.0
+2010-9318-RUS,Russian Federation,Drought,Drought,,2010,,2066997.0
+2017-0342-IND,India,Flood,Flood (General),,2017,514.0,2058116.0
+2000-9339-USA,United States of America,Drought,Drought,,2000,,2056546.0
+2024-0654-VNM,Viet Nam,Storm,Tropical cyclone,Typhoon 'Yagi' (Enteng),2024,345.0,2052626.0
+2010-0125-AUS,Australia,Storm,Severe weather,,2010,,2052233.0
+2012-9607-BRA,Brazil,Drought,Drought,,2012,,2047253.0
+2015-0244-PHL,Philippines,Storm,Tropical cyclone,Typhoon Chan-Home,2015,5.0,2037468.0
+2015-0106-CHL,Chile,Flood,Flash flood,,2015,178.0,2037468.0
+2016-0256-CHN,China,Storm,Tropical cyclone,Typhoon Butchoy (Nepartak),2016,69.0,2027053.0
+2021-0178-USA,United States of America,Storm,Tornado,,2021,6.0,2019794.0
+2007-0160-AUS,Australia,Flood,Flash flood,,2007,9.0,2018525.0
+2019-0412-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Dorian',2019,10.0,2014840.0
+2023-0046-NZL,New Zealand,Flood,Flood (General),,2023,4.0,2007510.0
+2025-0281-TUR,Türkiye,Extreme temperature,Severe winter conditions,,2025,,2000000.0
+2010-0068-PRT,Portugal,Flood,Riverine flood,,2010,43.0,1993176.0
+2020-0583-USA,United States of America,Storm,Severe weather,,2020,2.0,1990288.0
+2025-0106-USA,United States of America,Storm,Severe weather,,2025,18.0,1980000.0

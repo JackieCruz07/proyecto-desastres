@@ -1,0 +1,197 @@
+% =========================================================================
+%  Reporte — Actividad 3: Capa de visualización temática
+%  Proyecto: Atlas Global de Desastres
+%  Asignatura: Análisis y exploración de datos
+% =========================================================================
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{float}
+
+\geometry{margin=2.5cm}
+
+\definecolor{azul}{HTML}{1D4ED8}
+\definecolor{grisclaro}{HTML}{F1F5F9}
+\definecolor{grisborde}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=azul,
+  urlcolor=azul,
+  pdftitle={Actividad 3 - Capa de visualizacion tematica},
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{grisclaro},
+  frame=single,
+  rulecolor=\color{grisborde},
+  breaklines=true,
+  showstringspaces=false,
+}
+
+\title{\textbf{Capa de visualización temática sobre el mapa 3D}\\[0.3em]
+       \large Actividad 3 --- Atlas Global de Desastres}
+\author{Instituto Tecnológico Superior de los Ríos\\
+        Ingeniería en Sistemas Computacionales\\
+        \small Asignatura: Análisis y exploración de datos\\
+        \small Profesor: PhD. Fernando Pech-May}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Este reporte documenta el diseño e implementación de la capa de
+visualización temática de la Actividad 3. La capa se construye sobre un
+mapa mundial 3D y representa las variables de desastres naturales mediante
+cuatro recursos visuales: coloración, intensidad de color, elevación y
+deformación de la superficie. La aplicación permite seleccionar
+simultáneamente dos variables ---una para el color y otra para la altura---
+y alternar la proyección entre globo y plano. Se procesaron
+10\,907 eventos EM-DAT sobre 175 unidades cartográficas.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% -------------------------------------------------------------------------
+\section{Introducción}
+% -------------------------------------------------------------------------
+La Actividad 3 del proyecto consiste en diseñar e implementar la capa de
+visualización temática sobre el mapa 3D desarrollado en la Actividad 2,
+incorporando recursos visuales como coloración, intensidad de color,
+elevación y deformación de la superficie para representar las variables
+seleccionadas.
+
+\subsection*{Objetivo}
+Representar de forma simultánea una o dos variables relacionadas con los
+desastres naturales, de modo que a mayor valor de la variable mayor sea su
+representación visual sobre el mapa.
+
+% -------------------------------------------------------------------------
+\section{Recursos visuales implementados}
+% -------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+\caption{Correspondencia entre los recursos solicitados y su implementación.}
+\begin{tabular}{@{}p{3.2cm}p{6.2cm}p{4.2cm}@{}}
+\toprule
+\textbf{Recurso} & \textbf{Implementación} & \textbf{Archivo} \\
+\midrule
+Coloración & Rampa de color interpolada en 12 paradas por variable &
+\texttt{capa\_tematica.js} \\
+Intensidad de color & Mezcla de cada color con su luminancia según un
+control deslizante & \texttt{escalas.js} \\
+Elevación & Capa \texttt{fill-extrusion}: prisma con altura proporcional al
+valor & \texttt{capa\_tematica.js} \\
+Deformación & \texttt{fill-extrusion} en relieve continuo de menor altura &
+\texttt{capa\_tematica.js} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Coloración e intensidad}
+Cada variable temática cuenta con una rampa perceptual propia
+(\texttt{YlOrRd}, \texttt{Reds}, \texttt{Blues}, \texttt{Viridis},
+\texttt{Magma}, \texttt{Teal}). Los territorios sin indicadores se pintan
+con un color neutro para diferenciarlos de un valor cero. El control de
+intensidad ajusta la saturación de la escala y permite regular la carga
+visual del mapa.
+
+\subsection{Elevación y deformación de la superficie}
+La elevación se implementa con la capa \texttt{fill-extrusion} de MapLibre
+GL, que proyecta cada polígono como un prisma sobre el globo. La altura en
+metros se calcula como:
+\[
+h = h_{base} + t \cdot h_{max}, \qquad t \in [0, 1]
+\]
+donde $t$ es el valor normalizado de la variable de altura. La deformación
+utiliza la misma capa con una altura máxima reducida y una base mayor,
+generando un relieve continuo en lugar de prismas altos.
+
+% -------------------------------------------------------------------------
+\section{Arquitectura}
+% -------------------------------------------------------------------------
+El pipeline de datos se implementa en Python y produce una capa GeoJSON y
+un archivo de metadatos que consume la aplicación web.
+
+\begin{lstlisting}[language=Python, caption={Generación de la capa temática.}]
+python -m src.capa_tematica
+# -> app/datos/paises.geojson
+# -> app/datos/metadatos.json
+# -> resultados/tablas/resumen_capa_tematica.csv
+\end{lstlisting}
+
+\subsection{Tecnologías}
+\begin{itemize}
+  \item \textbf{Frontend:} HTML5, CSS3 y JavaScript vanilla (ES6).
+  \item \textbf{Visualización 3D:} MapLibre GL JS (globo, elevación y relieve).
+  \item \textbf{Backend:} Python, pandas, GeoPandas, NumPy.
+  \item \textbf{Formato de capa:} GeoJSON.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+\section{Resultados}
+% -------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+\caption{Cifras de la capa temática generada.}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Métrica} & \textbf{Valor} \\
+\midrule
+Eventos EM-DAT procesados & 10\,907 \\
+Unidades cartográficas & 175 \\
+Territorios con indicadores & 168 \\
+Periodo analizado & 2000--2026 \\
+Tamaño del GeoJSON & $\approx$ 0.5 MB \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Las capturas se generan con: python -m src.capturas
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{imagenes/01_globo_eventos.png}
+  \caption{Mapa de calor global por número de desastres (coloración).}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{imagenes/02_globo_elevacion.png}
+  \caption{Elevación de los territorios según los fallecidos.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{imagenes/03_globo_deformacion.png}
+  \caption{Deformación de la superficie según personas afectadas.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{imagenes/05_combinado_eventos_fallecidos.png}
+  \caption{Representación simultánea: color = eventos, elevación = fallecidos.}
+\end{figure}
+
+% -------------------------------------------------------------------------
+\section{Conclusiones}
+% -------------------------------------------------------------------------
+La capa temática cumple con los recursos solicitados y permite comparar
+simultáneamente dos variables. La separación entre el pipeline de datos
+(Python) y la interfaz (JavaScript vanilla) facilita el mantenimiento y la
+evolución del proyecto hacia las actividades 4 a 6.
+
+\end{document}

@@ -1,0 +1,127 @@
+{
+  "generado": "2026-10-23 18:23",
+  "fuente": "EM-DAT (CRED/Université de Louvain) integrado con World Development Indicators — archivo: EMDAT_integrado_WDI_validado.csv",
+  "cartografia": "Natural Earth 110m Admin 0 Countries",
+  "n_eventos": 10907,
+  "n_territorios": 175,
+  "periodo": {
+    "inicio": 2000,
+    "fin": 2026
+  },
+  "variables": {
+    "eventos": {
+      "etiqueta": "Número de desastres",
+      "descripcion": "Total de eventos EM-DAT registrados por territorio.",
+      "unidad": "eventos",
+      "formato": "entero",
+      "escala_sugerida": "lineal",
+      "categoria": "recuento",
+      "estadisticos": {
+        "n": 168,
+        "min": 1.0,
+        "p50": 36.5,
+        "p75": 73.25,
+        "p90": 128.60000000000002,
+        "p95": 173.65,
+        "p99": 509.9200000000028,
+        "max": 675.0,
+        "media": 63.25595238095238
+      }
+    },
+    "fallecidos": {
+      "etiqueta": "Fallecidos totales",
+      "descripcion": "Suma de víctimas mortales registradas (Total Deaths).",
+      "unidad": "personas",
+      "formato": "entero",
+      "escala_sugerida": "log",
+      "categoria": "impacto humano",
+      "estadisticos": {
+        "n": 168,
+        "min": 0.0,
+        "p50": 1125.5,
+        "p75": 4930.25,
+        "p90": 22281.80000000003,
+        "p95": 51691.60000000005,
+        "p99": 160154.2600000006,
+        "max": 240575.0,
+        "media": 10334.375
+      }
+    },
+    "afectados": {
+      "etiqueta": "Personas afectadas",
+      "descripcion": "Suma de población afectada (Total Affected).",
+      "unidad": "personas",
+      "formato": "entero",
+      "escala_sugerida": "log",
+      "categoria": "impacto humano",
+      "estadisticos": {
+        "n": 168,
+        "min": 0.0,
+        "p50": 1704829.0,
+        "p75": 11784952.0,
+        "p90": 33501639.50000002,
+        "p95": 55709650.40000005,
+        "p99": 552138640.4000111,
+        "max": 1771309413.0,
+        "media": 29164607.023809522
+      }
+    },
+    "dano_ajustado": {
+      "etiqueta": "Daño económico ajustado",
+      "descripcion": "Suma de daños totales ajustados por inflación (Total Damage, Adjusted). Convertido a USD.",
+      "unidad": "USD",
+      "formato": "moneda",
+      "escala_sugerida": "log",
+      "categoria": "impacto económico",
+      "estadisticos": {
+        "n": 168,
+        "min": 0.0,
+        "p50": 1104235000.0,
+        "p75": 9032564500.0,
+        "p90": 41842934700.00003,
+        "p95": 78162024800.00002,
+        "p99": 648549788720.0017,
+        "max": 2094570595000.0,
+        "media": 30714282684.52381
+      }
+    },
+    "prom_fallecidos": {
+      "etiqueta": "Fallecidos promedio por evento",
+      "descripcion": "Total de fallecidos dividido entre el número de eventos.",
+      "unidad": "personas/evento",
+      "formato": "decimal",
+      "escala_sugerida": "log",
+      "categoria": "intensidad",
+      "estadisticos": {
+        "n": 168,
+        "min": 0.0,
+        "p50": 28.855,
+        "p75": 100.615,
+        "p90": 234.0900000000001,
+        "p95": 454.6735,
+        "p99": 2286.8116000000023,
+        "max": 3306.25,
+        "media": 124.22892857142857
+      }
+    },
+    "prom_afectados": {
+      "etiqueta": "Afectados promedio por evento",
+      "descripcion": "Total de afectados dividido entre el número de eventos.",
+      "unidad": "personas/evento",
+      "formato": "decimal",
+      "escala_sugerida": "log",
+      "categoria": "intensidad",
+      "estadisticos": {
+        "n": 168,
+        "min": 0.0,
+        "p50": 52926.18,
+        "p75": 188070.405,
+        "p90": 421707.8810000001,
+        "p95": 631433.1350000001,
+        "p99": 1713648.8802000168,
+        "max": 2633088.17,
+        "media": 174994.13190476192
+      }
+    }
+  }
+}

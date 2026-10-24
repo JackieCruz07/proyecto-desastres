@@ -1,0 +1,56 @@
+DisNo.,Country,Start Year,End Year,Revisar_anio_identificador,Revisar_fechas
+2024-0962-AGO,Angola,2025,2025,True,True
+1988-0424-VEN,Venezuela (Bolivarian Republic of),2026,1988,True,True
+2026-0221-IDN,Indonesia,2026,2026,False,True
+1995-0275-NPL,Nepal,2026,1995,True,True
+1999-9388-DJI,Djibouti,2001,2001,True,True
+2018-9277-CRI,Costa Rica,2019,2019,True,True
+2014-9580-SLV,El Salvador,2015,2016,True,True
+2014-0530-MWI,Malawi,2015,2015,True,True
+2014-0529-BOL,Bolivia (Plurinational State of),2015,2015,True,True
+2025-0075-AUS,Australia,2024,2025,True,True
+2025-0593-LAO,Lao People's Democratic Republic,2024,2024,True,True
+2012-0509-NPL,Nepal,2013,2013,True,True
+1999-9388-SOM,Somalia,2000,2001,True,True
+2005-0713-DEU,Germany,2006,2006,True,True
+2005-0713-LVA,Latvia,2006,2006,True,True
+2005-0713-SCG,Serbia Montenegro,2006,2006,True,True
+2008-0633-BEL,Belgium,2009,2009,True,True
+2008-0633-DEU,Germany,2009,2009,True,True
+2008-0633-PRT,Portugal,2009,2009,True,True
+2009-0595-IND,India,2010,2010,True,True
+2010-0680-BRA,Brazil,2011,2011,True,True
+2001-9122-MOZ,Mozambique,2002,2002,True,True
+1999-9388-SDN,Sudan,2000,2001,True,True
+2005-0713-EST,Estonia,2006,2006,True,True
+2005-0713-MDA,Republic of Moldova,2006,2006,True,True
+2005-0713-ROU,Romania,2006,2006,True,True
+2005-0713-RUS,Russian Federation,2006,2006,True,True
+2005-0713-UKR,Ukraine,2006,2006,True,True
+2005-0754-SYC,Seychelles,2006,2006,True,True
+2010-0557-VEN,Venezuela (Bolivarian Republic of),2011,2011,True,True
+2010-0680-PRY,Paraguay,2011,2011,True,True
+2010-9082-BDI,Burundi,2011,2011,True,True
+2010-9082-ETH,Ethiopia,2011,2012,True,True
+2011-9663-SDN,Sudan,2012,2012,True,True
+2014-9580-CRI,Costa Rica,2015,2015,True,True
+2018-0469-MHL,Marshall Islands,2019,2019,True,True
+2019-0630-SDN,Sudan,2020,2020,True,True
+2020-9609-SOM,Somalia,2021,2022,True,True
+2008-0633-UKR,Ukraine,2009,2009,True,True
+2008-0633-FRA,France,2009,2009,True,True
+2008-0633-ROU,Romania,2009,2009,True,True
+2011-9663-SOM,Somalia,2012,2012,True,True
+2019-0630-DJI,Djibouti,2020,2020,True,True
+2019-0630-ERI,Eritrea,2020,2020,True,True
+2019-0630-KEN,Kenya,2020,2020,True,True
+2019-0630-TZA,United Republic of Tanzania,2020,2020,True,True
+2019-0630-UGA,Uganda,2020,2020,True,True
+2005-0713-BGR,Bulgaria,2006,2006,True,True
+2005-0713-BLR,Belarus,2006,2006,True,True
+2005-0754-COM,Comoros,2006,2006,True,True
+2005-0754-MUS,Mauritius,2006,2006,True,True
+2010-9082-KEN,Kenya,2011,2011,True,True
+2010-9082-UGA,Uganda,2011,2011,True,True
+2011-9663-ETH,Ethiopia,2012,2012,True,True
+2014-0530-ZWE,Zimbabwe,2015,2015,True,True

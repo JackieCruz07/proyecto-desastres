@@ -1,0 +1,1356 @@
+DisNo.,Country,Disaster Type,Disaster Subtype,Event Name,Start Year,Total Deaths,"Total Damage, Adjusted ('000 US$)"
+2025-0750-AFG,Afghanistan,Earthquake,Ground movement,,2025,2200.0,180000.0
+2024-0962-AGO,Angola,Epidemic,Bacterial disease,Cholera,2025,776.0,
+2026-0227-BGD,Bangladesh,Epidemic,Viral disease,Meales,2026,253.0,
+2025-0694-SOM,Somalia,Epidemic,Bacterial disease,Diphteria,2025,89.0,
+2025-0161-ARG,Argentina,Flood,Flood (General),,2025,125.0,375000.0
+2024-0845-YEM,Yemen,Flood,Flood (General),,2024,240.0,
+2026-0330-IND,India,Storm,Lightning/Thunderstorms,,2026,122.0,
+2026-0348-PHL,Philippines,Earthquake,Ground movement,,2026,108.0,
+2026-0026-USA,United States of America,Storm,Blizzard/Winter storm,Winter storm 'Fern' and 'Freeze',2026,115.0,
+2025-0977-IDN,Indonesia,Storm,Tropical cyclone,Tropical storm 'Senyar',2025,1345.0,4000000.0
+2000-0706-PHL,Philippines,Storm,Tropical cyclone,Typhoon 'Xangsane' (Reming),2000,154.0,31783.0
+2004-0462-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Ivan',2004,52.0,30680175.0
+2025-0917-JAM,Jamaica,Storm,Tropical cyclone,Hurricane 'Melissa',2025,62.0,12230000.0
+2025-0969-VNM,Viet Nam,Flood,Flood (General),,2025,108.0,345351.0
+2012-0410-CUB,Cuba,Storm,Tropical cyclone,Hurricane 'Sandy',2012,11.0,2804456.0
+2012-0410-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Sandy',2012,158.0,70111391.0
+2025-1083-MOZ,Mozambique,Flood,Flood (General),,2025,201.0,220000.0
+2000-0576-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Saomai' (Osang),2000,9.0,2617422.0
+2004-0462-CYM,Cayman Islands,Storm,Tropical cyclone,Hurricane 'Ivan',2004,2.0,5846414.0
+2000-0714-GBR,United Kingdom of Great Britain and Northern Ireland,Storm,Severe weather,Storm 'Oratia' (Tora),2000,12.0,2804381.0
+2001-0450-THA,Thailand,Flood,Flash flood,,2001,104.0,44546.0
+2000-0706-TWN,Taiwan (Province of China),Storm,Tropical cyclone,Typhoon 'Xangsane' (Reming),2000,89.0,280438.0
+2025-0462-BGR,Bulgaria,Extreme temperature,Heat wave,,2025,866.0,
+2025-0462-ITA,Italy,Extreme temperature,Heat wave,,2025,6710.0,
+2025-0462-AUT,Austria,Extreme temperature,Heat wave,,2025,180.0,
+2001-0322-CHN,China,Storm,Tropical cyclone,tropical stroms 'Durian' and 'Utor' (Feria),2001,33.0,4987328.0
+2025-0462-CHE,Switzerland,Extreme temperature,Heat wave,,2025,280.0,
+2025-0462-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2025,1687.0,
+2025-0462-ROU,Romania,Extreme temperature,Heat wave,,2025,1487.0,
+2001-0242-USA,United States of America,Storm,Tropical cyclone,Tropical storm 'Allison',2001,41.0,10909213.0
+2025-0462-PRT,Portugal,Extreme temperature,Heat wave,,2025,386.0,
+2025-0462-HRV,Croatia,Extreme temperature,Heat wave,,2025,394.0,
+2025-0462-FRA,France,Extreme temperature,Heat wave,,2025,2062.0,
+2002-0557-KOR,Republic of Korea,Storm,Tropical cyclone,Typhoon 'Rusa',2002,184.0,7517223.0
+2025-0462-CZE,Czechia,Extreme temperature,Heat wave,,2025,144.0,
+2025-0462-ESP,Spain,Extreme temperature,Heat wave,,2025,3893.0,
+2025-0462-POL,Poland,Extreme temperature,Heat wave,,2025,694.0,
+2025-0612-GRC,Greece,Extreme temperature,Heat wave,,2025,1372.0,
+2001-0729-IND,India,Storm,Tropical cyclone,,2001,510.0,
+2025-0462-DEU,Germany,Extreme temperature,Heat wave,,2025,2445.0,
+2025-0462-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2025,411.0,
+2001-0405-CHN,China,Storm,Tropical cyclone,Typhoon 'Toraji' (Isang),2001,100.0,72728.0
+2001-0319-PHL,Philippines,Storm,Tropical cyclone,Tropical storm 'Utor' (Feria),2001,232.0,124665.0
+2019-0644-YEM,Yemen,Epidemic,Viral disease,Dengue,2019,219.0,
+2025-0462-FIN,Finland,Extreme temperature,Heat wave,,2025,105.0,
+2025-0462-HUN,Hungary,Extreme temperature,Heat wave,,2025,362.0,
+2001-0292-CHN,China,Storm,Tropical cyclone,Typhoon 'Chebi' (Emong),2001,125.0,854555.0
+2001-0405-TWN,Taiwan (Province of China),Storm,Tropical cyclone,Typhoon 'Toraji' (Isang),2001,100.0,436369.0
+2025-0462-BEL,Belgium,Extreme temperature,Heat wave,,2025,269.0,
+2002-0702-IND,India,Storm,Tropical cyclone,Severe cyclonic storm 'BOB 03',2002,124.0,
+2002-0290-IND,India,Extreme temperature,Heat wave,,2002,1030.0,
+2006-0680-IDN,Indonesia,Flood,Flash flood,,2006,236.0,
+2010-0168-COL,Colombia,Flood,Riverine flood,,2010,418.0,1476427.0
+2022-0445-SDN,Sudan,Flood,Flash flood,,2022,146.0,11001.0
+2002-0310-USA,United States of America,Storm,Tornado,,2002,10.0,3937593.0
+2002-0483-CHN,China,Flood,Flood (General),,2002,165.0,966500.0
+2002-0674-DEU,Germany,Storm,Extra-tropical storm,Storm 'Jeanett',2002,11.0,3221667.0
+2003-0468-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Isabel',2003,16.0,5897791.0
+2010-0562-IDN,Indonesia,Volcanic activity,Ash fall,Mt. Merapi,2010,322.0,
+2026-0202-AFG,Afghanistan,Flood,Flood (General),,2026,169.0,
+2001-0051-IDN,Indonesia,Flood,Flash flood,,2001,130.0,18182.0
+2009-0354-IDN,Indonesia,Earthquake,Ground movement,,2009,128.0,240103.0
+2013-0011-MOZ,Mozambique,Flood,Riverine flood,,2013,119.0,41460.0
+2006-0279-IDN,Indonesia,Earthquake,Ground movement,,2006,5778.0,4950717.0
+2026-0526-IDN,Indonesia,Earthquake,Ground movement,,2026,105.0,
+2003-0518-USA,United States of America,Wildfire,Forest fire,'Cedar' fire,2003,15.0,2329365.0
+2000-0012-MOZ,Mozambique,Flood,Riverine flood,,2000,800.0,783731.0
+2011-0132-COL,Colombia,Flood,Riverine flood,,2011,138.0,1474182.0
+2026-0563-CHN,China,Flood,Flash flood,,2026,562.0,
+2004-0473-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Jeanne',2004,6.0,13635633.0
+2026-0563-NPL,Nepal,Flood,Flash flood,,2026,6250.0,
+2006-0410-CHN,China,Storm,Tropical cyclone,Typhoon 'Prapiroon' (Henry),2006,89.0,1437305.0
+2003-0229-LKA,Sri Lanka,Flood,Flash flood,,2003,235.0,50753.0
+2004-0235-MMR,Myanmar,Storm,Tropical cyclone,,2004,236.0,1173.0
+2004-0473-HTI,Haiti,Storm,Tropical cyclone,Hurricane 'Jeanne',2004,2754.0,85223.0
+2003-0459-KOR,Republic of Korea,Storm,Tropical cyclone,Typhoon 'Maemi' (Pogi),2003,130.0,7875389.0
+2005-0510-CHN,China,Storm,Tropical cyclone,'Khanun',2005,25.0,2884917.0
+2003-0218-MDG,Madagascar,Storm,Tropical cyclone,Manou,2003,89.0,
+2004-0412-CHN,China,Storm,Tropical cyclone,Typhoon 'Rananim' (Karen),2004,188.0,3732755.0
+2004-0415-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Charley',2004,10.0,27271266.0
+2004-0524-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Tokage' (Siony),2004,89.0,3920245.0
+2004-0580-PHL,Philippines,Storm,Tropical cyclone,Typhoon 'Muifa' (Unding),2004,104.0,10227.0
+2004-0455-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Frances',2004,47.0,18748996.0
+2004-0609-PHL,Philippines,Storm,Tropical cyclone,Tropical depression 'Winnie',2004,1619.0,133288.0
+2004-0459-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Songda' (Nina),2004,41.0,15340087.0
+2026-0512-COL,Colombia,Earthquake,Ground movement,,2026,331.0,
+2026-0395-VEN,Venezuela (Bolivarian Republic of),Earthquake,Ground movement,,2026,6509.0,
+2005-0547-USA,United States of America,Storm,Tropical cyclone,Rita,2005,10.0,26376381.0
+2026-0067-COD,Democratic Republic of the Congo,Mass movement (wet),Landslide (wet),,2026,200.0,
+2026-0048-ZWE,Zimbabwe,Flood,Flood (General),,2026,109.0,
+2000-0460-THA,Thailand,Epidemic,Bacterial disease,,2000,89.0,
+2022-0643-HTI,Haiti,Epidemic,Bacterial disease,Cholera,2022,511.0,
+2026-0158-ETH,Ethiopia,Flood,Flood (General),,2026,131.0,
+2019-0650-BEL,Belgium,Extreme temperature,Heat wave,,2019,188.0,
+2020-0322-CHN,China,Flood,Flood (General),,2020,280.0,21146808.0
+2019-0614-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Measles,2019,3667.0,
+2020-0377-AFG,Afghanistan,Flood,Flash flood,,2020,212.0,
+2019-0484-USA,United States of America,Storm,Severe weather,,2019,4.0,3274114.0
+2020-0483-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Zeta',2020,6.0,4353755.0
+2020-0501-PHL,Philippines,Storm,Tropical cyclone,Tyhoon 'Ulysses' (Vamco),2020,111.0,523694.0
+2021-0369-CAN,Canada,Extreme temperature,Heat wave,,2021,815.0,
+2020-0530-BEL,Belgium,Extreme temperature,Heat wave,,2020,1687.0,
+2020-0530-FRA,France,Extreme temperature,Heat wave,,2020,1924.0,
+2020-0530-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2020,2556.0,
+2019-0412-BHS,Bahamas,Storm,Tropical cyclone,Tropical cyclone 'Dorian',2019,356.0,4281534.0
+2020-0572-HRV,Croatia,Earthquake,Ground movement,,2020,8.0,7741473.0
+2020-0582-USA,United States of America,Storm,Severe weather,,2020,,3607397.0
+2019-0366-FRA,France,Extreme temperature,Heat wave,,2019,868.0,
+2019-0331-IND,India,Flood,Flood (General),,2019,1900.0,12592748.0
+2021-0003-IDN,Indonesia,Earthquake,Ground movement,,2021,110.0,69742.0
+2021-0072-IND,India,Glacial lake outburst flood,Glacial lake outburst flood,,2021,234.0,249504.0
+2021-0096-USA,United States of America,Storm,Blizzard/Winter storm,,2021,235.0,35643430.0
+2021-0178-USA,United States of America,Storm,Tornado,,2021,6.0,2019794.0
+2019-0164-IND,India,Storm,Tropical cyclone,Cyclone 'Fani',2019,50.0,2279287.0
+2019-0110-ZWE,Zimbabwe,Storm,Tropical cyclone,Cyclone 'Idai',2019,628.0,
+2019-0028-AUS,Australia,Flood,Riverine flood,,2019,3.0,2518550.0
+2018-9476-USA,United States of America,Drought,Drought,,2018,,3846289.0
+2021-0411-BEL,Belgium,Flood,Flood (General),,2021,39.0,2376229.0
+2018-9075-ARG,Argentina,Drought,Drought,,2018,,4359127.0
+2018-0458-IDN,Indonesia,Volcanic activity,Volcanic activity (General),Anak Krakatoa,2018,453.0,320524.0
+2018-0385-IND,India,Storm,Tropical cyclone,Tropical storm 'Titli',2018,85.0,1179529.0
+2021-0536-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2021,3604.0,
+2018-0352-IDN,Indonesia,Earthquake,Tsunami,,2018,4140.0,1859040.0
+2021-0599-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Meningitis,2021,205.0,
+2021-0617-NER,Niger,Epidemic,Bacterial disease,Cholera,2021,166.0,
+2018-0309-PRK,Democratic People's Republic of Korea,Storm,Tropical cyclone,Typhoon 'Soulik',2018,86.0,5949.0
+2021-0669-CHN,China,Flood,Flash flood,,2021,18.0,2138606.0
+2018-0226-JPN,Japan,Extreme temperature,Heat wave,,2018,119.0,
+2018-0190-JPN,Japan,Flood,Flood (General),,2018,246.0,12179914.0
+2018-0183-JPN,Japan,Earthquake,Ground movement,,2018,5.0,4166813.0
+2018-0168-GTM,Guatemala,Volcanic activity,Pyroclastic flow,Volcan de Fuego,2018,461.0,
+2018-0150-IND,India,Storm,Sand/Dust storm,,2018,143.0,30770.0
+2018-0143-PAK,Pakistan,Extreme temperature,Heat wave,,2018,180.0,
+2021-0825-FRA,France,Extreme temperature,Cold wave,,2021,,6653440.0
+2021-0832-USA,United States of America,Wildfire,Wildfire (General),Middle Fork and the Marshall wildfires,2021,2.0,3920777.0
+2021-9846-USA,United States of America,Drought,Drought,,2021,,10693029.0
+2024-0369-DEU,Germany,Extreme temperature,Heat wave,,2024,6282.0,
+2017-9550-USA,United States of America,Drought,Drought,,2017,,3283529.0
+2017-0517-IND,India,Flood,Flood (General),,2017,101.0,
+2017-0411-MDG,Madagascar,Epidemic,Viral disease,Plague,2017,207.0,
+2022-0153-JPN,Japan,Earthquake,Ground movement,,2022,3.0,9680681.0
+2017-0383-PRI,Puerto Rico,Storm,Tropical cyclone,Hurricane 'Maria',2017,64.0,89311978.0
+2017-0382-MEX,Mexico,Earthquake,Ground movement,,2017,98.0,3020846.0
+2022-0325-USA,United States of America,Storm,Derecho,,2022,2.0,2750193.0
+2017-0342-NPL,Nepal,Flood,Flood (General),,2017,176.0,781480.0
+2017-0342-BGD,Bangladesh,Flood,Flood (General),,2017,144.0,656706.0
+2017-0340-COD,Democratic Republic of the Congo,Mass movement (wet),Landslide (wet),,2017,174.0,
+2017-0284-CHN,China,Storm,Lightning/Thunderstorms,,2017,36.0,4465599.0
+2022-0465-CYP,Cyprus,Extreme temperature,Heat wave,,2022,101.0,
+2022-0465-BGR,Bulgaria,Extreme temperature,Heat wave,,2022,1277.0,
+2022-0465-DEU,Germany,Extreme temperature,Heat wave,,2022,8173.0,
+2022-0465-ESP,Spain,Extreme temperature,Heat wave,,2022,11324.0,
+2022-0465-EST,Estonia,Extreme temperature,Heat wave,,2022,167.0,
+2022-0465-FIN,Finland,Extreme temperature,Heat wave,,2022,225.0,
+2022-0465-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2022,3469.0,
+2022-0465-HRV,Croatia,Extreme temperature,Heat wave,,2022,731.0,
+2022-0465-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2022,469.0,
+2022-0465-POL,Poland,Extreme temperature,Heat wave,,2022,763.0,
+2022-0465-PRT,Portugal,Extreme temperature,Heat wave,,2022,2212.0,
+2022-0465-SVK,Slovakia,Extreme temperature,Heat wave,,2022,365.0,
+2022-0476-IRN,Iran (Islamic Republic of),Flood,Flash flood,,2022,92.0,221116.0
+2017-0136-USA,United States of America,Flood,Flood (General),,2017,20.0,2232799.0
+2022-0567-CHN,China,Earthquake,Ground movement,,2022,118.0,2530178.0
+2022-0569-ZWE,Zimbabwe,Epidemic,Viral disease,Measles,2022,750.0,
+2017-0091-ZWE,Zimbabwe,Storm,Tropical cyclone,Tropical depression 'Ex-Dineo',2017,251.0,248235.0
+2022-0603-PRI,Puerto Rico,Storm,Tropical cyclone,Hurricane 'Fiona',2022,25.0,2750193.0
+2022-0604-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Nanmadol',2022,5.0,2200155.0
+2022-0648-VEN,Venezuela (Bolivarian Republic of),Mass movement (wet),Landslide (wet),,2022,106.0,
+2022-0669-ETH,Ethiopia,Epidemic,Bacterial disease,Cholera,2022,271.0,
+2022-0674-NGA,Nigeria,Flood,Flood (General),,2022,603.0,4620325.0
+2016-0553-PAK,Pakistan,Flood,Riverine flood,,2016,141.0,2683.0
+2016-0518-BRA,Brazil,Epidemic,Viral disease,Yellow fever,2016,261.0,
+2016-0475-IDN,Indonesia,Earthquake,Ground movement,,2016,104.0,134139.0
+2022-0818-USA,United States of America,Storm,Blizzard/Winter storm,Storm 'Elliott',2022,98.0,2970209.0
+2022-0858-KEN,Kenya,Epidemic,Bacterial disease,Cholera,2022,202.0,
+2022-9209-USA,United States of America,Drought,Drought,,2022,136.0,24201702.0
+2016-0355-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Matthew',2016,49.0,13413888.0
+2016-0355-CUB,Cuba,Storm,Tropical cyclone,Hurricane 'Matthew',2016,,3487611.0
+2016-0321-PRK,Democratic People's Republic of Korea,Flood,Riverine flood,,2016,538.0,81825.0
+2023-0043-MOZ,Mozambique,Epidemic,Bacterial disease,Cholera,2023,141.0,
+2016-0271-IND,India,Flood,Flood (General),,2016,254.0,469486.0
+2016-0235-CHN,China,Storm,Storm (General),,2016,99.0,670694.0
+2023-0122-USA,United States of America,Storm,Storm (General),,2023,13.0,6339504.0
+2023-0166-NGA,Nigeria,Epidemic,Bacterial disease,Diphteria,2023,1055.0,
+2023-0187-ETH,Ethiopia,Flood,Flood (General),,2023,91.0,
+2023-0239-USA,United States of America,Storm,Storm (General),,2023,1.0,3116923.0
+2016-0043-TWN,Taiwan (Province of China),Earthquake,Ground movement,,2016,117.0,938972.0
+2016-0023-TWN,Taiwan (Province of China),Extreme temperature,Cold wave,,2016,85.0,69752.0
+2016-0023-CHN,China,Extreme temperature,Cold wave,,2016,5.0,2146222.0
+2023-0324-USA,United States of America,Storm,Storm (General),,2023,5.0,4015019.0
+2015-9618-IND,India,Drought,Drought,,2015,,4074935.0
+2015-9328-CHN,China,Drought,Drought,,2015,,3346880.0
+2015-9210-USA,United States of America,Drought,Drought,,2015,,6112403.0
+2023-0384-YEM,Yemen,Flood,Flood (General),,2023,248.0,
+2023-0385-PER,Peru,Epidemic,Viral disease,Dengue,2023,176.0,
+2023-0428-IND,India,Flood,Flood (General),,2023,1529.0,
+2023-0428-PAK,Pakistan,Flood,Flood (General),,2023,217.0,
+2023-0473-BGD,Bangladesh,Epidemic,Viral disease,Dengue,2023,127.0,
+2023-0438-ALB,Albania,Extreme temperature,Heat wave,,2023,363.0,
+2023-0438-DNK,Denmark,Extreme temperature,Heat wave,,2023,189.0,
+2023-0438-FRA,France,Extreme temperature,Heat wave,,2023,2734.0,
+2023-0438-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2023,1851.0,
+2023-0438-HRV,Croatia,Extreme temperature,Heat wave,,2023,561.0,
+2015-0476-PAK,Pakistan,Earthquake,Ground movement,,2015,280.0,
+2015-0476-AFG,Afghanistan,Earthquake,Ground movement,,2015,115.0,
+2023-0438-POL,Poland,Extreme temperature,Heat wave,,2023,616.0,
+2023-0438-PRT,Portugal,Extreme temperature,Heat wave,,2023,1432.0,
+2023-0438-SRB,Serbia,Extreme temperature,Heat wave,,2023,464.0,
+2015-0459-USA,United States of America,Storm,Tropical cyclone,Joaquin,2015,25.0,2716623.0
+2023-0497-SVN,Slovenia,Flood,Flood (General),,2023,6.0,3441382.0
+2023-0610-LBY,Libya,Storm,Storm (General),Storm 'Daniel',2023,13200.0,6550821.0
+2023-0721-KEN,Kenya,Flood,Flood (General),,2023,178.0,
+2015-0317-IND,India,Flood,Riverine flood,,2015,293.0,
+2015-0244-PHL,Philippines,Storm,Tropical cyclone,Typhoon Chan-Home,2015,5.0,2037468.0
+2015-0232-PAK,Pakistan,Extreme temperature,Heat wave,,2015,1229.0,
+2015-0225-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2015,97.0,
+2023-9651-BRA,Brazil,Drought,Drought,,2023,,2641460.0
+2024-0005-USA,United States of America,Storm,Blizzard/Winter storm,,2024,61.0,3899989.0
+2015-0189-IND,India,Extreme temperature,Heat wave,,2015,2248.0,
+2015-0164-IND,India,Storm,Severe weather,,2015,100.0,217330.0
+2024-0057-PHL,Philippines,Mass movement (wet),Landslide (wet),,2024,128.0,51316.0
+2015-0106-CHL,Chile,Flood,Flash flood,,2015,178.0,2037468.0
+2024-0145-AFG,Afghanistan,Extreme temperature,Severe winter conditions,,2024,1197.0,
+2024-0212-COM,Comoros,Epidemic,Bacterial disease,Cholera,2024,149.0,
+2024-0307-USA,United States of America,Storm,Severe weather,,2024,5.0,4926302.0
+2015-0054-AFG,Afghanistan,Mass movement (wet),Avalanche (wet),,2015,254.0,4075.0
+2014-9408-CHN,China,Drought,Drought,,2014,,3399807.0
+2024-0369-BIH,Bosnia and Herzegovina,Extreme temperature,Heat wave,,2024,909.0,
+2014-9025-BRA,Brazil,Drought,Drought,,2014,,6799615.0
+2024-0369-FIN,Finland,Extreme temperature,Heat wave,,2024,152.0,
+2024-0369-ITA,Italy,Extreme temperature,Heat wave,,2024,19038.0,
+2024-0369-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2024,234.0,
+2024-0369-SRB,Serbia,Extreme temperature,Heat wave,,2024,2515.0,
+2024-0369-SVN,Slovenia,Extreme temperature,Heat wave,,2024,280.0,
+2014-0547-PER,Peru,Extreme temperature,Cold wave,,2014,505.0,
+2024-0452-PAK,Pakistan,Extreme temperature,Heat wave,,2024,568.0,
+2014-0540-USA,United States of America,Storm,Lightning/Thunderstorms,,2014,2.0,2175877.0
+2001-0579-RUS,Russian Federation,Extreme temperature,Cold wave,,2001,332.0,
+2024-0475-CHN,China,Flood,Flood (General),,2024,77.0,12315754.0
+2024-0509-ETH,Ethiopia,Mass movement (wet),Landslide (wet),,2024,257.0,
+2024-0569-TCD,Chad,Flood,Flood (General),,2024,576.0,389999.0
+2024-0635-NGA,Nigeria,Flood,Flood (General),,2024,321.0,230920.0
+2014-0408-IND,India,Flood,Riverine flood,,2014,94.0,
+2024-0963-JPN,Japan,Extreme temperature,Heat wave,,2024,123.0,
+2014-0391-IND,India,Flood,Riverine flood,,2014,95.0,221667.0
+2024-0777-PHL,Philippines,Storm,Tropical cyclone,Tropical cyclone 'Trami' (Kristine),2024,181.0,382815.0
+2024-0796-ESP,Spain,Flood,Flood (General),,2024,232.0,11289441.0
+2014-0343-IND,India,Flood,Riverine flood,,2014,298.0,21758767.0
+2014-0333-MEX,Mexico,Storm,Tropical cyclone,Hurricane Odile,2014,6.0,3399807.0
+2014-0317-USA,United States of America,Flood,Riverine flood,,2014,2.0,2175877.0
+2024-0910-MOZ,Mozambique,Storm,Tropical cyclone,Tropical cyclone 'Chido',2024,120.0,
+2014-0192-USA,United States of America,Storm,Lightning/Thunderstorms,,2014,,5303700.0
+2014-0090-LBR,Liberia,Epidemic,Viral disease,Ebola,2014,4810.0,
+2025-0154-USA,United States of America,Storm,Severe weather,,2025,6.0,2350000.0
+2025-0256-USA,United States of America,Storm,Severe weather,,2025,25.0,4550000.0
+2025-0223-MMR,Myanmar,Earthquake,Ground movement,,2025,3820.0,11000000.0
+2013-0559-MDG,Madagascar,Epidemic,Viral disease,Pneumonic plague,2013,113.0,
+2013-0547-DEU,Germany,Storm,Hail,,2013,,6633523.0
+2025-0467-USA,United States of America,Flood,Flash flood,,2025,138.0,1100000.0
+2013-0453-SSD,South Sudan,Flood,Riverine flood,,2013,98.0,
+2025-0469-IND,India,Flood,Flash flood,,2025,140.0,
+2025-0472-USA,United States of America,Storm,Severe weather,,2025,9.0,2500000.0
+2013-0380-KHM,Cambodia,Flood,Riverine flood,,2013,200.0,690992.0
+2013-0260-IND,India,Flood,Riverine flood,,2013,174.0,2764.0
+2013-0116-CHN,China,Earthquake,Ground movement,,2013,198.0,9397491.0
+2025-0756-SDN,Sudan,Mass movement (wet),Landslide (wet),,2025,400.0,
+2025-0832-NER,Niger,Flood,Flood (General),,2025,110.0,
+2012-9607-BRA,Brazil,Drought,Drought,,2012,,2047253.0
+2012-9606-UKR,Ukraine,Drought,Drought,,2012,,2369765.0
+2000-0265-COL,Colombia,Flood,Riverine flood,,2000,96.0,
+2012-0612-USA,United States of America,Storm,Lightning/Thunderstorms,,2012,,4767575.0
+2025-9185-BRA,Brazil,Drought,Drought,,2025,,4800000.0
+2020-0164-KEN,Kenya,Flood,Flood (General),,2020,285.0,12439.0
+2020-0082-USA,United States of America,Storm,Tornado,,2020,25.0,3109825.0
+2020-0190-USA,United States of America,Storm,Tornado,,2020,,3607397.0
+2023-0438-HUN,Hungary,Extreme temperature,Heat wave,,2023,294.0,
+2023-0438-CHE,Switzerland,Extreme temperature,Heat wave,,2023,294.0,
+2023-0438-BEL,Belgium,Extreme temperature,Heat wave,,2023,324.0,
+2023-0370-USA,United States of America,Storm,Storm (General),,2023,8.0,5599896.0
+2023-0328-IND,India,Extreme temperature,Heat wave,,2023,179.0,
+2023-0294-MMR,Myanmar,Storm,Tropical cyclone,Cyclone 'Mocha',2023,148.0,2366748.0
+2023-0293-ITA,Italy,Flood,Flood (General),,2023,15.0,10301695.0
+2002-0175-AFG,Afghanistan,Earthquake,Ground movement,,2002,1000.0,
+2023-0176-USA,United States of America,Storm,Tornado,,2023,25.0,3064094.0
+2025-0651-IND,India,Mass movement (wet),Mudslide,,2025,105.0,
+2025-0567-COL,Colombia,Flood,Flood (General),,2025,130.0,
+2025-0404-NGA,Nigeria,Flood,Flood (General),,2025,1100.0,
+2025-0377-USA,United States of America,Storm,Tornado,,2025,28.0,5200000.0
+2025-0292-USA,United States of America,Storm,Severe weather,,2025,5.0,2550000.0
+2025-0281-TUR,Türkiye,Extreme temperature,Severe winter conditions,,2025,,2000000.0
+2025-0245-COD,Democratic Republic of the Congo,Flood,Flood (General),,2025,165.0,
+2025-1000-LKA,Sri Lanka,Storm,Tropical cyclone,Tropical storm 'Ditwah',2025,823.0,4100000.0
+2025-0106-USA,United States of America,Storm,Severe weather,,2025,18.0,1980000.0
+2025-0004-CHN,China,Earthquake,Ground movement,,2025,126.0,1250000.0
+2024-0883-UGA,Uganda,Mass movement (wet),Landslide (wet),,2024,141.0,
+2024-0703-MLI,Mali,Flood,Flood (General),,2024,92.0,169342.0
+2024-0693-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Helene',2024,219.0,82105029.0
+2024-0692-NPL,Nepal,Flood,Flood (General),,2024,268.0,346938.0
+2024-0654-VNM,Viet Nam,Storm,Tropical cyclone,Typhoon 'Yagi' (Enteng),2024,345.0,2052626.0
+2024-0582-CAN,Canada,Storm,Hail,,2024,,2771045.0
+2024-0544-SDN,Sudan,Flood,Flash flood,,2024,132.0,
+2024-0522-CHN,China,Storm,Tropical cyclone,Typhoon 'Gaemi' (Carina) and 'Butchoy' (Prapiroon),2024,129.0,4228409.0
+2024-0518-USA,United States of America,Storm,Storm (General),,2024,2.0,2463151.0
+2024-0481-PAK,Pakistan,Flood,Flood (General),,2024,368.0,
+2024-0422-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Beryl',2024,46.0,7389453.0
+2024-0390-NER,Niger,Flood,Flood (General),,2024,396.0,230920.0
+2024-0369-ROU,Romania,Extreme temperature,Heat wave,,2024,4943.0,
+2024-0369-POL,Poland,Extreme temperature,Heat wave,,2024,1780.0,
+2024-0369-BGR,Bulgaria,Extreme temperature,Heat wave,,2024,3414.0,
+2024-0369-BEL,Belgium,Extreme temperature,Heat wave,,2024,249.0,
+2024-0303-PNG,Papua New Guinea,Mass movement (wet),Landslide (wet),,2024,670.0,
+2024-0289-IDN,Indonesia,Flood,Flood (General),,2024,87.0,
+2024-0269-BRA,Brazil,Flood,Flood (General),,2024,209.0,7184190.0
+2024-0268-COD,Democratic Republic of the Congo,Flood,Flood (General),,2024,300.0,
+2024-0193-USA,United States of America,Storm,Severe weather,,2024,5.0,2719729.0
+2024-0190-PAK,Pakistan,Storm,Severe weather,,2024,99.0,
+2024-0189-TWN,Taiwan (Province of China),Earthquake,Ground movement,,2024,20.0,2596572.0
+2024-0173-USA,United States of America,Storm,Tornado,,2024,3.0,6055246.0
+2023-0764-GTM,Guatemala,Mass movement (wet),Landslide (wet),,2023,86.0,
+2023-0741-SOM,Somalia,Flood,Flood (General),,2023,118.0,
+2023-0722-NPL,Nepal,Earthquake,Ground movement,,2023,154.0,105658.0
+2023-0622-IND,India,Glacial lake outburst flood,Glacial lake outburst flood,,2023,178.0,
+2023-0565-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Idalia',2023,5.0,3698044.0
+2002-0574-FRA,France,Flood,Flash flood,,2002,25.0,2129880.0
+2002-0837-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Influenza,2002,2000.0,
+2000-0484-BTN,Bhutan,Flood,Riverine flood,,2000,200.0,
+2002-9611-AUS,Australia,Drought,Drought,,2002,,3579630.0
+2002-9853-USA,United States of America,Drought,Drought,,2002,,5906390.0
+2003-0040-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2003,1058.0,
+2003-0204-ETH,Ethiopia,Flood,Riverine flood,,2003,119.0,
+2003-0331-CHN,China,Flood,Riverine flood,,2003,30.0,8452917.0
+2000-0020-IND,India,Extreme temperature,Cold wave,,2000,275.0,
+2003-0339-PER,Peru,Extreme temperature,Cold wave,,2003,339.0,
+2003-0376-PRT,Portugal,Wildfire,Forest fire,,2003,14.0,3027650.0
+2003-0391-DEU,Germany,Extreme temperature,Heat wave,,2003,9355.0,2887643.0
+2003-0391-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2003,301.0,
+2003-0391-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2003,965.0,
+2003-0636-BGD,Bangladesh,Extreme temperature,Cold wave,,2003,153.0,
+2003-0673-BRA,Brazil,Flood,Riverine flood,,2003,161.0,530276.0
+2003-0674-MOZ,Mozambique,Epidemic,Bacterial disease,Cholera,2003,85.0,
+2003-0776-IDN,Indonesia,Flood,Riverine flood,,2003,148.0,
+2003-0786-USA,United States of America,Wildfire,Forest fire,,2003,4.0,6125302.0
+2003-0829-USA,United States of America,Storm,Storm (General),,2003,13.0,3675181.0
+2004-0060-COD,Democratic Republic of the Congo,Epidemic,Viral disease,,2004,300.0,
+2004-0231-DOM,Dominican Republic,Flood,Riverine flood,,2004,688.0,
+2004-0298-NPL,Nepal,Flood,Riverine flood,,2004,185.0,
+2004-0395-TCD,Chad,Epidemic,Bacterial disease,Cholera,2004,123.0,
+2004-0457-CHN,China,Flood,Riverine flood,,2004,222.0,802798.0
+2004-0659-IDN,Indonesia,Earthquake,Tsunami,,2004,165708.0,7587548.0
+2004-9705-BRA,Brazil,Drought,Drought,,2004,,2812349.0
+2005-0082-SDN,Sudan,Epidemic,Bacterial disease,Meningococcal disease,2005,124.0,
+2005-0089-IDN,Indonesia,Mass movement (wet),Landslide (wet),,2005,143.0,8243.0
+2005-0092-IRN,Iran (Islamic Republic of),Earthquake,Ground movement,,2005,612.0,131882.0
+2005-0160-IDN,Indonesia,Earthquake,Ground movement,,2005,915.0,
+2005-0176-SEN,Senegal,Epidemic,Bacterial disease,Cholera,2005,303.0,
+2005-0220-TCD,Chad,Epidemic,Viral disease,,2005,115.0,
+2000-0858-NPL,Nepal,Epidemic,Viral disease,Encephalitis,2000,250.0,
+2005-0451-CHE,Switzerland,Flood,Riverine flood,,2005,6.0,3461900.0
+2005-0504-IND,India,Flood,Riverine flood,,2005,126.0,
+2005-0567-GTM,Guatemala,Storm,Tropical cyclone,Stan,2005,1513.0,1629236.0
+2005-0762-SDN,Sudan,Epidemic,Bacterial disease,Meningococcal disease,2005,382.0,
+2006-0324-GIN,Guinea,Epidemic,Bacterial disease,Cholera,2006,111.0,
+2006-0372-IDN,Indonesia,Earthquake,Tsunami,,2006,802.0,87835.0
+2006-0388-CHN,China,Storm,Tropical cyclone,Kaemi,2006,109.0,586101.0
+2006-0422-ETH,Ethiopia,Flood,Flash flood,,2006,498.0,5110.0
+2006-0530-THA,Thailand,Flood,Riverine flood,,2006,164.0,15874.0
+2006-0648-VNM,Viet Nam,Storm,Tropical cyclone,Durian (Reming),2006,95.0,728234.0
+2006-0750-KEN,Kenya,Epidemic,Viral disease,Rift Valley Fever,2006,155.0,
+2000-0119-PAK,Pakistan,Epidemic,Infectious disease (General),,2000,95.0,
+2007-0261-SDN,Sudan,Flood,Riverine flood,,2007,150.0,465813.0
+2007-0274-IDN,Indonesia,Epidemic,Viral disease,Dengue,2007,365.0,
+2007-0307-NPL,Nepal,Flood,Riverine flood,,2007,214.0,3727.0
+2007-0320-IND,India,Flood,Riverine flood,,2007,1103.0,
+2007-0523-HTI,Haiti,Storm,Tropical cyclone,Noel,2007,90.0,
+2007-0602-IND,India,Flood,Riverine flood,,2007,96.0,
+2007-0656-NGA,Nigeria,Epidemic,Viral disease,,2007,200.0,
+2007-0658-SDN,Sudan,Epidemic,Viral disease,Rift Valley Fever,2007,96.0,
+2008-0020-CHN,China,Extreme temperature,Severe winter conditions,,2008,129.0,31550942.0
+2008-0184-MMR,Myanmar,Storm,Tropical cyclone,Cyclone 'Nargis',2008,138366.0,5981221.0
+2008-0258-SLE,Sierra Leone,Epidemic,Bacterial disease,Cholera,2008,170.0,
+2008-0329-VNM,Viet Nam,Storm,Tropical cyclone,"Tropical storm ""Kammuri"" (Julian)",2008,162.0,179437.0
+2008-0352-HTI,Haiti,Storm,Tropical cyclone,"Hurricane ""Gustav""",2008,85.0,
+2008-0394-EGY,Egypt,Mass movement (dry),Rockfall (dry),,2008,98.0,
+2008-0398-CHN,China,Mass movement (wet),Landslide (wet),,2008,277.0,
+2008-0423-IND,India,Flood,Riverine flood,,2008,173.0,
+2008-0424-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2008,97.0,
+2008-0444-DZA,Algeria,Flood,Flash flood,,2008,93.0,520366.0
+2008-0446-GNB,Guinea-Bissau,Epidemic,Bacterial disease,Cholera,2008,221.0,
+2008-0499-YEM,Yemen,Flood,Flash flood,,2008,90.0,598122.0
+2008-0511-AGO,Angola,Epidemic,Bacterial disease,Cholera,2008,134.0,
+2008-0511-ZWE,Zimbabwe,Epidemic,Bacterial disease,Cholera,2008,4276.0,
+2008-0524-USA,United States of America,Wildfire,Wildfire (General),,2008,,2990611.0
+2008-0646-IND,India,Storm,Sand/Dust storm,,2008,111.0,37383.0
+2009-0140-USA,United States of America,Storm,Tornado,,2009,9.0,2551089.0
+2009-0287-USA,United States of America,Storm,Tornado,,2009,16.0,3751602.0
+2009-0434-NPL,Nepal,Flood,Riverine flood,,2009,87.0,90038.0
+2009-0477-SLV,El Salvador,Storm,Tropical cyclone,"Hurricane ""Ida""",2009,275.0,1409102.0
+2009-0491-CMR,Cameroon,Epidemic,Bacterial disease,Cholera,2009,109.0,
+2009-0595-IND,India,Extreme temperature,Cold wave,,2010,100.0,
+2009-0616-AUS,Australia,Extreme temperature,Heat wave,,2009,347.0,
+2009-0657-AGO,Angola,Epidemic,Bacterial disease,Diarroheic diseases,2009,107.0,
+2010-0125-AUS,Australia,Storm,Severe weather,,2010,,2052233.0
+2010-0131-BFA,Burkina Faso,Epidemic,Viral disease,Meningitis,2010,841.0,
+2010-0131-TCD,Chad,Epidemic,Viral disease,Meningitis,2010,115.0,
+2010-0171-IND,India,Storm,Tropical cyclone,,2010,114.0,
+2010-0206-IND,India,Extreme temperature,Heat wave,,2010,250.0,
+2010-0211-GTM,Guatemala,Storm,Tropical cyclone,Hurricane 'Agatha',2010,174.0,959677.0
+2010-0239-CHN,China,Flood,Riverine flood,,2010,1691.0,26575682.0
+2010-0260-MEX,Mexico,Storm,Tropical cyclone,"Tropical storm ""Alex""",2010,22.0,2952854.0
+2010-0400-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2010,1716.0,
+2010-0372-RUS,Russian Federation,Extreme temperature,Heat wave,,2010,55736.0,590571.0
+2010-0418-CMR,Cameroon,Epidemic,Bacterial disease,Cholera,2010,515.0,
+2010-0494-MEX,Mexico,Storm,Tropical cyclone,Hurricane 'Karl',2010,12.0,5758064.0
+2010-0552-THA,Thailand,Flood,Riverine flood,,2010,258.0,490174.0
+2010-0612-USA,United States of America,Storm,Storm (General),,2010,11.0,2214640.0
+2010-0615-POL,Poland,Extreme temperature,Cold wave,,2010,200.0,
+2010-0615-SVK,Slovakia,Extreme temperature,Cold wave,,2010,122.0,
+2010-0625-COL,Colombia,Mass movement (wet),Landslide (wet),,2010,145.0,
+2010-0712-MMR,Myanmar,Extreme temperature,Heat wave,,2010,260.0,
+2010-9082-SOM,Somalia,Drought,Drought,,2010,20000.0,
+2002-0378-IRN,Iran (Islamic Republic of),Earthquake,Ground movement,,2002,227.0,536945.0
+2011-0014-BRA,Brazil,Flood,Riverine flood,,2011,900.0,1431245.0
+2011-0029-USA,United States of America,Storm,Blizzard/Winter storm,,2011,39.0,2719365.0
+2011-0172-USA,United States of America,Storm,Tornado,,2011,176.0,20037423.0
+2011-0082-JPN,Japan,Earthquake,Tsunami,,2011,19846.0,300561348.0
+2000-0876-TCD,Chad,Epidemic,Bacterial disease,Meningococcal disease,2000,607.0,
+2011-0145-USA,United States of America,Storm,Tornado,,2011,354.0,15743690.0
+2011-0227-CHN,China,Flood,Riverine flood,,2011,467.0,9159965.0
+2011-0299-CMR,Cameroon,Epidemic,Bacterial disease,Cholera,2011,639.0,
+2011-0315-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2011,694.0,
+2011-0343-NGA,Nigeria,Flood,Riverine flood,,2011,120.0,
+2011-0347-PAK,Pakistan,Flood,Riverine flood,,2011,509.0,3578111.0
+2011-0351-IND,India,Earthquake,Ground movement,,2011,112.0,
+2011-0379-PHL,Philippines,Storm,Tropical cyclone,Typhoon Pedring (Nesat),2011,103.0,492596.0
+2011-0386-COL,Colombia,Flood,Riverine flood,,2011,135.0,1846305.0
+2011-0424-IND,India,Flood,Riverine flood,,2011,204.0,
+2011-0497-LKA,Sri Lanka,Epidemic,Viral disease,Dengue,2011,167.0,
+2012-0031-PHL,Philippines,Earthquake,Ground movement,,2012,113.0,12480.0
+2011-9363-USA,United States of America,Drought,Drought,,2011,,11449956.0
+2012-0019-ROU,Romania,Extreme temperature,Cold wave,,2012,86.0,
+2012-0027-JPN,Japan,Storm,Blizzard/Winter storm,,2012,134.0,221552.0
+2012-0110-UGA,Uganda,Epidemic,Bacterial disease,Cholera,2012,118.0,
+2012-0156-USA,United States of America,Storm,Tornado,,2012,6.0,2524010.0
+2012-0179-IND,India,Flood,Riverine flood,,2012,120.0,
+2012-0256-PER,Peru,Extreme temperature,Cold wave,,2012,252.0,
+2012-0275-IRN,Iran (Islamic Republic of),Earthquake,Ground movement,,2012,306.0,701114.0
+2001-0141-NGA,Nigeria,Epidemic,Bacterial disease,Acute Neurological Syndrome,2001,340.0,
+2012-0302-NER,Niger,Flood,Riverine flood,,2012,91.0,258171.0
+2000-0333-MEX,Mexico,Flood,Flood (General),,2000,120.0,
+2000-0445-IND,India,Flood,Riverine flood,,2000,867.0,80392.0
+2000-0649-ZAF,South Africa,Epidemic,Bacterial disease,Cholera,2000,181.0,
+2000-0671-ITA,Italy,Flood,Riverine flood,,2000,25.0,14956699.0
+2000-0770-IDN,Indonesia,Flood,Riverine flood,,2000,100.0,63566.0
+2001-0183-NAM,Namibia,Epidemic,Parasitic disease,,2001,134.0,
+2001-0555-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Meningococcal disease,2001,104.0,
+2000-9339-USA,United States of America,Drought,Drought,,2000,,2056546.0
+2001-0011-IND,India,Extreme temperature,Cold wave,,2001,125.0,
+2001-0018-RUS,Russian Federation,Extreme temperature,Cold wave,,2001,145.0,182.0
+2001-0027-AFG,Afghanistan,Extreme temperature,Cold wave,,2001,150.0,18.0
+2001-0041-IDN,Indonesia,Mass movement (wet),Landslide (wet),,2001,122.0,18182.0
+2001-0294-PER,Peru,Earthquake,Tsunami,,2001,145.0,545461.0
+2001-0332-IND,India,Flood,Riverine flood,,2001,100.0,163638.0
+2001-0364-NER,Niger,Epidemic,Viral disease,,2001,237.0,
+2001-0376-PAK,Pakistan,Flood,Flash flood,,2001,210.0,447278.0
+2001-0404-RUS,Russian Federation,Extreme temperature,Heat wave,,2001,276.0,
+2001-0643-ETH,Ethiopia,Epidemic,Bacterial disease,Meningococcal disease,2001,311.0,
+2001-0515-IND,India,Flood,Flood (General),,2001,158.0,47273.0
+2001-0668-AFG,Afghanistan,Extreme temperature,Cold wave,,2001,177.0,
+2002-0054-IDN,Indonesia,Flood,Riverine flood,,2002,150.0,626435.0
+2002-0136-NGA,Nigeria,Epidemic,Infectious disease (General),Acute watery diarrhoeal syndrome,2002,120.0,
+2002-0477-MDG,Madagascar,Epidemic,Viral disease,Influenza,2002,671.0,
+2002-0479-CZE,Czechia,Flood,Riverine flood,,2002,18.0,4295556.0
+2000-0100-SDN,Sudan,Epidemic,Bacterial disease,,2000,186.0,
+2000-0131-TCD,Chad,Epidemic,Bacterial disease,,2000,602.0,
+2000-0221-SOM,Somalia,Epidemic,Infectious disease (General),Acute watery diarrhoeal syndrome,2000,390.0,
+2000-0293-IDN,Indonesia,Earthquake,Ground movement,,2000,103.0,76653.0
+2000-0300-ZWE,Zimbabwe,Epidemic,Bacterial disease,Cholera,2000,93.0,
+2000-0498-IND,India,Mass movement (wet),Landslide (wet),,2000,86.0,
+2000-0534-IND,India,Flood,Flash flood,,2000,179.0,323439.0
+2000-0606-JPN,Japan,Flood,Coastal flood,,2000,18.0,13909730.0
+2000-0572-PRK,Democratic People's Republic of Korea,Storm,Tropical cyclone,"Prapiroon ""12""",2000,46.0,11217525.0
+2000-0610-IND,India,Flood,Riverine flood,,2000,884.0,1292820.0
+2000-0878-BEN,Benin,Epidemic,Bacterial disease,Meningococcal disease,2000,300.0,
+2001-0013-SLV,El Salvador,Earthquake,Ground movement,,2001,844.0,2727303.0
+2001-0033-IND,India,Earthquake,Ground movement,,2001,20005.0,4769144.0
+2001-0063-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2001,1525.0,
+2001-0099-USA,United States of America,Earthquake,Ground movement,,2001,1.0,3636404.0
+2001-0163-TGO,Togo,Epidemic,Bacterial disease,Meningococcal disease,2001,187.0,
+2001-0202-BGD,Bangladesh,Storm,Tropical cyclone,,2001,193.0,
+2001-0331-AFG,Afghanistan,Epidemic,Bacterial disease,Cholera,2001,114.0,
+2001-0492-VNM,Viet Nam,Flood,Riverine flood,,2001,310.0,152729.0
+2001-0614-PHL,Philippines,Storm,Tropical cyclone,Lingling (Nanang),2001,290.0,41273.0
+2002-0206-AFG,Afghanistan,Epidemic,Infectious disease (General),Unknown,2002,2500.0,
+2001-0794-IND,India,Flood,Flood (General),,2001,146.0,187275.0
+2002-0428-NPL,Nepal,Mass movement (wet),Landslide (wet),,2002,472.0,
+2002-0502-USA,United States of America,Epidemic,Viral disease,West Nile Fever,2002,214.0,
+2002-0534-IND,India,Epidemic,Viral disease,Japanese encephalitis,2002,86.0,
+2002-0641-THA,Thailand,Flood,Flash flood,,2002,154.0,64124.0
+2002-0819-BGD,Bangladesh,Extreme temperature,Cold wave,,2002,700.0,
+2003-0105-CHN,China,Earthquake,Ground movement,,2003,268.0,274764.0
+2003-0250-PAK,Pakistan,Extreme temperature,Heat wave,,2003,200.0,
+2003-0283-BGD,Bangladesh,Flood,Riverine flood,,2003,187.0,
+2003-0359-PAK,Pakistan,Flood,Riverine flood,,2003,230.0,
+2003-0391-ESP,Spain,Extreme temperature,Heat wave,,2003,15090.0,1540076.0
+2003-0391-FRA,France,Extreme temperature,Heat wave,,2003,19490.0,7700380.0
+2003-0391-LUX,Luxembourg,Extreme temperature,Heat wave,,2003,170.0,
+2003-0440-CHN,China,Flood,Riverine flood,,2003,123.0,4270211.0
+2003-0586-FRA,France,Flood,Flash flood,,2003,9.0,2625130.0
+2003-0636-IND,India,Extreme temperature,Cold wave,,2003,400.0,
+2004-0103-MDG,Madagascar,Storm,Tropical cyclone,Galifo,2004,363.0,426114.0
+2004-0110-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2004,527.0,
+2004-0161-NER,Niger,Epidemic,Viral disease,,2004,149.0,
+2004-0231-HTI,Haiti,Flood,Riverine flood,,2004,2665.0,
+2004-0286-BGD,Bangladesh,Storm,Storm (General),,2004,153.0,
+2004-0372-CHN,China,Flood,Riverine flood,,2004,133.0,1874900.0
+2004-0437-GIN,Guinea,Epidemic,Bacterial disease,Cholera,2004,100.0,
+2004-0532-JPN,Japan,Earthquake,Ground movement,,2004,40.0,47724716.0
+2004-9704-PRT,Portugal,Drought,Drought,,2004,,2280791.0
+2005-0079-PAK,Pakistan,Flood,Riverine flood,,2005,520.0,49456.0
+2005-0090-IND,India,Mass movement (wet),Avalanche (wet),,2005,250.0,82426.0
+2005-0134-NGA,Nigeria,Epidemic,Viral disease,,2005,561.0,
+2005-0307-CHN,China,Flood,Flash flood,,2005,117.0,74184.0
+2005-0351-CUB,Cuba,Storm,Tropical cyclone,"Hurricane ""Dennis""",2005,16.0,2307933.0
+2005-0409-IND,India,Flood,Riverine flood,,2005,1200.0,5489584.0
+2005-0541-IND,India,Flood,Riverine flood,,2005,89.0,692380.0
+2005-0567-MEX,Mexico,Storm,Tropical cyclone,Stan,2005,36.0,4121309.0
+2005-0572-COL,Colombia,Flood,Riverine flood,,2005,101.0,
+2005-0575-PAK,Pakistan,Earthquake,Ground movement,,2005,73338.0,8572324.0
+2005-0627-IND,India,Flood,Riverine flood,,2005,162.0,
+2005-0713-RUS,Russian Federation,Extreme temperature,Severe winter conditions,,2006,116.0,1597005.0
+2005-0713-UKR,Ukraine,Extreme temperature,Severe winter conditions,,2006,801.0,
+2005-0723-JPN,Japan,Storm,Storm (General),,2005,100.0,54401.0
+2006-0096-PHL,Philippines,Mass movement (wet),Landslide (wet),,2006,1126.0,3518.0
+2006-0134-BWA,Botswana,Epidemic,Infectious disease (General),Acute diarrhoeal syndrome,2006,470.0,
+2006-0140-COL,Colombia,Flood,Riverine flood,,2006,150.0,
+2006-0270-THA,Thailand,Flood,Flash flood,,2006,116.0,39925.0
+2006-0361-PRK,Democratic People's Republic of Korea,Flood,Flash flood,,2006,278.0,
+2006-0417-IND,India,Flood,Riverine flood,,2006,350.0,5413848.0
+2006-0433-ETH,Ethiopia,Epidemic,Infectious disease (General),Acute watery diarrhoea,2006,132.0,
+2006-0437-CHN,China,Storm,Tropical cyclone,Saomai,2006,441.0,4008484.0
+2006-0438-ETH,Ethiopia,Flood,Riverine flood,,2006,364.0,
+2006-0469-IND,India,Flood,Riverine flood,,2006,135.0,
+2006-0510-IND,India,Storm,Tropical cyclone,,2006,114.0,
+2006-0648-PHL,Philippines,Storm,Tropical cyclone,Durian (Reming),2006,1399.0,106041.0
+2006-0733-PAK,Pakistan,Flood,Riverine flood,,2006,233.0,
+2007-0027-AGO,Angola,Flood,Riverine flood,,2007,105.0,
+2007-0062-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2007,1490.0,
+2007-0056-AGO,Angola,Epidemic,Bacterial disease,Cholera,2007,515.0,
+2007-0333-CHN,China,Flood,Riverine flood,,2007,96.0,
+2007-0258-JPN,Japan,Earthquake,Ground movement,,2007,9.0,19408894.0
+2007-0241-PAK,Pakistan,Flood,Riverine flood,,2007,130.0,
+2007-0274-KHM,Cambodia,Epidemic,Viral disease,Dengue,2007,182.0,
+2007-0311-BGD,Bangladesh,Flood,Riverine flood,,2007,1110.0,155271.0
+2007-0392-GRC,Greece,Wildfire,Forest fire,,2007,65.0,2717245.0
+2007-0439-NIC,Nicaragua,Storm,Tropical cyclone,Felix,2007,177.0,
+2007-0521-MEX,Mexico,Flood,Riverine flood,,2007,22.0,4658135.0
+2007-0557-PNG,Papua New Guinea,Storm,Tropical cyclone,Cyclone 'Guba',2007,172.0,
+2007-0610-IDN,Indonesia,Flood,Riverine flood,,2007,127.0,
+2008-0070-MDG,Madagascar,Storm,Tropical cyclone,"Cyclone ""Ivan""",2008,93.0,89718.0
+2008-0076-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningitis,2008,250.0,
+2008-0243-CHN,China,Flood,Riverine flood,,2008,176.0,3289672.0
+2008-0249-PHL,Philippines,Storm,Tropical cyclone,Typhoon Fengshen (Franck),2008,644.0,425704.0
+2008-0352-CUB,Cuba,Storm,Tropical cyclone,"Hurricane ""Gustav""",2008,,3098273.0
+2008-0378-HTI,Haiti,Storm,Tropical cyclone,Hurricane 'Hanna',2008,529.0,
+2008-0384-CUB,Cuba,Storm,Tropical cyclone,Hurricane Ike,2008,7.0,2242958.0
+2008-0501-VNM,Viet Nam,Flood,Riverine flood,,2008,99.0,716251.0
+2008-0511-MWI,Malawi,Epidemic,Bacterial disease,Cholera,2008,113.0,
+2008-0549-BRA,Brazil,Flood,Riverine flood,,2008,151.0,1121479.0
+2008-0615-IND,India,Flood,Riverine flood,,2008,142.0,
+2009-0082-BFA,Burkina Faso,Epidemic,Viral disease,Meningitis,2009,389.0,
+2009-0202-KEN,Kenya,Epidemic,Bacterial disease,Cholera,2009,201.0,
+2009-0204-BGD,Bangladesh,Storm,Tropical cyclone,"Cyclone ""Aila""",2009,190.0,405173.0
+2009-0259-NPL,Nepal,Epidemic,Bacterial disease,Diarrhoea,2009,314.0,
+2010-0048-AFG,Afghanistan,Mass movement (wet),Avalanche (wet),,2010,169.0,
+2009-0292-CHN,China,Flood,Riverine flood,,2009,90.0,1500641.0
+2009-0301-PER,Peru,Extreme temperature,Cold wave,,2009,274.0,
+2009-0332-SLE,Sierra Leone,Flood,Riverine flood,,2009,103.0,
+2009-0368-ETH,Ethiopia,Epidemic,Bacterial disease,Cholera/Acute Watery Diarrhoea,2009,135.0,
+2009-0414-PHL,Philippines,Storm,Tropical cyclone,"Tropical storm ""Ondoy"" (Ketsana)",2009,501.0,356386.0
+2009-0414-VNM,Viet Nam,Storm,Tropical cyclone,"Tropical storm ""Ondoy"" (Ketsana)",2009,182.0,1178003.0
+2009-0420-WSM,Samoa,Earthquake,Tsunami,,2009,148.0,186139.0
+2009-0429-IND,India,Flood,Riverine flood,,2009,355.0,3226378.0
+2009-0478-VNM,Viet Nam,Storm,Tropical cyclone,"Tropical storm ""Mirinae"" (Santi)",2009,124.0,420179.0
+2009-0522-SAU,Saudi Arabia,Flood,Riverine flood,,2009,161.0,1350577.0
+2009-0595-BGD,Bangladesh,Extreme temperature,Cold wave,,2009,135.0,
+2009-0601-USA,United States of America,Storm,Tornado,,2009,1.0,3001281.0
+2009-0655-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2009,87.0,
+2009-9655-CHN,China,Drought,Drought,,2009,,5402307.0
+2010-0017-HTI,Haiti,Earthquake,Ground movement,,2010,222570.0,11811414.0
+2010-0084-UGA,Uganda,Mass movement (wet),Landslide (wet),,2010,388.0,
+2010-0088-FRA,France,Storm,Extra-tropical storm,Storm 'Xynthia',2010,53.0,6245285.0
+2010-0091-CHL,Chile,Earthquake,Tsunami,,2010,562.0,44292803.0
+2010-0131-NER,Niger,Epidemic,Viral disease,Meningitis,2010,87.0,
+2010-0131-NGA,Nigeria,Epidemic,Viral disease,Meningitis,2010,156.0,
+2010-0193-POL,Poland,Flood,Riverine flood,,2010,16.0,4547394.0
+2010-0308-PHL,Philippines,Storm,Tropical cyclone,Typhoon Conson (Basyang),2010,146.0,12808.0
+2010-0341-PAK,Pakistan,Flood,Flash flood,,2010,1985.0,14026054.0
+2010-0377-CHN,China,Mass movement (wet),Landslide (wet),,2010,1765.0,1120608.0
+2010-0391-PHL,Philippines,Epidemic,Viral disease,Dengue,2010,737.0,
+2010-0400-TCD,Chad,Epidemic,Bacterial disease,Cholera,2010,92.0,
+2010-0411-CHN,China,Mass movement (wet),Landslide (wet),,2010,92.0,
+2010-0512-IDN,Indonesia,Flood,Flash flood,,2010,291.0,115161.0
+2010-0557-HTI,Haiti,Epidemic,Bacterial disease,Cholera,2010,6908.0,
+2010-0593-COG,Congo,Epidemic,Viral disease,Wild Poliovirus Type 1,2010,219.0,
+2010-9318-RUS,Russian Federation,Drought,Drought,,2010,,2066997.0
+2010-9701-CHN,China,Drought,Drought,,2010,,3499131.0
+2011-0092-AGO,Angola,Flood,Riverine flood,,2011,113.0,
+2011-0326-THA,Thailand,Flood,Riverine flood,,2011,813.0,57249781.0
+2011-0352-JPN,Japan,Storm,Tropical cyclone,Typhoon Roke,2011,13.0,2604865.0
+2011-0364-KHM,Cambodia,Flood,Riverine flood,,2011,247.0,745678.0
+2011-0388-NZL,New Zealand,Earthquake,Ground movement,,2011,1.0,4293734.0
+2011-0444-USA,United States of America,Storm,Blizzard/Winter storm,,2011,29.0,4293734.0
+2011-0519-PHL,Philippines,Storm,Tropical cyclone,Tropical storm Washi (Sendong),2011,1439.0,54505.0
+2011-0643-IND,India,Extreme temperature,Cold wave,,2011,132.0,
+2011-0646-USA,United States of America,Flood,Riverine flood,,2011,5.0,2862489.0
+2013-0117-USA,United States of America,Storm,Severe weather,,2013,4.0,2211174.0
+2012-0019-UKR,Ukraine,Extreme temperature,Cold wave,,2012,112.0,
+2013-0123-KEN,Kenya,Flood,Riverine flood,,2013,96.0,49751.0
+2012-0142-ITA,Italy,Earthquake,Ground movement,,2012,7.0,22155200.0
+2012-0173-CHN,China,Flood,Riverine flood,,2012,91.0,1682673.0
+2012-0213-RUS,Russian Federation,Flood,Flash flood,,2012,172.0,841337.0
+2012-0258-PRK,Democratic People's Republic of Korea,Flood,Riverine flood,,2012,88.0,15985.0
+2012-0295-SLE,Sierra Leone,Epidemic,Bacterial disease,Cholera,2012,300.0,
+2012-0357-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2012,512.0,
+2012-0485-RUS,Russian Federation,Extreme temperature,Cold wave,,2012,170.0,
+2012-0538-IND,India,Extreme temperature,Cold wave,,2012,249.0,
+2012-0548-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2012,1.0,2243565.0
+2012-0601-USA,United States of America,Storm,Severe weather,,2012,1.0,6310025.0
+2013-0025-ZWE,Zimbabwe,Flood,Riverine flood,,2013,125.0,
+2012-9489-USA,United States of America,Drought,Drought,,2012,,28044556.0
+2013-0142-USA,United States of America,Storm,Tornado,,2013,29.0,4284150.0
+2013-0184-USA,United States of America,Storm,Tornado,,2013,27.0,2902166.0
+2013-0208-IND,India,Extreme temperature,Heat wave,,2013,557.0,
+2013-0242-CHN,China,Earthquake,Ground movement,,2013,95.0,1381984.0
+2013-0259-CHN,China,Flood,Riverine flood,,2013,233.0,6386977.0
+2013-0317-CHN,China,Flood,Riverine flood,,2013,118.0,6854641.0
+2013-0358-MEX,Mexico,Storm,Tropical cyclone,Hurricane Manuel,2013,169.0,5804333.0
+2013-0381-PAK,Pakistan,Earthquake,Ground movement,,2013,399.0,138198.0
+2013-0406-MEX,Mexico,Storm,Tropical cyclone,Hurricane Ingrid,2013,23.0,2072976.0
+2013-0572-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2013,2.0,2072976.0
+2013-0576-NPL,Nepal,Flood,Flash flood,,2013,119.0,
+2014-0090-GIN,Guinea,Epidemic,Viral disease,Ebola,2014,2544.0,
+2014-0126-USA,United States of America,Storm,Severe weather,,2014,40.0,2719846.0
+2014-0164-SRB,Serbia,Flood,Riverine flood,,2014,51.0,2785479.0
+2014-0227-PHL,Philippines,Storm,Tropical cyclone,Typhoon Rammasun (Glenda),2014,111.0,1115920.0
+2014-0272-NPL,Nepal,Flood,Flood (General),,2014,294.0,
+2014-0281-CHN,China,Earthquake,Ground movement,,2014,731.0,6799615.0
+2014-0432-COD,Democratic Republic of the Congo,Flood,Flash flood,,2014,154.0,20399.0
+2014-0439-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2014,755.0,
+2014-0548-LKA,Sri Lanka,Mass movement (wet),Landslide (wet),,2014,196.0,
+2015-0011-MOZ,Mozambique,Flood,Riverine flood,,2015,160.0,
+2015-0011-MWI,Malawi,Flood,Riverine flood,,2015,278.0,529742.0
+2015-0444-GTM,Guatemala,Mass movement (wet),Landslide (wet),,2015,350.0,6792.0
+2015-0366-HTI,Haiti,Epidemic,Bacterial disease,Cholera,2015,170.0,
+2015-9617-VNM,Viet Nam,Drought,Drought,,2015,,9168604.0
+2016-0121-JPN,Japan,Earthquake,Ground movement,,2016,49.0,26827775.0
+2016-0123-USA,United States of America,Storm,Lightning/Thunderstorms,,2016,1.0,5231416.0
+2016-0133-IND,India,Extreme temperature,Heat wave,,2016,300.0,
+2016-0150-USA,United States of America,Storm,Tornado,,2016,2.0,2280361.0
+2016-0153-LKA,Sri Lanka,Flood,Flood (General),,2016,203.0,1609667.0
+2016-0209-CHN,China,Storm,Tornado,,2016,102.0,405099.0
+2016-0267-NPL,Nepal,Flood,Flash flood,,2016,138.0,20121.0
+2016-0313-ITA,Italy,Earthquake,Ground movement,,2016,296.0,6706944.0
+2016-0276-IND,India,Flood,Flood (General),,2016,184.0,214622.0
+2016-0342-CHN,China,Storm,Tropical cyclone,Typhoon Ferdie (Meranti),2016,,3085194.0
+2016-0395-NZL,New Zealand,Earthquake,Tsunami,,2016,2.0,5231416.0
+2016-0552-USA,United States of America,Flood,Flood (General),,2016,5.0,3085194.0
+2016-0576-NGA,Nigeria,Epidemic,Viral disease,Lassa fever,2016,121.0,
+2017-0070-USA,United States of America,Storm,Tornado,,2017,4.0,2495482.0
+2017-0084-PER,Peru,Flood,Flood (General),,2017,184.0,4071575.0
+2017-0093-SOM,Somalia,Epidemic,Bacterial disease,Cholera,2017,302.0,
+2017-0105-AUS,Australia,Storm,Tropical cyclone,Debbie,2017,12.0,3546211.0
+2017-0243-PAK,Pakistan,Flood,Flash flood,,2017,167.0,144475.0
+2017-0342-IND,India,Flood,Flood (General),,2017,514.0,2058116.0
+2017-0343-SLE,Sierra Leone,Mass movement (wet),Mudslide,,2017,1102.0,39402.0
+2017-0352-CHN,China,Storm,Tropical cyclone,Typhoon 'Hato',2017,8.0,4596940.0
+2017-0362-USA,United States of America,Storm,Tropical cyclone,Hurricane Harvey,2017,88.0,124774087.0
+2017-0379-SDN,Sudan,Epidemic,Bacterial disease,Acute Watery Diarrhoea,2017,657.0,
+2017-0381-SXM,Sint Maarten (Dutch part),Storm,Tropical cyclone,Hurricane 'Irma',2017,4.0,3283529.0
+2017-0387-MEX,Mexico,Earthquake,Ground movement,,2017,369.0,7880469.0
+2017-0391-COD,Democratic Republic of the Congo,Flood,Flood (General),,2017,105.0,
+2017-0551-BRA,Brazil,Epidemic,Viral disease,Yellow fever,2017,154.0,
+2017-0558-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2017,89.0,
+2017-0508-IND,India,Storm,Tropical cyclone,Cyclone 'Ockhi',2017,884.0,
+2017-9296-ITA,Italy,Drought,Drought,,2017,,3020846.0
+2018-0198-CHN,China,Flood,Flood (General),,2018,112.0,2243668.0
+2018-0235-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2018,820.0,
+2024-0415-SAU,Saudi Arabia,Extreme temperature,Heat wave,,2024,1301.0,
+2018-0257-IDN,Indonesia,Earthquake,Ground movement,,2018,564.0,1012856.0
+2018-0329-PRK,Democratic People's Republic of Korea,Flood,Flood (General),,2018,148.0,32052.0
+2018-0326-JPN,Japan,Storm,Tropical cyclone,Typhoon Jebi,2018,17.0,16026203.0
+2018-0409-USA,United States of America,Wildfire,Forest fire,Camp Fire,2018,88.0,21154588.0
+2018-0438-TCD,Chad,Epidemic,Viral disease,Measles,2018,90.0,
+2019-0111-IDN,Indonesia,Flood,Flash flood,,2019,206.0,129705.0
+2019-0116-USA,United States of America,Flood,Riverine flood,,2019,5.0,12592748.0
+2019-0212-COG,Congo,Epidemic,Viral disease,Measles,2019,3559.0,
+2019-0217-IND,India,Extreme temperature,Heat wave,,2019,90.0,
+2019-0492-JPN,Japan,Storm,Tropical cyclone,Tropical cylone 'Hagibis',2019,99.0,21407672.0
+2019-0557-KEN,Kenya,Mass movement (wet),Landslide (wet),,2019,97.0,
+2023-0095-MOZ,Mozambique,Storm,Tropical cyclone,Tropical cyclone 'Freddy',2023,183.0,
+2019-0615-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2019,472.0,
+2019-0659-PAK,Pakistan,Epidemic,Viral disease,Dengue,2019,95.0,
+2020-0106-HRV,Croatia,Earthquake,Ground movement,,2020,1.0,8458723.0
+2020-0148-USA,United States of America,Storm,Tornado,,2020,38.0,4353755.0
+2020-0357-PAK,Pakistan,Flood,Flood (General),,2020,410.0,1865895.0
+2020-0441-USA,United States of America,Wildfire,Forest fire,August Complex fire,2020,32.0,13683229.0
+2020-0474-GTM,Guatemala,Storm,Tropical cyclone,Hurricane 'Eta',2020,160.0,480157.0
+2020-0474-HND,Honduras,Storm,Tropical cyclone,Hurricane 'Eta',2020,110.0,
+2020-0596-YEM,Yemen,Flood,Flood (General),,2020,174.0,
+2021-0173-IDN,Indonesia,Storm,Tropical cyclone,Tropical cyclone 'Seroja-21',2021,226.0,950491.0
+2021-0252-IND,India,Storm,Tropical cyclone,Tropical cyclone 'Tauktae',2021,198.0,1663360.0
+2021-0295-IND,India,Storm,Tropical cyclone,Cyclone 'Yaas',2021,19.0,3564343.0
+2021-0433-USA,United States of America,Wildfire,Forest fire,Dixie fire,2021,3.0,3564343.0
+2021-0435-IND,India,Flood,Flood (General),,2021,1282.0,3683154.0
+2021-0511-HTI,Haiti,Earthquake,Ground movement,,2021,2575.0,1924830.0
+2023-0438-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2023,368.0,
+2021-0453-AFG,Afghanistan,Flood,Flash flood,,2021,260.0,
+2021-0498-CHN,China,Storm,Tropical cyclone,Typoon 'In-Fa',2021,5.0,2376229.0
+2021-0551-USA,United States of America,Storm,Tropical cyclone,Tropical storm 'Ida',2021,96.0,77227433.0
+2021-0681-NPL,Nepal,Flood,Flood (General),,2021,118.0,
+2021-0846-PAK,Pakistan,Flood,Flood (General),,2021,194.0,11881.0
+2021-9078-CHN,China,Drought,Drought,,2021,,3683154.0
+2022-0205-ZAF,South Africa,Flood,Flood (General),,2022,544.0,3850271.0
+2022-0293-IND,India,Flood,Flood (General),,2022,2035.0,4620325.0
+2022-0405-PAK,Pakistan,Flood,Flood (General),,2022,1739.0,16501160.0
+2022-0465-BEL,Belgium,Extreme temperature,Heat wave,,2022,434.0,
+2022-0465-FRA,France,Extreme temperature,Heat wave,,2022,4807.0,
+2022-0465-GRC,Greece,Extreme temperature,Heat wave,,2022,3092.0,
+2022-0465-HUN,Hungary,Extreme temperature,Heat wave,,2022,513.0,
+2022-0465-LVA,Latvia,Extreme temperature,Heat wave,,2022,105.0,
+2022-0465-SVN,Slovenia,Extreme temperature,Heat wave,,2022,154.0,
+2022-0553-MWI,Malawi,Epidemic,Bacterial disease,Cholera,2022,1769.0,
+2022-0801-CMR,Cameroon,Epidemic,Bacterial disease,Cholera,2022,295.0,
+2023-0054-SYR,Syrian Arab Republic,Earthquake,Ground movement,,2023,5670.0,9403598.0
+2023-0054-TUR,Türkiye,Earthquake,Ground movement,,2023,53000.0,35923858.0
+2023-0095-MWI,Malawi,Storm,Tropical cyclone,Tropical cyclone 'Freddy',2023,1209.0,535382.0
+2023-0281-COD,Democratic Republic of the Congo,Flood,Flash flood,,2023,2830.0,10566.0
+2023-0206-USA,United States of America,Storm,Tornado,,2023,5.0,3064094.0
+2023-0267-RWA,Rwanda,Flood,Flood (General),,2023,131.0,
+2023-0300-GUM,Guam,Storm,Tropical cyclone,Typhoon 'Mawar',2023,2.0,4543312.0
+2023-0524-USA,United States of America,Wildfire,Wildfire (General),'Lahaina' wildfire,2023,128.0,5811212.0
+2023-0438-BGR,Bulgaria,Extreme temperature,Heat wave,,2023,1670.0,
+2023-0438-EST,Estonia,Extreme temperature,Heat wave,,2023,103.0,
+2023-0600-MAR,Morocco,Earthquake,Ground movement,,2023,2946.0,7396088.0
+2023-0691-NGA,Nigeria,Flood,Flood (General),,2023,275.0,
+2023-0719-ZWE,Zimbabwe,Epidemic,Bacterial disease,Cholera,2023,719.0,
+2023-9868-USA,United States of America,Drought,Drought,,2023,247.0,15320469.0
+2023-9872-CHN,China,Drought,Drought,,2023,,2852777.0
+2024-0594-AFG,Afghanistan,Epidemic,Viral disease,Measles,2024,178.0,
+2024-0056-CHL,Chile,Wildfire,Wildfire (General),Tablax Complex fire,2024,135.0,1026313.0
+2024-0203-TZA,United Republic of Tanzania,Flood,Flash flood,,2024,155.0,
+2024-0285-AFG,Afghanistan,Flood,Flood (General),,2024,357.0,
+2024-0340-USA,United States of America,Storm,Severe weather,,2024,23.0,3592095.0
+2024-0352-MEX,Mexico,Extreme temperature,Heat wave,,2024,155.0,
+2024-0369-AUT,Austria,Extreme temperature,Heat wave,,2024,1055.0,
+2024-0369-CHE,Switzerland,Extreme temperature,Heat wave,,2024,363.0,
+2024-0369-CZE,Czechia,Extreme temperature,Heat wave,,2024,544.0,
+2024-0369-DNK,Denmark,Extreme temperature,Heat wave,,2024,174.0,
+2024-0369-FRA,France,Extreme temperature,Heat wave,,2024,2451.0,
+2024-0369-GRC,Greece,Extreme temperature,Heat wave,,2024,5980.0,
+2024-0369-HRV,Croatia,Extreme temperature,Heat wave,,2024,1255.0,
+2024-0369-LTU,Lithuania,Extreme temperature,Heat wave,,2024,329.0,
+2024-0369-PRT,Portugal,Extreme temperature,Heat wave,,2024,938.0,
+2024-0369-SVK,Slovakia,Extreme temperature,Heat wave,,2024,522.0,
+2024-0547-IND,India,Mass movement (wet),Landslide (wet),,2024,378.0,143684.0
+2024-0573-CAN,Canada,Storm,Tropical cyclone,Tropical cyclone 'Debby',2024,1.0,3078939.0
+2024-0573-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Debby',2024,17.0,2565782.0
+2024-0621-SDN,Sudan,Epidemic,Bacterial disease,Cholera,2024,1508.0,
+2024-0653-CZE,Czechia,Storm,Storm (General),Storm 'Boris',2024,13.0,3078939.0
+2024-0722-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Milton',2024,32.0,38999889.0
+2024-0808-SSD,South Sudan,Epidemic,Bacterial disease,Cholera,2024,1567.0,
+2024-0846-YEM,Yemen,Epidemic,Bacterial disease,AWD/cholera,2024,680.0,
+2025-0165-AUS,Australia,Storm,Tropical cyclone,Tropical cyclone 'Alfred',2025,1.0,3500000.0
+2025-0182-USA,United States of America,Storm,Tornado,,2025,43.0,9400000.0
+2025-0347-COD,Democratic Republic of the Congo,Flood,Flood (General),,2025,154.0,
+2025-0416-PAK,Pakistan,Flood,Flash flood,,2025,1037.0,3000000.0
+2025-0443-ZAF,South Africa,Flood,Flood (General),,2025,88.0,
+2025-0568-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2025,128.0,
+2025-0690-IND,India,Flood,Flash flood,,2025,98.0,
+2025-0865-MEX,Mexico,Flood,Flood (General),,2025,107.0,
+2025-0979-THA,Thailand,Flood,Flood (General),,2025,276.0,15600000.0
+2025-9077-USA,United States of America,Drought,Drought,,2025,89.0,3100000.0
+2000-0054-AFG,Afghanistan,Epidemic,Viral disease,,2000,507.0,
+2000-0258-IDN,Indonesia,Flood,Flash flood,,2000,126.0,147697.0
+2000-0182-CAF,Central African Republic,Epidemic,Bacterial disease,,2000,108.0,
+2000-0424-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2000,163.0,
+2000-0438-KHM,Cambodia,Flood,Riverine flood,,2000,347.0,299134.0
+2000-0444-IND,India,Flood,Flash flood,,2000,130.0,
+2000-0705-RUS,Russian Federation,Extreme temperature,Cold wave,,2000,232.0,
+2000-0823-BDI,Burundi,Epidemic,Parasitic disease,,2000,308.0,
+2000-0879-ETH,Ethiopia,Epidemic,Bacterial disease,Meningococcal disease,2000,311.0,
+2001-0120-CAF,Central African Republic,Epidemic,Bacterial disease,Meningococcal disease,2001,343.0,
+2001-0370-TCD,Chad,Epidemic,Bacterial disease,Cholera,2001,113.0,
+2001-0387-IND,India,Flood,Riverine flood,,2001,86.0,212591.0
+2001-0407-IDN,Indonesia,Flood,Riverine flood,,2001,257.0,
+2001-0494-NGA,Nigeria,Flood,Flash flood,,2001,200.0,5455.0
+2001-0521-TCD,Chad,Flood,Flash flood,,2001,100.0,1818.0
+2001-0571-PRK,Democratic People's Republic of Korea,Flood,Flash flood,,2001,114.0,17091.0
+2001-0620-DZA,Algeria,Flood,Riverine flood,,2001,921.0,545461.0
+2001-0667-BEN,Benin,Epidemic,Bacterial disease,Meningococcal disease,2001,300.0,
+2002-0260-TGO,Togo,Epidemic,Bacterial disease,,2002,95.0,
+2002-0122-AFG,Afghanistan,Earthquake,Ground movement,,2002,150.0,
+2002-0303-PNG,Papua New Guinea,Epidemic,Viral disease,,2002,122.0,
+2002-0350-CHN,China,Flood,Flash flood,,2002,793.0,5548427.0
+2002-0374-IND,India,Flood,Riverine flood,,2002,549.0,55076.0
+2002-0376-RUS,Russian Federation,Flood,Flash flood,,2002,117.0,805417.0
+2002-0489-AUT,Austria,Flood,Riverine flood,,2002,9.0,4295556.0
+2002-0498-CHN,China,Flood,Riverine flood,,2002,178.0,7517.0
+2002-0602-RUS,Russian Federation,Mass movement (wet),Avalanche (wet),,2002,122.0,
+2002-0818-IND,India,Extreme temperature,Cold wave,,2002,900.0,
+2003-0139-USA,United States of America,Storm,Tornado,,2003,6.0,8750432.0
+2003-0245-DZA,Algeria,Earthquake,Ground movement,,2003,2266.0,8750432.0
+2003-0315-CHN,China,Flood,Riverine flood,,2003,430.0,13808182.0
+2003-0341-NPL,Nepal,Flood,Riverine flood,,2003,239.0,
+2003-0379-SLV,El Salvador,Epidemic,Infectious disease (General),Pneumonia,2003,304.0,
+2003-0391-CZE,Czechia,Extreme temperature,Heat wave,,2003,418.0,
+2003-0391-HRV,Croatia,Extreme temperature,Heat wave,,2003,788.0,
+2003-0531-IDN,Indonesia,Flood,Flash flood,,2003,241.0,
+2003-0572-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2003,369.0,
+2003-0642-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2003,179.0,
+2003-0719-IND,India,Flood,Flash flood,,2003,150.0,
+2004-0093-IDN,Indonesia,Epidemic,Viral disease,Dengue,2004,658.0,
+2004-0298-IND,India,Flood,Riverine flood,,2004,900.0,4261135.0
+2004-0377-LKA,Sri Lanka,Epidemic,Viral disease,Dengue,2004,88.0,
+2004-0331-PER,Peru,Extreme temperature,Cold wave,,2004,90.0,
+2004-0339-JPN,Japan,Flood,Flash flood,,2004,21.0,3323686.0
+2004-0410-SDN,Sudan,Epidemic,Viral disease,Acute Hepatitis E,2004,87.0,
+2004-0445-JPN,Japan,Storm,Tropical cyclone,Chaba,2004,14.0,3408908.0
+2004-0509-IND,India,Flood,Flash flood,,2004,160.0,
+2004-0659-IND,India,Earthquake,Tsunami,,2004,16389.0,1743316.0
+2004-0659-SOM,Somalia,Earthquake,Tsunami,,2004,298.0,170445.0
+2004-0734-IND,India,Flood,Riverine flood,,2004,210.0,470429.0
+2004-0737-AGO,Angola,Epidemic,Viral disease,Marburg virus disease,2004,329.0,
+2005-0215-ETH,Ethiopia,Flood,Flash flood,,2005,156.0,8243.0
+2005-0323-IND,India,Extreme temperature,Heat wave,,2005,329.0,
+2005-0335-IND,India,Flood,Riverine flood,,2005,239.0,3791605.0
+2005-0367-PRT,Portugal,Wildfire,Forest fire,,2005,15.0,2720064.0
+2005-0344-CHN,China,Flood,Riverine flood,,2005,235.0,3560811.0
+2005-0347-PAK,Pakistan,Extreme temperature,Heat wave,,2005,106.0,
+2005-0351-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Dennis""",2005,5.0,3676208.0
+2005-0479-IND,India,Epidemic,Viral disease,Japanese encephalitis,2005,296.0,
+2005-0481-IND,India,Epidemic,Bacterial disease,Leptospirosis,2005,110.0,
+2005-0616-SDN,Sudan,Epidemic,Viral disease,Yellow Fever,2005,144.0,
+2005-0565-CHN,China,Storm,Tropical cyclone,Longwang,2005,95.0,247279.0
+2005-0585-MEX,Mexico,Storm,Tropical cyclone,"Hurricane ""Wilma""",2005,7.0,8242619.0
+2005-0631-IND,India,Epidemic,Viral disease,Japanese encephalitis,2005,296.0,
+2005-0701-BGD,Bangladesh,Extreme temperature,Severe winter conditions,,2005,100.0,
+2005-0713-POL,Poland,Extreme temperature,Severe winter conditions,,2005,191.0,
+2005-9067-BDI,Burundi,Drought,Drought,,2005,120.0,
+2006-0077-SDN,Sudan,Epidemic,Bacterial disease,Cholera,2006,476.0,
+2006-0720-UGA,Uganda,Epidemic,Bacterial disease,Meningoccal disease,2006,100.0,
+2006-0311-IDN,Indonesia,Flood,Flash flood,,2006,236.0,88155.0
+2006-0342-IND,India,Flood,Riverine flood,,2006,130.0,
+2006-0383-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2006,1000.0,
+2006-0362-CHN,China,Storm,Tropical cyclone,Bilis,2006,820.0,5310043.0
+2006-0383-BEL,Belgium,Extreme temperature,Heat wave,,2006,940.0,
+2006-0510-BGD,Bangladesh,Storm,Tropical cyclone,,2006,115.0,
+2006-0517-PHL,Philippines,Storm,Tropical cyclone,Xangsane (Milenyo),2006,228.0,180462.0
+2006-0552-ETH,Ethiopia,Epidemic,Infectious disease (General),Acute Watery Diarrheal syndrome,2006,219.0,
+2006-0725-SDN,Sudan,Epidemic,Bacterial disease,Meningococcal disease,2006,430.0,
+2006-0624-KEN,Kenya,Flood,Riverine flood,,2006,114.0,
+2006-0712-IND,India,Flood,Riverine flood,,2006,185.0,
+2006-9741-CHN,China,Drought,Drought,,2006,134.0,4647286.0
+2007-0019-DEU,Germany,Storm,Extra-tropical storm,Storm 'Kyrill',2007,11.0,8539913.0
+2007-0033-BGD,Bangladesh,Extreme temperature,Severe winter conditions,,2007,130.0,
+2007-0105-AFG,Afghanistan,Flood,Riverine flood,,2007,104.0,
+2007-0160-AUS,Australia,Flood,Flash flood,,2007,9.0,2018525.0
+2007-0161-BGD,Bangladesh,Flood,Riverine flood,,2007,120.0,21738.0
+2007-0164-OMN,Oman,Storm,Tropical cyclone,Cyclone 'Gonu',2007,76.0,6055575.0
+2007-0238-IND,India,Flood,Riverine flood,,2007,225.0,
+2007-0249-PAK,Pakistan,Flood,Riverine flood,,2007,228.0,
+2007-0250-IND,India,Flood,Flash flood,,2007,127.0,
+2007-0463-VNM,Viet Nam,Storm,Tropical cyclone,Lekima (Hanna),2007,96.0,296568.0
+2007-0469-IND,India,Flood,Riverine flood,,2007,94.0,
+2007-0508-SOM,Somalia,Epidemic,Bacterial disease,Cholera,2007,1133.0,
+2007-0519-USA,United States of America,Wildfire,"Land fire (Brush, Bush, Pasture)",,2007,8.0,3881779.0
+2007-0556-BGD,Bangladesh,Storm,Tropical cyclone,Cyclone 'Sidr',2007,4234.0,3571236.0
+2007-0663-USA,United States of America,Storm,Storm (General),,2007,23.0,3105423.0
+2008-0210-USA,United States of America,Storm,Tornado,,2008,7.0,2392489.0
+2008-0246-IND,India,Flood,Flash flood,,2008,1063.0,183923.0
+2008-0352-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Gustav""",2008,43.0,10467137.0
+2008-0500-PAK,Pakistan,Earthquake,Ground movement,,2008,166.0,14953.0
+2009-0087-NGA,Nigeria,Epidemic,Viral disease,Meningococcal disease,2009,1701.0,
+2008-0511-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2008,173.0,
+2008-0543-MOZ,Mozambique,Epidemic,Bacterial disease,Cholera,2008,155.0,
+2008-0653-DEU,Germany,Storm,Severe weather,Hilal,2008,3.0,2242958.0
+2009-0087-NER,Niger,Epidemic,Viral disease,Meningococcal disease,2009,169.0,
+2018-0111-USA,United States of America,Storm,Blizzard/Winter storm,,2018,9.0,2948821.0
+2009-0092-NAM,Namibia,Flood,Riverine flood,,2009,92.0,
+2009-0403-IND,India,Epidemic,Viral disease,Japanese Encephalitis and Acute Encephalitis Syndrome,2009,311.0,
+2009-0175-IND,India,Extreme temperature,Heat wave,,2009,120.0,
+2009-0250-LKA,Sri Lanka,Epidemic,Viral disease,Dengue,2009,346.0,
+2009-0321-CHN,China,Storm,Tropical cyclone,Typhoon Morakot (Kiko),2009,8.0,2124298.0
+2009-0321-TWN,Taiwan (Province of China),Storm,Tropical cyclone,Typhoon Morakot (Kiko),2009,630.0,375160.0
+2009-0409-IND,India,Flood,Riverine flood,,2009,992.0,330141.0
+2009-0421-IDN,Indonesia,Earthquake,Ground movement,,2009,1195.0,3301410.0
+2009-0422-PHL,Philippines,Storm,Tropical cyclone,"Typhoon ""Pepeng"" (Parma)",2009,512.0,878444.0
+2009-0644-USA,United States of America,Storm,Lightning/Thunderstorms,,2009,6.0,2250961.0
+2009-0661-MOZ,Mozambique,Epidemic,Bacterial disease,Cholera,2009,155.0,
+2010-0344-CHN,China,Flood,Riverine flood,,2010,152.0,
+2010-0068-PRT,Portugal,Flood,Riverine flood,,2010,43.0,1993176.0
+2010-0104-MDG,Madagascar,Storm,Tropical cyclone,"Tropical storm ""Hubert""",2010,120.0,
+2010-0147-BRA,Brazil,Flood,Riverine flood,,2010,256.0,295285.0
+2010-0187-USA,United States of America,Storm,Severe weather,,2010,30.0,3469603.0
+2010-0233-FRA,France,Flood,Flash flood,,2010,26.0,2214640.0
+2010-0285-KEN,Kenya,Flood,Riverine flood,,2010,100.0,
+2010-0352-RUS,Russian Federation,Wildfire,"Land fire (Brush, Bush, Pasture)",,2010,53.0,2657568.0
+2010-0463-NZL,New Zealand,Earthquake,Ground movement,,2010,,9596774.0
+2010-0492-IND,India,Flood,Riverine flood,,2010,200.0,2480397.0
+2010-0563-IDN,Indonesia,Earthquake,Tsunami,,2010,530.0,
+2010-0557-DOM,Dominican Republic,Epidemic,Bacterial disease,Cholera,2010,130.0,
+2010-0659-PHL,Philippines,Flood,Flash flood,,2010,110.0,69999.0
+2011-0070-AUS,Australia,Storm,Tropical cyclone,"Tropical Cyclone ""Yasi""",2011,1.0,3578111.0
+2011-0394-VNM,Viet Nam,Flood,Riverine flood,,2011,85.0,250471.0
+2011-0400-MMR,Myanmar,Flood,Flash flood,,2011,151.0,2433.0
+2011-0630-CAN,Canada,Wildfire,Forest fire,,2011,1.0,2146867.0
+2012-0500-PHL,Philippines,Storm,Tropical cyclone,Typhoon Bopha,2012,1901.0,1259694.0
+2012-0175-BGD,Bangladesh,Flood,Riverine flood,,2012,139.0,
+2012-0084-PAK,Pakistan,Mass movement (wet),Avalanche (wet),,2012,135.0,
+2012-0197-CHN,China,Flood,Riverine flood,,2012,132.0,3505570.0
+2012-0214-USA,United States of America,Extreme temperature,Heat wave,,2012,123.0,
+2012-0272-PHL,Philippines,Flood,Riverine flood,,2012,112.0,101423.0
+2012-0292-CHN,China,Flood,Riverine flood,,2012,151.0,11217823.0
+2012-0313-USA,United States of America,Storm,Tropical cyclone,Hurricane Isaac,2012,1.0,2804456.0
+2012-0363-PAK,Pakistan,Flood,Riverine flood,,2012,480.0,3505570.0
+2012-0366-NGA,Nigeria,Flood,Riverine flood,,2012,363.0,701114.0
+2012-0385-BGD,Bangladesh,Storm,Storm (General),,2012,108.0,
+2012-0485-POL,Poland,Extreme temperature,Cold wave,,2012,177.0,
+2012-0494-SDN,Sudan,Epidemic,Viral disease,Yellow fever,2012,171.0,
+2013-0500-COL,Colombia,Epidemic,Viral disease,Dengue,2013,91.0,
+2013-0190-CAN,Canada,Flood,Riverine flood,,2013,4.0,7877309.0
+2013-0205-DEU,Germany,Flood,Riverine flood,,2013,4.0,17827594.0
+2013-0276-PAK,Pakistan,Flood,Riverine flood,,2013,234.0,2072976.0
+2013-0395-PHL,Philippines,Earthquake,Ground movement,,2013,230.0,71116.0
+2013-0429-CHN,China,Storm,Tropical cyclone,Tropical storm Fitow,2013,8.0,9259293.0
+2013-0438-SOM,Somalia,Storm,Tropical cyclone,Cyclone 3A,2013,162.0,2764.0
+2013-0548-USA,United States of America,Storm,Severe weather,,2013,2.0,3040365.0
+2014-0010-AUS,Australia,Extreme temperature,Heat wave,,2014,139.0,
+2014-0134-AFG,Afghanistan,Flood,Flash flood,,2014,431.0,
+2014-0235-SSD,South Sudan,Epidemic,Bacterial disease,Cholera,2014,127.0,
+2014-0270-IND,India,Mass movement (wet),Landslide (wet),,2014,151.0,
+2014-0392-IND,India,Storm,Tropical cyclone,Cyclone Hudhud,2014,53.0,9519461.0
+2014-0552-CHN,China,Storm,Blizzard/Winter storm,,2014,128.0,135992.0
+2015-0016-MDG,Madagascar,Storm,Tropical cyclone,Tropical storm 'Chedza',2015,89.0,48899.0
+2015-0410-FRA,France,Extreme temperature,Heat wave,,2015,3275.0,
+2015-0171-COL,Colombia,Mass movement (wet),Landslide (wet),,2015,93.0,
+2015-0248-CHN,China,Flood,Riverine flood,,2015,16.0,2716623.0
+2015-0291-PAK,Pakistan,Flood,Flood (General),,2015,238.0,
+2015-0342-EGY,Egypt,Extreme temperature,Heat wave,,2015,110.0,
+2015-0410-BEL,Belgium,Extreme temperature,Heat wave,,2015,410.0,
+2015-0490-CHN,China,Storm,Tropical cyclone,Typhoon Mujigae,2015,20.0,5704909.0
+2015-0504-IND,India,Flood,Flood (General),,2015,325.0,2988286.0
+2015-0540-TZA,United Republic of Tanzania,Epidemic,Bacterial disease,Cholera,2015,542.0,
+2015-0564-KEN,Kenya,Flood,Riverine flood,,2015,112.0,
+2015-9574-THA,Thailand,Drought,Drought,,2015,,4482429.0
+2016-0256-CHN,China,Storm,Tropical cyclone,Typhoon Butchoy (Nepartak),2016,69.0,2027053.0
+2016-0085-USA,United States of America,Storm,Severe weather,,2016,7.0,2146222.0
+2019-0080-PHL,Philippines,Epidemic,Viral disease,Measles,2019,333.0,
+2016-0087-USA,United States of America,Storm,Severe weather,,2016,,3085194.0
+2016-0117-ECU,Ecuador,Earthquake,Ground movement,,2016,672.0,2682778.0
+2016-0179-FRA,France,Flood,Riverine flood,,2016,4.0,3219333.0
+2016-0186-ETH,Ethiopia,Flood,Flash flood,,2016,100.0,
+2016-0274-SDN,Sudan,Flood,Flash flood,,2016,171.0,
+2016-0292-USA,United States of America,Flood,Flood (General),,2016,13.0,13413888.0
+2016-0355-HTI,Haiti,Storm,Tropical cyclone,Hurricane 'Matthew',2016,546.0,2682778.0
+2016-0548-SOM,Somalia,Epidemic,Bacterial disease,Diarrhoea/Cholera,2016,497.0,
+2016-9369-CHN,China,Drought,Drought,,2016,,4024166.0
+2017-0006-THA,Thailand,Flood,Riverine flood,,2017,96.0,1313411.0
+2017-0174-BGD,Bangladesh,Mass movement (wet),Mudslide,,2017,160.0,
+2017-0307-LKA,Sri Lanka,Epidemic,Viral disease,Dengue,2017,320.0,
+2017-0381-VGB,British Virgin Islands,Storm,Tropical cyclone,Hurricane 'Irma',2017,9.0,3940234.0
+2017-0422-VNM,Viet Nam,Storm,Tropical cyclone,Typhoon 'Damrey' / 'Ramil',2017,123.0,1313411.0
+2017-0434-USA,United States of America,Wildfire,"Land fire (Brush, Bush, Pasture)","Tubbs, Atlas, Nuns Fires",2017,43.0,17074349.0
+2017-0446-IRN,Iran (Islamic Republic of),Earthquake,Ground movement,,2017,444.0,971924.0
+2017-0525-PHL,Philippines,Storm,Storm (General),Tropical storm 'Kai-Tak' (Urduja),2017,91.0,94436.0
+2017-0563-USA,United States of America,Storm,Hail,,2017,2.0,2889505.0
+2018-0055-PNG,Papua New Guinea,Earthquake,Ground movement,,2018,145.0,78208.0
+2018-0077-NGA,Nigeria,Epidemic,Viral disease,Lassa fever,2018,90.0,
+2018-0222-LAO,Lao People's Democratic Republic,Flood,Flood (General),,2018,136.0,
+2018-0238-NGA,Nigeria,Flood,Flood (General),,2018,101.0,
+2023-0079-NZL,New Zealand,Storm,Tropical cyclone,Cyclone 'Gabrielle',2023,11.0,2958435.0
+2018-0295-IND,India,Flood,Flash flood,,2018,504.0,3657154.0
+2018-0348-CHN,China,Storm,Tropical cyclone,Tropical storm Rumbia,2018,53.0,6923320.0
+2018-0353-JPN,Japan,Storm,Tropical cyclone,Typhoon Trami,2018,4.0,5769433.0
+2018-0365-NGA,Nigeria,Flood,Flood (General),,2018,199.0,352576.0
+2018-0455-PHL,Philippines,Storm,Tropical cyclone,Tropical depression 'Usman',2018,182.0,136868.0
+2018-0468-USA,United States of America,Wildfire,Wildfire (General),Woolsey Fire,2018,2.0,6666900.0
+2018-0486-PHL,Philippines,Epidemic,Viral disease,Measles,2018,202.0,
+2018-0490-HUN,Hungary,Extreme temperature,Cold wave,,2018,179.0,
+2019-0110-MOZ,Mozambique,Storm,Tropical cyclone,Cyclone 'Idai',2019,603.0,2518550.0
+2019-0125-IRN,Iran (Islamic Republic of),Flood,Flood (General),,2019,70.0,3148187.0
+2019-0211-COG,Congo,Epidemic,Bacterial disease,Cholera,2019,260.0,
+2019-0296-BEL,Belgium,Extreme temperature,Heat wave,,2019,128.0,
+2019-0355-PHL,Philippines,Epidemic,Viral disease,Dengue,2019,492.0,
+2019-0366-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2019,400.0,
+2019-0387-CHN,China,Storm,Tropical cyclone,Tropical cyclone Lekima (Hanna),2019,72.0,12592748.0
+2020-0010-PAK,Pakistan,Storm,Blizzard/Winter storm,,2020,107.0,
+2020-0325-IDN,Indonesia,Flood,Flood (General),,2020,105.0,12439.0
+2020-0211-IND,India,Storm,Tropical cyclone,Cyclone 'Amphan',2020,90.0,16793053.0
+2020-0212-USA,United States of America,Flood,Flood (General),,2020,1.0,2612253.0
+2020-0297-NPL,Nepal,Flood,Flood (General),,2020,448.0,124393.0
+2020-0304-IND,India,Flood,Flood (General),,2020,1922.0,9329474.0
+2020-0305-SDN,Sudan,Flood,Flood (General),,2020,155.0,310982.0
+2020-0376-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Laura',2020,33.0,16171089.0
+2020-0411-VNM,Viet Nam,Storm,Tropical cyclone,Tropical storm Linfa,2020,243.0,1057340.0
+2020-0412-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Delta',2020,4.0,3607397.0
+2020-0438-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Sally',2020,8.0,7836758.0
+2020-0580-USA,United States of America,Storm,Derecho,,2020,4.0,8458723.0
+2021-0016-ESP,Spain,Storm,Blizzard/Winter storm,Storm 'Filomena!,2021,5.0,2257417.0
+2023-0636-AFG,Afghanistan,Earthquake,Ground movement,,2023,1480.0,229279.0
+2021-0263-AFG,Afghanistan,Flood,Flash flood,,2021,116.0,
+2021-0390-USA,United States of America,Extreme temperature,Heat wave,,2021,229.0,
+2021-0480-DZA,Algeria,Wildfire,Wildfire (General),,2021,90.0,
+2021-0741-CAN,Canada,Flood,Flood (General),,2021,4.0,2376229.0
+2021-0797-USA,United States of America,Storm,Tornado,,2021,93.0,6178195.0
+2021-0815-USA,United States of America,Storm,Severe weather,,2021,5.0,2257417.0
+2022-0103-AUS,Australia,Flood,Flood (General),,2022,22.0,7260511.0
+2022-0157-USA,United States of America,Storm,Tornado,,2022,5.0,3300232.0
+2022-0193-USA,United States of America,Storm,Tornado,,2022,3.0,3520248.0
+2022-0212-USA,United States of America,Storm,Tornado,,2022,1.0,3080217.0
+2022-0342-AFG,Afghanistan,Earthquake,Ground movement,,2022,1163.0,
+2022-0446-NER,Niger,Flood,Flood (General),,2022,195.0,
+2022-0465-CHE,Switzerland,Extreme temperature,Heat wave,,2022,302.0,
+2022-0465-CZE,Czechia,Extreme temperature,Heat wave,,2022,279.0,
+2022-0465-ITA,Italy,Extreme temperature,Heat wave,,2022,18010.0,
+2022-0493-NPL,Nepal,Flood,Flood (General),,2022,132.0,
+2022-0707-PHL,Philippines,Storm,Tropical cyclone,Storm 'Nalgae' (Paeng),2022,158.0,50129.0
+2022-0755-IDN,Indonesia,Earthquake,Ground movement,,2022,334.0,
+2022-0861-MOZ,Mozambique,Flood,Flood (General),,2022,88.0,
+2022-9211-BRA,Brazil,Drought,Drought,,2022,,4400309.0
+2023-0019-AFG,Afghanistan,Extreme temperature,Cold wave,,2023,166.0,
+2023-0046-NZL,New Zealand,Flood,Flood (General),,2023,4.0,2007510.0
+2019-0650-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2019,161.0,
+2020-0296-JPN,Japan,Flood,Flood (General),,2020,82.0,7214793.0
+2020-0238-USA,United States of America,Storm,Severe weather,,2020,2.0,2612253.0
+2020-0269-MMR,Myanmar,Mass movement (wet),Landslide (wet),,2020,174.0,
+2020-0312-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Isaias',2020,16.0,5970863.0
+2020-0323-BGD,Bangladesh,Flood,Flood (General),,2020,257.0,621965.0
+2020-0446-IND,India,Flood,Flood (General),,2020,152.0,4975720.0
+2020-0455-NGA,Nigeria,Flood,Flood (General),,2020,155.0,124393.0
+2020-0466-TUR,Türkiye,Earthquake,Ground movement,,2020,115.0,559768.0
+2023-0675-MEX,Mexico,Storm,Tropical cyclone,Tropical storm 'Otis',2023,84.0,12679009.0
+2020-0530-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2020,400.0,
+2020-0581-CHN,China,Flood,Flood (General),,2020,92.0,5970863.0
+2020-0583-USA,United States of America,Storm,Severe weather,,2020,2.0,1990288.0
+2021-0018-JPN,Japan,Storm,Blizzard/Winter storm,,2021,23.0,2376229.0
+2020-9582-BRA,Brazil,Drought,Drought,,2020,,3731790.0
+2020-9585-USA,United States of America,Drought,Drought,,2020,45.0,5597684.0
+2021-0105-JPN,Japan,Earthquake,Ground movement,,2021,1.0,9148480.0
+2021-0169-AUS,Australia,Flood,Flood (General),,2021,2.0,2495040.0
+2021-0251-USA,United States of America,Storm,Severe weather,,2021,,3683154.0
+2021-0411-DEU,Germany,Flood,Flood (General),,2021,226.0,47524574.0
+2021-0428-CHN,China,Flood,Flood (General),,2021,352.0,19603887.0
+2021-0813-PHL,Philippines,Storm,Tropical cyclone,Typhoon 'Rai' (Odette),2021,457.0,1087447.0
+2021-9569-BRA,Brazil,Drought,Drought,,2021,,3564343.0
+2022-0061-MDG,Madagascar,Storm,Tropical cyclone,Cyclone 'Batsirai',2022,92.0,
+2022-0089-BRA,Brazil,Flood,Flood (General),,2022,272.0,29702.0
+2022-0204-PHL,Philippines,Storm,Tropical cyclone,Tropical storm 'Megi' (Agaton),2022,346.0,45715.0
+2022-0316-CHN,China,Flood,Flood (General),,2022,48.0,5500387.0
+2022-0318-BRA,Brazil,Flood,Flood (General),,2022,116.0,504936.0
+2022-0340-BGD,Bangladesh,Flood,Flood (General),,2022,141.0,508786.0
+2022-0465-ALB,Albania,Extreme temperature,Heat wave,,2022,352.0,
+2022-0465-AUT,Austria,Extreme temperature,Heat wave,,2022,419.0,
+2022-0465-DNK,Denmark,Extreme temperature,Heat wave,,2022,252.0,
+2022-0465-LTU,Lithuania,Extreme temperature,Heat wave,,2022,381.0,
+2022-0465-ROU,Romania,Extreme temperature,Heat wave,,2022,2455.0,
+2022-0465-SRB,Serbia,Extreme temperature,Heat wave,,2022,574.0,
+2022-0514-AFG,Afghanistan,Flood,Flash flood,,2022,156.0,
+2022-0594-SYR,Syrian Arab Republic,Epidemic,Bacterial disease,Cholera,2022,87.0,
+2022-0614-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Ian',2022,152.0,110007737.0
+2022-0641-NGA,Nigeria,Epidemic,Bacterial disease,Cholera,2022,178.0,
+2022-0805-COD,Democratic Republic of the Congo,Flood,Flood (General),,2022,175.0,
+2022-9436-UGA,Uganda,Drought,Drought,,2022,2465.0,
+2022-9524-CHN,China,Drought,Drought,,2022,,8360588.0
+2023-0192-USA,United States of America,Storm,Tornado,,2023,31.0,5811212.0
+2023-0288-USA,United States of America,Storm,Storm (General),,2023,1.0,2324485.0
+2023-0332-USA,United States of America,Storm,Tornado,,2023,3.0,4331995.0
+2023-0426-USA,United States of America,Flood,Flood (General),,2023,10.0,2324485.0
+2023-0438-AUT,Austria,Extreme temperature,Heat wave,,2023,486.0,
+2023-0438-CYP,Cyprus,Extreme temperature,Heat wave,,2023,151.0,
+2023-0438-CZE,Czechia,Extreme temperature,Heat wave,,2023,361.0,
+2023-0438-DEU,Germany,Extreme temperature,Heat wave,,2023,6376.0,
+2023-0438-ESP,Spain,Extreme temperature,Heat wave,,2023,8352.0,
+2023-0438-FIN,Finland,Extreme temperature,Heat wave,,2023,138.0,
+2023-0438-GRC,Greece,Extreme temperature,Heat wave,,2023,4339.0,
+2023-0438-ITA,Italy,Extreme temperature,Heat wave,,2023,12743.0,
+2023-0438-LTU,Lithuania,Extreme temperature,Heat wave,,2023,247.0,
+2023-0438-ROU,Romania,Extreme temperature,Heat wave,,2023,2585.0,
+2023-0438-SVK,Slovakia,Extreme temperature,Heat wave,,2023,247.0,
+2023-0438-SVN,Slovenia,Extreme temperature,Heat wave,,2023,95.0,
+2023-0464-CHN,China,Storm,Tropical cyclone,Tropical cyclone 'Doksuri' (Egay),2023,56.0,26414602.0
+2023-0797-TZA,United Republic of Tanzania,Mass movement (wet),Landslide (wet),,2023,89.0,
+2023-0838-CHN,China,Earthquake,Ground movement,,2023,151.0,1056584.0
+2023-0867-ZMB,Zambia,Epidemic,Bacterial disease,Cholera,2023,740.0,
+2023-0879-MYS,Malaysia,Epidemic,Viral disease,Dengue,2023,100.0,
+2023-9234-ESP,Spain,Drought,Drought,,2023,,2535802.0
+2024-0001-JPN,Japan,Earthquake,Ground movement,,2024,699.0,15394693.0
+2024-0004-USA,United States of America,Storm,Severe weather,,2024,5.0,2924992.0
+2024-0150-KEN,Kenya,Flood,Flash flood,,2024,353.0,
+2024-0205-USA,United States of America,Flood,Flood (General),,2024,1.0,2771045.0
+2024-0246-IND,India,Extreme temperature,Heat wave,,2024,733.0,
+2024-0296-USA,United States of America,Storm,Tornado,,2024,3.0,6773665.0
+2024-0299-DEU,Germany,Flood,Flood (General),,2024,12.0,4618408.0
+2024-0310-AFG,Afghanistan,Flood,Flash flood,,2024,150.0,
+2024-0351-USA,United States of America,Storm,Severe weather,,2024,2.0,3284201.0
+2024-0369-CYP,Cyprus,Extreme temperature,Heat wave,,2024,218.0,
+2024-0369-ESP,Spain,Extreme temperature,Heat wave,,2024,6743.0,
+2024-0369-EST,Estonia,Extreme temperature,Heat wave,,2024,85.0,
+2024-0369-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2024,573.0,
+2024-0369-HUN,Hungary,Extreme temperature,Heat wave,,2024,1443.0,
+2024-0369-MNE,Montenegro,Extreme temperature,Heat wave,,2024,135.0,
+2024-0481-IND,India,Flood,Flood (General),,2024,125.0,
+2024-0518-CAN,Canada,Storm,Storm (General),,2024,,2309204.0
+2024-0654-MMR,Myanmar,Storm,Tropical cyclone,Typhoon 'Yagi' (Enteng),2024,460.0,227841.0
+2024-0685-MEX,Mexico,Storm,Tropical cyclone,Hurricane 'John',2024,24.0,2514467.0
+2024-0754-USA,United States of America,Extreme temperature,Heat wave,,2024,1006.0,
+2024-9268-BRA,Brazil,Drought,Drought,,2024,,6209193.0
+2024-9796-USA,United States of America,Drought,Drought,,2024,,5542089.0
+2025-0008-USA,United States of America,Wildfire,Wildfire (General),"'Palisades', 'Eaton', 'Sunset', 'Kenneth', 'Hurs't, 'Lidia' fires",2025,31.0,53000000.0
+2025-0246-IND,India,Storm,Severe weather,,2025,102.0,
+2025-0623-CHN,China,Flood,Flood (General),,2025,91.0,5800000.0
+2025-0851-NGA,Nigeria,Flood,Flood (General),,2025,238.0,30000.0
+2025-0935-PHL,Philippines,Storm,Tropical cyclone,Typhoon 'Kalmaegi' (Tino),2025,372.0,
+2025-1023-COG,Congo,Epidemic,Bacterial disease,Cholera,2025,91.0,
+2000-0058-SOM,Somalia,Epidemic,Bacterial disease,Cholera,2000,230.0,
+2000-0107-MDG,Madagascar,Storm,Tropical cyclone,"Eline, Gloria",2000,130.0,16826.0
+2000-0158-NER,Niger,Epidemic,Bacterial disease,,2000,128.0,
+2000-0240-USA,United States of America,Wildfire,Forest fire,,2000,,2804381.0
+2000-0341-CAF,Central African Republic,Epidemic,Viral disease,,2000,300.0,
+2000-0408-VNM,Viet Nam,Flood,Riverine flood,,2000,460.0,467397.0
+2000-0414-PHL,Philippines,Mass movement (wet),Sudden Subsidence (wet),Garbage,2000,287.0,
+2000-0472-CHN,China,Flood,Flood (General),,2000,203.0,321569.0
+2000-0476-NPL,Nepal,Flood,Flood (General),,2000,144.0,11778.0
+2000-0693-GIN,Guinea,Epidemic,Viral disease,Yellow fever,2000,190.0,
+2000-0660-UGA,Uganda,Epidemic,Viral disease,Ebola haemorrhagic fever,2000,224.0,
+2000-0662-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2000,3.0,11030566.0
+2000-0715-PHL,Philippines,Storm,Tropical cyclone,Bebinca (Seniang),2000,94.0,57957.0
+2001-0042-SLV,El Salvador,Earthquake,Ground movement,,2001,315.0,633643.0
+2001-0126-NER,Niger,Epidemic,Bacterial disease,Meningococcal disease,2001,321.0,
+2001-0298-NPL,Nepal,Mass movement (wet),Landslide (wet),,2001,144.0,
+2001-0429-CIV,Côte d’Ivoire,Epidemic,Bacterial disease,Cholera,2001,175.0,
+2001-0453-IRN,Iran (Islamic Republic of),Flood,Flash flood,,2001,412.0,143274.0
+2002-0666-AFG,Afghanistan,Epidemic,Infectious disease (General),Unknown,2002,100.0,
+2001-0741-CHN,China,Flood,Riverine flood,,2001,166.0,218184.0
+2001-0661-POL,Poland,Extreme temperature,Cold wave,,2001,270.0,
+2001-0775-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2001,502.0,
+2001-0778-MWI,Malawi,Epidemic,Bacterial disease,Cholera,2001,502.0,
+2001-0787-MWI,Malawi,Epidemic,Bacterial disease,Cholera,2001,609.0,
+2001-0790-ETH,Ethiopia,Epidemic,Bacterial disease,Meningococcal,2001,118.0,
+2001-0791-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2001,1447.0,
+2002-0033-COD,Democratic Republic of the Congo,Volcanic activity,Ash fall,Mt. Nyiragongo,2002,200.0,16108.0
+2002-0137-MWI,Malawi,Epidemic,Infectious disease (General),Acute watery diarrhoeal syndrome,2002,175.0,
+2002-0205-NER,Niger,Epidemic,Bacterial disease,Meningococcal disease,2002,308.0,
+2002-0284-PAK,Pakistan,Extreme temperature,Heat wave,,2002,113.0,
+2002-0383-BGD,Bangladesh,Epidemic,Parasitic disease,,2002,96.0,
+2002-0467-DEU,Germany,Flood,Flood (General),,2002,27.0,20761854.0
+2002-0539-IND,India,Flood,Riverine flood,,2002,100.0,
+2002-0639-RUS,Russian Federation,Extreme temperature,Cold wave,,2002,242.0,
+2002-0724-USA,United States of America,Storm,Tropical cyclone,Lili,2002,,3579630.0
+2002-0754-POL,Poland,Extreme temperature,Cold wave,,2002,183.0,
+2002-0854-COG,Congo,Epidemic,Viral disease,Ebola,2002,128.0,
+2002-0872-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Influenza,2002,296.0,
+2002-9124-MWI,Malawi,Drought,Drought,,2002,500.0,
+2002-9854-CHN,China,Drought,Drought,,2002,,2165676.0
+2003-0130-NER,Niger,Epidemic,Bacterial disease,,2003,195.0,
+2003-0197-TUR,Türkiye,Earthquake,Ground movement,,2003,177.0,236262.0
+2003-0210-USA,United States of America,Storm,Tornado,,2003,45.0,7000346.0
+2003-0250-IND,India,Extreme temperature,Heat wave,,2003,1210.0,700035.0
+2003-0264-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2003,380.0,
+2003-0283-IND,India,Flood,Riverine flood,,2003,142.0,
+2003-0391-AUT,Austria,Extreme temperature,Heat wave,,2003,345.0,490024.0
+2003-0391-BEL,Belgium,Extreme temperature,Heat wave,,2003,1175.0,
+2003-0391-CHE,Switzerland,Extreme temperature,Heat wave,,2003,1039.0,490024.0
+2003-0391-ITA,Italy,Extreme temperature,Heat wave,,2003,20089.0,7700380.0
+2003-0391-PRT,Portugal,Extreme temperature,Heat wave,,2003,2696.0,
+2003-0391-SVN,Slovenia,Extreme temperature,Heat wave,,2003,289.0,140007.0
+2003-0562-MLI,Mali,Epidemic,Bacterial disease,Cholera,2003,106.0,
+2003-0610-PHL,Philippines,Mass movement (wet),Landslide (wet),,2003,255.0,12251.0
+2003-0630-IRN,Iran (Islamic Republic of),Earthquake,Ground movement,,2003,26796.0,875043.0
+2004-0073-MAR,Morocco,Earthquake,Ground movement,,2004,628.0,681782.0
+2004-0298-BGD,Bangladesh,Flood,Riverine flood,,2004,730.0,3749799.0
+2004-0604-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Typhoid fever,2004,214.0,
+2004-0659-LKA,Sri Lanka,Earthquake,Tsunami,,2004,35399.0,2243914.0
+2004-0659-MDV,Maldives,Earthquake,Tsunami,,2004,102.0,801264.0
+2004-0659-THA,Thailand,Earthquake,Tsunami,,2004,8345.0,1704454.0
+2005-0011-DNK,Denmark,Storm,Extra-tropical storm,Storm 'Erwin' (Gudrun),2005,4.0,2143081.0
+2005-0011-SWE,Sweden,Storm,Extra-tropical storm,Storm 'Erwin' (Gudrun),2005,9.0,4615867.0
+2005-0044-AFG,Afghanistan,Storm,Storm (General),,2005,260.0,8243.0
+2005-0169-AFG,Afghanistan,Flood,Riverine flood,,2005,200.0,
+2005-0221-NGA,Nigeria,Epidemic,Infectious disease (General),Acute Watery Diarrhoeal syndrome,2005,100.0,
+2005-0371-PRK,Democratic People's Republic of Korea,Flood,Flash flood,,2005,193.0,
+2005-0373-GNB,Guinea-Bissau,Epidemic,Bacterial disease,Cholera,2005,399.0,
+2005-0380-ESP,Spain,Wildfire,Forest fire,,2005,11.0,3379474.0
+2005-0467-USA,United States of America,Storm,Tropical cyclone,Katrina,2005,1833.0,206065474.0
+2005-0492-CHN,China,Storm,Tropical cyclone,Talim,2005,159.0,3132195.0
+2005-0575-IND,India,Earthquake,Ground movement,,2005,1309.0,1648524.0
+2005-0585-USA,United States of America,Storm,Tropical cyclone,"Hurricane ""Wilma""",2005,4.0,23573890.0
+2005-0701-IND,India,Extreme temperature,Severe winter conditions,,2005,180.0,
+2006-0007-IDN,Indonesia,Mass movement (wet),Landslide (wet),,2006,156.0,43119.0
+2005-0820-PRT,Portugal,Extreme temperature,Heat wave,,2005,462.0,
+2006-0171-USA,United States of America,Storm,Hail,,2006,12.0,2555209.0
+2006-0133-BFA,Burkina Faso,Epidemic,Bacterial disease,Meningococcal disease,2006,784.0,
+2006-0187-AGO,Angola,Epidemic,Bacterial disease,Cholera,2006,2354.0,
+2006-0251-VNM,Viet Nam,Storm,Tropical cyclone,Chanchu (Caloy),2006,204.0,
+2006-0289-SDN,Sudan,Epidemic,Bacterial disease,Acute Watery Diarrhoeal Syndrome/Cholera,2006,196.0,
+2006-0383-FRA,France,Extreme temperature,Heat wave,,2006,1388.0,
+2006-0387-USA,United States of America,Extreme temperature,Heat wave,,2006,164.0,
+2006-0596-AFG,Afghanistan,Flood,Flash flood,,2006,166.0,
+2006-0473-NPL,Nepal,Mass movement (wet),Landslide (wet),,2006,147.0,
+2006-0504-JPN,Japan,Storm,Tropical cyclone,Shanshan (13),2006,10.0,3992514.0
+2007-0113-TZA,United Republic of Tanzania,Epidemic,Viral disease,Rift Valley Fever,2007,109.0,
+2007-0162-COL,Colombia,Flood,Riverine flood,,2007,146.0,
+2007-0235-HUN,Hungary,Extreme temperature,Heat wave,,2007,500.0,
+2007-0245-PAK,Pakistan,Storm,Tropical cyclone,Cyclone 'Yemyin',2007,242.0,2515393.0
+2007-0247-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2007,6.0,6210846.0
+2007-0248-AFG,Afghanistan,Flood,Riverine flood,,2007,113.0,
+2007-0268-CHN,China,Flood,Riverine flood,,2007,535.0,6871766.0
+2007-0278-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2007,7.0,6210846.0
+2007-0312-IDN,Indonesia,Flood,Riverine flood,,2007,88.0,
+2007-0313-CHN,China,Flood,Riverine flood,,2007,170.0,62108.0
+2007-0352-PRK,Democratic People's Republic of Korea,Flood,Riverine flood,,2007,610.0,465813.0
+2007-0362-PER,Peru,Earthquake,Ground movement,,2007,593.0,931627.0
+2007-0423-GIN,Guinea,Epidemic,Bacterial disease,Cholera,2007,90.0,
+2007-0456-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Ebola Haemmorrhgaic fever,2007,166.0,
+2007-0523-DOM,Dominican Republic,Storm,Tropical cyclone,Noel,2007,129.0,120646.0
+2007-0657-SDN,Sudan,Epidemic,Bacterial disease,Meningococcal disease,2007,430.0,
+2007-0682-UGA,Uganda,Epidemic,Viral disease,Hepatitis E Virus,2007,96.0,
+2008-0006-AFG,Afghanistan,Extreme temperature,Severe winter conditions,,2008,1317.0,
+2008-0065-BRA,Brazil,Epidemic,Viral disease,Dengue and Hemorrhagic fever outbreaks,2008,123.0,
+2008-0192-CHN,China,Earthquake,Ground movement,,2008,87476.0,127100952.0
+2008-0235-NER,Niger,Epidemic,Bacterial disease,Meningitis,2008,111.0,
+2008-0384-USA,United States of America,Storm,Tropical cyclone,Hurricane Ike,2008,82.0,44859160.0
+2008-0627-USA,United States of America,Flood,Riverine flood,,2008,24.0,14953053.0
+2008-0663-BFA,Burkina Faso,Epidemic,Viral disease,Measles,2008,300.0,
+2009-0014-ESP,Spain,Storm,Extra-tropical storm,Storm 'Klaus',2009,14.0,2851217.0
+2009-0014-FRA,France,Storm,Extra-tropical storm,Storm 'Klaus',2009,11.0,4802050.0
+2009-0067-AUS,Australia,Wildfire,"Land fire (Brush, Bush, Pasture)",,2009,180.0,1950833.0
+2009-0136-ITA,Italy,Earthquake,Ground movement,,2009,300.0,3751602.0
+2009-0150-TCD,Chad,Epidemic,Viral disease,Meningitis,2009,102.0,
+2009-0204-IND,India,Storm,Tropical cyclone,"Cyclone ""Aila""",2009,96.0,
+2009-0541-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2009,102.0,
+2009-0571-POL,Poland,Extreme temperature,Cold wave,,2009,298.0,
+2009-0660-PER,Peru,Flood,Riverine flood,,2009,158.0,
+2010-0045-USA,United States of America,Storm,Blizzard/Winter storm,,2010,2.0,2952854.0
+2011-0181-TCD,Chad,Epidemic,Viral disease,Meningitis,2011,124.0,
+2010-0094-KEN,Kenya,Flood,Riverine flood,,2010,94.0,
+2010-0169-CHN,China,Earthquake,Ground movement,,2010,2968.0,738213.0
+2010-0196-USA,United States of America,Storm,Tornado,,2010,5.0,3986352.0
+2010-0262-CHN,China,Mass movement (wet),Landslide (wet),,2010,99.0,
+2010-0373-IND,India,Flood,Flash flood,,2010,196.0,
+2010-0331-JPN,Japan,Extreme temperature,Heat wave,,2010,170.0,
+2010-0343-PER,Peru,Extreme temperature,Cold wave,,2010,409.0,
+2010-0452-NPL,Nepal,Flood,Riverine flood,,2010,138.0,
+2010-0447-HND,Honduras,Flood,Riverine flood,,2010,117.0,
+2010-0629-IND,India,Flood,Riverine flood,,2010,203.0,32481.0
+2010-0656-AUS,Australia,Flood,Riverine flood,,2010,35.0,10777915.0
+2011-0068-NZL,New Zealand,Earthquake,Ground movement,,2011,181.0,21468668.0
+2011-0081-NAM,Namibia,Flood,Riverine flood,,2011,108.0,17175.0
+2011-0134-USA,United States of America,Storm,Tornado,,2011,46.0,2862489.0
+2011-0290-COD,Democratic Republic of the Congo,Epidemic,Bacterial disease,Cholera,2011,603.0,
+2011-0317-NPL,Nepal,Flood,Riverine flood,,2011,89.0,
+2011-0328-USA,United States of America,Storm,Tropical cyclone,Hurricane Irene,2011,46.0,10448085.0
+2011-0333-GHA,Ghana,Epidemic,Bacterial disease,Cholera,2011,101.0,
+2011-0333-TCD,Chad,Epidemic,Bacterial disease,Cholera,2011,433.0,
+2011-0370-CHN,China,Flood,Riverine flood,,2011,117.0,6082789.0
+2011-0371-IND,India,Flood,Riverine flood,,2011,239.0,1331057.0
+2011-0397-TUR,Türkiye,Earthquake,Ground movement,,2011,604.0,2146867.0
+2011-0609-USA,United States of America,Storm,Storm (General),,2011,9.0,5009356.0
+2011-0610-USA,United States of America,Flood,Riverine flood,,2011,9.0,6583725.0
+2012-0060-USA,United States of America,Storm,Tornado,,2012,41.0,7011139.0
+2012-0108-TCD,Chad,Epidemic,Viral disease,Meningitis,2012,88.0,
+2012-0122-USA,United States of America,Storm,Tornado,,2012,,2173453.0
+2012-0167-DOM,Dominican Republic,Epidemic,Bacterial disease,Cholera,2012,167.0,
+2012-0282-CHN,China,Storm,Tropical cyclone,Typhoon Haikui,2012,3.0,2103342.0
+2012-0287-GIN,Guinea,Epidemic,Bacterial disease,Cholera,2012,105.0,
+2012-0503-USA,United States of America,Storm,Severe weather,,2012,28.0,5608911.0
+2012-0552-GBR,United Kingdom of Great Britain and Northern Ireland,Flood,Riverine flood,,2012,4.0,2285631.0
+2012-0614-USA,United States of America,Storm,Lightning/Thunderstorms,,2012,,2664233.0
+2013-0007-IDN,Indonesia,Flood,Riverine flood,,2013,34.0,4145952.0
+2013-0008-AUS,Australia,Storm,Tropical cyclone,Ex-Tropical cyclone Oswald,2013,6.0,2763968.0
+2013-0274-PHL,Philippines,Flood,Riverine flood,,2013,31.0,3026545.0
+2013-0192-IND,India,Flood,Riverine flood,,2013,6054.0,1520182.0
+2013-0272-CHN,China,Storm,Tropical cyclone,Tropical storm Utor (Labuyo),2013,88.0,2929806.0
+2013-0316-JPN,Japan,Extreme temperature,Heat wave,,2013,338.0,
+2013-0354-USA,United States of America,Flood,Riverine flood,,2013,9.0,2625770.0
+2013-0433-PHL,Philippines,Storm,Tropical cyclone,Typhoon Haiyan (Yolanda),2013,7354.0,13819840.0
+2013-0549-GBR,United Kingdom of Great Britain and Northern Ireland,Extreme temperature,Heat wave,,2013,760.0,
+2014-0009-USA,United States of America,Extreme temperature,Cold wave,,2014,21.0,3399807.0
+2014-0061-JPN,Japan,Storm,Blizzard/Winter storm,,2014,37.0,8023545.0
+2014-0063-BDI,Burundi,Flood,Flash flood,,2014,96.0,2720.0
+2014-0090-SLE,Sierra Leone,Epidemic,Viral disease,Ebola,2014,3956.0,
+2014-0227-CHN,China,Storm,Tropical cyclone,Typhoon Rammasun (Glenda),2014,71.0,5756517.0
+2014-0282-GHA,Ghana,Epidemic,Bacterial disease,Cholera,2014,249.0,
+2014-0296-NPL,Nepal,Mass movement (wet),Landslide (wet),,2014,156.0,20399.0
+2014-0343-PAK,Pakistan,Flood,Riverine flood,,2014,255.0,2719846.0
+2014-0390-CHN,China,Storm,Tropical cyclone,Typhoon Kalmaegi (Luis),2014,9.0,3943777.0
+2014-0483-IDN,Indonesia,Mass movement (wet),Landslide (wet),,2014,108.0,
+2014-0523-IND,India,Extreme temperature,Severe winter conditions,,2014,140.0,
+2018-0363-COD,Democratic Republic of the Congo,Epidemic,Viral disease,Ebola,2018,2287.0,
+2014-0546-PAK,Pakistan,Extreme temperature,Heat wave,,2014,139.0,24479.0
+2014-0573-NER,Niger,Epidemic,Viral disease,Meningitis,2014,145.0,
+2014-9023-USA,United States of America,Drought,Drought,,2014,,2991831.0
+2015-0073-USA,United States of America,Storm,Blizzard/Winter storm,,2015,30.0,4074935.0
+2015-0144-NPL,Nepal,Earthquake,Ground movement,,2015,8831.0,7027905.0
+2015-0175-NPL,Nepal,Earthquake,Ground movement,,2015,138.0,
+2015-0212-USA,United States of America,Flood,Flash flood,,2015,32.0,3667442.0
+2015-0308-MMR,Myanmar,Flood,Riverine flood,,2015,149.0,161639.0
+2015-0558-USA,United States of America,Storm,Tornado,,2015,50.0,2716623.0
+2015-0579-AGO,Angola,Epidemic,Viral disease,Yellow fever,2015,384.0,
+2015-0580-GHA,Ghana,Epidemic,Viral disease,Meningitis,2015,85.0,
+2016-0112-PAK,Pakistan,Flood,Flash flood,,2016,92.0,
+2016-0124-USA,United States of America,Flood,Flash flood,,2016,9.0,2682778.0
+2016-0172-CAN,Canada,Wildfire,Forest fire,Fort McMurray wildfires,2016,,5365555.0
+2016-0125-USA,United States of America,Storm,Lightning/Thunderstorms,,2016,6.0,3219333.0
+2016-0179-DEU,Germany,Flood,Riverine flood,,2016,7.0,2682778.0
+2016-0547-NGA,Nigeria,Epidemic,Viral disease,Meningitis,2016,1166.0,
+2016-0236-CHN,China,Flood,Flood (General),,2016,68.0,4024166.0
+2016-0237-IND,India,Storm,Lightning/Thunderstorms,,2016,93.0,
+2016-0241-CHN,China,Flood,Flood (General),,2016,289.0,29510553.0
+2016-0257-CHN,China,Flood,Flood (General),,2016,289.0,6036249.0
+2016-0288-BGD,Bangladesh,Flood,Riverine flood,,2016,106.0,201208.0
+2017-0090-COL,Colombia,Mass movement (wet),Mudslide,,2017,329.0,131341.0
+2017-0144-IND,India,Extreme temperature,Heat wave,,2017,264.0,
+2017-0153-LKA,Sri Lanka,Flood,Flood (General),,2017,293.0,510917.0
+2017-0203-USA,United States of America,Storm,Hail,,2017,,4071575.0
+2017-0245-CHN,China,Flood,Flood (General),,2017,78.0,7880469.0
+2017-0294-IND,India,Flood,Flood (General),,2017,284.0,328353.0
+2019-0296-FRA,France,Extreme temperature,Heat wave,,2019,567.0,
+2017-0253-USA,United States of America,Storm,Lightning/Thunderstorms,,2017,,2626823.0
+2017-0381-MAF,Saint Martin (French Part),Storm,Tropical cyclone,Hurricane 'Irma',2017,12.0,5384987.0
+2017-0381-USA,United States of America,Storm,Tropical cyclone,Hurricane 'Irma',2017,97.0,74864452.0
+2017-0511-USA,United States of America,Wildfire,Wildfire (General),'Thomas',2017,2.0,2889505.0
+2017-0564-USA,United States of America,Storm,Tornado,,2017,1.0,3546211.0
+2018-0149-IND,India,Storm,Lightning/Thunderstorms,,2018,95.0,
+2018-0223-GRC,Greece,Wildfire,Forest fire,,2018,100.0,
+2018-0235-NLD,Netherlands (Kingdom of the),Extreme temperature,Heat wave,,2018,100.0,
+2018-0342-USA,United States of America,Storm,Tropical cyclone,Hurricane Florence,2018,53.0,17949347.0
+2018-0373-USA,United States of America,Storm,Tropical cyclone,Hurricane Michael,2018,49.0,20513540.0
+2018-0489-PHL,Philippines,Epidemic,Viral disease,Dengue,2018,317.0,
+2019-0122-YEM,Yemen,Epidemic,Bacterial disease,Cholera,2019,713.0,
+2019-0209-CHN,China,Flood,Flood (General),,2019,300.0,7807504.0
+2019-0218-IND,India,Epidemic,Viral disease,Acute Encephalitis Syndrome (AES),2019,121.0,
+2019-0463-JPN,Japan,Extreme temperature,Heat wave,,2019,162.0,
+2019-0332-NPL,Nepal,Flood,Flood (General),,2019,119.0,256892.0
+2019-0337-BGD,Bangladesh,Flood,Flood (General),,2019,114.0,94446.0
+2019-0338-HND,Honduras,Epidemic,Viral disease,Dengue,2019,128.0,
+2019-0366-BEL,Belgium,Extreme temperature,Heat wave,,2019,400.0,
+2019-0385-MMR,Myanmar,Flood,Flood (General),,2019,115.0,
+2019-0412-USA,United States of America,Storm,Tropical cyclone,Tropical cyclone 'Dorian',2019,10.0,2014840.0
+2019-0413-ESP,Spain,Flood,Riverine flood,,2019,7.0,3148187.0
+2019-0417-USA,United States of America,Storm,Tropical cyclone,Tropical storm ' Imelda',2019,5.0,4407462.0
+2019-0455-COL,Colombia,Epidemic,Viral disease,Dengue,2019,169.0,
+2019-0521-JPN,Japan,Storm,Tropical cyclone,Typhoon 'Faxai',2019,3.0,11459401.0
+2019-0500-KEN,Kenya,Flood,Flash flood,,2019,90.0,
+2019-0545-AUS,Australia,Wildfire,"Land fire (Brush, Bush, Pasture)",Currowan,2019,32.0,2518550.0

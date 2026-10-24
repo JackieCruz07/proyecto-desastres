@@ -1,0 +1,56 @@
+﻿DisNo.,Country,Disaster Type,Start Year,Start Month,Start Day,End Year,End Month,End Day,Anio_DisNo,Anio_ID_difiere_inicio,Fecha_inicio,Fecha_fin,Inicio_posterior_fin,Tipo_revision
+2024-0962-AGO,Angola,Epidemic,2025,1.0,7.0,2025,10.0,,2024,True,2025-01-07,,False,Diferencia entre anio del ID y anio de inicio
+1988-0424-VEN,Venezuela (Bolivarian Republic of),Storm,2026,9.0,11.0,1988,9.0,11.0,1988,True,2026-09-11,1988-09-11,True,Diferencia de anio y orden temporal incorrecto
+2026-0221-IDN,Indonesia,Earthquake,2026,4.0,2.0,2026,3.0,2.0,2026,False,2026-04-02,2026-03-02,True,Inicio posterior al fin
+1995-0275-NPL,Nepal,Storm,2026,11.0,10.0,1995,11.0,11.0,1995,True,2026-11-10,1995-11-11,True,Diferencia de anio y orden temporal incorrecto
+1999-9388-DJI,Djibouti,Drought,2001,6.0,,2001,,,1999,True,,,False,Diferencia entre anio del ID y anio de inicio
+2018-9277-CRI,Costa Rica,Drought,2019,3.0,,2019,3.0,,2018,True,,,False,Diferencia entre anio del ID y anio de inicio
+2014-9580-SLV,El Salvador,Drought,2015,4.0,,2016,12.0,,2014,True,,,False,Diferencia entre anio del ID y anio de inicio
+2014-0530-MWI,Malawi,Epidemic,2015,2.0,,2015,6.0,,2014,True,,,False,Diferencia entre anio del ID y anio de inicio
+2014-0529-BOL,Bolivia (Plurinational State of),Flood,2015,1.0,15.0,2015,1.0,31.0,2014,True,2015-01-15,2015-01-31,False,Diferencia entre anio del ID y anio de inicio
+2025-0075-AUS,Australia,Flood,2024,2.0,29.0,2025,2.0,5.0,2025,True,2024-02-29,2025-02-05,False,Diferencia entre anio del ID y anio de inicio
+2025-0593-LAO,Lao People's Democratic Republic,Storm,2024,7.0,19.0,2024,7.0,20.0,2025,True,2024-07-19,2024-07-20,False,Diferencia entre anio del ID y anio de inicio
+2012-0509-NPL,Nepal,Extreme temperature,2013,1.0,1.0,2013,1.0,20.0,2012,True,2013-01-01,2013-01-20,False,Diferencia entre anio del ID y anio de inicio
+1999-9388-SOM,Somalia,Drought,2000,1.0,,2001,,,1999,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-DEU,Germany,Extreme temperature,2006,1.0,22.0,2006,1.0,28.0,2005,True,2006-01-22,2006-01-28,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-LVA,Latvia,Extreme temperature,2006,1.0,,2006,1.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-SCG,Serbia Montenegro,Extreme temperature,2006,1.0,,2006,1.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-BEL,Belgium,Extreme temperature,2009,1.0,,2009,1.0,,2008,True,,,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-DEU,Germany,Extreme temperature,2009,1.0,5.0,2009,1.0,,2008,True,2009-01-05,,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-PRT,Portugal,Extreme temperature,2009,1.0,,2009,1.0,,2008,True,,,False,Diferencia entre anio del ID y anio de inicio
+2009-0595-IND,India,Extreme temperature,2010,1.0,2.0,2010,1.0,13.0,2009,True,2010-01-02,2010-01-13,False,Diferencia entre anio del ID y anio de inicio
+2010-0680-BRA,Brazil,Epidemic,2011,1.0,,2011,,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2001-9122-MOZ,Mozambique,Drought,2002,3.0,,2002,,,2001,True,,,False,Diferencia entre anio del ID y anio de inicio
+1999-9388-SDN,Sudan,Drought,2000,1.0,,2001,,,1999,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-EST,Estonia,Extreme temperature,2006,1.0,,2006,1.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-MDA,Republic of Moldova,Extreme temperature,2006,1.0,20.0,2006,1.0,24.0,2005,True,2006-01-20,2006-01-24,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-ROU,Romania,Extreme temperature,2006,1.0,20.0,2006,1.0,28.0,2005,True,2006-01-20,2006-01-28,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-RUS,Russian Federation,Extreme temperature,2006,1.0,,2006,1.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-UKR,Ukraine,Extreme temperature,2006,1.0,16.0,2006,2.0,6.0,2005,True,2006-01-16,2006-02-06,False,Diferencia entre anio del ID y anio de inicio
+2005-0754-SYC,Seychelles,Epidemic,2006,1.0,,2006,3.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-0557-VEN,Venezuela (Bolivarian Republic of),Epidemic,2011,1.0,,2011,1.0,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-0680-PRY,Paraguay,Epidemic,2011,1.0,,2011,,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-9082-BDI,Burundi,Drought,2011,,,2011,,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-9082-ETH,Ethiopia,Drought,2011,1.0,,2012,1.0,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2011-9663-SDN,Sudan,Drought,2012,,,2012,,,2011,True,,,False,Diferencia entre anio del ID y anio de inicio
+2014-9580-CRI,Costa Rica,Drought,2015,8.0,,2015,8.0,,2014,True,,,False,Diferencia entre anio del ID y anio de inicio
+2018-0469-MHL,Marshall Islands,Storm,2019,1.0,5.0,2019,1.0,5.0,2018,True,2019-01-05,2019-01-05,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-SDN,Sudan,Infestation,2020,2.0,,2020,2.0,,2019,True,,,False,Diferencia entre anio del ID y anio de inicio
+2020-9609-SOM,Somalia,Drought,2021,3.0,,2022,12.0,,2020,True,,,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-UKR,Ukraine,Extreme temperature,2009,1.0,,2009,1.0,,2008,True,,,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-FRA,France,Extreme temperature,2009,1.0,6.0,2009,1.0,8.0,2008,True,2009-01-06,2009-01-08,False,Diferencia entre anio del ID y anio de inicio
+2008-0633-ROU,Romania,Extreme temperature,2009,1.0,1.0,2009,1.0,15.0,2008,True,2009-01-01,2009-01-15,False,Diferencia entre anio del ID y anio de inicio
+2011-9663-SOM,Somalia,Drought,2012,,,2012,,,2011,True,,,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-DJI,Djibouti,Infestation,2020,2.0,,2020,2.0,,2019,True,,,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-ERI,Eritrea,Infestation,2020,2.0,,2020,2.0,,2019,True,,,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-KEN,Kenya,Infestation,2020,2.0,,2020,2.0,,2019,True,,,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-TZA,United Republic of Tanzania,Infestation,2020,2.0,3.0,2020,2.0,,2019,True,2020-02-03,,False,Diferencia entre anio del ID y anio de inicio
+2019-0630-UGA,Uganda,Infestation,2020,2.0,,2020,2.0,,2019,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-BGR,Bulgaria,Extreme temperature,2006,1.0,22.0,2006,1.0,25.0,2005,True,2006-01-22,2006-01-25,False,Diferencia entre anio del ID y anio de inicio
+2005-0713-BLR,Belarus,Extreme temperature,2006,1.0,,2006,1.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0754-COM,Comoros,Epidemic,2006,,,2006,,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2005-0754-MUS,Mauritius,Epidemic,2006,1.0,,2006,3.0,,2005,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-9082-KEN,Kenya,Drought,2011,1.0,,2011,1.0,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2010-9082-UGA,Uganda,Drought,2011,3.0,,2011,,,2010,True,,,False,Diferencia entre anio del ID y anio de inicio
+2011-9663-ETH,Ethiopia,Drought,2012,,,2012,,,2011,True,,,False,Diferencia entre anio del ID y anio de inicio
+2014-0530-ZWE,Zimbabwe,Epidemic,2015,2.0,,2015,2.0,,2014,True,,,False,Diferencia entre anio del ID y anio de inicio
