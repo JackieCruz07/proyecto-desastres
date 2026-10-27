@@ -206,6 +206,9 @@
       const codigo = e.features[0].properties.codigo;
       CapaTematica.setSeleccionado(codigo);
       mostrarFicha(codigo);
+      if (typeof actualizarPanelPais === "function") {
+        actualizarPanelPais(codigo);
+      }
     });
 
     mapa.on("click", (e) => {
@@ -216,6 +219,9 @@
       if (!capas.length) {
         CapaTematica.setSeleccionado(null);
         fichaInicial();
+        if (typeof actualizarPanelPais === "function") {
+          actualizarPanelPais(null);
+        }
       }
     });
   }
@@ -328,6 +334,53 @@
       <p class="ficha__observacion">${territorio.observacion}</p>
     `;
   }
+
+
+
+  /* ---------------------------------------------------------------------- *
+   * 7b. Filtros y controles interactivos (Actividad 4)                     *
+   * ---------------------------------------------------------------------- */
+
+  function poblarFiltroTipos() {
+    var tipos = ["Flood", "Storm", "Earthquake", "Drought", "Epidemic", "Wildfire", "Extreme temperature", "Mass movement (wet)", "Mass movement (dry)", "Volcanic activity", "Infestation", "Glacial lake outburst flood", "Impact", "Animal incident"];
+    var select = document.getElementById("selector-tipo");
+    if (!select) return;
+    select.innerHTML = '<option value="todos">Todos los tipos</option>';
+    for (var i=0; i<tipos.length; i++) {
+      var op = document.createElement("option");
+      op.value = tipos[i];
+      op.textContent = tipos[i];
+      select.appendChild(op);
+    }
+  }
+
+  function actualizarFiltroPeriodo() {
+    var minEl = document.getElementById("filtro-anio-min");
+    var maxEl = document.getElementById("filtro-anio-max");
+    if (!minEl || !maxEl) return;
+    var min = parseInt(minEl.value, 10);
+    var max = parseInt(maxEl.value, 10);
+    var a1 = Math.min(min, max);
+    var a2 = Math.max(min, max);
+    minEl.value = a1;
+    maxEl.value = a2;
+    var etiqueta = document.getElementById("valor-periodo");
+    if (etiqueta) etiqueta.textContent = a1 + ' – ' + a2;
+    var chk = document.getElementById("chk-aplicar-filtros");
+    var nota = document.getElementById("nota-filtros");
+    var tipoSel = document.getElementById("selector-tipo");
+    var tipo = tipoSel ? tipoSel.value : "todos";
+    if (!chk || !chk.checked) {
+      if (nota) nota.textContent = "Los filtros no están aplicados al mapa.";
+      return;
+    }
+    if (tipo === "todos") {
+      if (nota) nota.textContent = "Mostrando todos los tipos de desastre (" + a1 + " – " + a2 + ")";
+    } else {
+      if (nota) nota.textContent = "Filtrando por tipo: " + tipo + " (" + a1 + " – " + a2 + ")";
+    }
+  }
+
 
   /* ---------------------------------------------------------------------- *
    * 7. Tarjetas de resumen                                                 *
