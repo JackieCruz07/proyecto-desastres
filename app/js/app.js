@@ -203,11 +203,12 @@
 
     mapa.on("click", capaInteractiva, (e) => {
       if (!e.features || !e.features.length) return;
-      const codigo = e.features[0].properties.codigo;
+      const props = e.features[0].properties || {};
+      const codigo = props.codigo || props.iso_a3 || props.ISO_A3 || props.adm0_a3 || props.iso3 || props.ISO3 || props.sov_a3;
       CapaTematica.setSeleccionado(codigo);
       mostrarFicha(codigo);
       if (typeof actualizarPanelPais === "function") {
-        actualizarPanelPais(codigo);
+        actualizarPanelPais(codigo, props);
       }
     });
 
@@ -513,7 +514,7 @@
     return '$' + formatearNumeroPais(Math.round(n)) + ' USD';
   }
 
-  function actualizarPanelPais(codigo) {
+  function actualizarPanelPais(codigo, props) {
     var trad = (window.DICCIONARIO_DESASTRES) ? window.DICCIONARIO_DESASTRES : {"Flood":"Inundación","Storm":"Tormenta","Earthquake":"Terremoto","Drought":"Sequía","Epidemic":"Epidemia","Wildfire":"Incendio forestal","Extreme temperature":"Temperatura extrema","Mass movement (wet)":"Deslizamiento (húmedo)","Mass movement (dry)":"Deslizamiento (seco)","Volcanic activity":"Actividad volcánica","Infestation":"Infestación","Glacial lake outburst flood":"Ruptura de lago glacial","Impact":"Impacto","Animal incident":"Incidente con animales"};
     var setTxt = function(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
     if (!codigo) {
@@ -532,7 +533,24 @@
       if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch(e){} grafImpactoChart = null; }
       return;
     }
-    var info = datosPaisPanel[codigo] || datosPaisPanel[String(codigo).toUpperCase()];
+    var info = null;
+    if (codigo) {
+      info = datosPaisPanel[codigo] || datosPaisPanel[String(codigo).toUpperCase()] || datosPaisPanel[String(codigo).toLowerCase()];
+    }
+    if (!info && props) {
+      var pc = props.codigo || props.iso_a3 || props.ISO_A3 || props.adm0_a3 || props.iso3 || props.ISO3;
+      if (pc) {
+        info = datosPaisPanel[pc] || datosPaisPanel[String(pc).toUpperCase()];
+      }
+      if (!info && props.nombre) {
+        for (var k2 in datosPaisPanel) {
+          if (datosPaisPanel[k2] && (datosPaisPanel[k2].nombre === props.nombre || datosPaisPanel[k2].nombre === props.name)) {
+            info = datosPaisPanel[k2];
+            break;
+          }
+        }
+      }
+    }
     if (!info) {
       // buscar por nombre
       var terr = null;
