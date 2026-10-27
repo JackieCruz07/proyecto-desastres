@@ -425,5 +425,141 @@
     }
   }
 
+
+
+  /* ---------------------------------------------------------------------- *
+   * 8. Panel de información por país (Actividad 5)                         *
+   * ---------------------------------------------------------------------- */
+
+  let datosPaisPanel = {};
+  let grafEvolucionChart = null;
+  let grafTiposChart = null;
+  let grafImpactoChart = null;
+
+  async function cargarDatosPaisPanel() {
+    try {
+      const resp = await fetch('datos/panel_pais.json');
+      if (!resp.ok) return;
+      datosPaisPanel = await resp.json();
+    } catch (e) {
+      console.warn('No se pudo cargar panel_pais.json', e);
+    }
+  }
+
+  function formatearNumeroPais(n) {
+    if (n === null || n === undefined || isNaN(n)) return '—';
+    return Number(n).toLocaleString('es-MX');
+  }
+
+  function formatearDanoPais(n) {
+    if (!n) return '—';
+    if (n >= 1e12) return '$' + (n/1e12).toFixed(2) + ' T USD';
+    if (n >= 1e9) return '$' + (n/1e9).toFixed(2) + ' MM USD';
+    if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + ' M USD';
+    return '$' + formatearNumeroPais(Math.round(n)) + ' USD';
+  }
+
+  function actualizarPanelPais(codigo) {
+    var setTxt = function(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
+    if (!codigo) {
+      setTxt('det-eventos', '—');
+      setTxt('det-fallecidos', '—');
+      setTxt('det-afectados', '—');
+      setTxt('det-dano', '—');
+      setTxt('det-periodo', '—');
+      setTxt('det-max-fallecidos', '—');
+      setTxt('det-max-eventos', '—');
+      var ul = document.getElementById('lista-tipos-top'); if (ul) ul.innerHTML = '';
+      setTxt('nota-evolucion', 'Sin datos.');
+      setTxt('nota-tipos', 'Sin datos.');
+      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
+      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
+      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
+      return;
+    }
+    var info = datosPaisPanel[codigo];
+    if (!info) {
+      setTxt('det-eventos', '—');
+      setTxt('det-fallecidos', '—');
+      setTxt('det-afectados', '—');
+      setTxt('det-dano', '—');
+      setTxt('det-periodo', '—');
+      setTxt('det-max-fallecidos', '—');
+      setTxt('det-max-eventos', '—');
+      var ul2 = document.getElementById('lista-tipos-top'); if (ul2) ul2.innerHTML = '<li>Sin datos</li>';
+      setTxt('nota-evolucion', 'Sin datos para este territorio.');
+      setTxt('nota-tipos', 'Sin datos para este territorio.');
+      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
+      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
+      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
+      return;
+    }
+    var t = info.totales;
+    setTxt('det-eventos', formatearNumeroPais(t.eventos));
+    setTxt('det-fallecidos', formatearNumeroPais(t.fallecidos));
+    setTxt('det-afectados', formatearNumeroPais(t.afectados));
+    setTxt('det-dano', formatearDanoPais(t.dano_usd));
+    setTxt('det-periodo', (t.primer_anio && t.ultimo_anio) ? t.primer_anio + ' – ' + t.ultimo_anio : '—');
+
+    if (info.por_anio && info.por_anio.length) {
+      var maxF = info.por_anio.reduce(function(m,x){ return x.fallecidos > m.v ? {v:x.fallecidos,a:x.anio} : m; }, {v:-1,a:null});
+      var maxE = info.por_anio.reduce(function(m,x){ return x.eventos > m.v ? {v:x.eventos,a:x.anio} : m; }, {v:-1,a:null});
+      setTxt('det-max-fallecidos', maxF.v >= 0 ? formatearNumeroPais(maxF.v) + ' (' + maxF.a + ')' : '—');
+      setTxt('det-max-eventos', maxE.v >= 0 ? formatearNumeroPais(maxE.v) + ' (' + maxE.a + ')' : '—');
+
+      var ctxE = document.getElementById('graf-evolucion');
+      if (ctxE && window.Chart) {
+        if (grafEvolucionChart) grafEvolucionChart.destroy();
+        grafEvolucionChart = new Chart(ctxE, {
+          type: 'line',
+          data: { labels: info.por_anio.map(function(x){return x.anio;}), datasets: [
+            { label: 'Eventos', data: info.por_anio.map(function(x){return x.eventos;}), borderColor: '#2563eb', tension: 0.25 },
+            { label: 'Fallecidos', data: info.por_anio.map(function(x){return x.fallecidos;}), borderColor: '#dc2626', tension: 0.25 }
+          ]},
+          options: { responsive: true }
+        });
+      }
+      setTxt('nota-evolucion', info.por_anio.length + ' años con registros.');
+
+      var ctxI = document.getElementById('graf-impacto');
+      if (ctxI && window.Chart) {
+        if (grafImpactoChart) grafImpactoChart.destroy();
+        grafImpactoChart = new Chart(ctxI, {
+          type: 'bar',
+          data: { labels: info.por_anio.map(function(x){return x.anio;}), datasets: [
+            { label: 'Fallecidos', data: info.por_anio.map(function(x){return x.fallecidos;}), backgroundColor: '#f59e0b' }
+          ]},
+          options: { responsive: true }
+        });
+      }
+    } else {
+      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
+      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
+      setTxt('nota-evolucion', 'Sin datos para este territorio.');
+    }
+
+    if (info.por_tipo && info.por_tipo.length) {
+      var top = info.por_tipo.slice(0,6);
+      var ctxT = document.getElementById('graf-tipos');
+      if (ctxT && window.Chart) {
+        if (grafTiposChart) grafTiposChart.destroy();
+        grafTiposChart = new Chart(ctxT, {
+          type: 'doughnut',
+          data: { labels: top.map(function(x){return x.tipo;}), datasets: [
+            { data: top.map(function(x){return x.eventos;}), backgroundColor: ['#2563eb','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'] }
+          ]},
+          options: { responsive: true }
+        });
+      }
+      setTxt('nota-tipos', top.length + ' tipos principales mostrados.');
+      var ul3 = document.getElementById('lista-tipos-top'); if (ul3) { ul3.innerHTML = ''; top.forEach(function(x){ var li=document.createElement('li'); li.textContent = x.tipo + ': ' + formatearNumeroPais(x.eventos) + ' eventos'; ul3.appendChild(li); }); }
+    } else {
+      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
+      setTxt('nota-tipos', 'Sin datos para este territorio.');
+      var ul4 = document.getElementById('lista-tipos-top'); if (ul4) ul4.innerHTML = '<li>Sin datos</li>';
+    }
+  }
+
+
   document.addEventListener("DOMContentLoaded", iniciar);
 })();

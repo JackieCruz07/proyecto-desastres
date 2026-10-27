@@ -197,9 +197,62 @@
         </section>
 
         <!-- Ficha del territorio -->
-        <section class="bloque">
+        <section class="bloque bloque--amplio">
           <h2 class="bloque__titulo">Ficha del territorio</h2>
+          <p class="bloque__ayuda">Información general, totales y visualizaciones por país.</p>
           <div id="ficha" class="ficha"></div>
+
+          <div class="panel-detalle" id="panel-detalle-pais">
+            <h3 class="panel-detalle__titulo">Panel detallado por país</h3>
+
+            <div class="detalle-totales">
+              <div class="tarjeta">
+                <span class="tarjeta__etiqueta">Eventos totales</span>
+                <span class="tarjeta__valor" id="det-eventos">—</span>
+              </div>
+              <div class="tarjeta">
+                <span class="tarjeta__etiqueta">Fallecidos</span>
+                <span class="tarjeta__valor" id="det-fallecidos">—</span>
+              </div>
+              <div class="tarjeta">
+                <span class="tarjeta__etiqueta">Afectados</span>
+                <span class="tarjeta__valor" id="det-afectados">—</span>
+              </div>
+              <div class="tarjeta">
+                <span class="tarjeta__etiqueta">Daño económico (USD)</span>
+                <span class="tarjeta__valor" id="det-dano">—</span>
+              </div>
+            </div>
+
+            <div class="detalle-seccion">
+              <h4 class="detalle-seccion__titulo">Evolución temporal</h4>
+              <canvas id="graf-evolucion" height="180"></canvas>
+              <p class="detalle-seccion__nota" id="nota-evolucion">Sin datos.</p>
+            </div>
+
+            <div class="detalle-seccion">
+              <h4 class="detalle-seccion__titulo">Distribución por tipo de desastre</h4>
+              <canvas id="graf-tipos" height="200"></canvas>
+              <p class="detalle-seccion__nota" id="nota-tipos">Sin datos.</p>
+            </div>
+
+            <div class="detalle-seccion">
+              <h4 class="detalle-seccion__titulo">Impacto humano y económico</h4>
+              <div class="impacto-grid">
+                <div>
+                  <canvas id="graf-impacto" height="180"></canvas>
+                </div>
+                <div class="impacto-resumen">
+                  <p><strong>Periodo:</strong> <span id="det-periodo">—</span></p>
+                  <p><strong>Máx. fallecidos en un año:</strong> <span id="det-max-fallecidos">—</span></p>
+                  <p><strong>Año con más eventos:</strong> <span id="det-max-eventos">—</span></p>
+                  <p><strong>Principales tipos:</strong></p>
+                  <ul id="lista-tipos-top"></ul>
+                </div>
+              </div>
+              <p class="detalle-seccion__nota">Los valores se adaptan a los datos disponibles para cada país.</p>
+            </div>
+          </div>
         </section>
 
         <!-- Nota metodológica -->
@@ -211,6 +264,7 @@
     </aside>
   </div>
 
+  <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
   <script src="js/config.js"></script>
   <script src="js/escalas.js"></script>
