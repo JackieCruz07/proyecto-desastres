@@ -343,13 +343,14 @@
 
   function poblarFiltroTipos() {
     var tipos = ["Flood", "Storm", "Earthquake", "Drought", "Epidemic", "Wildfire", "Extreme temperature", "Mass movement (wet)", "Mass movement (dry)", "Volcanic activity", "Infestation", "Glacial lake outburst flood", "Impact", "Animal incident"];
+    var trad = {"Flood":"Inundación","Storm":"Tormenta","Earthquake":"Terremoto","Drought":"Sequía","Epidemic":"Epidemia","Wildfire":"Incendio forestal","Extreme temperature":"Temperatura extrema","Mass movement (wet)":"Deslizamiento (húmedo)","Mass movement (dry)":"Deslizamiento (seco)","Volcanic activity":"Actividad volcánica","Infestation":"Infestación","Glacial lake outburst flood":"Ruptura de lago glacial","Impact":"Impacto","Animal incident":"Incidente con animales"};
     var select = document.getElementById("selector-tipo");
     if (!select) return;
     select.innerHTML = '<option value="todos">Todos los tipos</option>';
     for (var i=0; i<tipos.length; i++) {
       var op = document.createElement("option");
       op.value = tipos[i];
-      op.textContent = tipos[i];
+      op.textContent = trad[tipos[i]] || tipos[i];
       select.appendChild(op);
     }
   }
@@ -513,6 +514,7 @@
   }
 
   function actualizarPanelPais(codigo) {
+    var trad = {"Flood":"Inundación","Storm":"Tormenta","Earthquake":"Terremoto","Drought":"Sequía","Epidemic":"Epidemia","Wildfire":"Incendio forestal","Extreme temperature":"Temperatura extrema","Mass movement (wet)":"Deslizamiento (húmedo)","Mass movement (dry)":"Deslizamiento (seco)","Volcanic activity":"Actividad volcánica","Infestation":"Infestación","Glacial lake outburst flood":"Ruptura de lago glacial","Impact":"Impacto","Animal incident":"Incidente con animales"};
     var setTxt = function(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
     if (!codigo) {
       setTxt('det-eventos', '—');
@@ -525,12 +527,27 @@
       var ul = document.getElementById('lista-tipos-top'); if (ul) ul.innerHTML = '';
       setTxt('nota-evolucion', 'Sin datos.');
       setTxt('nota-tipos', 'Sin datos.');
-      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
-      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
-      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
+      if (grafEvolucionChart) { try { grafEvolucionChart.destroy(); } catch(e){} grafEvolucionChart = null; }
+      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch(e){} grafTiposChart = null; }
+      if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch(e){} grafImpactoChart = null; }
       return;
     }
-    var info = datosPaisPanel[codigo];
+    var info = datosPaisPanel[codigo] || datosPaisPanel[String(codigo).toUpperCase()];
+    if (!info) {
+      // buscar por nombre
+      var terr = null;
+      if (typeof CapaTematica !== 'undefined' && typeof CapaTematica.territorio === 'function') {
+        try { terr = CapaTematica.territorio(codigo); } catch(e){}
+      }
+      if (terr && terr.nombre) {
+        for (var k in datosPaisPanel) {
+          if (datosPaisPanel[k] && datosPaisPanel[k].nombre === terr.nombre) {
+            info = datosPaisPanel[k];
+            break;
+          }
+        }
+      }
+    }
     if (!info) {
       setTxt('det-eventos', '—');
       setTxt('det-fallecidos', '—');
@@ -542,9 +559,9 @@
       var ul2 = document.getElementById('lista-tipos-top'); if (ul2) ul2.innerHTML = '<li>Sin datos</li>';
       setTxt('nota-evolucion', 'Sin datos para este territorio.');
       setTxt('nota-tipos', 'Sin datos para este territorio.');
-      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
-      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
-      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
+      if (grafEvolucionChart) { try { grafEvolucionChart.destroy(); } catch(e){} grafEvolucionChart = null; }
+      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch(e){} grafTiposChart = null; }
+      if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch(e){} grafImpactoChart = null; }
       return;
     }
     var t = info.totales;
@@ -598,14 +615,14 @@
         if (grafTiposChart) grafTiposChart.destroy();
         grafTiposChart = new Chart(ctxT, {
           type: 'doughnut',
-          data: { labels: top.map(function(x){return x.tipo;}), datasets: [
+          data: { labels: top.map(function(x){return trad[x.tipo] || x.tipo;}), datasets: [
             { data: top.map(function(x){return x.eventos;}), backgroundColor: ['#2563eb','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'] }
           ]},
           options: { responsive: true }
         });
       }
       setTxt('nota-tipos', top.length + ' tipos principales mostrados.');
-      var ul3 = document.getElementById('lista-tipos-top'); if (ul3) { ul3.innerHTML = ''; top.forEach(function(x){ var li=document.createElement('li'); li.textContent = x.tipo + ': ' + formatearNumeroPais(x.eventos) + ' eventos'; ul3.appendChild(li); }); }
+      var ul3 = document.getElementById('lista-tipos-top'); if (ul3) { ul3.innerHTML = ''; top.forEach(function(x){ var li=document.createElement('li'); li.textContent = (trad[x.tipo] || x.tipo) + ': ' + formatearNumeroPais(x.eventos) + ' eventos'; ul3.appendChild(li); }); }
     } else {
       if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
       setTxt('nota-tipos', 'Sin datos para este territorio.');
@@ -613,6 +630,8 @@
     }
   }
 
+
+  cargarDatosPaisPanel();
 
   document.addEventListener("DOMContentLoaded", iniciar);
 })();
