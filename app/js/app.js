@@ -342,47 +342,178 @@
    * 7b. Filtros y controles interactivos (Actividad 4)                     *
    * ---------------------------------------------------------------------- */
 
-  function poblarFiltroTipos() {
-    var tipos = ["Flood", "Storm", "Earthquake", "Drought", "Epidemic", "Wildfire", "Extreme temperature", "Mass movement (wet)", "Mass movement (dry)", "Volcanic activity", "Infestation", "Glacial lake outburst flood", "Impact", "Animal incident"];
-    var trad = window.DICCIONARIO_DESASTRES || {"Flood":"Inundación","Storm":"Tormenta","Earthquake":"Terremoto","Drought":"Sequía","Epidemic":"Epidemia","Wildfire":"Incendio forestal","Extreme temperature":"Temperatura extrema","Mass movement (wet)":"Deslizamiento (húmedo)","Mass movement (dry)":"Deslizamiento (seco)","Volcanic activity":"Actividad volcánica","Infestation":"Infestación","Glacial lake outburst flood":"Ruptura de lago glacial","Impact":"Impacto","Animal incident":"Incidente con animales"};
-    var select = document.getElementById("selector-tipo");
-    if (!select) return;
-    select.innerHTML = '<option value="todos">Todos los tipos</option>';
-    for (var i=0; i<tipos.length; i++) {
-      var op = document.createElement("option");
-      op.value = tipos[i];
-      op.textContent = tradDic[tipos[i]] || tipos[i];
-      select.appendChild(op);
+  let datosFiltros = null;
+  let periodoFiltros = { inicio: 2000, fin: 2026 };
+  let codigoSeleccionado = null;
+
+  async function cargarDatosFiltros() {
+    try {
+      const resp = await fetch("datos/filtros.json");
+      if (!resp.ok) return;
+      datosFiltros = await resp.json();
+      if (datosFiltros.periodo) periodoFiltros = datosFiltros.periodo;
+    } catch (e) {
+      console.warn("No se pudo cargar filtros.json", e);
     }
   }
 
-  function actualizarFiltroPeriodo() {
-    var minEl = document.getElementById("filtro-anio-min");
-    var maxEl = document.getElementById("filtro-anio-max");
-    if (!minEl || !maxEl) return;
-    var min = parseInt(minEl.value, 10);
-    var max = parseInt(maxEl.value, 10);
-    var a1 = Math.min(min, max);
-    var a2 = Math.max(min, max);
-    minEl.value = a1;
-    maxEl.value = a2;
-    var etiqueta = document.getElementById("valor-periodo");
-    if (etiqueta) etiqueta.textContent = a1 + ' – ' + a2;
-    var chk = document.getElementById("chk-aplicar-filtros");
-    var nota = document.getElementById("nota-filtros");
-    var tipoSel = document.getElementById("selector-tipo");
-    var tipo = tipoSel ? tipoSel.value : "todos";
-    if (!chk || !chk.checked) {
-      if (nota) nota.textContent = "Los filtros no están aplicados al mapa.";
+  /** Rellena el selector de tipos con el diccionario en español. */
+  function poblarFiltroTipos() {
+    const select = document.getElementById("selector-tipo");
+    if (!select) return;
+    const tipos = (datosFiltros && datosFiltros.tipos) || [];
+    select.innerHTML = '<option value="todos">Todos los tipos</option>';
+    tipos.forEach((tipo) => {
+      const op = document.createElement("option");
+      op.value = tipo;
+      op.textContent = traducirTipoDesastre(tipo);
+      select.appendChild(op);
+    });
+  }
+
+  /** Lee el estado actual de los controles de filtro. */
+  function leerFiltros() {
+    const minEl = document.getElementById("filtro-anio-min");
+    const maxEl = document.getElementById("filtro-anio-max");
+    const tipoSel = document.getElementById("selector-tipo");
+    const chk = document.getElementById("chk-aplicar-filtros");
+
+    let a1 = minEl ? parseInt(minEl.value, 10) : periodoFiltros.inicio;
+    let a2 = maxEl ? parseInt(maxEl.value, 10) : periodoFiltros.fin;
+    if (a1 > a2) {
+      const tmp = a1;
+      a1 = a2;
+      a2 = tmp;
+    }
+    return {
+      a1,
+      a2,
+      tipo: tipoSel ? tipoSel.value : "todos",
+      activo: chk ? chk.checked : true,
+    };
+  }
+
+  /** Estadísticos de las variables a partir de los valores filtrados. */
+  function calcularEstadisticos(valores) {
+    const campos = {
+      eventos: "eventos",
+      fallecidos: "fallecidos",
+      afectados: "afectados",
+      dano_ajustado: "dano_usd",
+      prom_fallecidos: "prom_fallecidos",
+      prom_afectados: "prom_afectados",
+    };
+    const lista = Object.values(valores);
+    const salida = {};
+
+    Object.keys(campos).forEach((variable) => {
+      const campo = campos[variable];
+      const serie = lista
+        .map((v) => {
+          if (campo === "prom_fallecidos") return v.eventos ? v.fallecidos / v.eventos : 0;
+          if (campo === "prom_afectados") return v.eventos ? v.afectados / v.eventos : 0;
+          return v[campo] || 0;
+        })
+        .filter((n) => n > 0)
+        .sort((a, b) => a - b);
+
+      if (!serie.length) {
+        salida[variable] = { n: 0, min: 0, p50: 0, p99: 0, max: 0, media: 0 };
+        return;
+      }
+      const cuantil = (p) => serie[Math.min(serie.length - 1, Math.floor(p * serie.length))];
+      salida[variable] = {
+        n: serie.length,
+        min: serie[0],
+        p50: cuantil(0.5),
+        p75: cuantil(0.75),
+        p90: cuantil(0.9),
+        p95: cuantil(0.95),
+        p99: cuantil(0.99),
+        max: serie[serie.length - 1],
+        media: serie.reduce((a, b) => a + b, 0) / serie.length,
+      };
+    });
+
+    return salida;
+  }
+
+  /** Recalcula los valores de cada país y los aplica al mapa. */
+  function aplicarFiltros() {
+    const etiqueta = document.getElementById("valor-periodo");
+    const nota = document.getElementById("nota-filtros");
+    const filtro = leerFiltros();
+
+    const minEl = document.getElementById("filtro-anio-min");
+    const maxEl = document.getElementById("filtro-anio-max");
+    if (minEl) minEl.value = filtro.a1;
+    if (maxEl) maxEl.value = filtro.a2;
+    if (etiqueta) etiqueta.textContent = `${filtro.a1} – ${filtro.a2}`;
+
+    const sinCambios =
+      filtro.a1 === periodoFiltros.inicio &&
+      filtro.a2 === periodoFiltros.fin &&
+      filtro.tipo === "todos";
+
+    if (!filtro.activo || sinCambios) {
+      CapaTematica.quitarFiltro();
+      actualizarTarjetas();
+      if (nota) {
+        nota.textContent = filtro.activo
+          ? "Mostrando todos los desastres del periodo completo."
+          : "Los filtros no están aplicados al mapa.";
+      }
+      if (codigoSeleccionado) actualizarPanelPais(codigoSeleccionado);
       return;
     }
-    if (tipo === "todos") {
-      if (nota) nota.textContent = "Mostrando todos los tipos de desastre (" + a1 + " – " + a2 + ")";
-    } else {
-      if (nota) nota.textContent = "Filtrando por tipo: " + tipo + " (" + a1 + " – " + a2 + ")";
-    }
-  }
 
+    if (!datosFiltros || !datosFiltros.datos) {
+      if (nota) nota.textContent = "No se pudieron cargar los datos de los filtros.";
+      return;
+    }
+
+    const valores = {};
+    let totalEventos = 0;
+
+    Object.keys(datosFiltros.datos).forEach((iso) => {
+      let eventos = 0;
+      let fallecidos = 0;
+      let afectados = 0;
+      let dano = 0;
+
+      datosFiltros.datos[iso].forEach((fila) => {
+        if (fila[0] < filtro.a1 || fila[0] > filtro.a2) return;
+        if (filtro.tipo !== "todos" && fila[1] !== filtro.tipo) return;
+        eventos += fila[2];
+        fallecidos += fila[3];
+        afectados += fila[4];
+        dano += fila[5];
+      });
+
+      if (eventos > 0) {
+        valores[iso] = {
+          eventos,
+          fallecidos,
+          afectados,
+          dano_usd: dano,
+        };
+        totalEventos += eventos;
+      }
+    });
+
+    CapaTematica.setFiltro(valores, calcularEstadisticos(valores));
+    actualizarTarjetas();
+
+    if (nota) {
+      const tipoTexto =
+        filtro.tipo === "todos" ? "todos los tipos" : traducirTipoDesastre(filtro.tipo);
+      nota.textContent =
+        `Mostrando ${totalEventos.toLocaleString("es-MX")} eventos · ` +
+        `${tipoTexto} · ${filtro.a1} – ${filtro.a2}`;
+    }
+
+    if (codigoSeleccionado) actualizarPanelPais(codigoSeleccionado);
+  }
 
   /* ---------------------------------------------------------------------- *
    * 7. Tarjetas de resumen                                                 *
@@ -392,7 +523,10 @@
     const territorios = CapaTematica.estado.territorios;
     const variable = CapaTematica.estado.variableColor;
     const definicion = metadatos.variables[variable];
-    const stats = definicion.estadisticos;
+    const stats =
+      typeof CapaTematica.estadisticos === "function"
+        ? CapaTematica.estadisticos(variable)
+        : definicion.estadisticos;
 
     const conDatos = territorios.filter((t) => t[variable] !== null).length;
 
@@ -430,6 +564,7 @@
       const [geojson, metadatos] = await Promise.all([
         cargarJSON(CONFIG.rutaDatos),
         cargarJSON(CONFIG.rutaMetadatos),
+        cargarDatosFiltros(),
       ]);
 
       await crearMapa();
@@ -441,21 +576,44 @@
       conectarInteraccion();
       actualizarTarjetas();
       fichaInicial();
-      try {
-        if (typeof poblarFiltroTipos === "function") poblarFiltroTipos();
-        document.getElementById("filtro-anio-min")?.addEventListener("input", actualizarFiltroPeriodo);
-        document.getElementById("filtro-anio-max")?.addEventListener("input", actualizarFiltroPeriodo);
-        document.getElementById("selector-tipo")?.addEventListener("change", actualizarFiltroPeriodo);
-        document.getElementById("chk-aplicar-filtros")?.addEventListener("change", actualizarFiltroPeriodo);
-        document.getElementById("btn-reset-filtros")?.addEventListener("click", () => {
-          document.getElementById("filtro-anio-min").value = 2000;
-          document.getElementById("filtro-anio-max").value = 2026;
-          document.getElementById("selector-tipo").value = "todos";
-          document.getElementById("chk-aplicar-filtros").checked = true;
-          if (typeof actualizarFiltroPeriodo === "function") actualizarFiltroPeriodo();
+      poblarFiltroTipos();
+
+      const minEl = document.getElementById("filtro-anio-min");
+      const maxEl = document.getElementById("filtro-anio-max");
+      const tipoEl = document.getElementById("selector-tipo");
+      const chkEl = document.getElementById("chk-aplicar-filtros");
+      const btnReset = document.getElementById("btn-reset-filtros");
+
+      if (minEl && maxEl) {
+        minEl.min = periodoFiltros.inicio;
+        minEl.max = periodoFiltros.fin;
+        minEl.value = periodoFiltros.inicio;
+        maxEl.min = periodoFiltros.inicio;
+        maxEl.max = periodoFiltros.fin;
+        maxEl.value = periodoFiltros.fin;
+      }
+      const etiquetaPeriodo = document.getElementById("valor-periodo");
+      if (etiquetaPeriodo) {
+        etiquetaPeriodo.textContent = `${periodoFiltros.inicio} – ${periodoFiltros.fin}`;
+      }
+
+      [minEl, maxEl].forEach((el) => {
+        if (el) el.addEventListener("input", aplicarFiltros);
+      });
+      if (tipoEl) tipoEl.addEventListener("change", aplicarFiltros);
+      if (chkEl) chkEl.addEventListener("change", aplicarFiltros);
+
+      if (btnReset) {
+        btnReset.addEventListener("click", () => {
+          if (minEl) minEl.value = periodoFiltros.inicio;
+          if (maxEl) maxEl.value = periodoFiltros.fin;
+          if (tipoEl) tipoEl.value = "todos";
+          if (chkEl) chkEl.checked = true;
+          aplicarFiltros();
         });
-        if (typeof actualizarFiltroPeriodo === "function") actualizarFiltroPeriodo();
-      } catch(e) { console.warn(e); }
+      }
+
+      aplicarFiltros();
 
       // Nota metodológica desde los metadatos.
       document.getElementById("nota-metodologica").textContent =
@@ -486,20 +644,9 @@
    * 8. Panel de información por país (Actividad 5)                         *
    * ---------------------------------------------------------------------- */
 
-  let datosPaisPanel = {};
   let grafEvolucionChart = null;
   let grafTiposChart = null;
   let grafImpactoChart = null;
-
-  async function cargarDatosPaisPanel() {
-    try {
-      const resp = await fetch('datos/panel_pais.json');
-      if (!resp.ok) return;
-      datosPaisPanel = await resp.json();
-    } catch (e) {
-      console.warn('No se pudo cargar panel_pais.json', e);
-    }
-  }
 
   function formatearNumeroPais(n) {
     if (n === null || n === undefined || isNaN(n)) return '—';
@@ -514,142 +661,243 @@
     return '$' + formatearNumeroPais(Math.round(n)) + ' USD';
   }
 
-  function actualizarPanelPais(codigo, props) {
-    var trad = (window.DICCIONARIO_DESASTRES) ? window.DICCIONARIO_DESASTRES : {"Flood":"Inundación","Storm":"Tormenta","Earthquake":"Terremoto","Drought":"Sequía","Epidemic":"Epidemia","Wildfire":"Incendio forestal","Extreme temperature":"Temperatura extrema","Mass movement (wet)":"Deslizamiento (húmedo)","Mass movement (dry)":"Deslizamiento (seco)","Volcanic activity":"Actividad volcánica","Infestation":"Infestación","Glacial lake outburst flood":"Ruptura de lago glacial","Impact":"Impacto","Animal incident":"Incidente con animales"};
-    var setTxt = function(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
+  /** Resumen de un país aplicando el periodo y el tipo seleccionados. */
+  function infoPaisFiltrada(codigo) {
+    const filtro = leerFiltros();
+    const filas = (datosFiltros && datosFiltros.datos[codigo]) || [];
+    const porAnio = {};
+    const porTipo = {};
+    let totalEventos = 0;
+    let totalFallecidos = 0;
+    let totalAfectados = 0;
+    let totalDano = 0;
+
+    filas.forEach((fila) => {
+      const anio = fila[0];
+      const tipoFila = fila[1];
+
+      if (filtro.activo) {
+        if (anio < filtro.a1 || anio > filtro.a2) return;
+        if (filtro.tipo !== "todos" && tipoFila !== filtro.tipo) return;
+      }
+
+      totalEventos += fila[2];
+      totalFallecidos += fila[3];
+      totalAfectados += fila[4];
+      totalDano += fila[5];
+
+      if (!porAnio[anio]) {
+        porAnio[anio] = { anio, eventos: 0, fallecidos: 0, afectados: 0, dano_usd: 0 };
+      }
+      porAnio[anio].eventos += fila[2];
+      porAnio[anio].fallecidos += fila[3];
+      porAnio[anio].afectados += fila[4];
+      porAnio[anio].dano_usd += fila[5];
+
+      if (!porTipo[tipoFila]) {
+        porTipo[tipoFila] = { tipo: tipoFila, eventos: 0, fallecidos: 0, dano_usd: 0 };
+      }
+      porTipo[tipoFila].eventos += fila[2];
+      porTipo[tipoFila].fallecidos += fila[3];
+      porTipo[tipoFila].dano_usd += fila[5];
+    });
+
+    if (!totalEventos) return null;
+
+    const anios = Object.keys(porAnio)
+      .map((k) => porAnio[k])
+      .sort((a, b) => a.anio - b.anio);
+    const tipos = Object.keys(porTipo)
+      .map((k) => porTipo[k])
+      .sort((a, b) => b.eventos - a.eventos);
+
+    return {
+      totales: {
+        eventos: totalEventos,
+        fallecidos: totalFallecidos,
+        afectados: totalAfectados,
+        dano_usd: totalDano,
+        primer_anio: anios.length ? anios[0].anio : null,
+        ultimo_anio: anios.length ? anios[anios.length - 1].anio : null,
+      },
+      por_anio: anios,
+      por_tipo: tipos,
+    };
+  }
+
+  /** Pinta el panel detallado con los datos del país seleccionado. */
+  function actualizarPanelPais(codigo) {
+    codigoSeleccionado = codigo || null;
+
+    const setTxt = (id, txt) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = txt;
+    };
+
+    const limpiar = () => {
+      if (grafEvolucionChart) { try { grafEvolucionChart.destroy(); } catch (e) {} grafEvolucionChart = null; }
+      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch (e) {} grafTiposChart = null; }
+      if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch (e) {} grafImpactoChart = null; }
+    };
+
+    const vaciar = (mensaje) => {
+      setTxt("det-eventos", "—");
+      setTxt("det-fallecidos", "—");
+      setTxt("det-afectados", "—");
+      setTxt("det-dano", "—");
+      setTxt("det-periodo", "—");
+      setTxt("det-max-fallecidos", "—");
+      setTxt("det-max-eventos", "—");
+      setTxt("nota-evolucion", mensaje);
+      setTxt("nota-tipos", mensaje);
+      const ul = document.getElementById("lista-tipos-top");
+      if (ul) ul.innerHTML = codigo ? "<li>Sin datos</li>" : "";
+      limpiar();
+    };
+
     if (!codigo) {
-      setTxt('det-eventos', '—');
-      setTxt('det-fallecidos', '—');
-      setTxt('det-afectados', '—');
-      setTxt('det-dano', '—');
-      setTxt('det-periodo', '—');
-      setTxt('det-max-fallecidos', '—');
-      setTxt('det-max-eventos', '—');
-      var ul = document.getElementById('lista-tipos-top'); if (ul) ul.innerHTML = '';
-      setTxt('nota-evolucion', 'Sin datos.');
-      setTxt('nota-tipos', 'Sin datos.');
-      if (grafEvolucionChart) { try { grafEvolucionChart.destroy(); } catch(e){} grafEvolucionChart = null; }
-      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch(e){} grafTiposChart = null; }
-      if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch(e){} grafImpactoChart = null; }
+      vaciar("Sin datos.");
       return;
     }
-    var info = null;
-    if (codigo) {
-      info = datosPaisPanel[codigo] || datosPaisPanel[String(codigo).toUpperCase()] || datosPaisPanel[String(codigo).toLowerCase()];
-    }
-    if (!info && props) {
-      var pc = props.codigo || props.iso_a3 || props.ISO_A3 || props.adm0_a3 || props.iso3 || props.ISO3;
-      if (pc) {
-        info = datosPaisPanel[pc] || datosPaisPanel[String(pc).toUpperCase()];
-      }
-      if (!info && props.nombre) {
-        for (var k2 in datosPaisPanel) {
-          if (datosPaisPanel[k2] && (datosPaisPanel[k2].nombre === props.nombre || datosPaisPanel[k2].nombre === props.name)) {
-            info = datosPaisPanel[k2];
-            break;
-          }
-        }
-      }
-    }
+
+    const info = infoPaisFiltrada(codigo);
     if (!info) {
-      // buscar por nombre
-      var terr = null;
-      if (typeof CapaTematica !== 'undefined' && typeof CapaTematica.territorio === 'function') {
-        try { terr = CapaTematica.territorio(codigo); } catch(e){}
-      }
-      if (terr && terr.nombre) {
-        for (var k in datosPaisPanel) {
-          if (datosPaisPanel[k] && datosPaisPanel[k].nombre === terr.nombre) {
-            info = datosPaisPanel[k];
-            break;
-          }
-        }
-      }
-    }
-    if (!info) {
-      setTxt('det-eventos', '—');
-      setTxt('det-fallecidos', '—');
-      setTxt('det-afectados', '—');
-      setTxt('det-dano', '—');
-      setTxt('det-periodo', '—');
-      setTxt('det-max-fallecidos', '—');
-      setTxt('det-max-eventos', '—');
-      var ul2 = document.getElementById('lista-tipos-top'); if (ul2) ul2.innerHTML = '<li>Sin datos</li>';
-      setTxt('nota-evolucion', 'Sin datos para este territorio.');
-      setTxt('nota-tipos', 'Sin datos para este territorio.');
-      if (grafEvolucionChart) { try { grafEvolucionChart.destroy(); } catch(e){} grafEvolucionChart = null; }
-      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch(e){} grafTiposChart = null; }
-      if (grafImpactoChart) { try { grafImpactoChart.destroy(); } catch(e){} grafImpactoChart = null; }
+      vaciar("Sin datos para este territorio con los filtros actuales.");
       return;
     }
-    var t = info.totales;
-    setTxt('det-eventos', formatearNumeroPais(t.eventos));
-    setTxt('det-fallecidos', formatearNumeroPais(t.fallecidos));
-    setTxt('det-afectados', formatearNumeroPais(t.afectados));
-    setTxt('det-dano', formatearDanoPais(t.dano_usd));
-    setTxt('det-periodo', (t.primer_anio && t.ultimo_anio) ? t.primer_anio + ' – ' + t.ultimo_anio : '—');
 
-    if (info.por_anio && info.por_anio.length) {
-      var maxF = info.por_anio.reduce(function(m,x){ return x.fallecidos > m.v ? {v:x.fallecidos,a:x.anio} : m; }, {v:-1,a:null});
-      var maxE = info.por_anio.reduce(function(m,x){ return x.eventos > m.v ? {v:x.eventos,a:x.anio} : m; }, {v:-1,a:null});
-      setTxt('det-max-fallecidos', maxF.v >= 0 ? formatearNumeroPais(maxF.v) + ' (' + maxF.a + ')' : '—');
-      setTxt('det-max-eventos', maxE.v >= 0 ? formatearNumeroPais(maxE.v) + ' (' + maxE.a + ')' : '—');
+    const t = info.totales;
+    setTxt("det-eventos", formatearNumeroPais(t.eventos));
+    setTxt("det-fallecidos", formatearNumeroPais(t.fallecidos));
+    setTxt("det-afectados", formatearNumeroPais(t.afectados));
+    setTxt("det-dano", formatearDanoPais(t.dano_usd));
+    setTxt("det-periodo", t.primer_anio ? `${t.primer_anio} – ${t.ultimo_anio}` : "—");
 
-      var ctxE = document.getElementById('graf-evolucion');
+    if (info.por_anio.length) {
+      const maxF = info.por_anio.reduce(
+        (m, x) => (x.fallecidos > m.v ? { v: x.fallecidos, a: x.anio } : m),
+        { v: -1, a: null }
+      );
+      const maxE = info.por_anio.reduce(
+        (m, x) => (x.eventos > m.v ? { v: x.eventos, a: x.anio } : m),
+        { v: -1, a: null }
+      );
+      setTxt("det-max-fallecidos", maxF.v >= 0 ? `${formatearNumeroPais(maxF.v)} (${maxF.a})` : "—");
+      setTxt("det-max-eventos", maxE.v >= 0 ? `${formatearNumeroPais(maxE.v)} (${maxE.a})` : "—");
+
+      const ctxE = document.getElementById("graf-evolucion");
       if (ctxE && window.Chart) {
         if (grafEvolucionChart) grafEvolucionChart.destroy();
         grafEvolucionChart = new Chart(ctxE, {
-          type: 'line',
-          data: { labels: info.por_anio.map(function(x){return x.anio;}), datasets: [
-            { label: 'Eventos', data: info.por_anio.map(function(x){return x.eventos;}), borderColor: '#2563eb', tension: 0.25 },
-            { label: 'Fallecidos', data: info.por_anio.map(function(x){return x.fallecidos;}), borderColor: '#dc2626', tension: 0.25 }
-          ]},
-          options: { responsive: true }
+          type: "line",
+          data: {
+            labels: info.por_anio.map((x) => x.anio),
+            datasets: [
+              {
+                label: "Eventos",
+                data: info.por_anio.map((x) => x.eventos),
+                borderColor: "#2563eb",
+                backgroundColor: "#2563eb",
+                tension: 0.25,
+              },
+              {
+                label: "Fallecidos",
+                data: info.por_anio.map((x) => x.fallecidos),
+                borderColor: "#dc2626",
+                backgroundColor: "#dc2626",
+                tension: 0.25,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { labels: { boxWidth: 12, font: { size: 10 } } } },
+            scales: {
+              x: { ticks: { font: { size: 9 } } },
+              y: { ticks: { font: { size: 9 } } },
+            },
+          },
         });
       }
-      setTxt('nota-evolucion', info.por_anio.length + ' años con registros.');
+      setTxt("nota-evolucion", `${info.por_anio.length} años con registros.`);
 
-      var ctxI = document.getElementById('graf-impacto');
+      const ctxI = document.getElementById("graf-impacto");
       if (ctxI && window.Chart) {
         if (grafImpactoChart) grafImpactoChart.destroy();
         grafImpactoChart = new Chart(ctxI, {
-          type: 'bar',
-          data: { labels: info.por_anio.map(function(x){return x.anio;}), datasets: [
-            { label: 'Fallecidos', data: info.por_anio.map(function(x){return x.fallecidos;}), backgroundColor: '#f59e0b' }
-          ]},
-          options: { responsive: true }
+          type: "bar",
+          data: {
+            labels: info.por_anio.map((x) => x.anio),
+            datasets: [
+              {
+                label: "Fallecidos",
+                data: info.por_anio.map((x) => x.fallecidos),
+                backgroundColor: "#f59e0b",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { font: { size: 9 } } },
+              y: { ticks: { font: { size: 9 } } },
+            },
+          },
         });
       }
     } else {
-      if (grafEvolucionChart) { grafEvolucionChart.destroy(); grafEvolucionChart = null; }
-      if (grafImpactoChart) { grafImpactoChart.destroy(); grafImpactoChart = null; }
-      setTxt('nota-evolucion', 'Sin datos para este territorio.');
+      limpiar();
+      setTxt("nota-evolucion", "Sin registros anuales con los filtros actuales.");
     }
 
-    if (info.por_tipo && info.por_tipo.length) {
-      var top = info.por_tipo.slice(0,6);
-      var ctxT = document.getElementById('graf-tipos');
+    if (info.por_tipo.length) {
+      const top = info.por_tipo.slice(0, 6);
+      const ctxT = document.getElementById("graf-tipos");
       if (ctxT && window.Chart) {
         if (grafTiposChart) grafTiposChart.destroy();
         grafTiposChart = new Chart(ctxT, {
-          type: 'doughnut',
-          data: { labels: top.map(function(x){ var t=(window.traducirTipoDesastre)?window.traducirTipoDesastre(x.tipo):((window.DICCIONARIO_DESASTRES&&window.DICCIONARIO_DESASTRES[x.tipo])?window.DICCIONARIO_DESASTRES[x.tipo]:x.tipo); return t; }), datasets: [
-            { data: top.map(function(x){return x.eventos;}), backgroundColor: ['#2563eb','#22c55e','#f59e0b','#ef4444','#8b5cf6','#06b6d4'] }
-          ]},
-          options: { responsive: true }
+          type: "doughnut",
+          data: {
+            labels: top.map((x) => traducirTipoDesastre(x.tipo)),
+            datasets: [
+              {
+                data: top.map((x) => x.eventos),
+                backgroundColor: [
+                  "#2563eb",
+                  "#22c55e",
+                  "#f59e0b",
+                  "#ef4444",
+                  "#8b5cf6",
+                  "#06b6d4",
+                ],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 9 } } } },
+          },
         });
       }
-      setTxt('nota-tipos', top.length + ' tipos principales mostrados.');
-      var ul3 = document.getElementById('lista-tipos-top'); if (ul3) { ul3.innerHTML = ''; top.forEach(function(x){ var li=document.createElement('li'); li.textContent = ((window.traducirTipoDesastre)?window.traducirTipoDesastre(x.tipo):((window.DICCIONARIO_DESASTRES&&window.DICCIONARIO_DESASTRES[x.tipo])?window.DICCIONARIO_DESASTRES[x.tipo]:x.tipo)) + ': ' + formatearNumeroPais(x.eventos) + ' eventos'; ul3.appendChild(li); }); }
+      setTxt("nota-tipos", `${top.length} tipos principales mostrados.`);
+
+      const ul = document.getElementById("lista-tipos-top");
+      if (ul) {
+        ul.innerHTML = "";
+        top.forEach((x) => {
+          const li = document.createElement("li");
+          li.textContent = `${traducirTipoDesastre(x.tipo)}: ${formatearNumeroPais(x.eventos)} eventos`;
+          ul.appendChild(li);
+        });
+      }
     } else {
-      if (grafTiposChart) { grafTiposChart.destroy(); grafTiposChart = null; }
-      setTxt('nota-tipos', 'Sin datos para este territorio.');
-      var ul4 = document.getElementById('lista-tipos-top'); if (ul4) ul4.innerHTML = '<li>Sin datos</li>';
+      if (grafTiposChart) { try { grafTiposChart.destroy(); } catch (e) {} grafTiposChart = null; }
+      setTxt("nota-tipos", "Sin registros de tipos con los filtros actuales.");
+      const ul = document.getElementById("lista-tipos-top");
+      if (ul) ul.innerHTML = "<li>Sin datos</li>";
     }
   }
-
-
-  cargarDatosPaisPanel();
 
   document.addEventListener("DOMContentLoaded", iniciar);
 })();

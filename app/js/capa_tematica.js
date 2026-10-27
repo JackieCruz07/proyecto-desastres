@@ -39,6 +39,8 @@ const CapaTematica = (() => {
     territorios: [],
     normalizadorColor: () => 0,
     normalizadorAltura: () => 0,
+    estadisticosOverride: null,
+    respaldo: null,
   };
 
   let mapa = null;
@@ -52,9 +54,20 @@ const CapaTematica = (() => {
     return estado.metadatos.variables[variable];
   }
 
+  /**
+   * Estadísticos vigentes de una variable. Si hay un filtro activo se usan
+   * los que se calcularon con los datos filtrados, para que la escala de
+   * color se adapte a lo que el usuario está viendo.
+   */
+  function estadisticos(variable) {
+    const filtrados = estado.estadisticosOverride;
+    if (filtrados && filtrados[variable]) return filtrados[variable];
+    return definicion(variable).estadisticos;
+  }
+
   /** Calcula el rango efectivo de la escala para una variable. */
   function rangoEscala(variable, tipoEscala) {
-    const stats = definicion(variable).estadisticos;
+    const stats = estadisticos(variable);
     // El mínimo se fija en 0 para incluir territorios con valor nulo.
     const min = 0;
     // El máximo se acota al percentil 99 para que un solo valor extremo
@@ -342,6 +355,21 @@ const CapaTematica = (() => {
       estado.territorios = geojson.features.map((f) => f.properties);
       estado.escala = CONFIG.escalaAutomatica[estado.variableColor] || "lineal";
 
+      // Respaldo de los valores originales (periodo completo, todos los tipos)
+      // para poder restaurarlos al quitar los filtros.
+      estado.respaldo = {};
+      geojson.features.forEach((f) => {
+        const p = f.properties;
+        estado.respaldo[p.codigo] = {
+          eventos: p.eventos,
+          fallecidos: p.fallecidos,
+          afectados: p.afectados,
+          dano_ajustado: p.dano_ajustado,
+          prom_fallecidos: p.prom_fallecidos,
+          prom_afectados: p.prom_afectados,
+        };
+      });
+
       agregarCapas(geojson);
       refrescar();
     },
@@ -411,6 +439,57 @@ const CapaTematica = (() => {
     territorio(codigo) {
       return estado.territorios.find((t) => t.codigo === codigo) || null;
     },
+
+    /**
+     * Aplica al mapa un conjunto de valores ya filtrados por periodo y tipo.
+     * @param {object} valoresPorPais  { ISO: {eventos, fallecidos, ...} }
+     * @param {object} stats           Estadísticos recalculados por variable.
+     */
+    setFiltro(valoresPorPais, stats) {
+      if (!estado.geojson) return;
+
+      estado.geojson.features.forEach((feature) => {
+        const p = feature.properties;
+        const valor = valoresPorPais[p.codigo];
+
+        if (valor) {
+          p.eventos = valor.eventos;
+          p.fallecidos = valor.fallecidos;
+          p.afectados = valor.afectados;
+          p.dano_ajustado = valor.dano_usd;
+          p.prom_fallecidos = valor.eventos ? valor.fallecidos / valor.eventos : 0;
+          p.prom_afectados = valor.eventos ? valor.afectados / valor.eventos : 0;
+        } else {
+          p.eventos = null;
+          p.fallecidos = null;
+          p.afectados = null;
+          p.dano_ajustado = null;
+          p.prom_fallecidos = null;
+          p.prom_afectados = null;
+        }
+      });
+
+      estado.estadisticosOverride = stats || null;
+      refrescar();
+    },
+
+    /** Vuelve a los valores del periodo completo y todos los tipos. */
+    quitarFiltro() {
+      if (!estado.geojson || !estado.respaldo) return;
+
+      estado.geojson.features.forEach((feature) => {
+        const p = feature.properties;
+        const original = estado.respaldo[p.codigo];
+        if (!original) return;
+        Object.assign(p, original);
+      });
+
+      estado.estadisticosOverride = null;
+      refrescar();
+    },
+
+    /** Estadísticos actualmente en uso (filtrados o globales). */
+    estadisticos,
 
     /** Expone el color calculado (útil para la leyenda del tooltip). */
     colorDe(codigo) {
