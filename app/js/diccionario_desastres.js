@@ -1,5 +1,8 @@
 /* =========================================================================
    diccionario_desastres.js — Traducción de tipos de desastre EN -> ES
+   -------------------------------------------------------------------------
+   Archivo generado desde src/diccionario_desastres.py.
+   No editar a mano: cambiar el diccionario en Python y regenerarlo.
    ========================================================================= */
 
 const DICCIONARIO_DESASTRES = {
