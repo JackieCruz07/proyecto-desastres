@@ -20,7 +20,15 @@ DATOS_GEOGRAFICOS = RAIZ / "datos" / "geograficos"
 # Shapefile de límites territoriales (Natural Earth 110m)
 MAPA_SHP = DATOS_GEOGRAFICOS / "ne_110m_admin_0_countries"
 
-# Dataset integrado y validado (Actividad 1)
+# --- Moneda ------------------------------------------------------------
+# Tipo de cambio fijo con el que se convirtió el dataset a pesos mexicanos.
+# Se fija para que las cifras sean reproducibles entre ejecuciones.
+TIPO_CAMBIO_MXN = 20.8
+
+# Dataset integrado y validado (Actividad 1). Se guarda ya en pesos
+# mexicanos: src/moneda.py reemplaza ahí las columnas monetarias de USD a
+# MXN. Los datos originales de EM-DAT y del Banco Mundial quedan intactos en
+# DATOS_ORIGINALES.
 DATASET_INTEGRADO = DATOS_PROCESADOS / "EMDAT_integrado_WDI_validado.csv"
 
 # --- Carpetas de salida ------------------------------------------------

@@ -119,43 +119,25 @@ const ESCALAS_NUMERO = [
 
 /**
  * Formatea un valor según el tipo declarado en los metadatos.
+ * Los montos ya vienen en pesos mexicanos desde el dataset.
  * @param {number} valor
  * @param {"entero"|"decimal"|"moneda"} formato
- * @param {{mostrarMXN?: boolean}} opciones
  */
-function formatearValor(valor, formato = "entero", opciones = {}) {
+function formatearValor(valor, formato = "entero") {
   if (valor === null || valor === undefined || Number.isNaN(valor)) {
     return "Sin datos";
   }
 
   if (formato === "moneda") {
-    if (valor === 0) return "$0 USD";
+    if (valor === 0) return "$0 MXN";
     const abs = Math.abs(valor);
     const escala = ESCALAS_NUMERO.find((e) => abs >= e.limite);
-    let textoUSD;
     if (escala) {
       const reducido = valor / escala.limite;
       const decimales = Math.abs(reducido) < 10 ? 2 : escala.decimales;
-      textoUSD = `$${reducido.toFixed(decimales)}${escala.sufijo} USD`;
-    } else {
-      textoUSD = `$${valor.toLocaleString("es-MX")} USD`;
+      return `$${reducido.toFixed(decimales)}${escala.sufijo} MXN`;
     }
-    if (opciones.mostrarMXN && window.CONFIG && window.CONFIG.tipoCambioMXN) {
-      const tipoCambio = window.CONFIG.tipoCambioMXN;
-      const valorMXN = valor * tipoCambio;
-      const absMXN = Math.abs(valorMXN);
-      const escalaMXN = ESCALAS_NUMERO.find((e) => absMXN >= e.limite);
-      let textoMXN;
-      if (escalaMXN) {
-        const reducido = valorMXN / escalaMXN.limite;
-        const decimales = Math.abs(reducido) < 10 ? 2 : escalaMXN.decimales;
-        textoMXN = `$${reducido.toFixed(decimales)}${escalaMXN.sufijo} MXN`;
-      } else {
-        textoMXN = `$${valorMXN.toLocaleString("es-MX")} MXN`;
-      }
-      return `${textoUSD} · ${textoMXN} (TC: 1 USD = ${tipoCambio} MXN)`;
-    }
-    return textoUSD;
+    return `$${valor.toLocaleString("es-MX")} MXN`;
   }
 
   if (formato === "decimal") {

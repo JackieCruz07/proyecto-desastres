@@ -456,7 +456,7 @@ const CapaTematica = (() => {
           p.eventos = valor.eventos;
           p.fallecidos = valor.fallecidos;
           p.afectados = valor.afectados;
-          p.dano_ajustado = valor.dano_usd;
+          p.dano_ajustado = valor.dano_mxn;
           p.prom_fallecidos = valor.eventos ? valor.fallecidos / valor.eventos : 0;
           p.prom_afectados = valor.eventos ? valor.afectados / valor.eventos : 0;
         } else {

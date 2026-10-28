@@ -35,13 +35,11 @@ const Leyenda = (() => {
 
     minEtiqueta.textContent = Escalas.formatearValor(
       opciones.min,
-      opciones.formato,
-      opciones.formato === "moneda" ? { mostrarMXN: true } : {}
+      opciones.formato
     );
     maxEtiqueta.textContent = Escalas.formatearValor(
       opciones.max,
-      opciones.formato,
-      opciones.formato === "moneda" ? { mostrarMXN: true } : {}
+      opciones.formato
     );
   }
 

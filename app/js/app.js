@@ -238,8 +238,7 @@
             <span>${definicion.etiqueta}</span>
             <strong>${Escalas.formatearValor(
               territorio[clave],
-              definicion.formato,
-              clave === "dano_ajustado" ? { mostrarMXN: true } : {}
+              definicion.formato
             )}</strong>
           </div>`;
       })
@@ -317,8 +316,7 @@
             <span class="metrica__nombre">${definicion.etiqueta}</span>
             <span class="metrica__valor">${Escalas.formatearValor(
               territorio[clave],
-              definicion.formato,
-              clave === "dano_ajustado" ? { mostrarMXN: true } : {}
+              definicion.formato
             )}</span>
           </div>`;
       })
@@ -399,7 +397,7 @@
       eventos: "eventos",
       fallecidos: "fallecidos",
       afectados: "afectados",
-      dano_ajustado: "dano_usd",
+      dano_ajustado: "dano_mxn",
       prom_fallecidos: "prom_fallecidos",
       prom_afectados: "prom_afectados",
     };
@@ -495,7 +493,7 @@
           eventos,
           fallecidos,
           afectados,
-          dano_usd: dano,
+          dano_mxn: dano,
         };
         totalEventos += eventos;
       }
@@ -655,10 +653,7 @@
 
   function formatearDanoPais(n) {
     if (!n) return '—';
-    if (n >= 1e12) return '$' + (n/1e12).toFixed(2) + ' T USD';
-    if (n >= 1e9) return '$' + (n/1e9).toFixed(2) + ' MM USD';
-    if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + ' M USD';
-    return '$' + formatearNumeroPais(Math.round(n)) + ' USD';
+    return Escalas.formatearValor(n, 'moneda');
   }
 
   /** Resumen de un país aplicando el periodo y el tipo seleccionados. */
@@ -687,19 +682,19 @@
       totalDano += fila[5];
 
       if (!porAnio[anio]) {
-        porAnio[anio] = { anio, eventos: 0, fallecidos: 0, afectados: 0, dano_usd: 0 };
+        porAnio[anio] = { anio, eventos: 0, fallecidos: 0, afectados: 0, dano_mxn: 0 };
       }
       porAnio[anio].eventos += fila[2];
       porAnio[anio].fallecidos += fila[3];
       porAnio[anio].afectados += fila[4];
-      porAnio[anio].dano_usd += fila[5];
+      porAnio[anio].dano_mxn += fila[5];
 
       if (!porTipo[tipoFila]) {
-        porTipo[tipoFila] = { tipo: tipoFila, eventos: 0, fallecidos: 0, dano_usd: 0 };
+        porTipo[tipoFila] = { tipo: tipoFila, eventos: 0, fallecidos: 0, dano_mxn: 0 };
       }
       porTipo[tipoFila].eventos += fila[2];
       porTipo[tipoFila].fallecidos += fila[3];
-      porTipo[tipoFila].dano_usd += fila[5];
+      porTipo[tipoFila].dano_mxn += fila[5];
     });
 
     if (!totalEventos) return null;
@@ -716,7 +711,7 @@
         eventos: totalEventos,
         fallecidos: totalFallecidos,
         afectados: totalAfectados,
-        dano_usd: totalDano,
+        dano_mxn: totalDano,
         primer_anio: anios.length ? anios[0].anio : null,
         ultimo_anio: anios.length ? anios[anios.length - 1].anio : null,
       },
@@ -770,7 +765,7 @@
     setTxt("det-eventos", formatearNumeroPais(t.eventos));
     setTxt("det-fallecidos", formatearNumeroPais(t.fallecidos));
     setTxt("det-afectados", formatearNumeroPais(t.afectados));
-    setTxt("det-dano", formatearDanoPais(t.dano_usd));
+    setTxt("det-dano", formatearDanoPais(t.dano_mxn));
     setTxt("det-periodo", t.primer_anio ? `${t.primer_anio} – ${t.ultimo_anio}` : "—");
 
     if (info.por_anio.length) {

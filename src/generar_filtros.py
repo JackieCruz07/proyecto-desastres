@@ -12,13 +12,19 @@ Salida: app/datos/filtros.json
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
 
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from src.config import APP_DATOS, DATASET_INTEGRADO  # noqa: E402
+
 RAIZ = Path(__file__).resolve().parents[1]
-RUTA_CSV = RAIZ / "datos" / "procesados" / "EMDAT_integrado_WDI_validado.csv"
-RUTA_SALIDA = RAIZ / "app" / "datos" / "filtros.json"
+RUTA_CSV = DATASET_INTEGRADO
+RUTA_SALIDA = APP_DATOS / "filtros.json"
 
 # Columnas del dataset que uso para los filtros.
 COL_ANIO = "Start Year"
@@ -26,7 +32,7 @@ COL_TIPO = "Disaster Type"
 COL_ISO = "ISO"
 COL_FALLECIDOS = "Total Deaths"
 COL_AFECTADOS = "Total Affected"
-COL_DANO = "Total Damage, Adjusted ('000 US$)"
+COL_DANO = "Total Damage, Adjusted ('000 MXN)"
 
 
 def cargar_eventos(ruta: Path = RUTA_CSV) -> pd.DataFrame:
@@ -43,7 +49,7 @@ def cargar_eventos(ruta: Path = RUTA_CSV) -> pd.DataFrame:
             "tipo": df[COL_TIPO].astype(str),
             "fallecidos": pd.to_numeric(df[COL_FALLECIDOS], errors="coerce").fillna(0),
             "afectados": pd.to_numeric(df[COL_AFECTADOS], errors="coerce").fillna(0),
-            "dano_usd": pd.to_numeric(df[COL_DANO], errors="coerce").fillna(0) * 1000.0,
+            "dano_mxn": pd.to_numeric(df[COL_DANO], errors="coerce").fillna(0) * 1000.0,
         }
     )
     return eventos
@@ -57,7 +63,7 @@ def agrupar(eventos: pd.DataFrame) -> pd.DataFrame:
             eventos=("iso", "size"),
             fallecidos=("fallecidos", "sum"),
             afectados=("afectados", "sum"),
-            dano_usd=("dano_usd", "sum"),
+            dano_mxn=("dano_mxn", "sum"),
         )
         .sort_values(["iso", "anio", "tipo"])
     )
@@ -77,7 +83,7 @@ def generar(ruta_salida: Path = RUTA_SALIDA) -> Path:
                 int(fila.eventos),
                 int(round(fila.fallecidos)),
                 int(round(fila.afectados)),
-                float(round(fila.dano_usd, 2)),
+                float(round(fila.dano_mxn, 2)),
             ]
         )
 

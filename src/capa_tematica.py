@@ -15,6 +15,11 @@ Recursos preparados para la capa temática
 * Elevación:             mismos atributos listos para fill-extrusion.
 * Deformación de la superficie: valores normalizables para el relieve.
 
+Moneda
+------
+Los montos económicos se leen del dataset ya convertido a pesos mexicanos
+por `src.moneda` (tipo de cambio fijo 1 USD = 20.8 MXN).
+
 Decisiones de integración geográfica (heredadas de la Actividad 2)
 -------------------------------------------------------------------
 * PSE → PSX  (Estado de Palestina)   SSD → SDS  (Sudán del Sur)
@@ -48,6 +53,7 @@ from src.config import (  # noqa: E402
     MAPA_SHP,
     RESULTADOS,
     RESULTADOS_TABLAS,
+    TIPO_CAMBIO_MXN,
     asegurar_carpetas,
 )
 
@@ -87,9 +93,9 @@ VARIABLES = {
         "etiqueta": "Daño económico ajustado",
         "descripcion": (
             "Suma de daños totales ajustados por inflación "
-            "(Total Damage, Adjusted). Convertido a USD."
+            "(Total Damage, Adjusted), expresada en pesos mexicanos."
         ),
-        "unidad": "USD",
+        "unidad": "MXN",
         "formato": "moneda",
         "escala_sugerida": "log",
         "categoria": "impacto económico",
@@ -213,7 +219,7 @@ def agregar_indicadores(df: pd.DataFrame) -> pd.DataFrame:
         datos["ISO"].astype(str).str.strip().replace(EQUIVALENCIAS_ISO)
     )
 
-    columna_dano = "Total Damage, Adjusted ('000 US$)"
+    columna_dano = "Total Damage, Adjusted ('000 MXN)"
 
     agregado = (
         datos.groupby("ISO_mapa", as_index=False)
@@ -221,14 +227,14 @@ def agregar_indicadores(df: pd.DataFrame) -> pd.DataFrame:
             eventos=("DisNo.", "count"),
             fallecidos=("Total Deaths", "sum"),
             afectados=("Total Affected", "sum"),
-            dano_miles=("Total Damage, Adjusted ('000 US$)", "sum"),
+            dano_miles=("Total Damage, Adjusted ('000 MXN)", "sum"),
             eventos_con_dano=(columna_dano, "count"),
             tipos_distintos=("Disaster Type", "nunique"),
         )
         .rename(columns={"ISO_mapa": "codigo"})
     )
 
-    # Daño económico en USD (el dataset lo almacena en miles de USD).
+    # Daño económico en MXN (el dataset lo almacena en miles de pesos).
     agregado["dano_ajustado"] = (agregado["dano_miles"] * 1000).round(0)
     agregado = agregado.drop(columns=["dano_miles"])
 
@@ -395,6 +401,16 @@ def construir_metadatos(capa: gpd.GeoDataFrame, df: pd.DataFrame) -> dict:
             "EMDAT_integrado_WDI_validado.csv"
         ),
         "cartografia": "Natural Earth 110m Admin 0 Countries",
+        "moneda": {
+            "codigo": "MXN",
+            "nombre": "Peso mexicano",
+            "tipo_cambio_usd": TIPO_CAMBIO_MXN,
+            "nota": (
+                "Los montos del dataset se convirtieron de USD a MXN con un "
+                "tipo de cambio fijo de 1 USD = "
+                f"{TIPO_CAMBIO_MXN} MXN."
+            ),
+        },
         "n_eventos": int(len(df)),
         "n_territorios": int(len(capa)),
         "periodo": {

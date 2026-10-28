@@ -1,7 +1,13 @@
 {
-  "generado": "2026-10-23 18:23",
+  "generado": "2026-10-27 20:02",
   "fuente": "EM-DAT (CRED/Université de Louvain) integrado con World Development Indicators — archivo: EMDAT_integrado_WDI_validado.csv",
   "cartografia": "Natural Earth 110m Admin 0 Countries",
+  "moneda": {
+    "codigo": "MXN",
+    "nombre": "Peso mexicano",
+    "tipo_cambio_usd": 20.8,
+    "nota": "Los montos del dataset se convirtieron de USD a MXN con un tipo de cambio fijo de 1 USD = 20.8 MXN."
+  },
   "n_eventos": 10907,
   "n_territorios": 175,
   "periodo": {
@@ -68,21 +74,21 @@
     },
     "dano_ajustado": {
       "etiqueta": "Daño económico ajustado",
-      "descripcion": "Suma de daños totales ajustados por inflación (Total Damage, Adjusted). Convertido a USD.",
-      "unidad": "USD",
+      "descripcion": "Suma de daños totales ajustados por inflación (Total Damage, Adjusted), expresada en pesos mexicanos.",
+      "unidad": "MXN",
       "formato": "moneda",
       "escala_sugerida": "log",
       "categoria": "impacto económico",
       "estadisticos": {
         "n": 168,
         "min": 0.0,
-        "p50": 1104235000.0,
-        "p75": 9032564500.0,
-        "p90": 41842934700.00003,
-        "p95": 78162024800.00002,
-        "p99": 648549788720.0017,
-        "max": 2094570595000.0,
-        "media": 30714282684.52381
+        "p50": 22968088000.0,
+        "p75": 187877341600.0,
+        "p90": 870333041760.0006,
+        "p95": 1625770115840.0002,
+        "p99": 13489835605376.037,
+        "max": 43567068376000.0,
+        "media": 638857079838.0952
       }
     },
     "prom_fallecidos": {

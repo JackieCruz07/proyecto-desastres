@@ -11,9 +11,10 @@ env/
 *-checkpoint.ipynb
 
 # --- Versiones intermedias del dataset --------------------------------
-# El pipeline solo usa EMDAT_integrado_WDI_validado.csv. Las demás son
-# copias intermedias del mismo proceso; se quedan en disco pero no se
-# suben al repositorio para no inflarlo (~74 MB).
+# El pipeline usa EMDAT_integrado_WDI_validado.csv, que ya está en pesos
+# mexicanos (src/moneda.py). Las demás son copias intermedias del mismo
+# proceso; se quedan en disco pero no se suben al repositorio para no
+# inflarlo (~74 MB).
 datos/procesados/EMDAT_integrado_final.csv
 datos/procesados/EMDAT_integrado_WDI.csv
 datos/procesados/EMDAT_integrado_WDI_Mexico_actualizado.csv

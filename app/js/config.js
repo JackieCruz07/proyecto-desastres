@@ -40,8 +40,9 @@ const CONFIG = {
     atmosfera: "#9bb8e0",
   },
 
-  /* Tipo de cambio aproximado para mostrar daño económico en MXN */
-  tipoCambioMXN: 20.8,
+  /* Moneda del proyecto: los montos del dataset ya están en pesos mexicanos
+     (la conversión desde USD se hace en src/moneda.py). */
+  moneda: "MXN",
 
   /* Paletas temáticas: cada variable tiene su propia rampa perceptual.
      Como el mapa base es claro, cada rampa va de un tono suave (valores
