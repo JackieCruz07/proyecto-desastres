@@ -31,6 +31,20 @@ TIPO_CAMBIO_MXN = 20.8
 # DATOS_ORIGINALES.
 DATASET_INTEGRADO = DATOS_PROCESADOS / "EMDAT_integrado_WDI_validado.csv"
 
+# --- Fuentes externas (Actividad 1) ------------------------------------
+# Indicadores socioeconómicos del Banco Mundial (WDI).
+WDI_PIB = DATOS_ORIGINALES / "API_NY.GDP.MKTP.CD_DS2_EN_csv_v2_20.csv"
+WDI_POBLACION = DATOS_ORIGINALES / "API_SP.POP.TOTL_DS2_EN_csv_v2_26.csv"
+WDI_SUPERFICIE = DATOS_ORIGINALES / "API_AG.SRF.TOTL.K2_DS2_es_csv_v2.csv"
+
+# Series de contexto de Our World in Data.
+OWID_IMPACTO = DATOS_ORIGINALES / "natural-disasters-by-yearly-impact.csv"
+OWID_AFECTADOS = DATOS_ORIGINALES / "natural-disasters-people-affected.csv"
+
+# Datos de México (CONAFOR).
+CONAFOR_HISTORICO = DATOS_ORIGINALES / "estadisticasincendiosforestales2015-2024.csv"
+CONAFOR_2025 = DATOS_ORIGINALES / "2025_Incendios_forestales.csv"
+
 # --- Carpetas de salida ------------------------------------------------
 RESULTADOS = RAIZ / "resultados"
 RESULTADOS_GRAFICAS = RESULTADOS / "graficas"

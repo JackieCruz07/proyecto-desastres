@@ -1,0 +1,15 @@
+﻿tipo_en,codigo,tipo_es
+Animal incident,0,Incidente con animales
+Drought,1,Sequía
+Earthquake,2,Terremoto
+Epidemic,3,Epidemia
+Extreme temperature,4,Temperatura extrema
+Flood,5,Inundación
+Glacial lake outburst flood,6,Ruptura de lago glacial
+Impact,7,Impacto
+Infestation,8,Infestación
+Mass movement (dry),9,Deslizamiento (seco)
+Mass movement (wet),10,Deslizamiento (húmedo)
+Storm,11,Tormenta
+Volcanic activity,12,Actividad volcánica
+Wildfire,13,Incendio forestal

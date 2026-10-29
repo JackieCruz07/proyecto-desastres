@@ -6,38 +6,42 @@
    ========================================================================= */
 
 const CONFIG = {
-  /* Ruta al GeoJSON preparado por src/capa_tematica.py */
+  /* Rutas de los archivos preparados por los módulos de src/ */
   rutaDatos: "datos/paises.geojson",
   rutaMetadatos: "datos/metadatos.json",
+  rutaFiltros: "datos/filtros.json",
+  rutaSocio: "datos/paises_socio.json",
+  rutaEventos: "datos/eventos_pais.json",
+  rutaOwid: "datos/owid.json",
+  rutaIncendios: "datos/incendios_mexico.json",
+  rutaPuntosIncendios: "datos/incendios_puntos.geojson",
 
   /* Estado inicial de la vista 3D */
   vistaInicial: {
-    center: [-40, 22],
-    zoom: 1.5,
-    pitch: 42,
+    center: [-60, 12],
+    zoom: 1.95,
+    pitch: 22,
     bearing: 0,
   },
 
   /* Mapa base: globo limpio SIN teselas externas.
-     Se eliminó el mapa base remoto (antes CARTO) porque ahora exige una
-     API key y mostraba el aviso "API key required" sobre el mapa. En su
-     lugar se dibuja un globo azul marino limpio: la capa temática es la única
-     protagonista y la aplicación no depende de teselas externas ni de
-     internet para mostrar el mapa. */
+     El océano va en azul profundo para separarse del fondo púrpura de la
+     página y el relieve temático va de tonos claros a intensos. */
   estiloBase: {
     version: 8,
     sources: {},
     layers: [
-      { id: "fondo", type: "background", paint: { "background-color": "#7aa3d6" } },
+      { id: "fondo", type: "background", paint: { "background-color": "#1b4576" } },
     ],
   },
 
-  /* Fondo de página */
+  /* Colores del mapa y del globo */
   colores: {
-    sinDatos: "#cbd5e1",
-    bordeTerritorio: "#475569",
-    oceano: "#7aa3d6",
-    atmosfera: "#9bb8e0",
+    sinDatos: "#b9aecf",
+    bordeTerritorio: "#3b2a63",
+    oceano: "#1b4576",
+    cielo: "#2b1055",
+    atmosfera: "#7c3aed",
   },
 
   /* Moneda del proyecto: los montos del dataset ya están en pesos mexicanos
@@ -50,36 +54,28 @@ const CONFIG = {
      temático se lea bien sobre el fondo claro. */
   paletas: {
     eventos: {
-      nombre: "YlOrRd",
-      colores: [
-        "#fff7bc",
-        "#fec44f",
-        "#fe9929",
-        "#ec7014",
-        "#cc4c02",
-        "#993404",
-        "#662506",
-      ],
+      nombre: "Ámbar",
+      colores: ["#fff2cc", "#ffd977", "#ffb71b", "#ff8a5f", "#ee3e29", "#b01e10"],
     },
     fallecidos: {
-      nombre: "Reds",
-      colores: ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15", "#67000d"],
+      nombre: "Coral",
+      colores: ["#fde8ec", "#f9b3be", "#fa8a9a", "#ee3e29", "#b31f14", "#6d0f08"],
     },
     afectados: {
-      nombre: "Blues",
-      colores: ["#eff3ff", "#c6dbef", "#9ecae1", "#6baed6", "#3182bd", "#08519c"],
+      nombre: "Lila",
+      colores: ["#f1e9fb", "#d3bdf0", "#ad8ade", "#8256c9", "#5b2fa8", "#38146f"],
     },
     dano_ajustado: {
-      nombre: "Viridis",
-      colores: ["#fde725", "#5ec962", "#21918c", "#3b528b", "#440154"],
+      nombre: "Amanecer",
+      colores: ["#fff6e0", "#ffd166", "#ffb71b", "#fa8a9a", "#a855c9", "#4c1d95"],
     },
     prom_fallecidos: {
-      nombre: "Magma",
-      colores: ["#fcfdbf", "#fe9f6d", "#de4968", "#8c2981", "#3b0f70", "#000004"],
+      nombre: "Terracota",
+      colores: ["#fff1e8", "#ffc8a8", "#ff8a5f", "#ee3e29", "#a81c10", "#5e0d06"],
     },
     prom_afectados: {
-      nombre: "Teal",
-      colores: ["#ccfbf1", "#99f6e4", "#2dd4bf", "#0d9488", "#115e59", "#042f2e"],
+      nombre: "Violeta",
+      colores: ["#f5ecff", "#dcc6f5", "#b98ee6", "#8b5cc9", "#5b2fa8", "#2c0f5c"],
     },
   },
 

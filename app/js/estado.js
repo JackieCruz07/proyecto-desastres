@@ -12,10 +12,10 @@ const Estado = (() => {
     texto.textContent = contenido;
     texto.style.color =
       tipo === "error"
-        ? "#fb7185"
+        ? "#f9a8b2"
         : tipo === "ok"
-        ? "#2dd4bf"
-        : "#94a3b8";
+        ? "#ffc14c"
+        : "#d9d0ee";
   }
 
   /**

@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-27 20:02",
+  "generado": "2026-10-28 14:05",
   "fuente": "EM-DAT (CRED/Université de Louvain) integrado con World Development Indicators — archivo: EMDAT_integrado_WDI_validado.csv",
   "cartografia": "Natural Earth 110m Admin 0 Countries",
   "moneda": {
@@ -129,5 +129,36 @@
         "media": 174994.13190476192
       }
     }
-  }
+  },
+  "socio": {
+    "poblacion": {
+      "etiqueta": "Población",
+      "unidad": "habitantes"
+    },
+    "superficie_km2": {
+      "etiqueta": "Superficie",
+      "unidad": "km²"
+    },
+    "pib_mxn": {
+      "etiqueta": "PIB",
+      "unidad": "MXN"
+    },
+    "pib_pc_mxn": {
+      "etiqueta": "PIB por habitante",
+      "unidad": "MXN"
+    },
+    "densidad": {
+      "etiqueta": "Densidad de población",
+      "unidad": "hab/km²"
+    },
+    "anio_socio": {
+      "etiqueta": "Año de referencia",
+      "unidad": "año"
+    }
+  },
+  "fuentes_complementarias": [
+    "World Bank — World Development Indicators (PIB, población y superficie)",
+    "Our World in Data (contexto y validación)",
+    "CONAFOR (incendios forestales de México)"
+  ]
 }

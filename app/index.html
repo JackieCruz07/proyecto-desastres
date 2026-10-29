@@ -1,282 +1,412 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Atlas Global de Desastres · Capa de visualización temática</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atlas Global de Desastres</title>
 
-  <meta
-    name="description"
-    content="Mapa mundial 3D interactivo de desastres naturales (EM-DAT). Capa temática con coloración, intensidad, elevación y deformación de la superficie."
-  />
+    <meta
+      name="description"
+      content="Aplicación web interactiva para explorar los desastres naturales registrados en el mundo, con énfasis en México."
+    />
 
-  <!-- MapLibre GL JS: globo 3D, elevación (fill-extrusion) y relieve temático -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css"
-  />
+    <!-- Tipografías de la identidad visual -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="css/estilos.css" />
-</head>
+    <!-- MapLibre GL JS: globo 3D, elevación y relieve temático -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css"
+    />
 
-<body>
-  <div id="app">
-    <!-- ==================== MAPA ==================== -->
-    <main class="mapa-contenedor">
-      <div id="mapa" aria-label="Mapa mundial 3D de desastres naturales"></div>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
 
-      <!-- Encabezado flotante -->
-      <header class="encabezado">
-        <div class="encabezado__texto">
-          <p class="encabezado__kicker">ANÁLISIS GEOESPACIAL · EM-DAT</p>
-          <h1>Atlas Global de Desastres</h1>
+  <body>
+    <div id="app">
+      <!-- ==================== MAPA ==================== -->
+      <main class="mapa-contenedor">
+        <div id="mapa" aria-label="Mapa mundial 3D de desastres naturales"></div>
+
+        <!-- Encabezado flotante -->
+        <header class="encabezado">
+          <div class="marca">
+            <span class="marca__sello" aria-hidden="true">
+              <svg viewBox="0 0 32 32" role="img">
+                <path
+                  d="M16 2.5l3.1 5.4 5.9-1.6-1.6 5.9L28.8 15l-5.4 3.1 1.6 5.9-5.9-1.6L16 27.8l-3.1-5.4-5.9 1.6 1.6-5.9L3.2 15l5.4-3.1-1.6-5.9 5.9 1.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <div class="marca__texto">
+              <p class="marca__kicker">ANÁLISIS GEOESPACIAL · EM-DAT</p>
+              <h1>Atlas Global de Desastres</h1>
+            </div>
+          </div>
           <p class="encabezado__subtitulo">
-            Capa de visualización temática sobre mapa 3D
+            Desastres naturales, impacto humano y económico por país
           </p>
+          <div class="encabezado__insignia">
+            <span class="punto-vivo" aria-hidden="true"></span>
+            <span id="insignia-modo">Coloración · Elevación · Deformación</span>
+          </div>
+        </header>
+
+        <!-- Leyenda dinámica -->
+        <section class="leyenda" aria-live="polite">
+          <div class="leyenda__cabecera">
+            <h2 id="leyenda-titulo">Número de desastres</h2>
+            <span id="leyenda-unidad" class="leyenda__unidad">eventos</span>
+          </div>
+          <div id="leyenda-barra" class="leyenda__barra"></div>
+          <div class="leyenda__escala">
+            <span id="leyenda-min">0</span>
+            <span id="leyenda-max">—</span>
+          </div>
+          <div class="leyenda__recursos">
+            <span class="chip" data-recurso="color">Color</span>
+            <span class="chip" data-recurso="elevacion">Elevación</span>
+            <span class="chip" data-recurso="deformacion">Deformación</span>
+          </div>
+        </section>
+
+        <!-- Selector globo / plano -->
+        <div class="control-vista">
+          <button id="btn-globo" class="boton-vista activo" type="button">
+            Globo
+          </button>
+          <button id="btn-plano" class="boton-vista" type="button">
+            Plano
+          </button>
         </div>
-        <div class="encabezado__insignia">
-          <span class="punto-vivo" aria-hidden="true"></span>
-          <span id="insignia-modo">Coloración · Intensidad · Elevación</span>
+
+        <!-- Tooltip flotante -->
+        <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+        <!-- Barra de estado -->
+        <footer class="estado">
+          <span id="estado-texto">Cargando la capa temática…</span>
+        </footer>
+      </main>
+
+      <!-- ==================== PANEL LATERAL ==================== -->
+      <aside class="panel" aria-label="Controles del atlas">
+        <div class="panel__marca">
+          <span class="panel__sello" aria-hidden="true">
+            <svg viewBox="0 0 32 32" role="img">
+              <path
+                d="M16 2.5l3.1 5.4 5.9-1.6-1.6 5.9L28.8 15l-5.4 3.1 1.6 5.9-5.9-1.6L16 27.8l-3.1-5.4-5.9 1.6 1.6-5.9L3.2 15l5.4-3.1-1.6-5.9 5.9 1.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          <div>
+            <p class="panel__titulo">Atlas Global</p>
+            <p class="panel__subtitulo">Desastres naturales · 2000–2026</p>
+          </div>
         </div>
-      </header>
 
-      <!-- Leyenda dinámica -->
-      <section class="leyenda" aria-live="polite">
-        <div class="leyenda__cabecera">
-          <h2 id="leyenda-titulo">Número de desastres</h2>
-          <span id="leyenda-unidad" class="leyenda__unidad">eventos</span>
-        </div>
-        <div id="leyenda-barra" class="leyenda__barra"></div>
-        <div class="leyenda__escala">
-          <span id="leyenda-min">0</span>
-          <span id="leyenda-max">—</span>
-        </div>
-        <div class="leyenda__recursos">
-          <span class="chip" data-recurso="color">Color</span>
-          <span class="chip" data-recurso="elevacion">Elevación</span>
-          <span class="chip" data-recurso="deformacion">Deformación</span>
-        </div>
-      </section>
+        <!-- Pestañas -->
+        <nav class="pestanas" role="tablist" aria-label="Secciones del panel">
+          <button
+            class="pestana activo"
+            data-pestana="resumen"
+            role="tab"
+            aria-selected="true"
+            type="button"
+          >
+            Resumen
+          </button>
+          <button
+            class="pestana"
+            data-pestana="filtros"
+            role="tab"
+            aria-selected="false"
+            type="button"
+          >
+            Filtros
+          </button>
+          <button
+            class="pestana"
+            data-pestana="capa"
+            role="tab"
+            aria-selected="false"
+            type="button"
+          >
+            Capa
+          </button>
+        </nav>
 
-      <!-- Selector globo / plano -->
-      <div class="control-vista">
-        <button id="btn-globo" class="boton-vista activo" type="button">
-          Globo
-        </button>
-        <button id="btn-plano" class="boton-vista" type="button">
-          Plano
-        </button>
-      </div>
+        <div class="panel__scroll">
+          <!-- ---------------- PESTAÑA: RESUMEN ---------------- -->
+          <div class="vista activo" data-vista="resumen">
+            <section class="tarjetas" id="tarjetas-resumen"></section>
 
-      <!-- Tooltip flotante -->
-      <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+            <section class="bloque">
+              <h2 class="bloque__titulo">Ficha del territorio</h2>
+              <p class="bloque__ayuda">
+                Haz clic en un país del mapa para ver su ficha y abre el panel
+                detallado con indicadores, rankings y desastres destacados.
+              </p>
+              <div id="ficha" class="ficha"></div>
+              <button id="btn-abrir-panel" class="boton boton--primario" type="button" disabled>
+                Abrir panel detallado
+              </button>
+            </section>
 
-      <!-- Barra de estado -->
-      <footer class="estado">
-        <span id="estado-texto">Cargando capa temática…</span>
-      </footer>
-    </main>
-
-    <!-- ==================== PANEL LATERAL ==================== -->
-    <aside class="panel" aria-label="Controles de la capa temática">
-      <div class="panel__scroll">
-        <!-- Tarjetas resumen -->
-        <section class="tarjetas" id="tarjetas-resumen"></section>
-
-        <!-- Filtros y controles interactivos -->
-        <section class="bloque">
-          <h2 class="bloque__titulo">Filtros y controles interactivos</h2>
-          <p class="bloque__ayuda">
-            Filtra los desastres por periodo y por tipo para actualizar el mapa.
-          </p>
-
-          <label class="campo">
-            <span>Periodo de tiempo</span>
-            <div class="rango">
-              <input id="filtro-anio-min" type="range" min="2000" max="2026" step="1" value="2000" />
-              <input id="filtro-anio-max" type="range" min="2000" max="2026" step="1" value="2026" />
-            </div>
-            <span class="campo__valor" id="valor-periodo">2000 – 2026</span>
-          </label>
-
-          <label class="campo">
-            <span>Tipo de desastre</span>
-            <select id="selector-tipo">
-              <option value="todos">Todos los tipos</option>
-            </select>
-          </label>
-
-          <div class="campo checkbox">
-            <input id="chk-aplicar-filtros" type="checkbox" checked />
-            <span>Aplicar filtros al mapa</span>
+            <section class="bloque">
+              <h2 class="bloque__titulo">Paleta temática</h2>
+              <div id="paleta" class="paleta"></div>
+              <p class="bloque__nota" id="nota-escala"></p>
+            </section>
           </div>
 
-          <button class="boton-reset" id="btn-reset-filtros" type="button">Restablecer filtros</button>
-          <p class="bloque__nota" id="nota-filtros">Mostrando todos los desastres del periodo completo.</p>
-        </section>
+          <!-- ---------------- PESTAÑA: FILTROS ---------------- -->
+          <div class="vista" data-vista="filtros">
+            <section class="bloque">
+              <h2 class="bloque__titulo">Periodo de tiempo</h2>
+              <p class="bloque__ayuda">
+                Ajusta el intervalo para comparar la ocurrencia de desastres
+                entre distintos periodos.
+              </p>
 
-        <!-- Representación temática -->
-        <section class="bloque">
-          <h2 class="bloque__titulo">Representación temática</h2>
-          <p class="bloque__ayuda">
-            Elige la variable representada por el <strong>color</strong> y la
-            representada por la <strong>elevación o deformación</strong> de la
-            superficie.
-          </p>
+              <label class="campo">
+                <span class="campo__etiqueta">Año inicial</span>
+                <input id="filtro-anio-min" type="range" min="2000" max="2026" step="1" value="2000" />
+                <span class="campo__valor" id="valor-anio-min">2000</span>
+              </label>
 
-          <label class="campo">
-            <span>Variable de coloración</span>
-            <select id="selector-color"></select>
-          </label>
+              <label class="campo">
+                <span class="campo__etiqueta">Año final</span>
+                <input id="filtro-anio-max" type="range" min="2000" max="2026" step="1" value="2026" />
+                <span class="campo__valor" id="valor-anio-max">2026</span>
+              </label>
 
-          <label class="campo">
-            <span>Variable de elevación / deformación</span>
-            <select id="selector-elevacion"></select>
-          </label>
+              <p class="periodo-actual">
+                Periodo seleccionado:
+                <strong id="valor-periodo">2000 – 2026</strong>
+              </p>
+            </section>
 
-          <div class="campo">
-            <span>Recurso visual 3D</span>
-            <div class="segmentado" role="radiogroup" aria-label="Recurso visual">
-              <button
-                class="segmento activo"
-                data-recurso="elevacion"
-                type="button"
-                role="radio"
-                aria-checked="true"
-              >
-                Elevación
+            <section class="bloque">
+              <h2 class="bloque__titulo">Tipo de desastre</h2>
+              <label class="campo">
+                <span class="campo__etiqueta">Categoría</span>
+                <select id="selector-tipo">
+                  <option value="todos">Todos los tipos</option>
+                </select>
+              </label>
+
+              <label class="campo checkbox">
+                <input id="chk-aplicar-filtros" type="checkbox" checked />
+                <span>Aplicar los filtros al mapa</span>
+              </label>
+
+              <button class="boton boton--fantasma" id="btn-reset-filtros" type="button">
+                Restablecer filtros
               </button>
-              <button
-                class="segmento"
-                data-recurso="deformacion"
-                type="button"
-                role="radio"
-                aria-checked="false"
-              >
-                Deformación
-              </button>
-              <button
-                class="segmento"
-                data-recurso="ninguno"
-                type="button"
-                role="radio"
-                aria-checked="false"
-              >
-                Ninguno
-              </button>
-            </div>
+              <p class="bloque__nota" id="nota-filtros">
+                Mostrando todos los desastres del periodo completo.
+              </p>
+            </section>
           </div>
 
-          <label class="campo">
-            <span>Intensidad del color (saturación de la escala)</span>
-            <input id="intensidad" type="range" min="0" max="100" value="60" />
-          </label>
+          <!-- ---------------- PESTAÑA: CAPA ---------------- -->
+          <div class="vista" data-vista="capa">
+            <section class="bloque">
+              <h2 class="bloque__titulo">Representación temática</h2>
+              <p class="bloque__ayuda">
+                Elige la variable del <strong>color</strong> y la de la
+                <strong>elevación o deformación</strong> de la superficie.
+              </p>
 
-          <label class="campo">
-            <span>Altura máxima del relieve</span>
-            <input id="escala-altura" type="range" min="10000" max="1200000"
-                   step="10000" value="400000" />
-            <span class="campo__valor" id="valor-altura">400 km</span>
-          </label>
+              <label class="campo">
+                <span class="campo__etiqueta">Variable de coloración</span>
+                <select id="selector-color"></select>
+              </label>
 
-          <label class="campo">
-            <span>Escala de la variable</span>
-            <select id="selector-escala">
-              <option value="auto">Automática (según variable)</option>
-              <option value="lineal">Lineal</option>
-              <option value="log">Logarítmica</option>
-            </select>
-          </label>
+              <label class="campo">
+                <span class="campo__etiqueta">Variable de elevación</span>
+                <select id="selector-elevacion"></select>
+              </label>
 
-          <label class="campo checkbox">
-            <input id="chk-sin-datos" type="checkbox" checked />
-            <span>Mostrar territorios sin indicadores</span>
-          </label>
-        </section>
-
-        <!-- Leyenda de colores -->
-        <section class="bloque">
-          <h2 class="bloque__titulo">Paleta temática</h2>
-          <div id="paleta" class="paleta"></div>
-          <p class="bloque__nota" id="nota-escala"></p>
-        </section>
-
-        <!-- Ficha del territorio -->
-        <section class="bloque bloque--amplio">
-          <h2 class="bloque__titulo">Ficha del territorio</h2>
-          <p class="bloque__ayuda">Información general, totales y visualizaciones por país.</p>
-          <div id="ficha" class="ficha"></div>
-
-          <div class="panel-detalle" id="panel-detalle-pais">
-            <h3 class="panel-detalle__titulo">Panel detallado por país</h3>
-
-            <div class="detalle-totales">
-              <div class="tarjeta">
-                <span class="tarjeta__etiqueta">Eventos totales</span>
-                <span class="tarjeta__valor" id="det-eventos">—</span>
-              </div>
-              <div class="tarjeta">
-                <span class="tarjeta__etiqueta">Fallecidos</span>
-                <span class="tarjeta__valor" id="det-fallecidos">—</span>
-              </div>
-              <div class="tarjeta">
-                <span class="tarjeta__etiqueta">Afectados</span>
-                <span class="tarjeta__valor" id="det-afectados">—</span>
-              </div>
-              <div class="tarjeta">
-                <span class="tarjeta__etiqueta">Daño económico (MXN)</span>
-                <span class="tarjeta__valor" id="det-dano">—</span>
-              </div>
-            </div>
-
-            <div class="detalle-seccion">
-              <h4 class="detalle-seccion__titulo">Evolución temporal</h4>
-              <canvas id="graf-evolucion" height="180"></canvas>
-              <p class="detalle-seccion__nota" id="nota-evolucion">Sin datos.</p>
-            </div>
-
-            <div class="detalle-seccion">
-              <h4 class="detalle-seccion__titulo">Distribución por tipo de desastre</h4>
-              <canvas id="graf-tipos" height="200"></canvas>
-              <p class="detalle-seccion__nota" id="nota-tipos">Sin datos.</p>
-            </div>
-
-            <div class="detalle-seccion">
-              <h4 class="detalle-seccion__titulo">Impacto humano y económico</h4>
-              <div class="impacto-grid">
-                <div>
-                  <canvas id="graf-impacto" height="180"></canvas>
-                </div>
-                <div class="impacto-resumen">
-                  <p><strong>Periodo:</strong> <span id="det-periodo">—</span></p>
-                  <p><strong>Máx. fallecidos en un año:</strong> <span id="det-max-fallecidos">—</span></p>
-                  <p><strong>Año con más eventos:</strong> <span id="det-max-eventos">—</span></p>
-                  <p><strong>Principales tipos:</strong></p>
-                  <ul id="lista-tipos-top"></ul>
+              <div class="campo">
+                <span class="campo__etiqueta">Recurso visual 3D</span>
+                <div class="segmentado" role="radiogroup" aria-label="Recurso visual">
+                  <button class="segmento activo" data-recurso="elevacion" type="button" role="radio" aria-checked="true">
+                    Elevación
+                  </button>
+                  <button class="segmento" data-recurso="deformacion" type="button" role="radio" aria-checked="false">
+                    Deformación
+                  </button>
+                  <button class="segmento" data-recurso="ninguno" type="button" role="radio" aria-checked="false">
+                    Ninguno
+                  </button>
                 </div>
               </div>
-              <p class="detalle-seccion__nota">Los valores se adaptan a los datos disponibles para cada país.</p>
-            </div>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Intensidad del color</span>
+                <input id="intensidad" type="range" min="0" max="100" value="70" />
+              </label>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Altura máxima del relieve</span>
+                <input id="escala-altura" type="range" min="10000" max="1200000" step="10000" value="400000" />
+                <span class="campo__valor" id="valor-altura">400 km</span>
+              </label>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Escala de la variable</span>
+                <select id="selector-escala">
+                  <option value="auto">Automática (según variable)</option>
+                  <option value="lineal">Lineal</option>
+                  <option value="log">Logarítmica</option>
+                </select>
+              </label>
+
+              <label class="campo checkbox">
+                <input id="chk-sin-datos" type="checkbox" checked />
+                <span>Mostrar territorios sin indicadores</span>
+              </label>
+            </section>
+
+            <section class="bloque">
+              <h2 class="bloque__titulo">Capas complementarias</h2>
+              <p class="bloque__ayuda">
+                Datos de gobierno de México incorporados al atlas.
+              </p>
+
+              <label class="campo checkbox">
+                <input id="chk-incendios" type="checkbox" />
+                <span>Incendios forestales de México (CONAFOR)</span>
+              </label>
+              <p class="bloque__nota" id="nota-incendios">
+                Se dibujan los incendios de 50 hectáreas o más, según el
+                periodo seleccionado.
+              </p>
+            </section>
           </div>
-        </section>
 
-        <!-- Nota metodológica -->
-        <section class="bloque nota">
-          <p class="nota__titulo">NOTA METODOLÓGICA</p>
-          <p id="nota-metodologica"></p>
-        </section>
+          <!-- Nota metodológica -->
+          <section class="bloque nota">
+            <p class="nota__titulo">NOTA METODOLÓGICA</p>
+            <p id="nota-metodologica"></p>
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ==================== PANEL DETALLADO POR PAÍS ==================== -->
+    <dialog id="modal-pais" class="modal" aria-labelledby="modal-nombre">
+      <div class="modal__hoja">
+        <header class="modal__cabecera">
+          <div class="modal__identidad">
+            <p class="modal__kicker">PANEL POR PAÍS</p>
+            <h2 id="modal-nombre">—</h2>
+            <p class="modal__meta" id="modal-meta">—</p>
+          </div>
+          <div class="modal__acciones">
+            <span class="insignia-dato" id="modal-badge">—</span>
+            <button id="modal-cerrar" class="boton-icono" type="button" aria-label="Cerrar panel">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="modal__cuerpo">
+          <section class="modal__kpis" id="modal-kpis"></section>
+
+          <section class="modal__bloque">
+            <h3 class="modal__titulo">Posición mundial</h3>
+            <div class="rankings" id="modal-rankings"></div>
+            <p class="nota" id="nota-ranking"></p>
+          </section>
+
+          <div class="modal__grid">
+            <section class="modal__bloque modal__bloque--ancho">
+              <h3 class="modal__titulo">Evolución temporal</h3>
+              <canvas id="graf-evolucion" height="200"></canvas>
+              <p class="nota" id="nota-evolucion">Sin datos.</p>
+            </section>
+
+            <section class="modal__bloque">
+              <h3 class="modal__titulo">Distribución por tipo</h3>
+              <canvas id="graf-tipos" height="220"></canvas>
+              <p class="nota" id="nota-tipos">Sin datos.</p>
+            </section>
+
+            <section class="modal__bloque">
+              <h3 class="modal__titulo">Impacto humano por año</h3>
+              <canvas id="graf-impacto" height="200"></canvas>
+            </section>
+
+            <section class="modal__bloque modal__bloque--ancho">
+              <h3 class="modal__titulo" id="titulo-comparacion">
+                Periodo actual contra periodo anterior
+              </h3>
+              <div class="comparativa" id="comparativa"></div>
+              <p class="nota" id="nota-comparacion"></p>
+            </section>
+          </div>
+
+          <div class="modal__grid">
+            <section class="modal__bloque">
+              <h3 class="modal__titulo">Desastres con más impacto humano</h3>
+              <ol class="lista-eventos" id="lista-victimas"></ol>
+            </section>
+
+            <section class="modal__bloque">
+              <h3 class="modal__titulo">Mayor daño económico</h3>
+              <ol class="lista-eventos" id="lista-dano"></ol>
+            </section>
+          </div>
+
+          <section class="modal__bloque modal__bloque--mexico" id="bloque-mexico" hidden>
+            <div class="modal__bloque-cabecera">
+              <h3 class="modal__titulo">Incendios forestales en México</h3>
+              <span class="sello-fuente">CONAFOR</span>
+            </div>
+            <div class="mexico-grid" id="mexico-resumen"></div>
+            <div class="mexico-columnas">
+              <div>
+                <h4 class="mini-titulo">Superficie afectada por estado</h4>
+                <div class="barras" id="mexico-estados"></div>
+              </div>
+              <div>
+                <h4 class="mini-titulo">Principales causas</h4>
+                <div class="barras" id="mexico-causas"></div>
+              </div>
+            </div>
+            <p class="nota" id="nota-mexico"></p>
+          </section>
+
+          <section class="modal__bloque modal__bloque--owid" id="bloque-owid">
+            <div class="modal__bloque-cabecera">
+              <h3 class="modal__titulo">Contexto externo</h3>
+              <span class="sello-fuente">Our World in Data</span>
+            </div>
+            <div class="owid-grid" id="owid-resumen"></div>
+            <p class="nota" id="nota-owid"></p>
+          </section>
+        </div>
       </div>
-    </aside>
-  </div>
+    </dialog>
 
-  <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-  <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
-  <script src="js/diccionario_desastres.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/escalas.js"></script>
-  <script src="js/leyenda.js"></script>
-  <script src="js/estado.js"></script>
-  <script src="js/capa_tematica.js"></script>
-  <script src="js/app.js"></script>
-</body>
+    <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
+    <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
+    <script src="js/diccionario_desastres.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/escalas.js"></script>
+    <script src="js/leyenda.js"></script>
+    <script src="js/estado.js"></script>
+    <script src="js/capa_tematica.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>

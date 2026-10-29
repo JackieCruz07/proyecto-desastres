@@ -56,6 +56,7 @@ from src.config import (  # noqa: E402
     TIPO_CAMBIO_MXN,
     asegurar_carpetas,
 )
+from src.integracion_paises import construir_tabla as construir_tabla_socio  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # 1. DICCIONARIO DE VARIABLES TEMÁTICAS
@@ -306,6 +307,18 @@ def construir_capa(df: pd.DataFrame) -> tuple[gpd.GeoDataFrame, pd.DataFrame]:
 
     capa = mapa_final.merge(agregado, on="codigo", how="left")
 
+    # --- indicadores socioeconómicos del Banco Mundial -------------------
+    socio = construir_tabla_socio()[
+        ["poblacion", "superficie_km2", "pib_mxn", "pib_pc_mxn", "densidad", "anio_socio"]
+    ]
+    capa = capa.merge(socio, left_on="codigo", right_index=True, how="left")
+
+    # Posición de cada territorio en los rankings mundiales.
+    capa["victimas"] = capa["fallecidos"].fillna(0) + capa["afectados"].fillna(0)
+    capa["rank_eventos"] = capa["eventos"].rank(ascending=False, method="min")
+    capa["rank_victimas"] = capa["victimas"].rank(ascending=False, method="min")
+    capa["rank_dano"] = capa["dano_ajustado"].rank(ascending=False, method="min")
+
     # --- disponibilidad de datos (documentada en la Actividad 2) ---------
     capa["disponibilidad"] = "Con indicadores asociados"
     capa["observacion"] = (
@@ -333,6 +346,8 @@ def construir_capa(df: pd.DataFrame) -> tuple[gpd.GeoDataFrame, pd.DataFrame]:
         "disponibilidad", "observacion",
         *VARIABLES.keys(),
         "tipos_distintos", "cobertura_dano",
+        "poblacion", "superficie_km2", "pib_mxn", "pib_pc_mxn", "densidad",
+        "anio_socio", "rank_eventos", "rank_victimas", "rank_dano",
         "geometry",
     ]
     capa = capa[columnas_salida].rename(
@@ -418,6 +433,19 @@ def construir_metadatos(capa: gpd.GeoDataFrame, df: pd.DataFrame) -> dict:
             "fin": int(anios.max()),
         },
         "variables": variables,
+        "socio": {
+            "poblacion": {"etiqueta": "Población", "unidad": "habitantes"},
+            "superficie_km2": {"etiqueta": "Superficie", "unidad": "km²"},
+            "pib_mxn": {"etiqueta": "PIB", "unidad": "MXN"},
+            "pib_pc_mxn": {"etiqueta": "PIB por habitante", "unidad": "MXN"},
+            "densidad": {"etiqueta": "Densidad de población", "unidad": "hab/km²"},
+            "anio_socio": {"etiqueta": "Año de referencia", "unidad": "año"},
+        },
+        "fuentes_complementarias": [
+            "World Bank — World Development Indicators (PIB, población y superficie)",
+            "Our World in Data (contexto y validación)",
+            "CONAFOR (incendios forestales de México)",
+        ],
     }
 
 
