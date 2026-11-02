@@ -141,6 +141,15 @@
           >
             Capa
           </button>
+          <button
+            class="pestana"
+            data-pestana="mexico"
+            role="tab"
+            aria-selected="false"
+            type="button"
+          >
+            México
+          </button>
         </nav>
 
         <div class="panel__scroll">
@@ -294,6 +303,44 @@
             </section>
           </div>
 
+          <!-- ---------------- PESTAÑA: MÉXICO ---------------- -->
+          <div class="vista" data-vista="mexico">
+            <section class="bloque bloque--mexico">
+              <p class="bloque__kicker">CENAPRED · 2000–2024</p>
+              <h2 class="bloque__titulo">México, estado por estado</h2>
+              <p class="bloque__ayuda">
+                4,195 desastres naturales en los 32 estados, con daños en pesos,
+                defunciones y afectados. El detalle que pidió el profesor, sin
+                salir del atlas.
+              </p>
+              <div class="mexico-mini" id="mexico-mini"></div>
+              <button id="btn-abrir-mexico" class="boton boton--primario" type="button">
+                Abrir mapa por estados
+              </button>
+            </section>
+
+            <section class="bloque">
+              <h2 class="bloque__titulo">Cuatro desastres para explicar</h2>
+              <p class="bloque__ayuda">
+                Fichas completas para la exposición: qué pasó, cuánto costó y
+                cómo se ve en su estado.
+              </p>
+              <div id="mexico-destacados-mini" class="mini-desastres"></div>
+            </section>
+
+            <section class="bloque nota">
+              <p class="nota__titulo">CÓMO SE CONSTRUYÓ</p>
+              <p>
+                Fuente: CENAPRED / Atlas Nacional de Riesgos. Se conservaron los
+                fenómenos naturales (hidrometeorológicos, geológicos y
+                sanitarios) y se excluyeron accidentes, explosiones y fugas.
+                Los montos ya están en pesos mexicanos; no se aplicó tipo de
+                cambio. Los incendios forestales viven en la capa de CONAFOR
+                para no duplicarlos.
+              </p>
+            </section>
+          </div>
+
           <!-- Nota metodológica -->
           <section class="bloque nota">
             <p class="nota__titulo">NOTA METODOLÓGICA</p>
@@ -399,6 +446,136 @@
       </div>
     </dialog>
 
+    <!-- ==================== VISTA: MÉXICO POR ESTADOS ==================== -->
+    <section
+      id="vista-mexico"
+      class="mexico-vista"
+      aria-label="Mapa de México por estados"
+      hidden
+    >
+      <header class="mexico-cabecera">
+        <div class="mexico-cabecera__texto">
+          <p class="mexico-kicker">CENAPRED · ATLAS NACIONAL DE RIESGOS</p>
+          <h2>México, estado por estado</h2>
+          <p class="mexico-sub" id="mexico-sub">
+            4,195 desastres naturales · 32 estados · 2000–2024
+          </p>
+        </div>
+        <button id="mexico-cerrar" class="boton-icono" type="button" aria-label="Cerrar mapa de México">
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+
+      <div class="mexico-cuerpo">
+        <div class="mexico-mapa-caja">
+          <div id="mapa-mexico" aria-label="Mapa coroplético de los estados de México"></div>
+
+          <div class="mexico-controles" id="mexico-controles">
+            <label class="campo campo--compacto">
+              <span class="campo__etiqueta">Variable</span>
+              <select id="mexico-variable">
+                <option value="dano_mxn">Daños (MXN)</option>
+                <option value="defunciones">Defunciones</option>
+                <option value="afectados">Afectados</option>
+                <option value="eventos">Eventos</option>
+                <option value="viviendas">Viviendas dañadas</option>
+              </select>
+            </label>
+
+            <label class="campo campo--compacto">
+              <span class="campo__etiqueta">Desde</span>
+              <select id="mexico-anio-min"></select>
+            </label>
+
+            <label class="campo campo--compacto">
+              <span class="campo__etiqueta">Hasta</span>
+              <select id="mexico-anio-max"></select>
+            </label>
+
+            <label class="campo campo--compacto">
+              <span class="campo__etiqueta">Tipo</span>
+              <select id="mexico-tipo">
+                <option value="todos">Todos los tipos</option>
+              </select>
+            </label>
+
+            <button id="mexico-reset" class="boton boton--fantasma boton--compacto" type="button">
+              Restablecer
+            </button>
+          </div>
+
+          <div class="mexico-leyenda" aria-live="polite">
+            <div class="mexico-leyenda__cabecera">
+              <span id="mexico-leyenda-titulo">Daños</span>
+              <span id="mexico-leyenda-unidad" class="mexico-leyenda__unidad">MXN</span>
+            </div>
+            <div id="mexico-leyenda-barra" class="mexico-leyenda__barra"></div>
+            <div class="mexico-leyenda__escala">
+              <span id="mexico-leyenda-min">0</span>
+              <span id="mexico-leyenda-max">—</span>
+            </div>
+            <p class="mexico-leyenda__nota" id="mexico-leyenda-nota"></p>
+          </div>
+
+          <div id="mexico-tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+          <button
+            id="mexico-filtros"
+            class="mexico-filtros-btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mexico-controles"
+          >
+            Filtros
+          </button>
+        </div>
+
+        <aside class="mexico-panel" aria-label="Detalle del estado">
+          <div id="mexico-nacional" class="mexico-nacional"></div>
+          <div id="mexico-estado" class="mexico-estado">
+            <p class="mexico-vacio">Haz clic en un estado para ver su ficha.</p>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="mexico-destacados">
+        <div class="mexico-destacados__cabecera">
+          <h3>Cuatro desastres para explicar</h3>
+          <p>Fichas verificadas con la fuente; cada una abre su detalle.</p>
+        </div>
+        <div id="mexico-destacados" class="tarjetas-desastre"></div>
+      </footer>
+    </section>
+
+    <!-- ==================== DETALLE DE UN DESASTRE ==================== -->
+    <dialog id="modal-desastre" class="modal modal--desastre" aria-labelledby="desastre-titulo">
+      <div class="modal__hoja">
+        <header class="modal__cabecera">
+          <div class="modal__identidad">
+            <p class="modal__kicker" id="desastre-kicker">DESASTRE DESTACADO</p>
+            <h2 id="desastre-titulo">—</h2>
+            <p class="modal__meta" id="desastre-meta">—</p>
+          </div>
+          <div class="modal__acciones">
+            <span class="insignia-dato" id="desastre-badge">—</span>
+            <button id="desastre-cerrar" class="boton-icono" type="button" aria-label="Cerrar detalle">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </header>
+        <div class="modal__cuerpo">
+          <section class="modal__kpis" id="desastre-kpis"></section>
+          <p class="desastre-descripcion" id="desastre-descripcion"></p>
+          <div class="desastre-acciones">
+            <button id="desastre-ver-mapa" class="boton boton--primario" type="button">
+              Ver su estado en el mapa
+            </button>
+            <span class="desastre-fuente" id="desastre-fuente"></span>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
     <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
     <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
     <script src="js/diccionario_desastres.js"></script>
@@ -407,6 +584,7 @@
     <script src="js/leyenda.js"></script>
     <script src="js/estado.js"></script>
     <script src="js/capa_tematica.js"></script>
+    <script src="js/mexico_estados.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

@@ -431,7 +431,7 @@ button {
 /* ---------------------------- 8. PESTAÑAS ----------------------------- */
 .pestanas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
   margin: 14px 18px 0;
   padding: 4px;
@@ -1474,5 +1474,859 @@ button {
 
   .comparativa__valor {
     display: none;
+  }
+}
+
+/* ====================== 20. VISTA MÉXICO POR ESTADOS ================== */
+body.mexico-abierto {
+  overflow: hidden;
+}
+
+.mexico-vista {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: var(--fondo);
+  animation: aparecer 0.2s ease-out;
+}
+
+.mexico-vista[hidden] {
+  display: none;
+}
+
+.mexico-cabecera {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 24px 14px;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+}
+
+.mexico-cabecera::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: var(--gradiente);
+}
+
+.mexico-kicker {
+  margin: 0 0 2px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--purpura-3);
+}
+
+.mexico-cabecera h2 {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--tinta);
+  letter-spacing: -0.02em;
+}
+
+.mexico-sub {
+  margin: 3px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mexico-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 392px;
+  min-height: 0;
+}
+
+.mexico-mapa-caja {
+  position: relative;
+  min-height: 0;
+  background: #eef4f8;
+  overflow: hidden;
+}
+
+#mapa-mexico {
+  position: absolute;
+  inset: 0;
+}
+
+/* Controles flotantes del mapa */
+.mexico-controles {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
+  width: min(372px, calc(100% - 28px));
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  box-shadow: var(--sombra-2);
+  backdrop-filter: blur(8px);
+}
+
+.mexico-controles .campo--compacto {
+  grid-template-columns: 1fr;
+  gap: 3px;
+  margin: 0;
+}
+
+.mexico-controles .campo--compacto:first-child {
+  grid-column: span 2;
+}
+
+.mexico-controles .campo--compacto .campo__etiqueta {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.mexico-controles select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 11.5px;
+  border-radius: 9px;
+}
+
+.mexico-controles .boton {
+  grid-column: span 2;
+  justify-self: start;
+  width: auto;
+  margin-top: 0;
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.mexico-filtros-btn {
+  display: none;
+}
+
+/* Leyenda del mapa */
+.mexico-leyenda {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 5;
+  width: 248px;
+  padding: 11px 13px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: var(--sombra-2);
+  backdrop-filter: blur(8px);
+}
+
+.mexico-leyenda__cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purpura-3);
+}
+
+.mexico-leyenda__unidad {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.mexico-leyenda__barra {
+  display: flex;
+  height: 9px;
+  margin: 7px 0 5px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(76, 29, 149, 0.08);
+}
+
+.mexico-leyenda__barra span {
+  flex: 1;
+  height: 100%;
+}
+
+.mexico-leyenda__escala {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 9.5px;
+  color: var(--texto);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-leyenda__nota {
+  margin: 5px 0 0;
+  font-size: 9px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* Panel derecho */
+.mexico-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  min-height: 0;
+  padding: 14px;
+  overflow-y: auto;
+  background: var(--fondo);
+  border-left: 1px solid var(--borde);
+  scrollbar-width: thin;
+  scrollbar-color: var(--borde-fuerte) transparent;
+}
+
+.mexico-panel__kicker {
+  margin: 0 0 8px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--purpura-3);
+}
+
+.mexico-nacional,
+.mexico-estado {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--sombra-1);
+}
+
+.mexico-nacional__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin: 0 0 9px;
+}
+
+.mexico-nacional__grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 9px;
+  background: var(--superficie-2);
+  border-radius: 10px;
+}
+
+.mexico-nacional__grid span {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mexico-nacional__grid strong {
+  font-size: 12.5px;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-nacional__nota {
+  margin: 0 0 12px;
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.mexico-nacional__titulo,
+.mexico-estado__titulo {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purpura-3);
+}
+
+.mexico-top {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mexico-top button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font-family: var(--f-texto);
+  font-size: 11.5px;
+  color: var(--texto);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mexico-top button:hover {
+  background: var(--purpura-suave);
+}
+
+.mexico-top__lugar {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--purpura-suave);
+  color: var(--purpura);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.mexico-top__nombre {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mexico-top__valor {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-estado {
+  flex: 0 0 auto;
+  min-height: 190px;
+}
+
+.mexico-vacio {
+  margin: 0;
+  padding: 28px 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--muted);
+}
+
+.mexico-estado__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mexico-estado__cabecera .mexico-panel__kicker {
+  margin-bottom: 2px;
+}
+
+.mexico-estado__cabecera h3 {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--tinta);
+}
+
+.mexico-estado__cerrar {
+  width: 28px;
+  height: 28px;
+  font-size: 15px;
+}
+
+.mexico-estado__marca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 8px;
+  margin: 11px 0 12px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.mexico-estado__marca strong {
+  font-size: 13px;
+  color: var(--purpura);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-barra {
+  flex-basis: 100%;
+  height: 6px;
+  margin-top: 2px;
+  border-radius: 999px;
+  background: var(--purpura-suave);
+  overflow: hidden;
+}
+
+.mexico-barra span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--gradiente);
+}
+
+.mexico-estado__kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 0 0 13px;
+}
+
+.mexico-estado__kpis div {
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: var(--superficie-2);
+}
+
+.mexico-estado__kpis span {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mexico-estado__kpis strong {
+  font-size: 11px;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.mexico-eventos {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.mexico-eventos li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 3px;
+  font-size: 11px;
+  border-bottom: 1px dashed var(--borde);
+}
+
+.mexico-eventos li:last-child {
+  border-bottom: 0;
+}
+
+.mexico-eventos__anio {
+  font-weight: 700;
+  color: var(--purpura-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-eventos__tipo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--texto);
+}
+
+.mexico-eventos__dato {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.mexico-eventos__vacio {
+  display: block;
+  color: var(--muted);
+  font-size: 10.5px;
+}
+
+/* Franja de desastres destacados */
+.mexico-destacados {
+  padding: 12px 22px 14px;
+  background: var(--superficie);
+  border-top: 1px solid var(--borde);
+}
+
+.mexico-destacados__cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 9px;
+}
+
+.mexico-destacados h3 {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: 14px;
+  color: var(--tinta);
+}
+
+.mexico-destacados p {
+  margin: 0;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.tarjetas-desastre {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.tarjeta-desastre {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px 12px 10px;
+  overflow: hidden;
+  text-align: left;
+  font-family: var(--f-texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+}
+
+.tarjeta-desastre::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--gradiente);
+}
+
+.tarjeta-desastre:hover {
+  transform: translateY(-2px);
+  border-color: var(--borde-fuerte);
+  box-shadow: var(--sombra-2);
+}
+
+.tarjeta-desastre:focus-visible {
+  outline: 2px solid var(--purpura-3);
+  outline-offset: 2px;
+}
+
+.tarjeta-desastre__anio {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--purpura-3);
+}
+
+.tarjeta-desastre__tipo {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tarjeta-desastre__titulo {
+  margin-top: 1px;
+  font-family: var(--f-titulo);
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--tinta);
+}
+
+.tarjeta-desastre__lugar {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.tarjeta-desastre__datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 7px 0 0;
+}
+
+.tarjeta-desastre__datos div {
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-desastre__datos dt {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tarjeta-desastre__datos dd {
+  margin: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.tarjeta-desastre__cta {
+  margin-top: auto;
+  padding-top: 7px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--purpura-3);
+}
+
+/* Miniaturas dentro de la pestaña México */
+.mexico-mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin: 2px 0 13px;
+}
+
+.mexico-mini__dato {
+  padding: 8px 10px;
+  background: var(--superficie-2);
+  border-radius: 10px;
+}
+
+.mexico-mini__dato span {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mexico-mini__dato strong {
+  font-size: 12.5px;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-desastres {
+  display: grid;
+  gap: 7px;
+}
+
+.mini-desastres .tarjeta-desastre {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-areas:
+    "anio tipo"
+    "anio titulo"
+    "anio lugar";
+  column-gap: 10px;
+  padding: 9px 11px;
+}
+
+.mini-desastres .tarjeta-desastre__anio {
+  grid-area: anio;
+  align-self: center;
+  font-size: 14px;
+}
+
+.mini-desastres .tarjeta-desastre__tipo {
+  grid-area: tipo;
+}
+
+.mini-desastres .tarjeta-desastre__titulo {
+  grid-area: titulo;
+}
+
+.mini-desastres .tarjeta-desastre__lugar {
+  grid-area: lugar;
+}
+
+.mini-desastres .tarjeta-desastre__datos,
+.mini-desastres .tarjeta-desastre__cta {
+  display: none;
+}
+
+/* Modal de desastre */
+.modal--desastre .modal__hoja {
+  width: min(780px, 94vw);
+}
+
+.modal--desastre .modal__kpis {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.insignia-dato {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #7a4c00;
+  background: var(--amarillo-suave);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.desastre-descripcion {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+}
+
+.desastre-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.desastre-fuente {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+/* Adaptable */
+@media (max-width: 1180px) {
+  .mexico-cuerpo {
+    grid-template-columns: minmax(0, 1fr) 330px;
+  }
+
+  .tarjetas-desastre {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .mexico-vista {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .mexico-cabecera {
+    padding: 12px 16px 11px;
+  }
+
+  .mexico-cabecera h2 {
+    font-size: 19px;
+  }
+
+  .mexico-sub {
+    display: none;
+  }
+
+  .mexico-cuerpo {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(300px, 54vh) auto;
+  }
+
+  .mexico-panel {
+    border-left: 0;
+    border-top: 1px solid var(--borde);
+    overflow: visible;
+  }
+
+  .mexico-controles {
+    display: none;
+    top: 56px;
+    left: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .mexico-controles.visible {
+    display: grid;
+  }
+
+  .mexico-filtros-btn {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--borde-fuerte);
+    border-radius: 999px;
+    background: var(--superficie);
+    color: var(--purpura);
+    font-family: var(--f-texto);
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: var(--sombra-2);
+  }
+
+  .mexico-filtros-btn::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gradiente);
+  }
+
+  .mexico-filtros-btn[aria-expanded="true"] {
+    background: var(--purpura);
+    color: #fff;
+  }
+
+  .mexico-leyenda {
+    width: 210px;
+    left: 12px;
+    bottom: 12px;
+  }
+
+  .mexico-destacados {
+    padding: 12px 16px 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mexico-controles {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mexico-controles .campo--compacto:first-child,
+  .mexico-controles .campo--compacto:nth-child(4),
+  .mexico-controles .boton {
+    grid-column: span 2;
+  }
+
+  .mexico-leyenda {
+    width: 172px;
+    padding: 9px 10px;
+  }
+
+  .mexico-destacados__cabecera p {
+    display: none;
+  }
+
+  .tarjetas-desastre {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tarjeta-desastre__datos {
+    display: none;
+  }
+
+  .tarjeta-desastre__cta {
+    padding-top: 5px;
+  }
+
+  .modal--desastre .modal__kpis {
+    grid-template-columns: 1fr 1fr;
   }
 }

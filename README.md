@@ -3,8 +3,9 @@
 Aplicación web interactiva que visualiza, explora y analiza espacialmente la
 ocurrencia de desastres naturales a nivel mundial, con énfasis en México, a
 partir del conjunto de datos **EM-DAT** (CRED) integrado con indicadores
-socioeconómicos del **Banco Mundial (WDI)**, datos de incendios de **CONAFOR**
-y series de contexto de **Our World in Data (OWID)**.
+socioeconómicos del **Banco Mundial (WDI)**, datos de incendios de **CONAFOR**,
+la base histórica de **CENAPRED** para el detalle estatal de México y series de
+contexto de **Our World in Data (OWID)**.
 
 * **Asignatura:** Análisis y exploración de datos
 * **Profesor:** PhD. Fernando Pech-May
@@ -22,6 +23,7 @@ y series de contexto de **Our World in Data (OWID)**.
 | 3 | **Capa de visualización temática** | ✅ **Completada** | Notebook + `app/` + GeoJSON + pipeline |
 | 4 | **Filtros y controles interactivos** | ✅ **Completada** | Panel de filtros + globo + capa de incendios |
 | 5 | Panel de información y visualizaciones por país | 🟡 En curso | Modal por país (KPIs, rankings, gráficas) |
+| 5·M | **México por estados (CENAPRED)** | ✅ **Completada** | Pestaña México + vista estatal + notebook 05 |
 | 6 | Integración de la interfaz de usuario | ⏳ Pendiente | — |
 | 7 | Validación de resultados | ⏳ Pendiente | — |
 
@@ -108,13 +110,14 @@ La Actividad 3 sigue la misma forma de trabajo de las Actividades 1 y 2:
 
 ## Actividad 4 — Filtros y controles interactivos
 
-El panel lateral organiza los controles en tres pestañas:
+El panel lateral organiza los controles en cuatro pestañas:
 
 | Pestaña | Controles |
 |---------|-----------|
 | **Resumen** | Indicadores del mapa (territorios, cobertura, máximo y mediana), ficha del territorio seleccionado y paleta temática |
 | **Filtros** | Rango de años (2000–2026), tipo de desastre (14 tipos), aplicar al mapa y restablecer |
 | **Capa** | Variable de color, variable de altura, recurso 3D (elevación / deformación / ninguno), intensidad de la rampa, altura del relieve, escala y capa de incendios de CONAFOR |
+| **México** | Resumen CENAPRED, acceso al mapa por estados y las cuatro fichas de desastres |
 
 Todos los filtros se aplican **en el navegador** sobre la capa ya agregada: al
 mover el rango de años o cambiar el tipo de desastre, el mapa y los KPIs se
@@ -133,6 +136,8 @@ recalculan sin volver a descargar datos.
   mundial en eventos/víctimas/daño, tres gráficas (evolución, tipos e impacto),
   comparación de periodos, los eventos más relevantes y, para México, el bloque
   de incendios y el contexto de OWID.
+* **Vista de México.** La pestaña México abre el mapa estatal con filtros,
+  panel por entidad y las cuatro fichas; se detalla en la sección siguiente.
 
 ### Panel detallado por país (avance de la Actividad 5)
 
@@ -149,6 +154,85 @@ superficie y densidad). Incluye:
   y por daño económico.
 * **Bloque México:** superficie afectada y causas de incendios por estado.
 * **Bloque OWID:** afectados y eventos por tamaño, como validación externa.
+
+---
+
+## México por estados — CENAPRED (ampliación)
+
+La vista mundial usa EM-DAT y trata a México como un solo país. Para que México
+**destaque** con información detallada por entidades, se integró la *Base
+histórica de impacto socioeconómico 2000–2024* de **CENAPRED / Atlas Nacional
+de Riesgos** y se construyó una vista propia con las 32 entidades.
+
+### Qué incluye
+
+* **Pestaña México** en el panel, con resumen, accesos y las cuatro fichas.
+* **Vista de pantalla completa** con mapa coroplético de los 32 estados
+  (MapLibre GL).
+* **Filtros** de variable (daños, defunciones, afectados, eventos, viviendas),
+  rango de años (2000–2024) y tipo de fenómeno.
+* **Panel estatal** con participación nacional, KPIs, lugar nacional y los
+  eventos más costosos del filtro; al elegir un estado se coloca al frente.
+* **Cuatro fichas** de desastres con descripción, métricas, fuente y un botón
+  para centrar el estado en el mapa.
+
+### Cifras (2000–2024, solo fenómenos naturales)
+
+| Indicador | Valor |
+|-----------|-------|
+| Registros naturales | 4,182 |
+| Filas estado-evento | 4,195 (32 estados) |
+| Defunciones | 5,181 |
+| Población afectada | 59,761,863 |
+| Daños | **687.0 mil millones de pesos** |
+| Viviendas dañadas | 2,576,168 |
+
+### Estados con mayor daño acumulado
+
+| Lugar | Estado | Daños (mil M MXN) | Participación |
+|------:|--------|------------------:|--------------:|
+| 1 | Guerrero | 131.1 | 19.1 % |
+| 2 | Veracruz | 80.0 | 11.6 % |
+| 3 | Tabasco | 71.9 | 10.5 % |
+| 4 | Chiapas | 56.2 | 8.2 % |
+| 5 | Ciudad de México | 45.3 | 6.6 % |
+
+### Los cuatro desastres destacados
+
+| Desastre | Año | Estado | Daños (mil M MXN) | Defunciones | % del daño estatal |
+|----------|----:|--------|------------------:|------------:|-------------------:|
+| Huracán Otis | 2023 | Guerrero | 84.2 | 52 | 64.2 % |
+| Sismo del 19S | 2017 | Ciudad de México | 44.0 | 228 | 97.1 % |
+| Inundación de Tabasco 2007 | 2007 | Tabasco | 31.9 | 0 | 44.3 % |
+| Inundación de Tabasco 2020 | 2020 | Tabasco | 13.6 | 10 | 18.9 % |
+
+### Decisiones metodológicas
+
+* **Solo fenómenos naturales:** clasificaciones *Hidrometeorológico*,
+  *Geológico* y *Sanitario*. Se excluyen sociorganizativos y químicos.
+* **Incendios forestales:** se consultan en la capa de CONAFOR para no
+  duplicar el mismo fenómeno.
+* **Montos en pesos:** CENAPRED ya reporta en MXN; **no** se aplica tipo de
+  cambio.
+* **Registros multiestado:** 11 filas se reparten en partes iguales entre los
+  estados mencionados (0.3 % de los registros).
+* **Menciones nacionales:** 4 filas (`Todo el país`, `Varios Estados`) no se
+  pueden ubicar en un mapa estatal; se excluyen del mapa (6.2 mil M MXN, 121
+  defunciones y 508 mil afectados) y se documentan en el notebook.
+* **Comparación con EM-DAT:** no son comparables. EM-DAT reporta ~1.60 billones
+  de pesos para México; CENAPRED reporta 687 mil M para fenómenos naturales.
+  Cambian cobertura, clasificación y metodología, por eso la vista mundial usa
+  EM-DAT y la estatal usa CENAPRED.
+
+### Cómo regenerarlo
+
+```bash
+python -m src.mexico_estados       # JSON estatal + GeoJSON + tabla resumen
+```
+
+El notebook `notebooks/05_actividad5_mexico_estados.ipynb` documenta la fuente,
+la limpieza, la homologación, los agregados, las fichas y la validación. Las
+gráficas quedan en `resultados/graficas/mexico/`.
 
 ---
 
@@ -179,7 +263,7 @@ océano y el fondo se distinguen a primera vista.
 ```
 PROYECTO_DESASTRES/
 ├── app/                         Aplicación web
-│   ├── index.html               Interfaz, pestañas y modal por país
+│   ├── index.html               Interfaz, pestañas, modal por país y vista México
 │   ├── css/estilos.css          Identidad visual completa
 │   ├── js/
 │   │   ├── config.js            Rutas, paletas y vista inicial del globo
@@ -188,6 +272,7 @@ PROYECTO_DESASTRES/
 │   │   ├── estado.js            Barra de estado y tarjetas
 │   │   ├── diccionario_desastres.js  Nombres de desastres en español
 │   │   ├── capa_tematica.js     Capas 3D (color, elevación, deformación)
+│   │   ├── mexico_estados.js    Vista estatal: mapa, filtros, panel y fichas
 │   │   └── app.js               Orquestador: filtros, modal, rankings, incendios
 │   └── datos/
 │       ├── paises.geojson       Capa agregada (175 unidades cartográficas)
@@ -197,16 +282,19 @@ PROYECTO_DESASTRES/
 │       ├── eventos_pais.json    Eventos por país (10,907 en 220 territorios)
 │       ├── owid.json            Contexto OWID por país
 │       ├── incendios_mexico.json    Incendios CONAFOR por año, estado y causa
-│       └── incendios_puntos.geojson Incendios de 50 ha o más
+│       ├── incendios_puntos.geojson Incendios de 50 ha o más
+│       ├── mexico_estados.json  Indicadores estatales CENAPRED (32 estados)
+│       └── estados_mexico.geojson   Polígonos de los 32 estados (clave ISO)
 ├── datos/
-│   ├── originales/              Fuentes crudas (EM-DAT, WDI, CONAFOR, OWID)
+│   ├── originales/              Fuentes crudas (EM-DAT, WDI, CONAFOR, OWID, CENAPRED)
 │   ├── procesados/              Dataset limpio e integrado
-│   └── geograficos/             Natural Earth 110m (límites territoriales)
+│   └── geograficos/             Natural Earth 110m y GeoJSON de los estados
 ├── notebooks/
 │   ├── 01_actividad1_preprocesamiento_eda.ipynb
 │   ├── 02_actividad2_mapa_base.ipynb
 │   ├── 03_actividad3_capa_tematica.ipynb
-│   └── 04_actividad4_filtros_controles.ipynb
+│   ├── 04_actividad4_filtros_controles.ipynb
+│   └── 05_actividad5_mexico_estados.ipynb
 ├── src/                         Código fuente del pipeline
 │   ├── config.py                Rutas centralizadas y tipo de cambio
 │   ├── moneda.py                Conversión de montos a pesos mexicanos
@@ -214,6 +302,7 @@ PROYECTO_DESASTRES/
 │   ├── capa_tematica.py         Construcción de la capa temática
 │   ├── detalle_pais.py          Eventos por país para el modal
 │   ├── mexico_conafor.py        Incendios de México (CONAFOR)
+│   ├── mexico_estados.py        Impacto estatal de México (CENAPRED)
 │   ├── owid.py                  Contexto y validación con OWID
 │   ├── generar_filtros.py       Catálogo de filtros
 │   ├── diccionario_desastres.py Nombres de desastres en español
@@ -244,11 +333,13 @@ python -m src.generar_filtros      # catálogo de años y tipos
 python -m src.detalle_pais         # eventos por país (modal)
 python -m src.owid                 # contexto de OWID
 python -m src.mexico_conafor       # incendios de México (CONAFOR)
+python -m src.mexico_estados       # impacto estatal de México (CENAPRED)
 ```
 
 Esto produce `paises.geojson`, `metadatos.json`, `filtros.json`,
 `paises_socio.json`, `eventos_pais.json`, `owid.json`, `incendios_mexico.json`,
-`incendios_puntos.geojson` y la evidencia tabular en `resultados/tablas/`.
+`incendios_puntos.geojson`, `mexico_estados.json`, `estados_mexico.geojson` y
+la evidencia tabular en `resultados/tablas/`.
 
 > Todos los montos se convierten a **pesos mexicanos en el pipeline**, con el
 > tipo de cambio fijo de `src/config.py`. El navegador nunca hace conversiones
@@ -312,11 +403,15 @@ territorio en el periodo analizado.
 | **World Development Indicators** (Banco Mundial) | PIB, población y superficie por país; insumos de PIB per cápita y densidad |
 | **Our World in Data** (OWID) | Contexto y validación externa de afectados y eventos por tamaño |
 | **CONAFOR** | Incendios forestales de México 2015–2025: puntos, superficie, causas y estados |
+| **CENAPRED / Atlas Nacional de Riesgos** | Impacto socioeconómico de desastres en México 2000–2024, por estado y municipio (MXN) |
 | **Natural Earth** | Límites territoriales (110m Admin 0 Countries) |
 
 ### Validación cruzada
 
 * México: **171 eventos** en EM-DAT y **1.60 billones de pesos** de daño acumulado.
+* México en CENAPRED: **4,182 registros naturales**, **5,181 defunciones** y
+  **687.0 mil M MXN** en las 32 entidades (2000–2024). No se suma con EM-DAT:
+  son fuentes y metodologías distintas.
 * Afectados en México: **15,538,601** (EM-DAT) frente a **15,516,081** (OWID),
   una diferencia de 0.15 % que respalda la integración.
 * PIB de México: **38.07 billones de pesos** (WDI 2024 × tipo de cambio del proyecto).
