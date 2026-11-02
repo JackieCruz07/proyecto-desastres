@@ -27,3 +27,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# --- Documentos que no se publican en el repositorio -------------------
+GUIA_EXPOSICION.md
+GUIA_EXPOSICION.docx
