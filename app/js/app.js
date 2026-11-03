@@ -692,6 +692,13 @@
           if (codigoSeleccionado) abrirModalPais(codigoSeleccionado);
         });
       }
+      const selectorMetrica = document.getElementById("tipos-metrica");
+      if (selectorMetrica) {
+        selectorMetrica.addEventListener("change", (evento) => {
+          metricaTipos = evento.target.value;
+          if (paisActual && ui.modal && ui.modal.open) renderPanelPais();
+        });
+      }
       if (ui.chkIncendios) {
         ui.chkIncendios.addEventListener("change", (evento) =>
           alternarIncendios(evento.target.checked)
@@ -778,6 +785,8 @@
   let grafEvolucionChart = null;
   let grafTiposChart = null;
   let grafImpactoChart = null;
+  let grafDanoChart = null;
+  let metricaTipos = "eventos";
 
   // Paleta de las gráficas, derivada de la identidad visual.
   const PALETA_GRAFICAS = [
@@ -791,6 +800,14 @@
     "#f9a8b2",
   ];
 
+  /** Medidas disponibles para la gráfica de distribución por tipo. */
+  const METRICAS_TIPOS = {
+    eventos: { etiqueta: "eventos", formato: "entero" },
+    fallecidos: { etiqueta: "fallecidos", formato: "entero" },
+    afectados: { etiqueta: "afectados", formato: "entero" },
+    dano_mxn: { etiqueta: "daño económico", formato: "moneda" },
+  };
+
   const numero = new Intl.NumberFormat("es-MX");
 
   function formatearNumeroPais(n) {
@@ -799,8 +816,13 @@
   }
 
   function formatearDanoPais(n) {
-    if (!n) return "—";
+    if (n === null || n === undefined || Number.isNaN(n)) return "—";
     return Escalas.formatearValor(n, "moneda");
+  }
+
+  function formatearPorcentaje(n, decimales = 1) {
+    if (n === null || n === undefined || Number.isNaN(n)) return "—";
+    return `${formatearDecimal(n, decimales)} %`;
   }
 
   function formatearSuperficie(n) {
@@ -901,6 +923,157 @@
     };
   }
 
+  /* ------------------- 9.1b Calidad y disponibilidad ------------------ */
+
+  /**
+   * Cobertura de los campos de impacto en el periodo y tipo seleccionados.
+   * Se calcula sobre los eventos crudos porque ahí los nulos conservan su
+   * significado: "no reportado" no es lo mismo que cero.
+   */
+  function calidadPais(codigo, filtro) {
+    const filas = (datosEventos && datosEventos.paises[codigo]) || [];
+    const enPeriodo = filas.filter(
+      ([anio, tipo]) =>
+        anio >= filtro.a1 &&
+        anio <= filtro.a2 &&
+        (filtro.tipo === "todos" || tipo === filtro.tipo)
+    );
+
+    const total = enPeriodo.length;
+    const periodo = filtro.a2 - filtro.a1 + 1;
+    if (!total) {
+      return {
+        total: 0,
+        anios: 0,
+        periodo,
+        conFallecidos: 0,
+        conAfectados: 0,
+        conDano: 0,
+        coberturaFallecidos: 0,
+        coberturaAfectados: 0,
+        coberturaDano: 0,
+        coberturaTemporal: 0,
+        promedio: 0,
+        nivel: "Sin registros",
+      };
+    }
+
+    const cuenta = (indice) =>
+      enPeriodo.filter((fila) => fila[indice] !== null && fila[indice] !== undefined)
+        .length;
+
+    const conFallecidos = cuenta(2);
+    const conAfectados = cuenta(3);
+    const conDano = cuenta(4);
+    const coberturaFallecidos = (100 * conFallecidos) / total;
+    const coberturaAfectados = (100 * conAfectados) / total;
+    const coberturaDano = (100 * conDano) / total;
+    const promedio =
+      (coberturaFallecidos + coberturaAfectados + coberturaDano) / 3;
+    const anios = new Set(enPeriodo.map((fila) => fila[0])).size;
+
+    return {
+      total,
+      anios,
+      periodo,
+      conFallecidos,
+      conAfectados,
+      conDano,
+      coberturaFallecidos,
+      coberturaAfectados,
+      coberturaDano,
+      coberturaTemporal: (100 * anios) / periodo,
+      promedio,
+      nivel: promedio >= 65 ? "Alta" : promedio >= 40 ? "Media" : "Baja",
+    };
+  }
+
+  /**
+   * Indicadores derivados. Cada uno declara si tiene numerador y denominador;
+   * cuando falta alguno se muestra "Sin datos" en lugar de un cero engañoso.
+   */
+  function indicadoresImpacto(info, socio, calidad) {
+    const t = info.totales;
+    const filtro = info.filtro;
+    const aniosPeriodo = filtro.a2 - filtro.a1 + 1;
+    const hayEventos = t.eventos > 0;
+    const hayPoblacion = socio.poblacion > 0;
+    const hayPib = socio.pib_mxn > 0;
+    const hayAfectados = calidad.conAfectados > 0;
+    const hayDano = calidad.conDano > 0;
+
+    return [
+      {
+        etiqueta: "Afectados por 100 mil hab.",
+        valor: hayPoblacion && hayEventos && hayAfectados
+          ? formatearDecimal((t.afectados / socio.poblacion) * 100000, 1)
+          : null,
+        nota: !hayPoblacion
+          ? "Falta población (WDI)"
+          : !hayEventos
+          ? "Sin eventos en el periodo"
+          : !hayAfectados
+          ? "Afectados no reportados"
+          : "Acumulado del periodo",
+      },
+      {
+        etiqueta: "Daño sobre PIB anual",
+        valor: hayPib && hayEventos && hayDano
+          ? formatearPorcentaje((t.dano_mxn / socio.pib_mxn) * 100, 2)
+          : null,
+        nota: !hayPib
+          ? "Falta PIB (WDI)"
+          : !hayEventos
+          ? "Sin eventos en el periodo"
+          : !hayDano
+          ? "Daño no reportado"
+          : "Daño acumulado / PIB",
+      },
+      {
+        etiqueta: "Fallecidos por evento",
+        valor: hayEventos && calidad.conFallecidos > 0
+          ? formatearDecimal(t.fallecidos / t.eventos, 1)
+          : null,
+        nota: !hayEventos
+          ? "Sin eventos en el periodo"
+          : calidad.conFallecidos === 0
+          ? "Fallecidos no reportados"
+          : "Promedio del periodo",
+      },
+      {
+        etiqueta: "Daño por evento",
+        valor: hayEventos && calidad.conDano > 0
+          ? formatearDanoPais(t.dano_mxn / t.eventos)
+          : null,
+        nota: !hayEventos
+          ? "Sin eventos en el periodo"
+          : calidad.conDano === 0
+          ? "Daño no reportado"
+          : "Promedio del periodo",
+      },
+      {
+        etiqueta: "Daño por afectado",
+        valor: hayEventos && calidad.conDano > 0 && t.afectados > 0
+          ? formatearDanoPais(t.dano_mxn / t.afectados)
+          : null,
+        nota: !hayEventos
+          ? "Sin eventos en el periodo"
+          : t.afectados === 0
+          ? "Afectados no reportados"
+          : calidad.conDano === 0
+          ? "Daño no reportado"
+          : "Solo eventos con ambos datos",
+      },
+      {
+        etiqueta: "Eventos por año",
+        valor: hayEventos ? formatearDecimal(t.eventos / aniosPeriodo, 1) : null,
+        nota: hayEventos
+          ? `${aniosPeriodo} años del periodo`
+          : "Sin eventos en el periodo",
+      },
+    ];
+  }
+
   /* --------------------- 9.2 Rankings mundiales ----------------------- */
 
   /** Posición del país entre los territorios con datos, según el filtro. */
@@ -927,7 +1100,7 @@
       });
 
       if (eventos > 0) {
-        lista.push({ iso, eventos, victimas: fallecidos + afectados, dano });
+        lista.push({ iso, eventos, fallecidos, afectados, dano });
       }
     });
 
@@ -947,7 +1120,8 @@
 
     rankingsActuales = {
       eventos: construirPuestos("eventos"),
-      victimas: construirPuestos("victimas"),
+      fallecidos: construirPuestos("fallecidos"),
+      afectados: construirPuestos("afectados"),
       dano: construirPuestos("dano"),
       n: lista.length,
     };
@@ -1160,6 +1334,101 @@
 
   /* ---------------------- 9.7 Render del panel ------------------------ */
 
+  function marcarGraficoVacio(canvasId, avisoId, vacio, mensaje) {
+    const canvas = document.getElementById(canvasId);
+    const aviso = document.getElementById(avisoId);
+    if (canvas) canvas.hidden = vacio;
+    if (aviso) {
+      aviso.hidden = !vacio;
+      if (vacio) aviso.textContent = mensaje;
+    }
+  }
+
+  function kpiPais(etiqueta, valor, nota, disponible = true, destacado = false) {
+    return `
+      <div class="kpi ${destacado ? "kpi--destacado" : ""} ${
+      disponible ? "" : "kpi--sin-datos"
+    }">
+        <span class="kpi__etiqueta">${etiqueta}</span>
+        <span class="kpi__valor">${disponible ? valor : "Sin datos"}</span>
+        ${nota ? `<span class="kpi__nota">${nota}</span>` : ""}
+      </div>`;
+  }
+
+  function indicadorPais(etiqueta, valor, nota, disponible = true) {
+    return `
+      <div class="indicador ${disponible ? "" : "indicador--sin-datos"}">
+        <span class="indicador__etiqueta">${etiqueta}</span>
+        <span class="indicador__valor">${disponible ? valor : "Sin datos"}</span>
+        <span class="indicador__nota">${nota}</span>
+      </div>`;
+  }
+
+  /** Cobertura de fallecidos, afectados y daño dentro del periodo. */
+  function pintarCalidad(calidad) {
+    const contenedor = document.getElementById("modal-calidad");
+    const insignia = document.getElementById("calidad-nivel");
+    const nota = document.getElementById("nota-calidad");
+    if (!contenedor) return;
+
+    if (!calidad.total) {
+      if (insignia) {
+        insignia.textContent = "Sin registros";
+        insignia.classList.add("insignia-dato--alerta");
+      }
+      contenedor.innerHTML =
+        '<p class="calidad__vacio">No hay eventos en el periodo y tipo seleccionados.</p>';
+      if (nota) {
+        nota.textContent =
+          "La cobertura se calcula sobre los eventos registrados; si no hay eventos, no se puede medir.";
+      }
+      return;
+    }
+
+    if (insignia) {
+      insignia.textContent = `${calidad.nivel} · ${formatearPorcentaje(calidad.promedio, 0)}`;
+      insignia.classList.toggle("insignia-dato--alerta", calidad.nivel === "Baja");
+    }
+
+    const filas = [
+      ["Fallecidos", calidad.conFallecidos, calidad.coberturaFallecidos, "rojo"],
+      ["Afectados", calidad.conAfectados, calidad.coberturaAfectados, "amarillo"],
+      ["Daño económico", calidad.conDano, calidad.coberturaDano, "purpura"],
+      ["Años con registros", calidad.anios, calidad.coberturaTemporal, "rosa"],
+    ];
+
+    contenedor.innerHTML = filas
+      .map(([nombre, conteo, cobertura, clase]) => {
+        const detalle =
+          nombre === "Años con registros"
+            ? `${conteo} de ${calidad.periodo} años`
+            : `${conteo} de ${calidad.total} eventos con el campo reportado`;
+        return `
+        <div class="calidad__fila" title="${detalle}">
+          <span class="calidad__nombre">${nombre}</span>
+          <span class="calidad__pista">
+            <span class="calidad__relleno calidad__relleno--${clase}" style="width:${cobertura.toFixed(
+          1
+        )}%"></span>
+          </span>
+          <span class="calidad__valor">${formatearPorcentaje(cobertura, 0)}</span>
+        </div>`;
+      })
+      .join("");
+
+    if (nota) {
+      nota.textContent =
+        `${formatearNumeroPais(calidad.total)} eventos en ${formatearNumeroPais(
+          calidad.anios
+        )} de ${formatearNumeroPais(calidad.periodo)} años. ` +
+        `La completitud promedio de los campos de impacto es ${formatearPorcentaje(
+          calidad.promedio,
+          0
+        )}; un campo no reportado no equivale a cero. ` +
+        "Niveles: alta ≥ 65 %, media 40–65 %, baja < 40 %.";
+    }
+  }
+
   function kpi(etiqueta, valor, nota, destacado = false) {
     return `
       <div class="kpi ${destacado ? "kpi--destacado" : ""}">
@@ -1190,6 +1459,8 @@
     const filtro = info.filtro;
     const socio = (datosSocio && datosSocio.paises[codigo]) || {};
     const rankings = calcularRankings();
+    const calidad = calidadPais(codigo, filtro);
+    const indicadores = indicadoresImpacto(info, socio, calidad);
 
     const setTxt = (id, texto) => {
       const el = document.getElementById(id);
@@ -1202,57 +1473,129 @@
       "modal-meta",
       `${codigo} · ${territorio.continente || "—"} · ${filtro.a1}–${filtro.a2}`
     );
-    setTxt("modal-badge", territorio.disponibilidad);
+    let insignia = territorio.disponibilidad;
+    if (!info.totales.eventos) insignia = "Sin registros en el periodo";
+    else if (!socio.poblacion || !socio.pib_mxn) insignia = "Sin datos socioeconómicos";
+    setTxt("modal-badge", insignia);
 
     // --- tarjetas -------------------------------------------------------
     const t = info.totales;
-    const anioSocio = socio.anio ? `Datos de ${Math.round(socio.anio)}` : "";
+    const anioSocio = socio.anio ? `Datos de ${Math.round(socio.anio)}` : "Sin año en WDI";
     const kpis = [
-      kpi("Población", formatearNumeroPais(socio.poblacion), anioSocio, true),
-      kpi("Superficie", formatearSuperficie(socio.superficie_km2), "Territorio"),
-      kpi("PIB", formatearDanoPais(socio.pib_mxn), anioSocio),
-      kpi("PIB por habitante", formatearDanoPais(socio.pib_pc_mxn), "Pesos mexicanos"),
-      kpi(
+      kpiPais("Población", formatearNumeroPais(socio.poblacion), anioSocio, socio.poblacion > 0, true),
+      kpiPais("Superficie", formatearSuperficie(socio.superficie_km2), "Territorio", socio.superficie_km2 > 0),
+      kpiPais("PIB", formatearDanoPais(socio.pib_mxn), anioSocio, socio.pib_mxn > 0),
+      kpiPais("PIB por habitante", formatearDanoPais(socio.pib_pc_mxn), "Pesos mexicanos", socio.pib_pc_mxn > 0),
+      kpiPais(
         "Densidad",
-        socio.densidad ? `${formatearDecimal(socio.densidad)}` : "—",
-        "habitantes por km²"
+        socio.densidad ? formatearDecimal(socio.densidad) : "—",
+        "habitantes por km²",
+        socio.densidad > 0
       ),
-      kpi(
+      kpiPais(
         "Eventos",
         formatearNumeroPais(t.eventos),
-        t.primer_anio ? `${t.primer_anio}–${t.ultimo_anio}` : "Sin registros",
+        t.eventos ? `${t.primer_anio}–${t.ultimo_anio}` : "Sin registros en el periodo",
+        true,
         true
       ),
-      kpi("Fallecidos", formatearNumeroPais(t.fallecidos), "Total del periodo"),
-      kpi("Afectados", formatearNumeroPais(t.afectados), "Total del periodo"),
-      kpi("Daño económico", formatearDanoPais(t.dano_mxn), "Pesos mexicanos", true),
+      kpiPais(
+        "Fallecidos",
+        formatearNumeroPais(t.fallecidos),
+        calidad.conFallecidos
+          ? `Reportado en ${formatearNumeroPais(calidad.conFallecidos)} de ${formatearNumeroPais(calidad.total)} eventos`
+          : "No reportado en el periodo",
+        calidad.conFallecidos > 0,
+        t.fallecidos > 0
+      ),
+      kpiPais(
+        "Afectados",
+        formatearNumeroPais(t.afectados),
+        calidad.conAfectados
+          ? `Reportado en ${formatearNumeroPais(calidad.conAfectados)} de ${formatearNumeroPais(calidad.total)} eventos`
+          : "No reportado en el periodo",
+        calidad.conAfectados > 0
+      ),
+      kpiPais(
+        "Daño económico",
+        formatearDanoPais(t.dano_mxn),
+        calidad.conDano
+          ? `Reportado en ${formatearNumeroPais(calidad.conDano)} de ${formatearNumeroPais(calidad.total)} eventos`
+          : "No reportado en el periodo",
+        calidad.conDano > 0,
+        t.dano_mxn > 0
+      ),
     ];
     document.getElementById("modal-kpis").innerHTML = kpis.join("");
 
     // --- rankings -------------------------------------------------------
     const contenedorRankings = document.getElementById("modal-rankings");
-    if (rankings) {
+    if (rankings && t.eventos > 0) {
       contenedorRankings.innerHTML = [
         ranking("en eventos", rankings.eventos[codigo], rankings.n, "eventos"),
-        ranking("en víctimas", rankings.victimas[codigo], rankings.n, "victimas"),
-        ranking("en daño económico", rankings.dano[codigo], rankings.n, "dano"),
+        ranking("en fallecidos", t.fallecidos > 0 ? rankings.fallecidos[codigo] : null, rankings.n, "fallecidos"),
+        ranking("en afectados", t.afectados > 0 ? rankings.afectados[codigo] : null, rankings.n, "afectados"),
+        ranking("en daño económico", t.dano_mxn > 0 ? rankings.dano[codigo] : null, rankings.n, "dano"),
       ].join("");
       setTxt(
         "nota-ranking",
-        `Posición entre los ${rankings.n} territorios con registros en ${filtro.a1}–${filtro.a2}.`
+        `Posición entre los ${rankings.n} territorios con al menos un evento en ${filtro.a1}–${filtro.a2}` +
+          `${filtro.tipo === "todos" ? "" : ` (${traducirTipoDesastre(filtro.tipo)})`}.`
       );
     } else {
       contenedorRankings.innerHTML = "";
-      setTxt("nota-ranking", "Sin datos suficientes para calcular la posición.");
+      setTxt(
+        "nota-ranking",
+        t.eventos
+          ? "Sin datos suficientes para calcular la posición."
+          : "Sin posición: no hay eventos registrados en el periodo y tipo seleccionados."
+      );
     }
+
+    // --- indicadores relativos ------------------------------------------
+    const contenedorIndicadores = document.getElementById("modal-indicadores");
+    if (contenedorIndicadores) {
+      contenedorIndicadores.innerHTML = indicadores
+        .map((indicador) =>
+          indicadorPais(
+            indicador.etiqueta,
+            indicador.valor,
+            indicador.nota,
+            indicador.valor !== null
+          )
+        )
+        .join("");
+    }
+    const notasIndicadores = [];
+    if (!socio.poblacion || !socio.pib_mxn) {
+      notasIndicadores.push(
+        "Este territorio no tiene población o PIB en el Banco Mundial; los indicadores que dependen de ellos quedan como «Sin datos»."
+      );
+    }
+    if (!t.eventos) {
+      notasIndicadores.push(
+        "No hay eventos registrados en el periodo y tipo seleccionados, así que no se calculan promedios."
+      );
+    }
+    notasIndicadores.push(
+      `Los ratios usan población y PIB de ${socio.anio ? Math.round(socio.anio) : "WDI"}; el daño es acumulado del periodo y el PIB es anual, por lo que la razón daño/PIB es solo una referencia de magnitud.`
+    );
+    setTxt("nota-indicadores", notasIndicadores.join(" "));
 
     // --- evolución temporal --------------------------------------------
     if (grafEvolucionChart) {
       grafEvolucionChart.destroy();
       grafEvolucionChart = null;
     }
+    const hayEvolucion = info.por_anio.length > 0;
+    marcarGraficoVacio(
+      "graf-evolucion",
+      "vacio-evolucion",
+      !hayEvolucion,
+      "Sin registros en el periodo y tipo seleccionados."
+    );
     const ctxEvolucion = document.getElementById("graf-evolucion");
-    if (ctxEvolucion && window.Chart && info.por_anio.length) {
+    if (ctxEvolucion && window.Chart && hayEvolucion) {
       grafEvolucionChart = new Chart(ctxEvolucion, {
         type: "line",
         data: {
@@ -1319,17 +1662,116 @@
       grafImpactoChart.destroy();
       grafImpactoChart = null;
     }
+    const aniosConFallecidos = info.por_anio.filter((x) => x.fallecidos > 0).length;
+    const aniosConAfectados = info.por_anio.filter((x) => x.afectados > 0).length;
+    const hayImpacto = aniosConFallecidos > 0 || aniosConAfectados > 0;
+    marcarGraficoVacio(
+      "graf-impacto",
+      "vacio-impacto",
+      !hayImpacto,
+      "Sin fallecidos ni afectados reportados en el periodo."
+    );
     const ctxImpacto = document.getElementById("graf-impacto");
-    if (ctxImpacto && window.Chart && info.por_anio.length) {
+    if (ctxImpacto && window.Chart && hayImpacto) {
+      const series = [];
+      if (aniosConFallecidos) {
+        series.push({
+          type: "bar",
+          label: "Fallecidos",
+          data: info.por_anio.map((x) => x.fallecidos),
+          backgroundColor: "#ffb71b",
+          borderRadius: 5,
+          maxBarThickness: 22,
+          yAxisID: "y",
+          order: 2,
+        });
+      }
+      if (aniosConAfectados) {
+        series.push({
+          type: "line",
+          label: "Afectados",
+          data: info.por_anio.map((x) => x.afectados),
+          borderColor: "#4c1d95",
+          backgroundColor: "rgba(76,29,149,0.12)",
+          tension: 0.3,
+          pointRadius: 0,
+          borderWidth: 2,
+          fill: true,
+          yAxisID: "y1",
+          order: 1,
+        });
+      }
       grafImpactoChart = new Chart(ctxImpacto, {
+        type: "bar",
+        data: { labels: info.por_anio.map((x) => x.anio), datasets: series },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: {
+              display: series.length > 1,
+              labels: { boxWidth: 10, font: { size: 10 }, color: "#3c3358" },
+            },
+            tooltip: {
+              callbacks: {
+                label: (contexto) =>
+                  `${contexto.dataset.label}: ${formatearNumeroPais(contexto.raw)}`,
+              },
+            },
+          },
+          scales: {
+            x: { ticks: { font: { size: 10 }, color: "#7a7191" }, grid: { display: false } },
+            y: {
+              position: "left",
+              ticks: { font: { size: 10 }, color: "#b07800" },
+              grid: { color: "rgba(76,29,149,0.08)" },
+              beginAtZero: true,
+            },
+            y1: {
+              display: aniosConAfectados > 0,
+              position: "right",
+              ticks: { font: { size: 10 }, color: "#4c1d95" },
+              grid: { display: false },
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+    setTxt(
+      "nota-impacto",
+      hayImpacto
+        ? `${aniosConFallecidos === 1 ? "1 año reporta" : `${aniosConFallecidos} años reportan`} fallecidos y ${
+            aniosConAfectados === 1 ? "1 año reporta" : `${aniosConAfectados} años reportan`
+          } afectados. El eje derecho corresponde a afectados.`
+        : "Sin fallecidos ni afectados reportados con los filtros actuales."
+    );
+
+    // --- daño económico por año ----------------------------------------
+    if (grafDanoChart) {
+      grafDanoChart.destroy();
+      grafDanoChart = null;
+    }
+    const aniosConDano = info.por_anio.filter((x) => x.dano_mxn > 0).length;
+    const hayDano = aniosConDano > 0;
+    marcarGraficoVacio(
+      "graf-dano",
+      "vacio-dano",
+      !hayDano,
+      "Sin daño económico reportado en el periodo."
+    );
+    const ctxDano = document.getElementById("graf-dano");
+    if (ctxDano && window.Chart && hayDano) {
+      grafDanoChart = new Chart(ctxDano, {
         type: "bar",
         data: {
           labels: info.por_anio.map((x) => x.anio),
           datasets: [
             {
-              label: "Fallecidos",
-              data: info.por_anio.map((x) => x.fallecidos),
-              backgroundColor: "#ffb71b",
+              label: "Daño económico",
+              data: info.por_anio.map((x) => x.dano_mxn),
+              backgroundColor: "#fa8a9a",
               borderRadius: 5,
               maxBarThickness: 22,
             },
@@ -1338,11 +1780,22 @@
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (contexto) => Escalas.formatearValor(contexto.raw, "moneda"),
+              },
+            },
+          },
           scales: {
             x: { ticks: { font: { size: 10 }, color: "#7a7191" }, grid: { display: false } },
             y: {
-              ticks: { font: { size: 10 }, color: "#7a7191" },
+              ticks: {
+                font: { size: 10 },
+                color: "#7a7191",
+                callback: (valor) => Escalas.formatearValor(valor, "moneda"),
+              },
               grid: { color: "rgba(76,29,149,0.08)" },
               beginAtZero: true,
             },
@@ -1350,14 +1803,36 @@
         },
       });
     }
+    setTxt(
+      "nota-dano",
+      hayDano
+        ? `${aniosConDano} de ${info.por_anio.length} años con registros reportan daño. Montos en pesos mexicanos, tal como los reporta EM-DAT.`
+        : "Sin daño económico reportado con los filtros actuales."
+    );
 
     // --- distribución por tipo -----------------------------------------
     if (grafTiposChart) {
       grafTiposChart.destroy();
       grafTiposChart = null;
     }
+    const selectorMetrica = document.getElementById("tipos-metrica");
+    if (selectorMetrica) selectorMetrica.value = metricaTipos;
+    const metrica = METRICAS_TIPOS[metricaTipos] || METRICAS_TIPOS.eventos;
+    const tipos = info.por_tipo
+      .filter((x) => x[metricaTipos] > 0)
+      .sort((a, b) => b[metricaTipos] - a[metricaTipos])
+      .slice(0, 7);
+    const totalMetrica = info.por_tipo.reduce(
+      (suma, x) => suma + x[metricaTipos],
+      0
+    );
+    marcarGraficoVacio(
+      "graf-tipos",
+      "vacio-tipos",
+      !tipos.length,
+      `Sin ${metrica.etiqueta} reportados para los tipos del periodo.`
+    );
     const ctxTipos = document.getElementById("graf-tipos");
-    const tipos = info.por_tipo.slice(0, 7);
     if (ctxTipos && window.Chart && tipos.length) {
       grafTiposChart = new Chart(ctxTipos, {
         type: "doughnut",
@@ -1365,7 +1840,7 @@
           labels: tipos.map((x) => traducirTipoDesastre(x.tipo)),
           datasets: [
             {
-              data: tipos.map((x) => x.eventos),
+              data: tipos.map((x) => x[metricaTipos]),
               backgroundColor: PALETA_GRAFICAS,
               borderColor: "#ffffff",
               borderWidth: 2,
@@ -1382,16 +1857,34 @@
               position: "bottom",
               labels: { boxWidth: 9, font: { size: 10 }, color: "#3c3358", padding: 10 },
             },
+            tooltip: {
+              callbacks: {
+                label: (contexto) =>
+                  `${contexto.label}: ${Escalas.formatearValor(
+                    contexto.raw,
+                    metrica.formato
+                  )}`,
+              },
+            },
           },
         },
       });
     }
+    const tipoMayor = tipos[0];
+    const participacion = tipoMayor && totalMetrica
+      ? (100 * tipoMayor[metricaTipos]) / totalMetrica
+      : 0;
     setTxt(
       "nota-tipos",
       tipos.length
-        ? `${tipos.length} tipos con registros. Total: ${formatearNumeroPais(t.eventos)} eventos.`
-        : "Sin registros de tipos con los filtros actuales."
+        ? `${tipos.length === 1 ? "1 tipo con" : `${tipos.length} tipos con`} ${metrica.etiqueta}. ${
+            tipoMayor ? traducirTipoDesastre(tipoMayor.tipo) : "—"
+          } concentra ${formatearPorcentaje(participacion, 1)} del total. Los campos no reportados no suman.`
+        : `Sin ${metrica.etiqueta} reportados con los filtros actuales.`
     );
+
+    // --- calidad y cobertura -------------------------------------------
+    pintarCalidad(calidad);
 
     // --- comparación de periodos ---------------------------------------
     const comparacion = compararPeriodo(codigo, filtro);

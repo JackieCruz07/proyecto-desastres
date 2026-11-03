@@ -376,22 +376,78 @@
             <p class="nota" id="nota-ranking"></p>
           </section>
 
+          <section class="modal__bloque" id="bloque-indicadores">
+            <div class="modal__bloque-cabecera">
+              <h3 class="modal__titulo">Indicadores de impacto relativo</h3>
+              <span class="sello-fuente">Periodo seleccionado</span>
+            </div>
+            <div class="indicadores" id="modal-indicadores"></div>
+            <p class="nota" id="nota-indicadores"></p>
+          </section>
+
           <div class="modal__grid">
             <section class="modal__bloque modal__bloque--ancho">
               <h3 class="modal__titulo">Evolución temporal</h3>
-              <canvas id="graf-evolucion" height="200"></canvas>
+              <div class="grafico-caja">
+                <canvas id="graf-evolucion" height="200"></canvas>
+                <p class="grafico-vacio" id="vacio-evolucion" hidden>
+                  Sin registros en el periodo seleccionado.
+                </p>
+              </div>
               <p class="nota" id="nota-evolucion">Sin datos.</p>
             </section>
 
             <section class="modal__bloque">
-              <h3 class="modal__titulo">Distribución por tipo</h3>
-              <canvas id="graf-tipos" height="220"></canvas>
-              <p class="nota" id="nota-tipos">Sin datos.</p>
+              <h3 class="modal__titulo">Impacto humano por año</h3>
+              <div class="grafico-caja">
+                <canvas id="graf-impacto" height="200"></canvas>
+                <p class="grafico-vacio" id="vacio-impacto" hidden>
+                  Sin fallecidos ni afectados reportados.
+                </p>
+              </div>
+              <p class="nota" id="nota-impacto">Sin datos.</p>
             </section>
 
             <section class="modal__bloque">
-              <h3 class="modal__titulo">Impacto humano por año</h3>
-              <canvas id="graf-impacto" height="200"></canvas>
+              <h3 class="modal__titulo">Daño económico por año</h3>
+              <div class="grafico-caja">
+                <canvas id="graf-dano" height="200"></canvas>
+                <p class="grafico-vacio" id="vacio-dano" hidden>
+                  Sin daño económico reportado.
+                </p>
+              </div>
+              <p class="nota" id="nota-dano">Sin datos.</p>
+            </section>
+
+            <section class="modal__bloque">
+              <div class="modal__bloque-cabecera">
+                <h3 class="modal__titulo">Distribución por tipo</h3>
+                <label class="campo campo--compacto">
+                  <span class="campo__etiqueta">Medida</span>
+                  <select id="tipos-metrica">
+                    <option value="eventos">Eventos</option>
+                    <option value="fallecidos">Fallecidos</option>
+                    <option value="afectados">Afectados</option>
+                    <option value="dano_mxn">Daño económico</option>
+                  </select>
+                </label>
+              </div>
+              <div class="grafico-caja">
+                <canvas id="graf-tipos" height="220"></canvas>
+                <p class="grafico-vacio" id="vacio-tipos" hidden>
+                  Sin registros para la medida elegida.
+                </p>
+              </div>
+              <p class="nota" id="nota-tipos">Sin datos.</p>
+            </section>
+
+            <section class="modal__bloque modal__bloque--calidad" id="bloque-calidad">
+              <div class="modal__bloque-cabecera">
+                <h3 class="modal__titulo">Cobertura y calidad de los datos</h3>
+                <span class="insignia-dato" id="calidad-nivel">—</span>
+              </div>
+              <div class="calidad" id="modal-calidad"></div>
+              <p class="nota" id="nota-calidad"></p>
             </section>
 
             <section class="modal__bloque modal__bloque--ancho">

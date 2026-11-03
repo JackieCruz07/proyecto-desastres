@@ -22,7 +22,7 @@ contexto de **Our World in Data (OWID)**.
 | 2 | Integración del mapa base y límites territoriales | ✅ Completada | Notebook + app de muestra |
 | 3 | **Capa de visualización temática** | ✅ **Completada** | Notebook + `app/` + GeoJSON + pipeline |
 | 4 | **Filtros y controles interactivos** | ✅ **Completada** | Panel de filtros + globo + capa de incendios |
-| 5 | Panel de información y visualizaciones por país | 🟡 En curso | Modal por país (KPIs, rankings, gráficas) |
+| 5 | **Panel de información y visualizaciones por país** | ✅ **Completada** | Notebook 06 + modal ampliado (indicadores, cobertura y gráficas) |
 | 5·M | **México por estados (CENAPRED)** | ✅ **Completada** | Pestaña México + vista estatal + notebook 05 |
 | 6 | Integración de la interfaz de usuario | ⏳ Pendiente | — |
 | 7 | Validación de resultados | ⏳ Pendiente | — |
@@ -132,28 +132,84 @@ recalculan sin volver a descargar datos.
 * **Capa de incendios.** Se dibujan los incendios de 50 ha o más registrados
   por CONAFOR (2015–2025) como puntos; el detalle por estado y causa se muestra
   en el panel de México.
-* **Doble clic en un país.** Abre el panel detallado con 9 KPIs, posición
-  mundial en eventos/víctimas/daño, tres gráficas (evolución, tipos e impacto),
-  comparación de periodos, los eventos más relevantes y, para México, el bloque
-  de incendios y el contexto de OWID.
+* **Doble clic en un país.** Abre el panel detallado con 9 KPIs, indicadores de
+  impacto relativo, posición mundial en eventos/fallecidos/afectados/daño,
+  cuatro gráficas (evolución, impacto humano, daño y tipos), cobertura de los
+  datos, comparación de periodos, los eventos más relevantes y, para México, el
+  bloque de incendios y el contexto de OWID.
 * **Vista de México.** La pestaña México abre el mapa estatal con filtros,
   panel por entidad y las cuatro fichas; se detalla en la sección siguiente.
 
-### Panel detallado por país (avance de la Actividad 5)
+### Actividad 5 — Panel de información y visualizaciones por país
 
-El modal se alimenta de `app/datos/eventos_pais.json` (10,907 eventos en 220
-territorios) y de `app/datos/paises_socio.json` (267 países con PIB, población,
-superficie y densidad). Incluye:
+El modal `#modal-pais` se abre con doble clic en un país (o desde la ficha
+lateral) y se alimenta de `app/datos/eventos_pais.json` (10,907 eventos en 220
+territorios), `app/datos/paises_socio.json` (267 países con PIB, población,
+superficie y densidad) y `app/datos/filtros.json`. El notebook
+`notebooks/06_actividad5_panel_pais.ipynb` define y audita todos los
+indicadores.
 
-* **9 KPIs:** eventos, fallecidos, afectados, daño, PIB, población, PIB per
-  cápita, superficie y densidad.
-* **Rankings mundiales** de eventos, víctimas y daño sobre 220 territorios.
-* **Gráficas:** evolución anual, distribución por tipo y eventos de mayor
-  impacto.
-* **Eventos destacados** ordenados por impacto humano (fallecidos + afectados)
-  y por daño económico.
-* **Bloque México:** superficie afectada y causas de incendios por estado.
-* **Bloque OWID:** afectados y eventos por tamaño, como validación externa.
+#### Variables e indicadores
+
+| Bloque | Indicadores |
+|--------|-------------|
+| **Información general** | Población, superficie, PIB, PIB por habitante y densidad |
+| **Desastres** | Eventos, años con registros, fallecidos, afectados y daño económico |
+| **Impacto relativo** | Afectados por 100 mil habitantes, daño sobre el PIB anual, fallecidos por evento, daño por evento, daño por afectado y eventos por año |
+| **Rankings mundiales** | Posición en eventos, fallecidos, afectados y daño |
+| **Calidad** | Cobertura de fallecidos, afectados y daño; cobertura temporal; completitud promedio y nivel |
+
+#### Visualizaciones
+
+* **Evolución temporal** de eventos y fallecidos, con ejes separados.
+* **Impacto humano por año**: barras de fallecidos y línea de afectados.
+* **Daño económico por año**, en pesos mexicanos.
+* **Distribución por tipo** con selector de medida: eventos, fallecidos,
+  afectados o daño.
+* **Comparación de periodos** de la misma duración.
+* **Eventos destacados** por impacto humano y por daño.
+* **Bloques de México (CONAFOR)** y **OWID** como contexto externo.
+
+#### Adaptación a los datos disponibles
+
+La disponibilidad se calcula sobre los eventos crudos: un `null` de EM-DAT
+significa **no reportado**, no cero. El panel aplica estas reglas:
+
+* Si falta población o PIB en el WDI (17 territorios, p. ej. Taiwán), los
+  ratios dependientes se muestran como **«Sin datos»** y se indica qué falta.
+* Si el periodo y el tipo no tienen eventos, los promedios y las gráficas
+  muestran un **aviso de vacío**; el KPI de eventos queda en 0.
+* Si no hay fallecidos, afectados o daño reportados, el KPI y los ratios
+  correspondientes se muestran como **«Sin datos»**, nunca como cero.
+* La **cobertura por campo** y la **completitud promedio** acompañan a los
+  promedios; una cobertura baja se marca como tal.
+* 52 territorios de EM-DAT no tienen polígono en el GeoJSON: no aparecen en el
+  mapa y el panel se abre solo para los 168 territorios dibujables con eventos.
+
+#### Cifras de la auditoría (2000–2026)
+
+| Indicador | Valor |
+|-----------|------:|
+| Territorios en EM-DAT | 220 |
+| Territorios con población y PIB para ratios | 201 |
+| Cobertura mediana de fallecidos | 61.5 % |
+| Cobertura mediana de afectados | 86.3 % |
+| Cobertura mediana de daño | 17.2 % |
+| Cobertura temporal mediana | 63.0 % |
+| Completitud promedio mediana | 55.2 % |
+| Calidad alta / media / baja | 26 / 161 / 33 |
+
+#### Evidencia generada
+
+* `notebooks/06_actividad5_panel_pais.ipynb` (ejecutado).
+* `resultados/tablas/actividad5_cobertura_pais.csv`
+* `resultados/tablas/actividad5_indicadores_pais.csv`
+* `resultados/graficas/actividad5_panel_completitud.png`
+* `resultados/graficas/actividad5_panel_cobertura_campos.png`
+* `resultados/graficas/actividad5_panel_dano_pib.png`
+
+> La vista mundial usa EM-DAT y la vista estatal de México usa CENAPRED. No se
+> suman porque las metodologías y los universos de eventos son distintos.
 
 ---
 
@@ -273,7 +329,7 @@ PROYECTO_DESASTRES/
 │   │   ├── diccionario_desastres.js  Nombres de desastres en español
 │   │   ├── capa_tematica.js     Capas 3D (color, elevación, deformación)
 │   │   ├── mexico_estados.js    Vista estatal: mapa, filtros, panel y fichas
-│   │   └── app.js               Orquestador: filtros, modal, rankings, incendios
+│   │   └── app.js               Orquestador: filtros, modal, indicadores y rankings
 │   └── datos/
 │       ├── paises.geojson       Capa agregada (175 unidades cartográficas)
 │       ├── metadatos.json       Variables y estadísticos globales
@@ -294,7 +350,8 @@ PROYECTO_DESASTRES/
 │   ├── 02_actividad2_mapa_base.ipynb
 │   ├── 03_actividad3_capa_tematica.ipynb
 │   ├── 04_actividad4_filtros_controles.ipynb
-│   └── 05_actividad5_mexico_estados.ipynb
+│   ├── 05_actividad5_mexico_estados.ipynb
+│   └── 06_actividad5_panel_pais.ipynb
 ├── src/                         Código fuente del pipeline
 │   ├── config.py                Rutas centralizadas y tipo de cambio
 │   ├── moneda.py                Conversión de montos a pesos mexicanos
@@ -344,6 +401,14 @@ la evidencia tabular en `resultados/tablas/`.
 > Todos los montos se convierten a **pesos mexicanos en el pipeline**, con el
 > tipo de cambio fijo de `src/config.py`. El navegador nunca hace conversiones
 > de moneda.
+
+El notebook `06_actividad5_panel_pais.ipynb` no genera datos para la app: audita
+la cobertura de los campos y calcula los indicadores derivados que el modal
+resuelve en el navegador. Para reproducirlo:
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace notebooks/06_actividad5_panel_pais.ipynb
+```
 
 ### 3. Ejecutar la aplicación web
 
