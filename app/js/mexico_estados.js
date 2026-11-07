@@ -713,6 +713,10 @@
     }, 220);
 
     ui.cerrar.focus();
+
+    document.dispatchEvent(
+      new CustomEvent("atlas:mexico", { detail: { abierto: true } })
+    );
   }
 
   function cerrar() {
@@ -720,6 +724,12 @@
     ui.vista.hidden = true;
     estado.abierto = false;
     document.body.classList.remove("mexico-abierto");
+    if (ui.btnAbrir && typeof ui.btnAbrir.focus === "function") {
+      ui.btnAbrir.focus({ preventScroll: true });
+    }
+    document.dispatchEvent(
+      new CustomEvent("atlas:mexico", { detail: { abierto: false } })
+    );
   }
 
   function renderMini() {

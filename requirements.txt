@@ -22,5 +22,8 @@ dash>=2.16
 pycountry>=23.12
 babel>=2.14
 
+# --- Validación de la interfaz (Actividad 6) --------------------------
+beautifulsoup4>=4.12
+
 # --- Capturas de pantalla para los reportes (opcional) ----------------
 # playwright>=1.40

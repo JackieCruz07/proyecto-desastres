@@ -28,10 +28,28 @@
   </head>
 
   <body>
+    <!-- Atajos de accesibilidad: permiten saltar la navegación repetitiva. -->
+    <a class="saltar" href="#mapa">Saltar al mapa</a>
+    <a class="saltar" href="#panel">Saltar a los controles</a>
+
+    <!-- Región viva para anuncios de lectores de pantalla. -->
+    <div
+      id="anuncio-lector"
+      class="solo-lectores"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
     <div id="app">
       <!-- ==================== MAPA ==================== -->
-      <main class="mapa-contenedor">
-        <div id="mapa" aria-label="Mapa mundial 3D de desastres naturales"></div>
+      <main class="mapa-contenedor" aria-label="Mapa mundial interactivo">
+        <div
+          id="mapa"
+          role="region"
+          tabindex="0"
+          aria-label="Mapa mundial 3D de desastres naturales. Usa las flechas para desplazarte y las teclas más y menos para acercar."
+        ></div>
 
         <!-- Encabezado flotante -->
         <header class="encabezado">
@@ -89,14 +107,27 @@
         <!-- Tooltip flotante -->
         <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
 
+        <!-- Botón para mostrar u ocultar el panel en pantallas pequeñas -->
+        <button
+          id="btn-panel-movil"
+          class="btn-panel-movil"
+          type="button"
+          aria-label="Mostrar panel de controles"
+          aria-expanded="false"
+          aria-controls="panel"
+        >
+          <span aria-hidden="true">☰</span>
+          <span class="btn-panel-movil__texto">Controles</span>
+        </button>
+
         <!-- Barra de estado -->
         <footer class="estado">
-          <span id="estado-texto">Cargando la capa temática…</span>
+          <span id="estado-texto" role="status" aria-live="polite">Cargando la capa temática…</span>
         </footer>
       </main>
 
       <!-- ==================== PANEL LATERAL ==================== -->
-      <aside class="panel" aria-label="Controles del atlas">
+      <aside class="panel" id="panel" aria-label="Controles del atlas">
         <div class="panel__marca">
           <span class="panel__sello" aria-hidden="true">
             <svg viewBox="0 0 32 32" role="img">
@@ -106,56 +137,133 @@
               />
             </svg>
           </span>
-          <div>
+          <div class="panel__marca__texto">
             <p class="panel__titulo">Atlas Global</p>
             <p class="panel__subtitulo">Desastres naturales · 2000–2026</p>
           </div>
+          <button
+            id="btn-ayuda"
+            class="boton-icono boton-icono--mini"
+            type="button"
+            aria-label="Ayuda, atajos de teclado y accesibilidad"
+            aria-haspopup="dialog"
+            title="Ayuda y atajos"
+          >
+            <span aria-hidden="true">?</span>
+          </button>
+          <button
+            id="btn-cerrar-panel-movil"
+            class="boton-icono boton-icono--mini btn-cerrar-panel-movil"
+            type="button"
+            aria-label="Cerrar panel de controles"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
 
         <!-- Pestañas -->
         <nav class="pestanas" role="tablist" aria-label="Secciones del panel">
           <button
+            id="tab-resumen"
             class="pestana activo"
             data-pestana="resumen"
             role="tab"
             aria-selected="true"
+            aria-controls="vista-resumen"
             type="button"
           >
             Resumen
           </button>
           <button
+            id="tab-filtros"
             class="pestana"
             data-pestana="filtros"
             role="tab"
             aria-selected="false"
+            aria-controls="vista-filtros"
             type="button"
           >
             Filtros
           </button>
           <button
+            id="tab-capa"
             class="pestana"
             data-pestana="capa"
             role="tab"
             aria-selected="false"
+            aria-controls="vista-capa"
             type="button"
           >
             Capa
           </button>
           <button
+            id="tab-mexico"
             class="pestana"
             data-pestana="mexico"
             role="tab"
             aria-selected="false"
+            aria-controls="vista-mexico-panel"
             type="button"
           >
             México
           </button>
         </nav>
 
+        <!-- Barra de sincronización entre mapa, filtros y paneles -->
+        <div class="sincronizacion" id="sincronizacion" aria-live="polite" aria-atomic="true">
+          <span class="sincronizacion__punto" aria-hidden="true"></span>
+          <span class="sincronizacion__texto" id="sincronizacion-texto">
+            Vista mundial · 2000–2026 · todos los tipos
+          </span>
+        </div>
+
+        <!-- Chips de filtros activos -->
+        <div
+          class="filtros-activos"
+          id="filtros-activos"
+          role="list"
+          aria-label="Filtros activos"
+        ></div>
+
         <div class="panel__scroll">
           <!-- ---------------- PESTAÑA: RESUMEN ---------------- -->
-          <div class="vista activo" data-vista="resumen">
-            <section class="tarjetas" id="tarjetas-resumen"></section>
+          <div
+            class="vista activo"
+            data-vista="resumen"
+            id="vista-resumen"
+            role="tabpanel"
+            aria-labelledby="tab-resumen"
+            tabindex="0"
+          >
+            <section class="tarjetas" id="tarjetas-resumen" aria-label="Indicadores generales"></section>
+
+            <section class="bloque buscador">
+              <h2 class="bloque__titulo">Buscar un territorio</h2>
+              <label class="campo">
+                <span class="campo__etiqueta">País o territorio</span>
+                <input
+                  id="buscador-pais"
+                  type="search"
+                  placeholder="Ej. México, Japón, Brasil…"
+                  autocomplete="off"
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-controls="buscador-resultados"
+                  aria-autocomplete="list"
+                  aria-describedby="buscador-ayuda"
+                />
+              </label>
+              <p class="bloque__nota" id="buscador-ayuda">
+                Escribe para filtrar la lista y elige un resultado para centrar el mapa.
+              </p>
+              <ul
+                id="buscador-resultados"
+                class="buscador__resultados"
+                role="listbox"
+                aria-label="Resultados de la búsqueda"
+                hidden
+              ></ul>
+            </section>
 
             <section class="bloque">
               <h2 class="bloque__titulo">Ficha del territorio</h2>
@@ -177,7 +285,14 @@
           </div>
 
           <!-- ---------------- PESTAÑA: FILTROS ---------------- -->
-          <div class="vista" data-vista="filtros">
+          <div
+            class="vista"
+            data-vista="filtros"
+            id="vista-filtros"
+            role="tabpanel"
+            aria-labelledby="tab-filtros"
+            tabindex="0"
+          >
             <section class="bloque">
               <h2 class="bloque__titulo">Periodo de tiempo</h2>
               <p class="bloque__ayuda">
@@ -227,7 +342,14 @@
           </div>
 
           <!-- ---------------- PESTAÑA: CAPA ---------------- -->
-          <div class="vista" data-vista="capa">
+          <div
+            class="vista"
+            data-vista="capa"
+            id="vista-capa"
+            role="tabpanel"
+            aria-labelledby="tab-capa"
+            tabindex="0"
+          >
             <section class="bloque">
               <h2 class="bloque__titulo">Representación temática</h2>
               <p class="bloque__ayuda">
@@ -304,7 +426,14 @@
           </div>
 
           <!-- ---------------- PESTAÑA: MÉXICO ---------------- -->
-          <div class="vista" data-vista="mexico">
+          <div
+            class="vista"
+            data-vista="mexico"
+            id="vista-mexico-panel"
+            role="tabpanel"
+            aria-labelledby="tab-mexico"
+            tabindex="0"
+          >
             <section class="bloque bloque--mexico">
               <p class="bloque__kicker">CENAPRED · 2000–2024</p>
               <h2 class="bloque__titulo">México, estado por estado</h2>
@@ -632,6 +761,70 @@
       </div>
     </dialog>
 
+    <!-- ==================== AYUDA Y ATAJOS ==================== -->
+    <dialog id="modal-ayuda" class="modal modal--ayuda" aria-labelledby="ayuda-titulo">
+      <div class="modal__hoja">
+        <header class="modal__cabecera">
+          <div class="modal__identidad">
+            <p class="modal__kicker">GUÍA RÁPIDA</p>
+            <h2 id="ayuda-titulo">Cómo usar el atlas</h2>
+            <p class="modal__meta">
+              Atajos, accesibilidad y sincronización entre el mapa, los filtros y los paneles.
+            </p>
+          </div>
+          <div class="modal__acciones">
+            <button
+              id="ayuda-cerrar"
+              class="boton-icono"
+              type="button"
+              aria-label="Cerrar la ayuda"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </header>
+        <div class="modal__cuerpo">
+          <section class="modal__bloque">
+            <h3 class="modal__titulo">Atajos de teclado</h3>
+            <ul class="ayuda-atajos">
+              <li><kbd>/</kbd><span>Buscar un país o territorio.</span></li>
+              <li><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><span>Cambiar entre Resumen, Filtros, Capa y México.</span></li>
+              <li><kbd>G</kbd><span>Volver a la vista de globo 3D.</span></li>
+              <li><kbd>P</kbd><span>Cambiar a la vista plana (Mercator).</span></li>
+              <li><kbd>M</kbd><span>Abrir el mapa de México por estados.</span></li>
+              <li><kbd>Esc</kbd><span>Cerrar el panel o la ventana abierta.</span></li>
+              <li><kbd>?</kbd><span>Abrir esta guía rápida.</span></li>
+            </ul>
+          </section>
+
+          <section class="modal__bloque">
+            <h3 class="modal__titulo">Cómo se sincroniza la interfaz</h3>
+            <ul class="ayuda-lista">
+              <li>Los filtros de periodo y tipo actualizan el mapa, las tarjetas y el panel del país seleccionado.</li>
+              <li>Al elegir un país en el mapa o en el buscador, se abre su ficha y puedes consultar el panel detallado.</li>
+              <li>Los chips sobre el panel resumen los filtros activos y permiten quitarlos sin perder el contexto.</li>
+              <li>La dirección del navegador guarda la pestaña, la proyección y el país abierto para compartir o recuperar la vista.</li>
+            </ul>
+          </section>
+
+          <section class="modal__bloque">
+            <h3 class="modal__titulo">Accesibilidad</h3>
+            <ul class="ayuda-lista">
+              <li>Todos los controles se pueden usar con teclado y muestran un anillo de foco visible.</li>
+              <li>Los cambios importantes se anuncian mediante regiones vivas para lectores de pantalla.</li>
+              <li>La aplicación respeta la preferencia de movimiento reducido del sistema.</li>
+              <li>Los territorios sin datos se muestran como «Sin datos», nunca como cero.</li>
+            </ul>
+          </section>
+
+          <p class="nota">
+            Fuente mundial: EM-DAT. México: CENAPRED / Atlas Nacional de Riesgos.
+            Incendios: CONAFOR. Los montos están en pesos mexicanos.
+          </p>
+        </div>
+      </div>
+    </dialog>
+
     <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
     <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
     <script src="js/diccionario_desastres.js"></script>
@@ -642,5 +835,6 @@
     <script src="js/capa_tematica.js"></script>
     <script src="js/mexico_estados.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/ui_shell.js"></script>
   </body>
 </html>

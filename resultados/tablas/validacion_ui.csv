@@ -1,0 +1,36 @@
+categoria,comprobacion,resultado,nivel,detalle
+Estructura,Idioma del documento declarado,OK,informativo,lang=es
+Estructura,Landmarks principales presentes,OK,informativo,"header, main, nav, aside y footer"
+Estructura,Identificadores únicos,OK,informativo,133 IDs declarados
+Estructura,Enlaces para saltar contenido,OK,informativo,2 enlaces de salto
+Accesibilidad,Región viva para anuncios,OK,informativo,#anuncio-lector con role=status y aria-live=polite
+Accesibilidad,Pestañas con estado y panel asociado,OK,informativo,4 pestañas
+Accesibilidad,Paneles de pestaña etiquetados,OK,informativo,4 paneles
+Accesibilidad,Botones con nombre accesible,OK,informativo,22 botones
+Accesibilidad,Campos de formulario etiquetados,OK,informativo,17 campos
+Accesibilidad,Diálogos etiquetados,OK,informativo,3 diálogos
+Accesibilidad,Referencias ARIA existentes,OK,informativo,todas las referencias apuntan a IDs reales
+Accesibilidad,Foco visible en controles,OK,informativo,reglas :focus-visible declaradas en el CSS
+Accesibilidad,Respeto al movimiento reducido,OK,informativo,@media (prefers-reduced-motion: reduce) presente
+Accesibilidad,Tamaños táctiles mínimos,OK,informativo,regla @media (pointer: coarse) con min-height
+Integración,IDs usados por JS existen en el HTML,OK,informativo,64 IDs verificados
+Integración,Eventos de sincronización emitidos,OK,informativo,"7/7 eventos: atlas:filtros, atlas:listo, atlas:mexico, atlas:modal, atlas:pestana, atlas:proyeccion, atlas:seleccion"
+Integración,Eventos de sincronización escuchados,OK,informativo,"7/7 eventos: atlas:filtros, atlas:listo, atlas:mexico, atlas:modal, atlas:pestana, atlas:proyeccion, atlas:seleccion"
+Integración,ui_shell.js se carga después de app.js,OK,informativo,diccionario_desastres.js → config.js → escalas.js → leyenda.js → estado.js → capa_tematica.js → mexico_estados.js → app.js → ui_shell.js
+Integración,API pública AtlasApp completa,OK,informativo,7 métodos expuestos
+Integración,Buscador de países conectado,OK,informativo,entrada y lista de resultados presentes y conectadas
+Integración,Chips de filtros activos,OK,informativo,#filtros-activos renderizado por ui_shell.js
+Integración,Enlaces profundos y persistencia,OK,informativo,"hash, replaceState y localStorage integrados"
+Integración,Panel colapsable en móvil,OK,informativo,"botón, clase de estado y estilos móviles"
+Contraste,Títulos sobre tarjetas,OK,informativo,#241b3a sobre #ffffff = 16.24:1 (mínimo 4.5:1)
+Contraste,Texto de cuerpo sobre tarjetas,OK,informativo,#3c3358 sobre #ffffff = 11.62:1 (mínimo 4.5:1)
+Contraste,Texto de cuerpo sobre el fondo cálido,OK,informativo,#3c3358 sobre #faf6f1 = 10.80:1 (mínimo 4.5:1)
+Contraste,Texto secundario sobre tarjetas,OK,informativo,#7a7191 sobre #ffffff = 4.57:1 (mínimo 4.5:1)
+Contraste,Cifras y enlaces sobre tarjetas,OK,informativo,#4c1d95 sobre #ffffff = 10.95:1 (mínimo 4.5:1)
+Contraste,Texto blanco sobre púrpura,OK,informativo,#ffffff sobre #4c1d95 = 10.95:1 (mínimo 4.5:1)
+Contraste,Insignias ámbar,OK,informativo,#8a5200 sobre #fff6e0 = 5.93:1 (mínimo 4.5:1)
+Contraste,Sello de fuente rosa,OK,informativo,#a12c40 sobre #fdeef0 = 6.33:1 (mínimo 4.5:1)
+Contraste,Chip de filtros desactivados,OK,informativo,#a12c20 sobre #ffe8e4 = 6.18:1 (mínimo 4.5:1)
+Contraste,Puesto de ranking sobre amarillo,OK,informativo,#5c3700 sobre #ffb71b = 6.02:1 (mínimo 4.5:1)
+Contraste,Pestañas inactivas,OK,informativo,#6d3bc0 sobre #f3edfb = 6.03:1 (mínimo 4.5:1)
+Contraste,Barra de estado sobre fondo oscuro,OK,informativo,#d9d0ee sobre #241b3a = 10.99:1 (mínimo 4.5:1)

@@ -24,7 +24,7 @@ contexto de **Our World in Data (OWID)**.
 | 4 | **Filtros y controles interactivos** | ✅ **Completada** | Panel de filtros + globo + capa de incendios |
 | 5 | **Panel de información y visualizaciones por país** | ✅ **Completada** | Notebook 06 + modal ampliado (indicadores, cobertura y gráficas) |
 | 5·M | **México por estados (CENAPRED)** | ✅ **Completada** | Pestaña México + vista estatal + notebook 05 |
-| 6 | Integración de la interfaz de usuario | ⏳ Pendiente | — |
+| 6 | **Integración de la interfaz de usuario** | ✅ **Completada** | Notebook 07 + `ui_shell.js` + auditoría automática |
 | 7 | Validación de resultados | ⏳ Pendiente | — |
 
 ---
@@ -292,6 +292,75 @@ gráficas quedan en `resultados/graficas/mexico/`.
 
 ---
 
+## Actividad 6 — Integración de la interfaz de usuario
+
+La Actividad 6 une el mapa 3D, la capa temática, los filtros, los controles y
+el panel por país en una sola experiencia. **No rediseña la apariencia**: el
+panel lateral, la paleta y los componentes visuales se conservan; se añade la
+capa que coordina las piezas.
+
+### Cómo se integra
+
+El módulo `app/js/ui_shell.js` escucha los eventos que emite `app.js` y
+mantiene un estado de interfaz único:
+
+| Evento | Efecto en la interfaz |
+|--------|------------------------|
+| `atlas:filtros` | Chips de filtros activos, barra de sincronización y anuncio accesible |
+| `atlas:seleccion` | Ficha del país, pestaña Resumen, enlace profundo y anuncio |
+| `atlas:modal` | Aviso de apertura/cierre y gestión de foco |
+| `atlas:proyeccion` | Persistencia globo/plano y actualización de la dirección |
+| `atlas:pestana` | Persistencia de la pestaña y enlace profundo |
+| `atlas:mexico` | Dirección `#mexico=1` y anuncio de la vista estatal |
+| `atlas:listo` | Restaura la vista guardada y valida el estado inicial |
+
+Otras piezas de la integración:
+
+* **Buscador de países** con navegación por teclado (`↑`, `↓`, `Enter`,
+  `Esc`) y centrado del mapa sobre el territorio elegido.
+* **Enlaces profundos** como `#pais=MEX&pestana=filtros&proyeccion=plano`.
+* **Persistencia ligera** de pestaña y proyección en `localStorage`.
+* **Atajos**: `/` busca, `1`–`4` cambian de pestaña, `G` globo, `P` plano,
+  `M` México, `?` abre la ayuda y `Esc` cierra.
+* **Accesibilidad**: enlaces para saltar, regiones vivas, foco visible,
+  etiquetas ARIA, `prefers-reduced-motion`, contraste AA y tamaños táctiles.
+* **Capacidad de respuesta**: en pantallas de hasta 900 px el panel se vuelve
+  una hoja inferior colapsable con botón, cierre explícito y foco gestionado.
+
+### Validación automática
+
+`src/validar_ui.py` ejecuta **35 comprobaciones** sobre HTML, CSS y JS:
+
+```bash
+python -m src.validar_ui
+```
+
+Genera `resultados/tablas/validacion_ui.csv` con los resultados de:
+
+* Coherencia entre los IDs que usa el JavaScript y los del HTML (64 IDs).
+* Duplicados, roles de pestaña, paneles, diálogos y referencias ARIA.
+* Botones con nombre accesible, campos etiquetados y regiones vivas.
+* Emisión y escucha de los 7 eventos de sincronización.
+* Presencia de foco visible, movimiento reducido y tamaños táctiles.
+* Contraste WCAG AA de los 12 pares de color usados como texto
+  (mínimo medido: **4.57:1**).
+
+### Evidencia generada
+
+* `notebooks/07_actividad6_integracion_ui.ipynb` (ejecutado).
+* `resultados/tablas/validacion_ui.csv`
+* `resultados/graficas/integracion_ui/01_escritorio_resumen.png`
+* `resultados/graficas/integracion_ui/02_escritorio_filtros.png`
+* `resultados/graficas/integracion_ui/03_escritorio_buscador.png`
+* `resultados/graficas/integracion_ui/04_modal_pais.png`
+* `resultados/graficas/integracion_ui/05_ayuda_atajos.png`
+* `resultados/graficas/integracion_ui/06_movil_mapa.png`
+* `resultados/graficas/integracion_ui/07_movil_panel.png`
+* `resultados/graficas/integracion_ui/08_mexico_estados.png`
+* `resultados/graficas/integracion_ui/contraste_wcag.png`
+
+---
+
 ## Identidad visual
 
 La interfaz usa la paleta institucional del brand guide y tipografía
@@ -329,7 +398,8 @@ PROYECTO_DESASTRES/
 │   │   ├── diccionario_desastres.js  Nombres de desastres en español
 │   │   ├── capa_tematica.js     Capas 3D (color, elevación, deformación)
 │   │   ├── mexico_estados.js    Vista estatal: mapa, filtros, panel y fichas
-│   │   └── app.js               Orquestador: filtros, modal, indicadores y rankings
+│   │   ├── app.js               Orquestador: filtros, modal, indicadores y rankings
+│   │   └── ui_shell.js          Integración: eventos, chips, buscador, atajos y móvil
 │   └── datos/
 │       ├── paises.geojson       Capa agregada (175 unidades cartográficas)
 │       ├── metadatos.json       Variables y estadísticos globales
@@ -351,7 +421,8 @@ PROYECTO_DESASTRES/
 │   ├── 03_actividad3_capa_tematica.ipynb
 │   ├── 04_actividad4_filtros_controles.ipynb
 │   ├── 05_actividad5_mexico_estados.ipynb
-│   └── 06_actividad5_panel_pais.ipynb
+│   ├── 06_actividad5_panel_pais.ipynb
+│   └── 07_actividad6_integracion_ui.ipynb
 ├── src/                         Código fuente del pipeline
 │   ├── config.py                Rutas centralizadas y tipo de cambio
 │   ├── moneda.py                Conversión de montos a pesos mexicanos
@@ -364,7 +435,9 @@ PROYECTO_DESASTRES/
 │   ├── generar_filtros.py       Catálogo de filtros
 │   ├── diccionario_desastres.py Nombres de desastres en español
 │   ├── servir_app.py            Servidor local de la aplicación
-│   └── capturas.py              Generación de capturas (reporte)
+│   ├── capturas.py              Generación de capturas (reporte)
+│   ├── validar_ui.py            Auditoría de accesibilidad e integración
+│   └── capturas_ui.py           Capturas de la interfaz integrada (Actividad 6)
 ├── resultados/                  Evidencia: tablas, gráficas y capturas
 └── reportes/                    Reportes de cada actividad
 ```
@@ -410,6 +483,12 @@ resuelve en el navegador. Para reproducirlo:
 jupyter nbconvert --to notebook --execute --inplace notebooks/06_actividad5_panel_pais.ipynb
 ```
 
+El notebook de la Actividad 6 audita la integración y la accesibilidad:
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace notebooks/07_actividad6_integracion_ui.ipynb
+```
+
 ### 3. Ejecutar la aplicación web
 
 La aplicación consume el GeoJSON con `fetch`, por lo que debe servirse por HTTP
@@ -428,16 +507,24 @@ python -m http.server 8000
 
 Luego abre <http://localhost:8000> en el navegador.
 
-### 4. Generar las capturas del reporte (opcional)
+### 4. Validar la interfaz y generar capturas (opcional)
 
-Las capturas ya vienen incluidas en `resultados/graficas/capa_tematica/`, por
-lo que **no es necesario regenerarlas**. Solo hay que repetir este paso si se
-modifica algo visual en la aplicación:
+La auditoría de accesibilidad e integración se puede repetir en cualquier
+momento:
+
+```bash
+python -m src.validar_ui
+```
+
+Las capturas ya vienen incluidas en `resultados/graficas/capa_tematica/` y
+`resultados/graficas/integracion_ui/`, por lo que **no es necesario
+regenerarlas**. Solo hay que repetir este paso si se modifica algo visual:
 
 ```bash
 pip install playwright
 playwright install chromium
-python -m src.capturas
+python -m src.capturas          # capa temática (Actividad 3)
+python -m src.capturas_ui       # interfaz integrada (Actividad 6)
 ```
 
 ---

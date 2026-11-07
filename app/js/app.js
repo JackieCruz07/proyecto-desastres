@@ -47,6 +47,11 @@
   /** Expone la instancia del mapa para herramientas externas (capturas). */
   window.__mapa = () => mapa;
 
+  /** Emite un evento de integración para que la capa de UI reaccione. */
+  function emitir(nombre, detalle = {}) {
+    document.dispatchEvent(new CustomEvent(nombre, { detail: detalle }));
+  }
+
   /* ---------------------------------------------------------------------- *
    * 2. Carga de datos                                                      *
    * ---------------------------------------------------------------------- */
@@ -136,6 +141,7 @@
     }
     ui.btnGlobo.classList.toggle("activo", tipo === "globo");
     ui.btnPlano.classList.toggle("activo", tipo === "plano");
+    emitir("atlas:proyeccion", { proyeccion: tipo });
   }
 
   /* ---------------------------------------------------------------------- *
@@ -146,10 +152,14 @@
       const activo = boton.dataset.pestana === nombre;
       boton.classList.toggle("activo", activo);
       boton.setAttribute("aria-selected", String(activo));
+      boton.tabIndex = activo ? 0 : -1;
     });
     document.querySelectorAll(".vista[data-vista]").forEach((vista) => {
-      vista.classList.toggle("activo", vista.dataset.vista === nombre);
+      const activo = vista.dataset.vista === nombre;
+      vista.classList.toggle("activo", activo);
+      vista.hidden = !activo;
     });
+    emitir("atlas:pestana", { pestana: nombre });
   }
 
   function conectarPestanas() {
@@ -165,6 +175,7 @@
     const cuerpo = ui.modal.querySelector(".modal__cuerpo");
     if (cuerpo) cuerpo.scrollTop = 0;
     renderPanelPais();
+    emitir("atlas:modal", { abierto: true, codigo });
   }
 
   function cerrarModalPais() {
@@ -365,6 +376,7 @@
     const territorio = CapaTematica.territorio(codigo);
     if (!territorio) {
       fichaInicial();
+      emitir("atlas:seleccion", { codigo: null, nombre: null, continente: null });
       return;
     }
 
@@ -422,6 +434,12 @@
       ui.btnAbrirPanel.disabled = false;
       ui.btnAbrirPanel.textContent = `Abrir panel de ${territorio.nombre}`;
     }
+
+    emitir("atlas:seleccion", {
+      codigo,
+      nombre: territorio.nombre,
+      continente: territorio.continente || null,
+    });
   }
 
 
@@ -526,6 +544,23 @@
     return salida;
   }
 
+  /** Notifica a la capa de UI el estado de los filtros aplicados. */
+  function notificarFiltros(filtro, eventos) {
+    const completo =
+      filtro.a1 === periodoFiltros.inicio &&
+      filtro.a2 === periodoFiltros.fin &&
+      filtro.tipo === "todos";
+    emitir("atlas:filtros", {
+      desde: filtro.a1,
+      hasta: filtro.a2,
+      tipo: filtro.tipo,
+      activo: Boolean(filtro.activo),
+      completo,
+      eventos: typeof eventos === "number" ? eventos : null,
+      periodo: { inicio: periodoFiltros.inicio, fin: periodoFiltros.fin },
+    });
+  }
+
   /** Recalcula los valores de cada país y los aplica al mapa. */
   function aplicarFiltros() {
     const etiqueta = document.getElementById("valor-periodo");
@@ -561,11 +596,13 @@
           : "Los filtros no están aplicados al mapa.";
       }
       if (codigoSeleccionado) actualizarPanelPais(codigoSeleccionado);
+      notificarFiltros(filtro, null);
       return;
     }
 
     if (!datosFiltros || !datosFiltros.datos) {
       if (nota) nota.textContent = "No se pudieron cargar los datos de los filtros.";
+      notificarFiltros(filtro, null);
       return;
     }
 
@@ -611,6 +648,7 @@
     }
 
     if (codigoSeleccionado) actualizarPanelPais(codigoSeleccionado);
+    notificarFiltros(filtro, totalEventos);
   }
 
   /* ---------------------------------------------------------------------- *
@@ -686,6 +724,9 @@
         ui.modal.addEventListener("click", (evento) => {
           if (evento.target === ui.modal) cerrarModalPais();
         });
+        ui.modal.addEventListener("close", () =>
+          emitir("atlas:modal", { abierto: false, codigo: null })
+        );
       }
       if (ui.btnAbrirPanel) {
         ui.btnAbrirPanel.addEventListener("click", () => {
@@ -754,11 +795,26 @@
       window.AtlasApp = {
         mapa,
         abrirPais: abrirModalPais,
+        cerrarPais: cerrarModalPais,
+        aplicarFiltros,
+        activarPestana,
+        cambiarProyeccion,
         seleccionar: (codigo) => {
           CapaTematica.setSeleccionado(codigo);
           mostrarFicha(codigo);
           actualizarPanelPais(codigo);
         },
+        estado: () => ({
+          seleccion: codigoSeleccionado,
+          paisPanel: paisActual,
+          modalAbierto: Boolean(ui.modal && ui.modal.open),
+          pestana:
+            (document.querySelector(".pestana.activo") || {}).dataset?.pestana ||
+            "resumen",
+          proyeccion: ui.btnPlano.classList.contains("activo")
+            ? "plano"
+            : "globo",
+        }),
       };
 
       Estado.mensaje(
@@ -767,6 +823,12 @@
         )} eventos · ${metadatos.n_territorios} territorios`,
         "ok"
       );
+
+      emitir("atlas:listo", {
+        eventos: metadatos.n_eventos,
+        territorios: metadatos.n_territorios,
+        periodo: { ...periodoFiltros },
+      });
 
       // Oculta el tooltip al desplazar el mapa.
       mapa.on("movestart", ocultarTooltip);
