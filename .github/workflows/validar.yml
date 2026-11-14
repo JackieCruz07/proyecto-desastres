@@ -1,0 +1,31 @@
+name: Validar proyecto
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias mínimas
+        run: pip install beautifulsoup4
+
+      - name: Comprobar sintaxis de Python
+        run: python -m compileall -q src tests
+
+      - name: Pruebas de integridad
+        run: python -m unittest discover -s tests -v

@@ -25,7 +25,7 @@ contexto de **Our World in Data (OWID)**.
 | 5 | **Panel de información y visualizaciones por país** | ✅ **Completada** | Notebook 06 + modal ampliado (indicadores, cobertura y gráficas) |
 | 5·M | **México por estados (CENAPRED)** | ✅ **Completada** | Pestaña México + vista estatal + notebook 05 |
 | 6 | **Integración de la interfaz de usuario** | ✅ **Completada** | Notebook 07 + `ui_shell.js` + auditoría automática |
-| 7 | Validación de resultados | ⏳ Pendiente | — |
+| 7 | **Validación de resultados** | ✅ **Completada** | Notebook 08 + `validacion_resultados.csv` |
 
 ---
 
@@ -154,7 +154,7 @@ indicadores.
 | Bloque | Indicadores |
 |--------|-------------|
 | **Información general** | Población, superficie, PIB, PIB por habitante y densidad |
-| **Desastres** | Eventos, años con registros, fallecidos, afectados y daño económico |
+| **Desastres** | Eventos (con su periodo), fallecidos, afectados y daño económico |
 | **Impacto relativo** | Afectados por 100 mil habitantes, daño sobre el PIB anual, fallecidos por evento, daño por evento, daño por afectado y eventos por año |
 | **Rankings mundiales** | Posición en eventos, fallecidos, afectados y daño |
 | **Calidad** | Cobertura de fallecidos, afectados y daño; cobertura temporal; completitud promedio y nivel |
@@ -175,7 +175,8 @@ indicadores.
 La disponibilidad se calcula sobre los eventos crudos: un `null` de EM-DAT
 significa **no reportado**, no cero. El panel aplica estas reglas:
 
-* Si falta población o PIB en el WDI (17 territorios, p. ej. Taiwán), los
+* Si falta población o PIB en el WDI (**19 territorios sin PIB**, 17 de ellos
+  sin registro en el WDI, p. ej. Taiwán), los
   ratios dependientes se muestran como **«Sin datos»** y se indica qué falta.
 * Si el periodo y el tipo no tienen eventos, los promedios y las gráficas
   muestran un **aviso de vacío**; el KPI de eventos queda en 0.
@@ -184,7 +185,8 @@ significa **no reportado**, no cero. El panel aplica estas reglas:
 * La **cobertura por campo** y la **completitud promedio** acompañan a los
   promedios; una cobertura baja se marca como tal.
 * 52 territorios de EM-DAT no tienen polígono en el GeoJSON: no aparecen en el
-  mapa y el panel se abre solo para los 168 territorios dibujables con eventos.
+  mapa, y el panel se abre para los **175 territorios dibujables** (168 con
+  eventos y 7 sin indicadores).
 
 #### Cifras de la auditoría (2000–2026)
 
@@ -345,6 +347,23 @@ Genera `resultados/tablas/validacion_ui.csv` con los resultados de:
 * Contraste WCAG AA de los 12 pares de color usados como texto
   (mínimo medido: **4.57:1**).
 
+### Pruebas de integridad
+
+`tests/test_integridad.py` comprueba que los datos, los notebooks y la
+interfaz sigan siendo coherentes. Usa solo la biblioteca estándar y
+`beautifulsoup4`:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Las pruebas cubren los totales mundiales, los 175 polígonos, los 32 estados
+de México, los 9 módulos JavaScript, que ningún notebook tenga errores ni
+quede sin ejecutar, que la auditoría de interfaz pase completa y que el
+reporte de la Actividad 7 no tenga cifras por revisar. El flujo de GitHub
+Actions `.github/workflows/validar.yml` las ejecuta en cada push y en cada
+pull request.
+
 ### Evidencia generada
 
 * `notebooks/07_actividad6_integracion_ui.ipynb` (ejecutado).
@@ -358,6 +377,40 @@ Genera `resultados/tablas/validacion_ui.csv` con los resultados de:
 * `resultados/graficas/integracion_ui/07_movil_panel.png`
 * `resultados/graficas/integracion_ui/08_mexico_estados.png`
 * `resultados/graficas/integracion_ui/contraste_wcag.png`
+
+---
+
+## Actividad 7 — Validación de resultados
+
+`notebooks/08_actividad7_validacion_resultados.ipynb` recalcula cada cifra
+publicada y la contrasta con su fuente. No confía en números copiados: los
+vuelve a obtener del dataset y de los JSON de la aplicación.
+
+### Qué valida
+
+* **Integridad:** 10,907 filas × 69 columnas, sin `DisNo.` duplicados.
+* **Totales mundiales:** eventos, fallecidos, afectados y daño coinciden
+  exactamente entre el dataset y `filtros.json`.
+* **Cobertura geográfica:** 10,588 eventos con polígono (97.08 %) y 319
+  fuera (2.92 %).
+* **Cobertura socioeconómica:** 201 de los 220 territorios de EM-DAT tienen
+  PIB y población para calcular ratios.
+* **México:** 171 eventos, 2,631 fallecidos, 15,538,601 afectados y 1.60
+  billones de pesos; diferencia de 0.15 % con OWID.
+* **CENAPRED:** 32 estados, 4,195 filas estado-evento, 5,181 defunciones,
+  687.0 mil M y 2,576,168 viviendas.
+* **CONAFOR:** 74,853 incendios, 7.29 millones de hectáreas y 14,052 puntos
+  de 50 ha o más.
+* **Rankings:** México en #11 eventos, #63 fallecidos, #35 afectados y #10
+  daño sobre 220 territorios.
+
+El resultado son **33 comprobaciones**, todas en `OK`, guardadas en
+`resultados/tablas/validacion_resultados.csv`. Si alguna cifra se cambia sin
+actualizar la evidencia, la comprobación pasa a `REVISAR`.
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace notebooks/08_actividad7_validacion_resultados.ipynb
+```
 
 ---
 
@@ -422,7 +475,8 @@ PROYECTO_DESASTRES/
 │   ├── 04_actividad4_filtros_controles.ipynb
 │   ├── 05_actividad5_mexico_estados.ipynb
 │   ├── 06_actividad5_panel_pais.ipynb
-│   └── 07_actividad6_integracion_ui.ipynb
+│   ├── 07_actividad6_integracion_ui.ipynb
+│   └── 08_actividad7_validacion_resultados.ipynb
 ├── src/                         Código fuente del pipeline
 │   ├── config.py                Rutas centralizadas y tipo de cambio
 │   ├── moneda.py                Conversión de montos a pesos mexicanos
@@ -439,6 +493,7 @@ PROYECTO_DESASTRES/
 │   ├── validar_ui.py            Auditoría de accesibilidad e integración
 │   └── capturas_ui.py           Capturas de la interfaz integrada (Actividad 6)
 ├── resultados/                  Evidencia: tablas, gráficas y capturas
+├── tests/                       Pruebas de integridad (datos, notebooks, UI)
 └── reportes/                    Reportes de cada actividad
 ```
 
@@ -526,6 +581,15 @@ playwright install chromium
 python -m src.capturas          # capa temática (Actividad 3)
 python -m src.capturas_ui       # interfaz integrada (Actividad 6)
 ```
+
+### 5. Ejecutar las pruebas de integridad
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Verifican los totales de los datos, los notebooks ejecutados y la auditoría de
+interfaz. No requieren dependencias adicionales salvo `beautifulsoup4`.
 
 ---
 

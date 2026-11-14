@@ -1,0 +1,34 @@
+comprobacion,obtenido,esperado,resultado
+Filas del dataset,10907.0,10907.0,OK
+Columnas del dataset,69.0,69.0,OK
+Duplicados de DisNo.,0.0,0.0,OK
+Eventos en metadatos,10907.0,10907.0,OK
+Territorios en metadatos,175.0,175.0,OK
+Eventos: filtros vs dataset,10907.0,10907.0,OK
+Fallecidos: filtros vs dataset,1737592.0,1737592.0,OK
+Afectados: filtros vs dataset,4903433684.0,4903433684.0,OK
+Daño: filtros vs dataset,108199881483200.0,108199881483200.0,OK
+Polígonos en el GeoJSON,175.0,175.0,OK
+Eventos con polígono,10588.0,10588.0,OK
+Eventos sin polígono,319.0,319.0,OK
+Territorios con PIB en el WDI,264.0,264.0,OK
+Territorios de EM-DAT con PIB y población,201.0,201.0,OK
+PIB de México (billones),38.07,38.07,OK
+México: eventos EM-DAT,171.0,171.0,OK
+México: fallecidos EM-DAT,2631.0,2631.0,OK
+México: afectados EM-DAT,15538601.0,15538601.0,OK
+México: daño EM-DAT (billones),1.6,1.6,OK
+México: diferencia con OWID (%),0.15,0.15,OK
+Estados con datos,32.0,32.0,OK
+Filas estado-evento,4195.0,4195.0,OK
+Defunciones CENAPRED,5181.0,5181.0,OK
+Daño CENAPRED (mil M MXN),687.0,687.0,OK
+Viviendas dañadas,2576168.0,2576168.0,OK
+Fichas destacadas,4.0,4.0,OK
+Incendios CONAFOR,74853.0,74853.0,OK
+Hectáreas CONAFOR (millones),7.29,7.29,OK
+Incendios de 50 ha o más,14052.0,14052.0,OK
+Ranking de México en eventos,11.0,11.0,OK
+Ranking de México en fallecidos,63.0,63.0,OK
+Ranking de México en afectados,35.0,35.0,OK
+Ranking de México en dano,10.0,10.0,OK
