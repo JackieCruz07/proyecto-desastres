@@ -94,6 +94,25 @@ class TestNotebooks(unittest.TestCase):
 class TestInterfaz(unittest.TestCase):
     """La auditoría de la Actividad 6 debe pasar sin errores."""
 
+    def test_recursos_locales(self):
+        html = (RAIZ / "app" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("unpkg.com", html)
+        self.assertNotIn("fonts.googleapis.com", html)
+        for recurso in (
+            "app/vendor/maplibre/maplibre-gl.js",
+            "app/vendor/maplibre/maplibre-gl.css",
+            "app/vendor/chartjs/chart.umd.js",
+            "app/vendor/fuentes/fuentes.css",
+        ):
+            self.assertTrue((RAIZ / recurso).exists(), f"falta {recurso}")
+
+    def test_entrega_docker(self):
+        for archivo in ("Dockerfile", "docker-compose.yml", "docker/nginx.conf", ".dockerignore"):
+            self.assertTrue((RAIZ / archivo).exists(), f"falta {archivo}")
+        dockerfile = (RAIZ / "Dockerfile").read_text(encoding="utf-8")
+        self.assertIn("COPY app/", dockerfile)
+        self.assertIn("nginx", dockerfile)
+
     def test_mexico_con_relieve(self):
         html = (RAIZ / "app" / "index.html").read_text(encoding="utf-8")
         js = (RAIZ / "app" / "js" / "mexico_estados.js").read_text(encoding="utf-8")

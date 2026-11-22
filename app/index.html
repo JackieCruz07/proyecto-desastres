@@ -10,19 +10,11 @@
       content="Aplicación web interactiva para explorar los desastres naturales registrados en el mundo, con énfasis en México."
     />
 
-    <!-- Tipografías de la identidad visual -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Tipografías locales: la app funciona sin conexión a internet -->
+    <link rel="stylesheet" href="vendor/fuentes/fuentes.css" />
 
     <!-- MapLibre GL JS: globo 3D, elevación y relieve temático -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css"
-    />
+    <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css" />
 
     <link rel="stylesheet" href="css/estilos.css" />
   </head>
@@ -881,8 +873,8 @@
       </div>
     </dialog>
 
-    <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
-    <script src="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.js"></script>
+    <script src="vendor/chartjs/chart.umd.js"></script>
+    <script src="vendor/maplibre/maplibre-gl.js"></script>
     <script src="js/diccionario_desastres.js"></script>
     <script src="js/config.js"></script>
     <script src="js/escalas.js"></script>

@@ -499,6 +499,31 @@ PROYECTO_DESASTRES/
 
 ---
 
+## Entrega en Docker
+
+La aplicación está preparada para ejecutarse en cualquier equipo con **Docker**,
+sin instalar Python, Node.js ni dependencias adicionales:
+
+```bash
+docker compose up --build -d
+```
+
+Abrir <http://localhost:8080>. Para detenerla:
+
+```bash
+docker compose down
+```
+
+Las instrucciones completas —incluida la alternativa con `docker run`, el acceso
+desde otro dispositivo de la red y el cambio de puerto— están en
+[`DOCKER.md`](DOCKER.md).
+
+La imagen incluye la aplicación, los datos y las librerías MapLibre GL, Chart.js
+y las tipografías dentro de `app/vendor/`, por lo que **funciona sin conexión a
+internet**.
+
+---
+
 ## Instalación y uso
 
 ### 1. Requisitos
@@ -546,8 +571,17 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/07_actividad6_inte
 
 ### 3. Ejecutar la aplicación web
 
-La aplicación consume el GeoJSON con `fetch`, por lo que debe servirse por HTTP
-(no abrir `index.html` directamente con `file://`):
+**Con Docker (recomendado para la entrega):**
+
+```bash
+docker compose up --build -d
+```
+
+Abrir <http://localhost:8080>. Consulta [`DOCKER.md`](DOCKER.md) para más
+detalles.
+
+**Sin Docker:** la aplicación consume el GeoJSON con `fetch`, por lo que debe
+servirse por HTTP (no abrir `index.html` directamente con `file://`):
 
 ```bash
 python -m src.servir_app          # abre el navegador automáticamente

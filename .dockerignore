@@ -1,0 +1,25 @@
+# El contexto de Docker solo necesita app/ y docker/nginx.conf.
+.git
+.github
+.gitignore
+.ipynb_checkpoints
+**/__pycache__
+**/*.py[cod]
+.venv
+venv
+env
+
+/datos
+/notebooks
+/reportes
+/resultados
+/src
+/tests
+
+*.docx
+GUIA_EXPOSICION.md
+EXPLICACION_PROYECTO.docx
+README.md
+DOCKER.md
+Dockerfile
+docker-compose.yml
