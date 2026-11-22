@@ -16,12 +16,25 @@ const CONFIG = {
   rutaIncendios: "datos/incendios_mexico.json",
   rutaPuntosIncendios: "datos/incendios_puntos.geojson",
 
-  /* Estado inicial de la vista 3D */
+  /* Estado inicial de la vista 3D.
+     El pitch más pronunciado (35°) hace que el relieve de los países se
+     vea desde el primer instante, sin que el usuario tenga que inclinar
+     el globo manualmente. */
   vistaInicial: {
     center: [-60, 12],
     zoom: 1.95,
-    pitch: 22,
+    pitch: 35,
     bearing: 0,
+  },
+
+  /* Iluminación 3D para realzar el relieve temático (elevación y
+     deformación). Una luz direccional suave da volumen a los polígonos
+     sin oscurecer el mapa. */
+  luzRelieve: {
+    anchor: "viewport",
+    position: [0.5, 0, 1],
+    color: "#ffffff",
+    intensity: 0.85,
   },
 
   /* Mapa base: globo limpio SIN teselas externas.

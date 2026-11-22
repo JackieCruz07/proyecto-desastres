@@ -1,13 +1,13 @@
 categoria,comprobacion,resultado,nivel,detalle
 Estructura,Idioma del documento declarado,OK,informativo,lang=es
 Estructura,Landmarks principales presentes,OK,informativo,"header, main, nav, aside y footer"
-Estructura,Identificadores únicos,OK,informativo,133 IDs declarados
+Estructura,Identificadores únicos,OK,informativo,139 IDs declarados
 Estructura,Enlaces para saltar contenido,OK,informativo,2 enlaces de salto
 Accesibilidad,Región viva para anuncios,OK,informativo,#anuncio-lector con role=status y aria-live=polite
 Accesibilidad,Pestañas con estado y panel asociado,OK,informativo,4 pestañas
 Accesibilidad,Paneles de pestaña etiquetados,OK,informativo,4 paneles
-Accesibilidad,Botones con nombre accesible,OK,informativo,22 botones
-Accesibilidad,Campos de formulario etiquetados,OK,informativo,17 campos
+Accesibilidad,Botones con nombre accesible,OK,informativo,25 botones
+Accesibilidad,Campos de formulario etiquetados,OK,informativo,21 campos
 Accesibilidad,Diálogos etiquetados,OK,informativo,3 diálogos
 Accesibilidad,Referencias ARIA existentes,OK,informativo,todas las referencias apuntan a IDs reales
 Accesibilidad,Foco visible en controles,OK,informativo,reglas :focus-visible declaradas en el CSS

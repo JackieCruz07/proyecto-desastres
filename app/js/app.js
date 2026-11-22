@@ -115,6 +115,10 @@
         "fog-ground-blend": 0.5,
         "atmosphere-blend": 0.7,
       });
+
+      // Luz direccional suave para realzar el relieve (elevación y
+      // deformación) de los países desde que se entra a la app.
+      mapa.setLight(CONFIG.luzRelieve);
     });
 
     return new Promise((resolve) => {

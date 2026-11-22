@@ -31,7 +31,7 @@ const CapaTematica = (() => {
     variableAltura: "fallecidos",
     recurso: "elevacion", // "elevacion" | "deformacion" | "ninguno"
     intensidad: 0.6,
-    alturaMaxima: 400000,
+    alturaMaxima: 600000,
     escala: "lineal",
     mostrarSinDatos: true,
     metadatos: null,

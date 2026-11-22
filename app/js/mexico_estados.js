@@ -73,6 +73,12 @@
     nacional: null,
     cargado: false,
     abierto: false,
+    /* Parámetros de capa temática (equivalentes al mapa global) */
+    variableAltura: "defunciones",
+    recurso: "elevacion", // "elevacion" | "deformacion" | "ninguno"
+    intensidad: 0.7,
+    alturaMaxima: 120000,
+    escala: "auto", // "auto" | "lineal" | "log"
   };
 
   const ui = {};
@@ -111,6 +117,36 @@
 
   function nombreEstado(iso) {
     return (estado.datos.estados[iso] || {}).nombre || iso;
+  }
+
+  /** Área aproximada de un anillo de coordenadas (grados cuadrados). */
+  function areaAnillo(anillo) {
+    let suma = 0;
+    for (let i = 0; i < anillo.length; i += 1) {
+      const [x1, y1] = anillo[i];
+      const [x2, y2] = anillo[(i + 1) % anillo.length];
+      suma += x1 * y2 - x2 * y1;
+    }
+    return Math.abs(suma / 2);
+  }
+
+  /**
+   * Conserva solo el polígono principal de cada estado.
+   * Elimina islas y fragmentos pequeños que quedaban flotando en el mapa.
+   */
+  function limpiarIslas(geo) {
+    const features = geo.features.map((rasgo) => {
+      if (rasgo.geometry.type !== "MultiPolygon") return rasgo;
+      const partes = rasgo.geometry.coordinates
+        .map((parte) => ({ parte, area: areaAnillo(parte[0]) }))
+        .sort((a, b) => b.area - a.area);
+      if (!partes.length) return rasgo;
+      return {
+        ...rasgo,
+        geometry: { ...rasgo.geometry, coordinates: [partes[0].parte] },
+      };
+    });
+    return { ...geo, features };
   }
 
   /* ---------------------------------------------------------------------- *
@@ -191,10 +227,80 @@
     return Escalas.crearNormalizador(0, rango.max, "lineal", rango.max);
   }
 
-  function colorDe(variable, normalizar, valor) {
-    if (!valor) return "#e8e1f3";
+  /* ---------------------------------------------------------------------- *
+   * 4a. Relieve 3D (equivalente al mapa global)                            *
+   * ---------------------------------------------------------------------- */
+
+  /** Rango efectivo para la variable de altura. */
+  function rangoEscalaAltura(variable) {
+    const valores = valoresDe(variable);
+    if (!valores.length) return { min: 0, max: 1, tope: 1 };
+    const min = 0;
+    const max = Math.max(...valores);
+    return { min, max, tope: max };
+  }
+
+  /** Normalizador de la variable de altura. */
+  function normalizadorAltura(variable) {
+    const { min, max, tope } = rangoEscalaAltura(variable);
+    const escala = estado.escala === "auto" ? VARIABLES[variable].escala : estado.escala;
+    return Escalas.crearNormalizador(min, max, escala, tope);
+  }
+
+  /** Altura en metros de un estado para el recurso 3D activo. */
+  function alturaTerritorio(valor, normalizarAltura) {
+    if (estado.recurso === "ninguno") return 0;
+
+    if (valor === null || valor === undefined || valor <= 0) {
+      // Los estados sin datos conservan una base mínima visible.
+      return estado.mostrarSinDatos !== false ? 1500 : 0;
+    }
+
+    const t = normalizarAltura(valor);
+
+    if (estado.recurso === "deformacion") {
+      const base = 1500;
+      return base + t * (estado.alturaMaxima * 0.45);
+    }
+
+    // Elevación: prisma proporcional al valor.
+    const base = 1500;
+    return base + t * estado.alturaMaxima;
+  }
+
+  /** Color de un estado para la variable de coloración, con intensidad. */
+  function colorTerritorio(valor, variable, normalizar) {
+    if (!valor) return CONFIG.colores.sinDatos;
     const paleta = CONFIG.paletas[VARIABLES[variable].paleta].colores;
-    return Escalas.colorRampa(paleta, normalizar(valor));
+    const t = normalizar(valor);
+    return Escalas.aplicarIntensidad(Escalas.colorRampa(paleta, t), estado.intensidad);
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * 4. Mapa                                                                *
+   * ---------------------------------------------------------------------- */
+
+  function datosPintados() {
+    const variable = estado.filtros.variable;
+    const alturaVariable = estado.variableAltura;
+    const normalizar = normalizador(variable);
+    const normalizarAltura = normalizadorAltura(alturaVariable);
+    const rasgos = estado.geo.features.map((rasgo) => {
+      const iso = rasgo.properties.id;
+      const agg = estado.agregados[iso] || {};
+      const valor = agg[variable] || 0;
+      const alturaValor = agg[alturaVariable] || 0;
+      return {
+        ...rasgo,
+        properties: {
+          ...rasgo.properties,
+          valor,
+          altura: alturaTerritorio(alturaValor, normalizarAltura),
+          color: colorTerritorio(valor, variable, normalizar),
+        },
+      };
+    });
+    return { type: "FeatureCollection", features: rasgos };
   }
 
   /* ---------------------------------------------------------------------- *
@@ -233,28 +339,6 @@
         : `Escala lineal · máximo ${formatear(variable, rango.max)}`;
   }
 
-  /* ---------------------------------------------------------------------- *
-   * 4. Mapa                                                                *
-   * ---------------------------------------------------------------------- */
-
-  function datosPintados() {
-    const variable = estado.filtros.variable;
-    const normalizar = normalizador(variable);
-    const rasgos = estado.geo.features.map((rasgo) => {
-      const iso = rasgo.properties.id;
-      const valor = (estado.agregados[iso] || {})[variable] || 0;
-      return {
-        ...rasgo,
-        properties: {
-          ...rasgo.properties,
-          valor,
-          color: colorDe(variable, normalizar, valor),
-        },
-      };
-    });
-    return { type: "FeatureCollection", features: rasgos };
-  }
-
   function crearMapa() {
     estado.mapa = new maplibregl.Map({
       container: "mapa-mexico",
@@ -269,17 +353,35 @@
       zoom: 4.1,
       minZoom: 2.5,
       maxZoom: 9,
+      pitch: 35,
+      bearing: 0,
+      maxPitch: 85,
       attributionControl: false,
     });
 
     estado.mapa.addControl(
-      new maplibregl.NavigationControl({ showCompass: false }),
+      new maplibregl.NavigationControl({ showCompass: false, visualizePitch: true }),
       "top-right"
     );
+    estado.mapa.addControl(
+      new maplibregl.ScaleControl({ maxWidth: 120, unit: "metric" }),
+      "bottom-right"
+    );
+
+    // La luz solo puede aplicarse cuando el estilo ya terminó de cargar.
+    estado.mapa.on("style.load", () => {
+      estado.mapa.setLight({
+        anchor: "viewport",
+        position: [0.5, 0, 1],
+        color: "#ffffff",
+        intensity: 0.15,
+      });
+    });
 
     estado.mapa.on("load", () => {
       estado.mapa.addSource("estados", { type: "geojson", data: datosPintados() });
 
+      // --- 1. Coloración -------------------------------------------------
       estado.mapa.addLayer({
         id: "estados-fill",
         type: "fill",
@@ -290,6 +392,21 @@
         },
       });
 
+      // --- 2. Relieve 3D (elevación / deformación) -----------------------
+      estado.mapa.addLayer({
+        id: "estados-relieve",
+        type: "fill-extrusion",
+        source: "estados",
+        paint: {
+          "fill-extrusion-color": ["get", "color"],
+          "fill-extrusion-height": ["get", "altura"],
+          "fill-extrusion-base": 0,
+          "fill-extrusion-opacity": 0.88,
+          "fill-extrusion-vertical-gradient": false,
+        },
+      });
+
+      // --- 3. Bordes territoriales ---------------------------------------
       estado.mapa.addLayer({
         id: "estados-line",
         type: "line",
@@ -300,6 +417,7 @@
         },
       });
 
+      // --- 4. Resalte del estado seleccionado ----------------------------
       estado.mapa.addLayer({
         id: "estados-sel",
         type: "line",
@@ -312,12 +430,18 @@
       });
 
       conectarMapa();
+
+      // Deja libre el espacio de los controles para que el país no quede debajo.
+      const movil = window.matchMedia("(max-width: 900px)").matches;
       estado.mapa.fitBounds(
         [
           [-118.6, 14.2],
           [-86.2, 32.9],
         ],
-        { padding: { top: 20, bottom: 30, left: 20, right: 20 }, duration: 0 }
+        {
+          padding: { top: 20, bottom: 30, left: movil ? 20 : 390, right: 20 },
+          duration: 0,
+        }
       );
     });
   }
@@ -363,6 +487,14 @@
     estado.mapa.getSource("estados").setData(datosPintados());
     estado.mapa.setFilter("estados-sel", ["==", ["get", "id"], estado.iso || ""]);
     pintarLeyenda(estado.filtros.variable);
+
+    // Ajustar visibilidad del relieve según el recurso activo.
+    const mostrarRelieve = estado.recurso !== "ninguno";
+    estado.mapa.setLayoutProperty(
+      "estados-relieve",
+      "visibility",
+      mostrarRelieve ? "visible" : "none"
+    );
   }
 
   function seleccionar(iso) {
@@ -666,14 +798,17 @@
     estado.filtros.max = Math.max(min, max);
     estado.filtros.tipo = ui.tipo.value;
 
+    // Sincronizar parámetros de relieve desde los controles.
+    estado.variableAltura = ui.variableAltura.value;
+    estado.recurso = ui.recursoActivo();
+    estado.intensidad = Number(ui.intensidad.value) / 100;
+    estado.alturaMaxima = Number(ui.escalaAltura.value);
+    estado.escala = ui.escala.value;
+
     recalcular();
     refrescarMapa();
     pintarNacional();
     pintarEstado();
-
-    if (estado.mapa && estado.mapa.getLayer("estados-fill")) {
-      estado.mapa.setPaintProperty("estados-fill", "fill-color", ["get", "color"]);
-    }
   }
 
   function restablecer() {
@@ -681,6 +816,20 @@
     ui.anioMin.value = "2000";
     ui.anioMax.value = "2024";
     ui.tipo.value = "todos";
+    ui.variableAltura.value = "defunciones";
+    ui.intensidad.value = "70";
+    ui.escalaAltura.value = "120000";
+    ui.escala.value = "auto";
+    // Reactivar el segmento de elevación.
+    ui.controles.querySelectorAll(".segmento").forEach((s) => {
+      s.classList.remove("activo");
+      s.setAttribute("aria-checked", "false");
+    });
+    const segmentoElev = ui.controles.querySelector('[data-recurso="elevacion"]');
+    if (segmentoElev) {
+      segmentoElev.classList.add("activo");
+      segmentoElev.setAttribute("aria-checked", "true");
+    }
     estado.iso = null;
     aplicarFiltros();
   }
@@ -764,9 +913,45 @@
       if (evento.key === "Escape" && estado.abierto) cerrar();
     });
 
-    [ui.variable, ui.anioMin, ui.anioMax, ui.tipo].forEach((control) => {
-      control.addEventListener("change", aplicarFiltros);
+    [ui.variable, ui.anioMin, ui.anioMax, ui.tipo, ui.variableAltura, ui.escala].forEach(
+      (control) => {
+        control.addEventListener("change", aplicarFiltros);
+      }
+    );
+
+    [ui.intensidad, ui.escalaAltura].forEach((control) => {
+      control.addEventListener("input", aplicarFiltros);
+      control.addEventListener("input", (evento) => {
+        const id = evento.target.id;
+        let clave = id.replace("mexico-", "");
+        if (clave === "escala-altura") clave = "altura";
+        const mostrar = document.getElementById(`mexico-valor-${clave}`);
+        if (mostrar) {
+          mostrar.textContent =
+            id === "mexico-intensidad"
+              ? `${evento.target.value} %`
+              : `${Math.round(evento.target.value / 1000)} km`;
+        }
+      });
     });
+
+    // Segmentos de recurso visual 3D.
+    ui.controles.querySelectorAll(".segmento").forEach((boton) => {
+      boton.addEventListener("click", () => {
+        ui.controles.querySelectorAll(".segmento").forEach((s) => {
+          s.classList.remove("activo");
+          s.setAttribute("aria-checked", "false");
+        });
+        boton.classList.add("activo");
+        boton.setAttribute("aria-checked", "true");
+        aplicarFiltros();
+      });
+    });
+
+    ui.recursoActivo = () => {
+      const activo = ui.controles.querySelector(".segmento.activo");
+      return activo ? activo.dataset.recurso : "elevacion";
+    };
 
     ui.reset.addEventListener("click", restablecer);
 
@@ -834,6 +1019,12 @@
     ui.desastreFuente = document.getElementById("desastre-fuente");
     ui.desastreVerMapa = document.getElementById("desastre-ver-mapa");
     ui.cerrarDesastre = document.getElementById("desastre-cerrar");
+
+    /* Controles de capa temática / relieve (equivalentes al mapa global) */
+    ui.variableAltura = document.getElementById("mexico-variable-altura");
+    ui.intensidad = document.getElementById("mexico-intensidad");
+    ui.escalaAltura = document.getElementById("mexico-escala-altura");
+    ui.escala = document.getElementById("mexico-escala");
   }
 
   async function cargarJSON(ruta) {
@@ -854,7 +1045,7 @@
         cargarJSON(RUTAS.geo),
       ]);
       estado.datos = datos;
-      estado.geo = geo;
+      estado.geo = limpiarIslas(geo);
       estado.cargado = true;
 
       llenarControles();

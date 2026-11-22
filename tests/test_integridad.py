@@ -94,6 +94,22 @@ class TestNotebooks(unittest.TestCase):
 class TestInterfaz(unittest.TestCase):
     """La auditoría de la Actividad 6 debe pasar sin errores."""
 
+    def test_mexico_con_relieve(self):
+        html = (RAIZ / "app" / "index.html").read_text(encoding="utf-8")
+        js = (RAIZ / "app" / "js" / "mexico_estados.js").read_text(encoding="utf-8")
+        for control in (
+            "mexico-variable-altura",
+            "mexico-intensidad",
+            "mexico-escala-altura",
+            "mexico-escala",
+        ):
+            self.assertIn(f'id="{control}"', html)
+        self.assertIn('id: "estados-relieve"', js)
+        self.assertIn('on("style.load"', js)
+        self.assertIn("function limpiarIslas", js)
+        self.assertIn("estado.geo = limpiarIslas(geo)", js)
+        self.assertNotIn("colorDe(", js)
+
     def test_validar_ui(self):
         resultado = subprocess.run(
             [sys.executable, "-m", "src.validar_ui"],

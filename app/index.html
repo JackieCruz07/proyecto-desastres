@@ -389,8 +389,8 @@
 
               <label class="campo">
                 <span class="campo__etiqueta">Altura máxima del relieve</span>
-                <input id="escala-altura" type="range" min="10000" max="1200000" step="10000" value="400000" />
-                <span class="campo__valor" id="valor-altura">400 km</span>
+                <input id="escala-altura" type="range" min="10000" max="1200000" step="10000" value="600000" />
+                <span class="campo__valor" id="valor-altura">600 km</span>
               </label>
 
               <label class="campo">
@@ -656,50 +656,92 @@
           <div id="mapa-mexico" aria-label="Mapa coroplético de los estados de México"></div>
 
           <div class="mexico-controles" id="mexico-controles">
-            <label class="campo campo--compacto">
-              <span class="campo__etiqueta">Variable</span>
-              <select id="mexico-variable">
-                <option value="dano_mxn">Daños (MXN)</option>
-                <option value="defunciones">Defunciones</option>
-                <option value="afectados">Afectados</option>
-                <option value="eventos">Eventos</option>
-                <option value="viviendas">Viviendas dañadas</option>
-              </select>
-            </label>
+            <!-- Sección: filtros básicos -->
+            <section class="mexico-control-grupo">
+              <p class="mexico-control-grupo__titulo">Filtros</p>
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Variable</span>
+                <select id="mexico-variable">
+                  <option value="dano_mxn">Daños (MXN)</option>
+                  <option value="defunciones">Defunciones</option>
+                  <option value="afectados">Afectados</option>
+                  <option value="eventos">Eventos</option>
+                  <option value="viviendas">Viviendas dañadas</option>
+                </select>
+              </label>
 
-            <label class="campo campo--compacto">
-              <span class="campo__etiqueta">Desde</span>
-              <select id="mexico-anio-min"></select>
-            </label>
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Desde</span>
+                <select id="mexico-anio-min"></select>
+              </label>
 
-            <label class="campo campo--compacto">
-              <span class="campo__etiqueta">Hasta</span>
-              <select id="mexico-anio-max"></select>
-            </label>
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Hasta</span>
+                <select id="mexico-anio-max"></select>
+              </label>
 
-            <label class="campo campo--compacto">
-              <span class="campo__etiqueta">Tipo</span>
-              <select id="mexico-tipo">
-                <option value="todos">Todos los tipos</option>
-              </select>
-            </label>
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Tipo</span>
+                <select id="mexico-tipo">
+                  <option value="todos">Todos los tipos</option>
+                </select>
+              </label>
+            </section>
+
+            <!-- Sección: capa temática y relieve (igual que el mapa global) -->
+            <section class="mexico-control-grupo mexico-control-grupo--capa">
+              <p class="mexico-control-grupo__titulo">Relieve 3D y color</p>
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Variable de altura</span>
+                <select id="mexico-variable-altura">
+                  <option value="dano_mxn">Daños (MXN)</option>
+                  <option value="defunciones">Defunciones</option>
+                  <option value="afectados">Afectados</option>
+                  <option value="eventos">Eventos</option>
+                  <option value="viviendas">Viviendas dañadas</option>
+                </select>
+              </label>
+
+              <div class="campo">
+                <span class="campo__etiqueta">Recurso visual 3D</span>
+                <div class="segmentado" role="radiogroup" aria-label="Recurso visual 3D">
+                  <button class="segmento activo" data-recurso="elevacion" type="button" role="radio" aria-checked="true">
+                    Elevación
+                  </button>
+                  <button class="segmento" data-recurso="deformacion" type="button" role="radio" aria-checked="false">
+                    Deformación
+                  </button>
+                  <button class="segmento" data-recurso="ninguno" type="button" role="radio" aria-checked="false">
+                    Plano
+                  </button>
+                </div>
+              </div>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Intensidad del color</span>
+                <input id="mexico-intensidad" type="range" min="0" max="100" value="70" />
+                <span class="campo__valor" id="mexico-valor-intensidad">70 %</span>
+              </label>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Altura máxima del relieve</span>
+                <input id="mexico-escala-altura" type="range" min="10000" max="600000" step="5000" value="120000" />
+                <span class="campo__valor" id="mexico-valor-altura">120 km</span>
+              </label>
+
+              <label class="campo campo--compacto">
+                <span class="campo__etiqueta">Escala</span>
+                <select id="mexico-escala">
+                  <option value="auto">Automática</option>
+                  <option value="lineal">Lineal</option>
+                  <option value="log">Logarítmica</option>
+                </select>
+              </label>
+            </section>
 
             <button id="mexico-reset" class="boton boton--fantasma boton--compacto" type="button">
               Restablecer
             </button>
-          </div>
-
-          <div class="mexico-leyenda" aria-live="polite">
-            <div class="mexico-leyenda__cabecera">
-              <span id="mexico-leyenda-titulo">Daños</span>
-              <span id="mexico-leyenda-unidad" class="mexico-leyenda__unidad">MXN</span>
-            </div>
-            <div id="mexico-leyenda-barra" class="mexico-leyenda__barra"></div>
-            <div class="mexico-leyenda__escala">
-              <span id="mexico-leyenda-min">0</span>
-              <span id="mexico-leyenda-max">—</span>
-            </div>
-            <p class="mexico-leyenda__nota" id="mexico-leyenda-nota"></p>
           </div>
 
           <div id="mexico-tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
@@ -716,7 +758,21 @@
         </div>
 
         <aside class="mexico-panel" aria-label="Detalle del estado">
+          <div class="mexico-leyenda" aria-live="polite">
+            <div class="mexico-leyenda__cabecera">
+              <span id="mexico-leyenda-titulo">Daños</span>
+              <span id="mexico-leyenda-unidad" class="mexico-leyenda__unidad">MXN</span>
+            </div>
+            <div id="mexico-leyenda-barra" class="mexico-leyenda__barra"></div>
+            <div class="mexico-leyenda__escala">
+              <span id="mexico-leyenda-min">0</span>
+              <span id="mexico-leyenda-max">—</span>
+            </div>
+            <p class="mexico-leyenda__nota" id="mexico-leyenda-nota"></p>
+          </div>
+
           <div id="mexico-nacional" class="mexico-nacional"></div>
+
           <div id="mexico-estado" class="mexico-estado">
             <p class="mexico-vacio">Haz clic en un estado para ver su ficha.</p>
           </div>

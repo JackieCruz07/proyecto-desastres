@@ -60,8 +60,8 @@ body {
   background: var(--fondo);
   color: var(--texto);
   font-family: var(--f-texto);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -170,28 +170,29 @@ button {
 }
 
 .encabezado h1 {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .encabezado__subtitulo {
-  margin: 10px 0 12px;
-  font-size: 12.5px;
+  margin: 10px 0 14px;
+  font-size: 14px;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .encabezado__insignia {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
   background: var(--purpura-suave);
   color: var(--purpura);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
+  border: 1px solid var(--borde-fuerte);
 }
 
 .punto-vivo {
@@ -267,15 +268,18 @@ button {
 }
 
 .chip {
-  padding: 3px 9px;
+  padding: 6px 12px;
   border-radius: 999px;
-  font-size: 9.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: #f4f0fa;
   color: #a99cc4;
   border: 1px solid transparent;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .chip.activo {
@@ -303,10 +307,11 @@ button {
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 7px 15px;
+  padding: 10px 18px;
   border-radius: 999px;
+  min-height: 44px;
   transition: background 0.18s, color 0.18s;
 }
 
@@ -324,16 +329,17 @@ button {
   z-index: 9;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.12s, transform 0.12s;
-  padding: 10px 13px;
-  min-width: 168px;
-  background: rgba(36, 27, 58, 0.95);
+  transform: translateY(6px);
+  transition: opacity 0.14s, transform 0.14s;
+  padding: 14px 16px;
+  min-width: 200px;
+  background: rgba(36, 27, 58, 0.97);
   color: #fff;
-  border-radius: 12px;
-  font-size: 11.5px;
-  line-height: 1.5;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.6;
   box-shadow: var(--sombra-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .tooltip.visible {
@@ -343,7 +349,7 @@ button {
 
 .tooltip strong {
   font-family: var(--f-titulo);
-  font-size: 12.5px;
+  font-size: 15px;
 }
 
 .tooltip .tooltip__fila {
@@ -362,16 +368,18 @@ button {
 .estado {
   position: absolute;
   left: 50%;
-  bottom: 14px;
+  bottom: 16px;
   transform: translateX(-50%);
   z-index: 5;
-  padding: 6px 14px;
+  padding: 8px 18px;
   border-radius: 999px;
-  background: rgba(36, 27, 58, 0.82);
+  background: rgba(36, 27, 58, 0.85);
   color: #e4dcf5;
-  font-size: 10.5px;
+  font-size: 13px;
+  font-weight: 600;
   white-space: nowrap;
   backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* -------------------------- 7. PANEL LATERAL -------------------------- */
@@ -443,11 +451,15 @@ button {
   border: 0;
   background: transparent;
   color: var(--purpura-3);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 8px 6px;
+  padding: 10px 8px;
   border-radius: 999px;
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pestana:hover {
@@ -491,29 +503,29 @@ button {
   background: var(--superficie);
   border: 1px solid var(--borde);
   border-radius: 18px;
-  padding: 16px 17px;
-  margin-bottom: 12px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
   box-shadow: var(--sombra-1);
 }
 
 .bloque__titulo {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .bloque__ayuda {
-  margin: 0 0 12px;
-  font-size: 11.5px;
+  margin: 0 0 14px;
+  font-size: 13.5px;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .bloque__nota {
-  margin: 10px 0 0;
-  font-size: 11px;
+  margin: 12px 0 0;
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .campo {
@@ -526,7 +538,7 @@ button {
 
 .campo__etiqueta {
   grid-column: 1 / -1;
-  font-size: 10.5px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -541,16 +553,17 @@ button {
 
 .campo select {
   appearance: none;
-  padding: 9px 34px 9px 12px;
+  padding: 12px 38px 12px 14px;
   border: 1px solid var(--borde-fuerte);
-  border-radius: 11px;
+  border-radius: 12px;
   background: var(--superficie)
-    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5l5-5' stroke='%234C1D95' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
-    no-repeat right 13px center;
-  font-size: 12.5px;
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 2L7 8l6-6' stroke='%234C1D95' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+    no-repeat right 14px center;
+  font-size: 15px;
   font-weight: 500;
   color: var(--tinta);
   transition: border-color 0.16s, box-shadow 0.16s;
+  min-height: 48px;
 }
 
 .campo select:hover {
@@ -570,7 +583,7 @@ button {
 
 .campo input[type="range"] {
   appearance: none;
-  height: 4px;
+  height: 6px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--amarillo), var(--rosa), var(--purpura));
   outline: none;
@@ -578,18 +591,18 @@ button {
 
 .campo input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  width: 17px;
-  height: 17px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--superficie);
   border: 3px solid var(--purpura);
-  box-shadow: 0 2px 6px rgba(76, 29, 149, 0.3);
+  box-shadow: 0 2px 8px rgba(76, 29, 149, 0.35);
   cursor: pointer;
 }
 
 .campo input[type="range"]::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--superficie);
   border: 3px solid var(--purpura);
@@ -601,7 +614,7 @@ button {
   grid-row: 2 / 3;
   align-self: center;
   justify-self: end;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--purpura);
   font-variant-numeric: tabular-nums;
@@ -610,26 +623,27 @@ button {
 .campo.checkbox {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 12px;
   grid-template-columns: none;
-  padding: 9px 11px;
+  padding: 12px 14px;
   border: 1px solid var(--borde);
-  border-radius: 11px;
+  border-radius: 12px;
   background: var(--superficie-2);
-  font-size: 11.5px;
+  font-size: 14px;
   color: var(--texto);
+  min-height: 48px;
 }
 
 .campo.checkbox input {
   accent-color: var(--purpura);
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   flex: none;
 }
 
 .periodo-actual {
-  margin: 4px 0 0;
-  font-size: 11.5px;
+  margin: 6px 0 0;
+  font-size: 14px;
   color: var(--muted);
 }
 
@@ -642,17 +656,23 @@ button {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  padding: 4px;
+  gap: 5px;
+  padding: 5px;
   background: var(--purpura-suave);
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
 .segmento {
   border: 0;
   background: transparent;
-  padding: 7px 4px;
-  border-radius: 8px;
+  padding: 10px 6px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purpura-3);
+  transition: background 0.16s, color 0.16s;
+  min-height: 44px;
+}
   font-size: 11px;
   font-weight: 600;
   color: var(--purpura-3);
@@ -810,12 +830,13 @@ button {
 .boton {
   width: 100%;
   margin-top: 12px;
-  padding: 10px 16px;
+  padding: 14px 20px;
   border: 0;
-  border-radius: 11px;
-  font-size: 12px;
+  border-radius: 12px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.01em;
+  min-height: 52px;
   transition: transform 0.14s, box-shadow 0.14s, background 0.14s;
 }
 
@@ -848,22 +869,22 @@ button {
 }
 
 .boton-icono {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
   border: 1px solid var(--borde-fuerte);
   background: var(--superficie);
   color: var(--purpura);
-  border-radius: 50%;
-  font-size: 20px;
+  border-radius: 14px;
+  font-size: 22px;
   line-height: 1;
   transition: background 0.16s, transform 0.16s;
 }
 
 .boton-icono:hover {
   background: var(--purpura-suave);
-  transform: rotate(90deg);
+  transform: rotate(15deg);
 }
 
 /* ---------------------------- 13. PALETA ------------------------------ */
@@ -1728,7 +1749,7 @@ body.mexico-abierto {
 
 .mexico-mapa-caja {
   position: relative;
-  min-height: 0;
+  min-height: 420px;
   background: #eef4f8;
   overflow: hidden;
 }
@@ -1745,46 +1766,96 @@ body.mexico-abierto {
   left: 14px;
   z-index: 5;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 10px;
-  width: min(372px, calc(100% - 28px));
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.95);
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: min(352px, calc(100% - 28px));
+  max-height: calc(100% - 28px);
+  padding: 14px 16px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.97);
   border: 1px solid var(--borde);
   border-radius: 16px;
   box-shadow: var(--sombra-2);
   backdrop-filter: blur(8px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--borde-fuerte) transparent;
+}
+
+.mexico-controles::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mexico-controles::-webkit-scrollbar-thumb {
+  background: var(--borde-fuerte);
+  border-radius: 999px;
 }
 
 .mexico-controles .campo--compacto {
   grid-template-columns: 1fr;
-  gap: 3px;
+  gap: 4px;
   margin: 0;
 }
 
 .mexico-controles .campo--compacto:first-child {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 
 .mexico-controles .campo--compacto .campo__etiqueta {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.1em;
 }
 
 .mexico-controles select {
   width: 100%;
-  padding: 6px 8px;
-  font-size: 11.5px;
-  border-radius: 9px;
+  padding: 8px 28px 8px 10px;
+  font-size: 12.5px;
+  border-radius: 10px;
+  min-height: 42px;
 }
 
 .mexico-controles .boton {
-  grid-column: span 2;
+  grid-column: 1;
   justify-self: start;
   width: auto;
-  margin-top: 0;
-  padding: 6px 12px;
+  margin-top: 4px;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Secciones de controles */
+.mexico-control-grupo {
+  display: grid;
+  gap: 8px;
+}
+
+.mexico-control-grupo__titulo {
   font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purpura-3);
+  margin: 0 0 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--borde-fuerte);
+}
+
+.mexico-control-grupo--capa {
+  gap: 10px;
+}
+
+.mexico-control-grupo--capa .segmentado {
+  grid-column: 1;
+  gap: 5px;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.mexico-control-grupo--capa .segmento {
+  padding: 8px 6px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  min-height: 42px;
 }
 
 .mexico-filtros-btn {
@@ -1854,6 +1925,17 @@ body.mexico-abierto {
   font-size: 9px;
   line-height: 1.35;
   color: var(--muted);
+}
+
+/* La leyenda vive dentro del panel derecho para no tapar el mapa. */
+.mexico-panel .mexico-leyenda {
+  position: static;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--superficie);
+  border-radius: 16px;
+  box-shadow: var(--sombra-1);
+  backdrop-filter: none;
 }
 
 /* Panel derecho */
@@ -2465,10 +2547,8 @@ body.mexico-abierto {
     color: #fff;
   }
 
-  .mexico-leyenda {
-    width: 210px;
-    left: 12px;
-    bottom: 12px;
+  .mexico-panel .mexico-leyenda {
+    width: 100%;
   }
 
   .mexico-destacados {
@@ -2478,17 +2558,11 @@ body.mexico-abierto {
 
 @media (max-width: 560px) {
   .mexico-controles {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .mexico-controles .campo--compacto:first-child,
-  .mexico-controles .campo--compacto:nth-child(4),
-  .mexico-controles .boton {
-    grid-column: span 2;
-  }
-
-  .mexico-leyenda {
-    width: 172px;
+  .mexico-panel .mexico-leyenda {
+    width: 100%;
     padding: 9px 10px;
   }
 
