@@ -26,6 +26,15 @@ babel>=2.14
 # --- Validación de la interfaz (Actividad 6) --------------------------
 beautifulsoup4>=4.12
 
+# --- Machine learning (Actividades 8–13) ------------------------------
+# La red neuronal usa PyTorch y XGBoost requiere su propia librería.
+# En equipos sin GPU, instala la rueda de CPU de PyTorch:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+scikit-learn>=1.4
+xgboost>=2.0
+torch>=2.2
+scipy>=1.11
+
 # --- Reproducir los notebooks desde la terminal -----------------------
 jupyter>=1.0
 nbconvert>=7.16

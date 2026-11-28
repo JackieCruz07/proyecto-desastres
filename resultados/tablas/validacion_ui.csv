@@ -1,27 +1,38 @@
 categoria,comprobacion,resultado,nivel,detalle
 Estructura,Idioma del documento declarado,OK,informativo,lang=es
 Estructura,Landmarks principales presentes,OK,informativo,"header, main, nav, aside y footer"
-Estructura,Identificadores únicos,OK,informativo,139 IDs declarados
+Estructura,Identificadores únicos,OK,informativo,152 IDs declarados
 Estructura,Enlaces para saltar contenido,OK,informativo,2 enlaces de salto
 Accesibilidad,Región viva para anuncios,OK,informativo,#anuncio-lector con role=status y aria-live=polite
-Accesibilidad,Pestañas con estado y panel asociado,OK,informativo,4 pestañas
-Accesibilidad,Paneles de pestaña etiquetados,OK,informativo,4 paneles
-Accesibilidad,Botones con nombre accesible,OK,informativo,25 botones
-Accesibilidad,Campos de formulario etiquetados,OK,informativo,21 campos
+Accesibilidad,Pestañas con estado y panel asociado,OK,informativo,5 pestañas
+Accesibilidad,Paneles de pestaña etiquetados,OK,informativo,5 paneles
+Accesibilidad,Botones con nombre accesible,OK,informativo,27 botones
+Accesibilidad,Campos de formulario etiquetados,OK,informativo,28 campos
 Accesibilidad,Diálogos etiquetados,OK,informativo,3 diálogos
 Accesibilidad,Referencias ARIA existentes,OK,informativo,todas las referencias apuntan a IDs reales
 Accesibilidad,Foco visible en controles,OK,informativo,reglas :focus-visible declaradas en el CSS
 Accesibilidad,Respeto al movimiento reducido,OK,informativo,@media (prefers-reduced-motion: reduce) presente
 Accesibilidad,Tamaños táctiles mínimos,OK,informativo,regla @media (pointer: coarse) con min-height
-Integración,IDs usados por JS existen en el HTML,OK,informativo,64 IDs verificados
+Integración,IDs usados por JS existen en el HTML,OK,informativo,75 IDs verificados
 Integración,Eventos de sincronización emitidos,OK,informativo,"7/7 eventos: atlas:filtros, atlas:listo, atlas:mexico, atlas:modal, atlas:pestana, atlas:proyeccion, atlas:seleccion"
 Integración,Eventos de sincronización escuchados,OK,informativo,"7/7 eventos: atlas:filtros, atlas:listo, atlas:mexico, atlas:modal, atlas:pestana, atlas:proyeccion, atlas:seleccion"
-Integración,ui_shell.js se carga después de app.js,OK,informativo,diccionario_desastres.js → config.js → escalas.js → leyenda.js → estado.js → capa_tematica.js → mexico_estados.js → app.js → ui_shell.js
+Integración,ui_shell.js se carga después de app.js,OK,informativo,diccionario_desastres.js → config.js → escalas.js → leyenda.js → estado.js → capa_tematica.js → mexico_estados.js → app.js → prediccion.js → ui_shell.js
+Predicción,prediccion.js cargado en la página,OK,informativo,diccionario_desastres.js → config.js → escalas.js → leyenda.js → estado.js → capa_tematica.js → mexico_estados.js → app.js → prediccion.js → ui_shell.js
 Integración,API pública AtlasApp completa,OK,informativo,7 métodos expuestos
 Integración,Buscador de países conectado,OK,informativo,entrada y lista de resultados presentes y conectadas
 Integración,Chips de filtros activos,OK,informativo,#filtros-activos renderizado por ui_shell.js
 Integración,Enlaces profundos y persistencia,OK,informativo,"hash, replaceState y localStorage integrados"
 Integración,Panel colapsable en móvil,OK,informativo,"botón, clase de estado y estilos móviles"
+Predicción,Pestaña y panel de predicción,OK,informativo,#tab-prediccion y #vista-prediccion declarados
+Predicción,Controles del escenario y resultados,OK,informativo,10 controles
+Predicción,Inferencia en el navegador,OK,informativo,"pesos, árboles y sigmoide implementados en JavaScript"
+Predicción,Carga diferida al abrir la pestaña,OK,informativo,prediccion.js escucha atlas:pestana y carga el modelo bajo demanda
+Predicción,Esquema exportado completo,OK,informativo,268 columnas one-hot para XGBoost
+Predicción,Catálogo de países,OK,informativo,170 territorios con México incluido
+Predicción,Sin variables de fuga de información,OK,informativo,solo variables conocidas al inicio del evento
+Predicción,Ejemplo de clasificación reproducible,OK,informativo,diferencia máxima 2.38e-07 entre Python y el JSON exportado
+Predicción,Ejemplos de regresión reproducibles,OK,informativo,diferencia máxima 3.70e-06 en escala logarítmica
+Predicción,Métricas de prueba razonables,OK,informativo,ROC-AUC 0.820 y 0.827
 Contraste,Títulos sobre tarjetas,OK,informativo,#241b3a sobre #ffffff = 16.24:1 (mínimo 4.5:1)
 Contraste,Texto de cuerpo sobre tarjetas,OK,informativo,#3c3358 sobre #ffffff = 11.62:1 (mínimo 4.5:1)
 Contraste,Texto de cuerpo sobre el fondo cálido,OK,informativo,#3c3358 sobre #faf6f1 = 10.80:1 (mínimo 4.5:1)
@@ -34,3 +45,5 @@ Contraste,Chip de filtros desactivados,OK,informativo,#a12c20 sobre #ffe8e4 = 6.
 Contraste,Puesto de ranking sobre amarillo,OK,informativo,#5c3700 sobre #ffb71b = 6.02:1 (mínimo 4.5:1)
 Contraste,Pestañas inactivas,OK,informativo,#6d3bc0 sobre #f3edfb = 6.03:1 (mínimo 4.5:1)
 Contraste,Barra de estado sobre fondo oscuro,OK,informativo,#d9d0ee sobre #241b3a = 10.99:1 (mínimo 4.5:1)
+Contraste,Estado de modelos cargados,OK,informativo,#1c6b3c sobre #eef9f2 = 6.05:1 (mínimo 4.5:1)
+Contraste,Error al cargar modelos,OK,informativo,#9b2c1f sobre #fdeeec = 6.71:1 (mínimo 4.5:1)

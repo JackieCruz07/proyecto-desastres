@@ -1,0 +1,53 @@
+{
+ "modelo": "red_neuronal_clasificacion",
+ "temperatura": 1.0182797298552748,
+ "umbral": 0.4100000000000001,
+ "validacion": {
+  "n": 447,
+  "positivos": 151,
+  "prevalencia": 0.3378076062639821,
+  "umbral": 0.4100000000000001,
+  "roc_auc": 0.8121308394487202,
+  "pr_auc": 0.6822531342476289,
+  "f1": 0.6724137931034483,
+  "precision": 0.5939086294416244,
+  "recall": 0.7748344370860927,
+  "brier": 0.1650754090198069,
+  "log_loss": 0.5030468561005634,
+  "verdaderos_negativos": 216,
+  "falsos_positivos": 80,
+  "falsos_negativos": 34,
+  "verdaderos_positivos": 117,
+  "exactitud": 0.7449664429530202
+ },
+ "prueba": {
+  "n": 813,
+  "positivos": 321,
+  "prevalencia": 0.3948339483394834,
+  "umbral": 0.4100000000000001,
+  "roc_auc": 0.8196597269711015,
+  "pr_auc": 0.7653162643610087,
+  "f1": 0.7044198895027625,
+  "precision": 0.6327543424317618,
+  "recall": 0.794392523364486,
+  "brier": 0.1678120742835089,
+  "log_loss": 0.5111058914170843,
+  "verdaderos_negativos": 344,
+  "falsos_positivos": 148,
+  "falsos_negativos": 66,
+  "verdaderos_positivos": 255,
+  "exactitud": 0.7367773677736777,
+  "roc_auc_ic95": [
+   0.7888069684682378,
+   0.849577012651536
+  ],
+  "pr_auc_ic95": [
+   0.717077134763106,
+   0.8079996784752129
+  ],
+  "f1_ic95": [
+   0.6547936507936508,
+   0.7312614329268292
+  ]
+ }
+}

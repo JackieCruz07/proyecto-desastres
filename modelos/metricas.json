@@ -1,0 +1,296 @@
+{
+ "clasificacion": {
+  "red_neuronal": {
+   "validacion": {
+    "n": 447,
+    "positivos": 151,
+    "prevalencia": 0.3378076062639821,
+    "umbral": 0.4100000000000001,
+    "roc_auc": 0.8121308394487202,
+    "pr_auc": 0.6822531342476289,
+    "f1": 0.6724137931034483,
+    "precision": 0.5939086294416244,
+    "recall": 0.7748344370860927,
+    "brier": 0.1650754090198069,
+    "log_loss": 0.5030468561005634,
+    "verdaderos_negativos": 216,
+    "falsos_positivos": 80,
+    "falsos_negativos": 34,
+    "verdaderos_positivos": 117,
+    "exactitud": 0.7449664429530202
+   },
+   "prueba": {
+    "n": 813,
+    "positivos": 321,
+    "prevalencia": 0.3948339483394834,
+    "umbral": 0.4100000000000001,
+    "roc_auc": 0.8196597269711015,
+    "pr_auc": 0.7653162643610087,
+    "f1": 0.7044198895027625,
+    "precision": 0.6327543424317618,
+    "recall": 0.794392523364486,
+    "brier": 0.1678120742835089,
+    "log_loss": 0.5111058914170843,
+    "verdaderos_negativos": 344,
+    "falsos_positivos": 148,
+    "falsos_negativos": 66,
+    "verdaderos_positivos": 255,
+    "exactitud": 0.7367773677736777,
+    "roc_auc_ic95": [
+     0.7888069684682378,
+     0.849577012651536
+    ],
+    "pr_auc_ic95": [
+     0.717077134763106,
+     0.8079996784752129
+    ],
+    "f1_ic95": [
+     0.6547936507936508,
+     0.7312614329268292
+    ]
+   }
+  },
+  "xgboost": {
+   "validacion": {
+    "n": 447,
+    "positivos": 151,
+    "prevalencia": 0.3378076062639821,
+    "umbral": 0.39000000000000007,
+    "roc_auc": 0.8197713441918739,
+    "pr_auc": 0.6847377130171807,
+    "f1": 0.6705539358600583,
+    "precision": 0.5989583333333334,
+    "recall": 0.7615894039735099,
+    "brier": 0.16307805029946987,
+    "log_loss": 0.49437436298324017,
+    "verdaderos_negativos": 219,
+    "falsos_positivos": 77,
+    "falsos_negativos": 36,
+    "verdaderos_positivos": 115,
+    "exactitud": 0.7472035794183445
+   },
+   "prueba": {
+    "n": 813,
+    "positivos": 321,
+    "prevalencia": 0.3948339483394834,
+    "umbral": 0.39000000000000007,
+    "roc_auc": 0.8267165615581389,
+    "pr_auc": 0.7710252222658385,
+    "f1": 0.7115384615384616,
+    "precision": 0.6363636363636364,
+    "recall": 0.8068535825545171,
+    "brier": 0.16385464058518465,
+    "log_loss": 0.5017021932497958,
+    "verdaderos_negativos": 344,
+    "falsos_positivos": 148,
+    "falsos_negativos": 62,
+    "verdaderos_positivos": 259,
+    "exactitud": 0.7416974169741697,
+    "roc_auc_ic95": [
+     0.796241145836152,
+     0.8566614850924941
+    ],
+    "pr_auc_ic95": [
+     0.7229498497978205,
+     0.8146120223458733
+    ],
+    "f1_ic95": [
+     0.6677055457777179,
+     0.7484377299620286
+    ]
+   }
+  },
+  "comparacion_nn_vs_xgb": {
+   "roc_auc": {
+    "metrica": "roc_auc",
+    "diferencia": -0.0070568345870374305,
+    "ic95_inferior": -0.020753367090456668,
+    "ic95_superior": 0.006437517453124677,
+    "p_valor_aproximado": 0.296,
+    "n_repeticiones": 1000
+   },
+   "pr_auc": {
+    "metrica": "pr_auc",
+    "diferencia": -0.005708957904829726,
+    "ic95_inferior": -0.027459815025911126,
+    "ic95_superior": 0.014242367245834546,
+    "p_valor_aproximado": 0.55,
+    "n_repeticiones": 1000
+   }
+  },
+  "umbrales": {
+   "red_neuronal": 0.4100000000000001,
+   "xgboost": 0.39000000000000007
+  },
+  "temperaturas": {
+   "red_neuronal": 1.0182797298552748,
+   "xgboost": 0.7205554699120275
+  }
+ },
+ "regresion_afectados": {
+  "red_neuronal": {
+   "validacion": {
+    "n": 359,
+    "mae_log": 2.060771260777114,
+    "rmse_log": 2.652767978422022,
+    "r2_log": 0.3431623864320398,
+    "medae_log": 1.7019826305686663,
+    "mae_original": 322051.12593243155,
+    "rmse_original": 1561206.5561903196,
+    "r2_original": 0.0021227093645270756,
+    "medae_original": 6882.204347507315
+   },
+   "prueba": {
+    "n": 677,
+    "mae_log": 2.0339373648596974,
+    "rmse_log": 2.5872596966274006,
+    "r2_log": 0.4008596104993255,
+    "medae_log": 1.6776311810272198,
+    "mae_original": 381063.8017859012,
+    "rmse_original": 1790272.6578698908,
+    "r2_original": 0.04092338110418692,
+    "medae_original": 8613.776345650971
+   }
+  },
+  "xgboost": {
+   "validacion": {
+    "n": 359,
+    "mae_log": 2.1086155676505562,
+    "rmse_log": 2.689370640330918,
+    "r2_log": 0.324911359547415,
+    "medae_log": 1.6982807451503081,
+    "mae_original": 329172.45628696826,
+    "rmse_original": 1562535.3067444144,
+    "r2_original": 0.00042339001392144304,
+    "medae_original": 7398.914695640976
+   },
+   "prueba": {
+    "n": 677,
+    "mae_log": 2.060856339524407,
+    "rmse_log": 2.595789504624126,
+    "r2_log": 0.3969025459220564,
+    "medae_log": 1.7372060479505071,
+    "mae_original": 380583.91992942087,
+    "rmse_original": 1789709.7957871114,
+    "r2_original": 0.04152635406463512,
+    "medae_original": 7670.361431528254
+   },
+   "intervalos": {
+    "q10_residual": -2.9141878914892594,
+    "q90_residual": 3.66791886153262,
+    "prueba": {
+     "cobertura": 0.8094534711964549,
+     "ancho_medio": 2320983.7895347765,
+     "ancho_mediano": 165905.89120328022,
+     "n": 677
+    }
+   }
+  },
+  "n_validacion": 359,
+  "n_prueba": 677,
+  "target": "log_afectados"
+ },
+ "regresion_dano": {
+  "red_neuronal": {
+   "validacion": {
+    "n": 94,
+    "mae_log": 1.5763293230875877,
+    "rmse_log": 2.092256684965464,
+    "r2_log": 0.3794302863687983,
+    "medae_log": 1.2044557793607797,
+    "mae_original": 40832273.85069051,
+    "rmse_original": 109051685.88570927,
+    "r2_original": -0.039432307885248985,
+    "medae_original": 6736094.036483257
+   },
+   "prueba": {
+    "n": 206,
+    "mae_log": 1.5683635540643608,
+    "rmse_log": 2.0179385620814263,
+    "r2_log": 0.21253717350181434,
+    "medae_log": 1.300488626935203,
+    "mae_original": 40602392.951957315,
+    "rmse_original": 155674554.6921675,
+    "r2_original": 0.027026455326530585,
+    "medae_original": 5441886.201354244
+   }
+  },
+  "xgboost": {
+   "validacion": {
+    "n": 94,
+    "mae_log": 1.6269123518319342,
+    "rmse_log": 2.1302368284111695,
+    "r2_log": 0.35669574278098926,
+    "medae_log": 1.1136791438046822,
+    "mae_original": 41539752.73478539,
+    "rmse_original": 108844488.96853255,
+    "r2_original": -0.03548624193461758,
+    "medae_original": 6088748.991892349
+   },
+   "prueba": {
+    "n": 206,
+    "mae_log": 1.5951786987425722,
+    "rmse_log": 2.0130659348999087,
+    "r2_log": 0.21633548561314164,
+    "medae_log": 1.359914217977959,
+    "mae_original": 39532720.868078,
+    "rmse_original": 141983909.6481091,
+    "r2_original": 0.1906357284704986,
+    "medae_original": 4154999.428394776
+   },
+   "intervalos": {
+    "q10_residual": -1.362888863276392,
+    "q90_residual": 3.4159363397210982,
+    "prueba": {
+     "cobertura": 0.7766990291262136,
+     "ancho_medio": 365885832.7947387,
+     "ancho_mediano": 105668008.75029707,
+     "n": 206
+    }
+   }
+  },
+  "n_validacion": 94,
+  "n_prueba": 206,
+  "target": "log_dano"
+ },
+ "particiones": [
+  {
+   "particion": "Entrenamiento",
+   "anios": "2000–2022",
+   "eventos": 9420,
+   "elegibles_clasificacion": 8913,
+   "alto_impacto": 2943,
+   "prevalencia_alto_impacto": 33.02,
+   "con_afectados": 7655,
+   "con_dano": 2846,
+   "con_magnitud": 3106
+  },
+  {
+   "particion": "Validación",
+   "anios": "2023–2023",
+   "eventos": 462,
+   "elegibles_clasificacion": 447,
+   "alto_impacto": 151,
+   "prevalencia_alto_impacto": 33.78,
+   "con_afectados": 359,
+   "con_dano": 91,
+   "con_magnitud": 74
+  },
+  {
+   "particion": "Prueba",
+   "anios": "2024–2025",
+   "eventos": 859,
+   "elegibles_clasificacion": 813,
+   "alto_impacto": 321,
+   "prevalencia_alto_impacto": 39.48,
+   "con_afectados": 677,
+   "con_dano": 193,
+   "con_magnitud": 159
+  }
+ ],
+ "umbrales_alto_impacto": {
+  "muertes_p75": 35.0,
+  "afectados_p75": 50000.0,
+  "definicion": "Evento de alto impacto si los fallecimientos son mayores o iguales al percentil 75 de entrenamiento o si los afectados son mayores o iguales a su percentil 75."
+ }
+}

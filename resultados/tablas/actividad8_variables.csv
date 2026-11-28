@@ -1,0 +1,19 @@
+variable,tipo,origen,justificación
+tipo,Categórica,Disaster Type,Se conoce al inicio del evento
+subtipo,Categórica,Disaster Subtype,Se conoce al inicio del evento
+subgrupo,Categórica,Disaster Subgroup,Se conoce al inicio del evento
+region,Categórica,Región EM-DAT,Contexto geográfico
+subregion,Categórica,Subregión EM-DAT,Contexto geográfico
+iso,Categórica,País,Contexto geográfico
+escala,Categórica,Magnitude Scale,Unidad de la magnitud
+pib_pc_log,Numérica,PIB / población (WDI),Indicador del año o anterior
+poblacion_log,Numérica,Población (WDI),Indicador del año o anterior
+densidad_log,Numérica,Densidad (WDI),Indicador del año o anterior
+mes_sin,Numérica,Mes de inicio,Estacionalidad
+mes_cos,Numérica,Mes de inicio,Estacionalidad
+duracion_log,Numérica,Fechas de inicio y fin,Duración declarada
+magnitud_z,Numérica,Magnitude,Magnitud estandarizada por escala
+magnitud_faltante,Bandera,Magnitude,Indica si no se reportó
+mes_faltante,Bandera,Start Month,Indica si no se reportó
+duracion_faltante,Bandera,Fechas,Indica si no se reportó
+pib_faltante,Bandera,PIB,Indica si no está disponible

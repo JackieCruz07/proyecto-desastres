@@ -199,6 +199,17 @@
           >
             México
           </button>
+          <button
+            id="tab-prediccion"
+            class="pestana"
+            data-pestana="prediccion"
+            role="tab"
+            aria-selected="false"
+            aria-controls="vista-prediccion"
+            type="button"
+          >
+            Predecir
+          </button>
         </nav>
 
         <!-- Barra de sincronización entre mapa, filtros y paneles -->
@@ -458,6 +469,117 @@
                 Los montos ya están en pesos mexicanos; no se aplicó tipo de
                 cambio. Los incendios forestales viven en la capa de CONAFOR
                 para no duplicarlos.
+              </p>
+            </section>
+          </div>
+
+          <!-- ---------------- PESTAÑA: PREDICCIÓN ---------------- -->
+          <div
+            class="vista"
+            data-vista="prediccion"
+            id="vista-prediccion"
+            role="tabpanel"
+            aria-labelledby="tab-prediccion"
+            tabindex="0"
+          >
+            <section class="bloque bloque--prediccion">
+              <p class="bloque__kicker">RED NEURONAL + XGBOOST</p>
+              <h2 class="bloque__titulo">Estimar el impacto de un desastre</h2>
+              <p class="bloque__ayuda">
+                Elige un escenario y el modelo estima la probabilidad de que
+                sea de alto impacto, además de las personas que podrían
+                resultar afectadas. Todo se calcula en tu dispositivo.
+              </p>
+              <div
+                class="prediccion-estado"
+                id="prediccion-estado"
+                role="status"
+                aria-live="polite"
+              >
+                Cargando modelos…
+              </div>
+            </section>
+
+            <section class="bloque">
+              <h2 class="bloque__titulo">Escenario</h2>
+
+              <label class="campo">
+                <span class="campo__etiqueta">País o territorio</span>
+                <select id="pred-pais"></select>
+              </label>
+              <p class="prediccion-contexto" id="pred-contexto"></p>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Tipo de desastre</span>
+                <select id="pred-tipo"></select>
+              </label>
+
+              <label class="campo">
+                <span class="campo__etiqueta">Mes del año</span>
+                <select id="pred-mes"></select>
+              </label>
+
+              <details class="prediccion-avanzado">
+                <summary>Ajustes avanzados (opcional)</summary>
+
+                <label class="campo">
+                  <span class="campo__etiqueta">Subtipo</span>
+                  <select id="pred-subtipo"></select>
+                </label>
+
+                <label class="campo">
+                  <span class="campo__etiqueta">Magnitud</span>
+                  <input
+                    id="pred-magnitud"
+                    type="number"
+                    step="any"
+                    inputmode="decimal"
+                    placeholder="Déjalo vacío si no la conoces"
+                  />
+                </label>
+
+                <label class="campo">
+                  <span class="campo__etiqueta">Escala de la magnitud</span>
+                  <select id="pred-escala"></select>
+                </label>
+
+                <label class="campo">
+                  <span class="campo__etiqueta">Duración estimada (días)</span>
+                  <input
+                    id="pred-duracion"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="1"
+                    inputmode="numeric"
+                  />
+                </label>
+              </details>
+
+              <button id="btn-predecir" class="boton boton--primario" type="button">
+                Calcular riesgo
+              </button>
+              <p class="bloque__nota">
+                La estimación es estadística y no sustituye una alerta oficial.
+                Los modelos se entrenaron con EM-DAT 2000–2025.
+              </p>
+            </section>
+
+            <section
+              class="bloque prediccion-resultados"
+              id="pred-resultados"
+              aria-live="polite"
+              hidden
+            ></section>
+
+            <section class="bloque nota">
+              <p class="nota__titulo">CÓMO FUNCIONA</p>
+              <p>
+                Se comparan dos modelos: una red neuronal multicapa con
+                embeddings y XGBoost. La probabilidad mostrada es el promedio
+                de ambos. La estimación de personas afectadas usa la mediana
+                del modelo y un intervalo al 80 %; el daño económico es
+                exploratorio porque falta en cerca de 70 % de los eventos.
               </p>
             </section>
           </div>
@@ -836,7 +958,7 @@
             <h3 class="modal__titulo">Atajos de teclado</h3>
             <ul class="ayuda-atajos">
               <li><kbd>/</kbd><span>Buscar un país o territorio.</span></li>
-              <li><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><span>Cambiar entre Resumen, Filtros, Capa y México.</span></li>
+              <li><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><span>Cambiar entre Resumen, Filtros, Capa, México y Predecir.</span></li>
               <li><kbd>G</kbd><span>Volver a la vista de globo 3D.</span></li>
               <li><kbd>P</kbd><span>Cambiar a la vista plana (Mercator).</span></li>
               <li><kbd>M</kbd><span>Abrir el mapa de México por estados.</span></li>
@@ -883,6 +1005,7 @@
     <script src="js/capa_tematica.js"></script>
     <script src="js/mexico_estados.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/prediccion.js"></script>
     <script src="js/ui_shell.js"></script>
   </body>
 </html>

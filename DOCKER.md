@@ -80,6 +80,8 @@ La aplicación quedará en `http://localhost:9000`.
 
 - La aplicación completa de `app/`.
 - Los datos en `app/datos/` (GeoJSON, JSON y metadatos).
+- El paquete de modelos en `app/modelos/modelo_prediccion.json`, que permite
+  usar la pestaña **Predecir** (red neuronal + XGBoost) sin servidor de ML.
 - MapLibre GL, Chart.js y las tipografías **dentro del proyecto**, por lo que la
   aplicación funciona sin conexión a internet.
 - Nginx configurado con compresión, tipos MIME correctos para `.geojson` y
@@ -89,7 +91,10 @@ La aplicación quedará en `http://localhost:9000`.
 
 - La imagen construye correctamente con `docker build`.
 - El contenedor responde en el puerto 8080.
-- La aplicación carga el mapa, los datos y la vista de México sin errores.
+- La aplicación carga el mapa, los datos, la vista de México y la pestaña
+  **Predecir** sin errores.
+- La inferencia de la red neuronal y XGBoost se ejecuta en el navegador, sin
+  peticiones externas.
 - La página se sirve sin depender de CDN externos.
 
 ## Archivos de la entrega

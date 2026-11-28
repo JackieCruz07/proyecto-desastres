@@ -1,0 +1,4 @@
+particion,anios,eventos,elegibles_clasificacion,alto_impacto,prevalencia_alto_impacto,con_afectados,con_dano,con_magnitud
+Entrenamiento,2000–2022,9420,8913,2943,33.02,7655,2846,3106
+Validación,2023–2023,462,447,151,33.78,359,91,74
+Prueba,2024–2025,859,813,321,39.48,677,193,159

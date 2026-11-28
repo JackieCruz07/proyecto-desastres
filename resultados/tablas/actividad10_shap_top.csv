@@ -1,0 +1,19 @@
+variable,shap_medio_absoluto,etiqueta
+num__pib_pc_log,0.40216294,PIB per cápita
+num__duracion_log,0.3820713,Duración del evento
+num__poblacion_log,0.20088121,Población
+num__duracion_faltante,0.14947149,Duración no reportada
+cat__region__Asia,0.13619986,egion: Asia
+num__densidad_log,0.122782715,Densidad de población
+num__magnitud_z,0.11742127,Magnitud típica
+cat__subtipo__Tropical cyclone,0.11301434,ubtipo: Tropical cyclone
+cat__tipo__Drought,0.0919909,ipo: Drought
+cat__subtipo__Heat wave,0.07644494,ubtipo: Heat wave
+cat__tipo__Extreme temperature,0.07262977,ipo: Extreme temperature
+num__magnitud_faltante,0.05951927,Magnitud no reportada
+cat__tipo__Storm,0.046149466,ipo: Storm
+num__mes_sin,0.045967914,Estacionalidad (seno)
+cat__subtipo__Severe weather,0.03379788,ubtipo: Severe weather
+num__mes_cos,0.03329614,Estacionalidad (coseno)
+cat__region__Europe,0.030050838,egion: Europe
+cat__subregion__Southern Asia,0.028805722,ubregion: Southern Asia

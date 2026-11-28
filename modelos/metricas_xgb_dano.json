@@ -1,0 +1,83 @@
+{
+ "modelo": "xgboost_regresion_dano",
+ "parametros": {
+  "objective": "reg:squarederror",
+  "eval_metric": "rmse",
+  "tree_method": "hist",
+  "eta": 0.07,
+  "max_depth": 5,
+  "subsample": 0.8,
+  "colsample_bytree": 0.8,
+  "min_child_weight": 1,
+  "gamma": 0.3,
+  "lambda": 1.0,
+  "alpha": 0.5,
+  "seed": 42,
+  "nthread": 8
+ },
+ "mejor_iteracion": 108,
+ "target": "log_dano",
+ "metricas": {
+  "red_neuronal": {
+   "validacion": {
+    "n": 94,
+    "mae_log": 1.5763293230875877,
+    "rmse_log": 2.092256684965464,
+    "r2_log": 0.3794302863687983,
+    "medae_log": 1.2044557793607797,
+    "mae_original": 40832273.85069051,
+    "rmse_original": 109051685.88570927,
+    "r2_original": -0.039432307885248985,
+    "medae_original": 6736094.036483257
+   },
+   "prueba": {
+    "n": 206,
+    "mae_log": 1.5683635540643608,
+    "rmse_log": 2.0179385620814263,
+    "r2_log": 0.21253717350181434,
+    "medae_log": 1.300488626935203,
+    "mae_original": 40602392.951957315,
+    "rmse_original": 155674554.6921675,
+    "r2_original": 0.027026455326530585,
+    "medae_original": 5441886.201354244
+   }
+  },
+  "xgboost": {
+   "validacion": {
+    "n": 94,
+    "mae_log": 1.6269123518319342,
+    "rmse_log": 2.1302368284111695,
+    "r2_log": 0.35669574278098926,
+    "medae_log": 1.1136791438046822,
+    "mae_original": 41539752.73478539,
+    "rmse_original": 108844488.96853255,
+    "r2_original": -0.03548624193461758,
+    "medae_original": 6088748.991892349
+   },
+   "prueba": {
+    "n": 206,
+    "mae_log": 1.5951786987425722,
+    "rmse_log": 2.0130659348999087,
+    "r2_log": 0.21633548561314164,
+    "medae_log": 1.359914217977959,
+    "mae_original": 39532720.868078,
+    "rmse_original": 141983909.6481091,
+    "r2_original": 0.1906357284704986,
+    "medae_original": 4154999.428394776
+   },
+   "intervalos": {
+    "q10_residual": -1.362888863276392,
+    "q90_residual": 3.4159363397210982,
+    "prueba": {
+     "cobertura": 0.7766990291262136,
+     "ancho_medio": 365885832.7947387,
+     "ancho_mediano": 105668008.75029707,
+     "n": 206
+    }
+   }
+  },
+  "n_validacion": 94,
+  "n_prueba": 206,
+  "target": "log_dano"
+ }
+}

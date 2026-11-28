@@ -15,6 +15,7 @@ env
 /resultados
 /src
 /tests
+/modelos
 
 *.docx
 GUIA_EXPOSICION.md

@@ -15,6 +15,7 @@ const CONFIG = {
   rutaOwid: "datos/owid.json",
   rutaIncendios: "datos/incendios_mexico.json",
   rutaPuntosIncendios: "datos/incendios_puntos.geojson",
+  rutaModeloPrediccion: "modelos/modelo_prediccion.json",
 
   /* Estado inicial de la vista 3D.
      El pitch más pronunciado (35°) hace que el relieve de los países se

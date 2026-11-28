@@ -1,0 +1,269 @@
+variable,shap_medio_absoluto
+num__pib_pc_log,0.40216294
+num__duracion_log,0.3820713
+num__poblacion_log,0.20088121
+num__duracion_faltante,0.14947149
+cat__region__Asia,0.13619986
+num__densidad_log,0.122782715
+num__magnitud_z,0.11742127
+cat__subtipo__Tropical cyclone,0.11301434
+cat__tipo__Drought,0.0919909
+cat__subtipo__Heat wave,0.07644494
+cat__tipo__Extreme temperature,0.07262977
+num__magnitud_faltante,0.05951927
+cat__tipo__Storm,0.046149466
+num__mes_sin,0.045967914
+cat__subtipo__Severe weather,0.03379788
+num__mes_cos,0.03329614
+cat__region__Europe,0.030050838
+cat__subregion__Southern Asia,0.028805722
+cat__iso__CHN,0.021865178
+cat__subgrupo__Meteorological,0.021800809
+cat__escala__Sin dato,0.017257467
+cat__subregion__Eastern Asia,0.017236236
+cat__subtipo__Drought,0.017101515
+cat__subregion__Latin America and the Caribbean,0.0155156115
+cat__region__Africa,0.013985567
+cat__escala__Km2,0.013293708
+cat__subgrupo__Hydrological,0.01238921
+cat__subtipo__Storm (General),0.012066978
+cat__region__Americas,0.011600369
+cat__iso__IDN,0.011235007
+cat__subgrupo__Climatological,0.011234156
+cat__iso__BRA,0.010624761
+cat__subregion__Central Asia,0.01004828
+cat__subtipo__Ground movement,0.009584858
+cat__escala__Kph,0.009525599
+cat__subtipo__Flood (General),0.009402613
+cat__escala__°C,0.00939535
+cat__iso__LKA,0.008146695
+cat__subregion__Sub-Saharan Africa,0.007950485
+cat__subregion__Northern America,0.007800557
+cat__tipo__Flood,0.0075952993
+cat__subtipo__OTRO,0.0060421717
+num__pib_faltante,0.00603519
+cat__subregion__Western Asia,0.0060130265
+cat__subtipo__Flash flood,0.00594966
+cat__tipo__Epidemic,0.0059425435
+cat__subtipo__Riverine flood,0.005536738
+cat__iso__THA,0.0051422124
+cat__subgrupo__Biological,0.0050531626
+cat__tipo__Wildfire,0.0049874787
+cat__subtipo__Lightning/Thunderstorms,0.0049620536
+cat__subregion__South-eastern Asia,0.0048499675
+cat__region__Oceania,0.0044804327
+cat__iso__COD,0.004451026
+cat__subregion__Eastern Europe,0.0040667527
+cat__iso__CRI,0.0038116183
+cat__iso__PHL,0.003795064
+cat__subtipo__Blizzard/Winter storm,0.0036369658
+cat__tipo__Earthquake,0.0035912064
+cat__subgrupo__Geophysical,0.0034538046
+cat__subtipo__Viral disease,0.0032783162
+cat__iso__MMR,0.0032149672
+cat__iso__LAO,0.0032025732
+cat__subtipo__Bacterial disease,0.0031607128
+cat__iso__OTRO,0.0029773745
+cat__subregion__Northern Europe,0.0029729293
+cat__subtipo__Ash fall,0.0026143228
+cat__iso__SDN,0.0026028573
+cat__iso__TZA,0.0025223948
+cat__iso__IND,0.0024345226
+cat__subregion__Southern Europe,0.0024089506
+cat__subtipo__Tornado,0.002232665
+cat__subtipo__Forest fire,0.0020783572
+cat__subtipo__Cold wave,0.0019916785
+cat__iso__SSD,0.001964936
+cat__iso__ROU,0.0019116208
+cat__iso__BGD,0.0018031022
+cat__iso__AFG,0.0017378558
+cat__tipo__Mass movement (wet),0.0017118134
+cat__iso__MYS,0.0017074618
+cat__iso__MLI,0.0017054965
+cat__escala__Moment Magnitude,0.0015844462
+cat__subtipo__Mudslide,0.0015053354
+cat__subtipo__Landslide (wet),0.0014897236
+cat__tipo__Volcanic activity,0.0014589115
+cat__iso__IRN,0.0014355597
+cat__iso__TWN,0.001418137
+cat__iso__TJK,0.0013620333
+cat__iso__BOL,0.0013533575
+cat__iso__ARG,0.0013428023
+cat__iso__PAK,0.001231141
+cat__iso__ESP,0.0012310942
+cat__iso__PRT,0.0012242453
+cat__iso__GTM,0.0012077917
+cat__iso__DOM,0.0010864506
+cat__subregion__Northern Africa,0.0010792468
+cat__iso__PAN,0.0010681031
+cat__subregion__Western Europe,0.0010240552
+cat__iso__USA,0.0010037704
+cat__iso__SOM,0.0009914793
+cat__subtipo__Extra-tropical storm,0.0009808923
+cat__iso__AUS,0.0009787832
+cat__iso__NER,0.00092776207
+cat__iso__PER,0.00091721915
+cat__iso__ISR,0.0008495207
+cat__subtipo__Coastal flood,0.000796669
+cat__iso__ITA,0.00079041347
+cat__iso__JPN,0.0007430705
+cat__iso__TCD,0.0007094773
+cat__iso__UKR,0.00069371285
+cat__iso__NGA,0.0006582653
+cat__subtipo__Severe winter conditions,0.00064765924
+cat__iso__KOR,0.0006431287
+cat__iso__CIV,0.0006055463
+cat__iso__MDG,0.00057681865
+cat__subregion__Melanesia,0.00053941214
+cat__iso__CUB,0.0005304091
+cat__iso__HUN,0.0005284041
+cat__iso__ZAF,0.00052151654
+cat__iso__MOZ,0.0005149003
+cat__iso__HND,0.00050644815
+cat__iso__FJI,0.00050458306
+cat__iso__BIH,0.000502561
+cat__iso__ALB,0.00049235363
+cat__subtipo__Tsunami,0.000478798
+cat__escala__Vaccinated,0.00047215915
+cat__iso__POL,0.000469282
+cat__iso__ZMB,0.00046367868
+cat__iso__YEM,0.0004176533
+cat__iso__AGO,0.00038467933
+cat__subregion__Australia and New Zealand,0.00037982382
+cat__tipo__OTRO,0.00037044965
+cat__iso__AUT,0.00036534734
+cat__iso__BEN,0.0003101159
+cat__iso__VNM,0.00029570467
+cat__subregion__Micronesia,0.00029140836
+cat__iso__DEU,0.000290992
+cat__iso__NAM,0.00028352492
+cat__iso__DZA,0.00028305576
+cat__iso__SLV,0.00028049058
+cat__iso__MNG,0.00025964502
+num__mes_faltante,0.0002331572
+cat__iso__RUS,0.00023255595
+cat__iso__BLZ,0.00022513191
+cat__iso__BHS,0.00022422778
+cat__iso__BDI,0.00021992181
+cat__iso__VUT,0.00021663946
+cat__iso__SLE,0.00020843002
+cat__iso__KEN,0.00019957879
+cat__iso__PRY,0.00019533938
+cat__iso__CHL,0.00019304897
+cat__iso__SEN,0.00019276157
+cat__iso__CMR,0.00018723098
+cat__iso__FSM,0.00015904632
+cat__iso__HRV,0.00015899377
+cat__iso__CAN,0.00015831324
+cat__iso__MEX,0.00014227931
+cat__iso__PNG,0.00013588234
+cat__iso__GEO,0.0001349096
+cat__iso__LBN,0.000133248
+cat__iso__BGR,0.00012846469
+cat__subregion__Polynesia,0.00012699368
+cat__subtipo__Infectious disease (General),0.00012550705
+cat__iso__ZWE,0.00012145881
+cat__iso__ECU,0.00012036525
+cat__iso__COG,0.00011188114
+cat__iso__LTU,0.00010829563
+cat__iso__SVN,0.00010796908
+cat__iso__TTO,9.6603566e-05
+cat__iso__GNB,9.611116e-05
+cat__iso__MRT,9.224081e-05
+cat__iso__REU,8.96413e-05
+cat__iso__UZB,8.45233e-05
+cat__iso__GRC,8.391223e-05
+cat__subtipo__Avalanche (wet),8.047701e-05
+cat__iso__URY,7.958248e-05
+cat__iso__NIC,6.20764e-05
+cat__iso__UGA,5.9818507e-05
+cat__iso__DMA,5.608876e-05
+cat__iso__TUR,5.418212e-05
+cat__iso__NPL,4.8631104e-05
+cat__iso__CAF,4.7910253e-05
+cat__iso__DJI,4.114811e-05
+cat__iso__KGZ,3.9755163e-05
+cat__iso__BLR,3.7365186e-05
+cat__iso__SRB,3.6793703e-05
+cat__iso__MKD,3.568003e-05
+cat__iso__MDA,3.5404297e-05
+cat__iso__BFA,2.8849476e-05
+cat__iso__LSO,2.4761728e-05
+cat__iso__Sin dato,0.0
+cat__subregion__Sin dato,0.0
+cat__subtipo__Sin dato,0.0
+cat__tipo__Sin dato,0.0
+cat__subtipo__Wildfire (General),0.0
+cat__subgrupo__Sin dato,0.0
+cat__escala__OTRO,0.0
+cat__iso__WSM,0.0
+cat__region__Sin dato,0.0
+cat__subregion__OTRO,0.0
+cat__subgrupo__OTRO,0.0
+cat__region__OTRO,0.0
+cat__iso__VEN,0.0
+cat__iso__VCT,0.0
+cat__iso__ETH,0.0
+cat__iso__EST,0.0
+cat__iso__EGY,0.0
+cat__iso__DNK,0.0
+cat__iso__CYP,0.0
+cat__iso__CPV,0.0
+cat__iso__CZE,0.0
+cat__iso__COM,0.0
+cat__iso__BTN,0.0
+cat__iso__CHE,0.0
+cat__iso__BRB,0.0
+cat__iso__BWA,0.0
+cat__iso__COL,0.0
+cat__iso__ARM,0.0
+cat__iso__AZE,0.0
+cat__iso__BEL,0.0
+cat__iso__GUY,0.0
+cat__iso__HKG,0.0
+cat__iso__GMB,0.0
+cat__iso__FRA,0.0
+cat__iso__GAB,0.0
+cat__iso__GBR,0.0
+cat__iso__GHA,0.0
+cat__iso__GIN,0.0
+cat__iso__JOR,0.0
+cat__iso__JAM,0.0
+cat__iso__IRL,0.0
+cat__iso__IRQ,0.0
+cat__iso__KAZ,0.0
+cat__subtipo__Hail,0.0
+"cat__subtipo__Land fire (Brush, Bush, Pasture)",0.0
+cat__iso__HTI,0.0
+cat__iso__MNE,0.0
+cat__iso__MHL,0.0
+cat__iso__MDV,0.0
+cat__iso__MAR,0.0
+cat__iso__LBR,0.0
+cat__iso__LCA,0.0
+cat__iso__LVA,0.0
+cat__iso__KHM,0.0
+cat__iso__NLD,0.0
+cat__iso__MUS,0.0
+cat__iso__MTQ,0.0
+cat__iso__MWI,0.0
+cat__iso__PRI,0.0
+cat__iso__NOR,0.0
+cat__iso__NZL,0.0
+cat__iso__OMN,0.0
+cat__iso__SAU,0.0
+cat__iso__RWA,0.0
+cat__iso__PSE,0.0
+cat__iso__PRK,0.0
+cat__iso__SVK,0.0
+cat__iso__SCG,0.0
+cat__iso__SLB,0.0
+cat__iso__SPI,0.0
+cat__iso__SYR,0.0
+cat__iso__SYC,0.0
+cat__iso__SWZ,0.0
+cat__iso__SWE,0.0
+cat__iso__TUN,0.0
+cat__iso__TON,0.0
+cat__iso__TLS,0.0
+cat__iso__TGO,0.0

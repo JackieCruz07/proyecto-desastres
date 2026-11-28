@@ -54,7 +54,8 @@ class TestDatos(unittest.TestCase):
     def test_app_completa(self):
         self.assertTrue((RAIZ / "app" / "index.html").exists())
         modulos = sorted((RAIZ / "app" / "js").glob("*.js"))
-        self.assertEqual(len(modulos), 9)
+        self.assertEqual(len(modulos), 10)
+        self.assertTrue((RAIZ / "app" / "modelos" / "modelo_prediccion.json").exists())
 
     def test_reporte_de_validacion(self):
         ruta = RAIZ / "resultados" / "tablas" / "validacion_resultados.csv"
@@ -68,6 +69,19 @@ class TestDatos(unittest.TestCase):
 
 class TestNotebooks(unittest.TestCase):
     """Los notebooks son la evidencia: deben estar ejecutados y sin errores."""
+
+    def test_actividades_8_a_13(self):
+        esperados = [
+            "09_actividad8_preparacion_ml.ipynb",
+            "10_actividad9_red_neuronal.ipynb",
+            "11_actividad10_xgboost.ipynb",
+            "12_actividad11_regresion.ipynb",
+            "13_actividad12_interpretabilidad.ipynb",
+            "14_actividad13_integracion_prediccion.ipynb",
+        ]
+        for nombre in esperados:
+            with self.subTest(nombre):
+                self.assertTrue((NOTEBOOKS / nombre).exists(), f"falta {nombre}")
 
     def test_sin_errores_y_ejecutados(self):
         for ruta in sorted(NOTEBOOKS.glob("*.ipynb")):
@@ -89,6 +103,68 @@ class TestNotebooks(unittest.TestCase):
                     ultima["cell_type"] != "code" or "".join(ultima["source"]).strip(),
                     "el notebook termina en una celda de código vacía",
                 )
+
+
+class TestModelos(unittest.TestCase):
+    """Los modelos de las Actividades 8–13 deben ser consistentes y exportables."""
+
+    MODELO = RAIZ / "app" / "modelos" / "modelo_prediccion.json"
+    METRICAS = RAIZ / "modelos" / "metricas.json"
+
+    def test_paquete_exportado(self):
+        self.assertTrue(self.MODELO.exists(), "falta app/modelos/modelo_prediccion.json")
+        self.assertLess(self.MODELO.stat().st_size, 6 * 1024 * 1024, "el paquete es demasiado grande")
+        paquete = json.loads(self.MODELO.read_text(encoding="utf-8"))
+        for clave in ("version", "esquema", "catalogo", "clasificacion", "regresion", "metricas", "ejemplos"):
+            self.assertIn(clave, paquete)
+        self.assertEqual(len(paquete["esquema"]["columnas_xgb"]), 268)
+        self.assertGreaterEqual(len(paquete["catalogo"]["paises"]), 150)
+
+    def test_sin_fuga_de_informacion(self):
+        paquete = json.loads(self.MODELO.read_text(encoding="utf-8"))
+        entradas = paquete["esquema"]["cat_cols"] + paquete["esquema"]["num_cols_modelo"]
+        prohibidas = ("death", "affected", "damage", "injured", "aid", "appeal", "declaration")
+        fugas = [columna for columna in entradas if any(p in columna.lower() for p in prohibidas)]
+        self.assertEqual(fugas, [])
+
+    def test_metricas_coherentes(self):
+        metricas = json.loads(self.METRICAS.read_text(encoding="utf-8"))
+        clasificacion = metricas["clasificacion"]
+        for modelo in ("red_neuronal", "xgboost"):
+            prueba = clasificacion[modelo]["prueba"]
+            with self.subTest(modelo):
+                self.assertGreaterEqual(prueba["roc_auc"], 0.75)
+                self.assertGreaterEqual(prueba["pr_auc"], 0.70)
+                self.assertGreater(prueba["n"], 500)
+                self.assertGreater(prueba["f1"], 0.65)
+        for nombre in ("regresion_afectados", "regresion_dano"):
+            cobertura = metricas[nombre]["xgboost"]["intervalos"]["prueba"]["cobertura"]
+            with self.subTest(nombre):
+                self.assertGreaterEqual(cobertura, 0.70)
+                self.assertLessEqual(cobertura, 0.90)
+
+    def test_ejemplos_en_rango(self):
+        paquete = json.loads(self.MODELO.read_text(encoding="utf-8"))
+        clasificacion = paquete["ejemplos"]["clasificacion"]
+        self.assertIn(clasificacion["y"], (0, 1))
+        for clave in ("prob_nn", "prob_xgb"):
+            self.assertGreaterEqual(clasificacion[clave], 0.0)
+            self.assertLessEqual(clasificacion[clave], 1.0)
+        for nombre in ("afectados", "dano"):
+            ejemplo = paquete["ejemplos"][nombre]
+            self.assertGreaterEqual(ejemplo["pred_nn"], 0.0)
+            self.assertGreaterEqual(ejemplo["pred_xgb"], 0.0)
+
+    def test_inferencia_sin_internet(self):
+        js = (RAIZ / "app" / "js" / "prediccion.js").read_text(encoding="utf-8")
+        self.assertNotIn("https://", js)
+        self.assertNotIn("http://", js)
+        self.assertIn("margenArboles", js)
+        self.assertIn("salidaRed", js)
+
+    def test_tablas_de_interpretabilidad(self):
+        for nombre in ("ablacion_xgb.csv", "equidad_modelos.csv", "estabilidad_temporal.csv"):
+            self.assertTrue((RAIZ / "resultados" / "ml" / nombre).exists(), f"falta {nombre}")
 
 
 class TestInterfaz(unittest.TestCase):
@@ -128,6 +204,15 @@ class TestInterfaz(unittest.TestCase):
         self.assertIn("function limpiarIslas", js)
         self.assertIn("estado.geo = limpiarIslas(geo)", js)
         self.assertNotIn("colorDe(", js)
+
+    def test_pestana_prediccion(self):
+        html = (RAIZ / "app" / "index.html").read_text(encoding="utf-8")
+        shell = (RAIZ / "app" / "js" / "ui_shell.js").read_text(encoding="utf-8")
+        self.assertIn('data-pestana="prediccion"', html)
+        self.assertIn('id="vista-prediccion"', html)
+        self.assertIn('src="js/prediccion.js"', html)
+        self.assertIn('"1", "2", "3", "4", "5"', shell)
+        self.assertIn('"prediccion"', shell)
 
     def test_validar_ui(self):
         resultado = subprocess.run(

@@ -26,6 +26,12 @@ contexto de **Our World in Data (OWID)**.
 | 5·M | **México por estados (CENAPRED)** | ✅ **Completada** | Pestaña México + vista estatal + notebook 05 |
 | 6 | **Integración de la interfaz de usuario** | ✅ **Completada** | Notebook 07 + `ui_shell.js` + auditoría automática |
 | 7 | **Validación de resultados** | ✅ **Completada** | Notebook 08 + `validacion_resultados.csv` |
+| 8 | **Formulación del problema y preparación de datos (ML)** | ✅ **Completada** | Notebook 09 + dataset de modelado |
+| 9 | **Clasificación con red neuronal** | ✅ **Completada** | Notebook 10 + PyTorch |
+| 10 | **Clasificación con XGBoost** | ✅ **Completada** | Notebook 11 + árboles exportados |
+| 11 | **Predicción de impacto (afectados y daño)** | ✅ **Completada** | Notebook 12 + intervalos al 80 % |
+| 12 | **Interpretabilidad, equidad y estabilidad** | ✅ **Completada** | Notebook 13 + SHAP y ablación |
+| 13 | **Integración de la predicción en la app** | ✅ **Completada** | Notebook 14 + pestaña **Predecir** |
 
 ---
 
@@ -331,7 +337,8 @@ Otras piezas de la integración:
 
 ### Validación automática
 
-`src/validar_ui.py` ejecuta **35 comprobaciones** sobre HTML, CSS y JS:
+`src/validar_ui.py` ejecuta **48 comprobaciones** sobre HTML, CSS, JS y el
+paquete de modelos (35 de la interfaz base y 13 de la pestaña Predecir):
 
 ```bash
 python -m src.validar_ui
@@ -358,7 +365,7 @@ python -m unittest discover -s tests -v
 ```
 
 Las pruebas cubren los totales mundiales, los 175 polígonos, los 32 estados
-de México, los 9 módulos JavaScript, que ningún notebook tenga errores ni
+de México, los 10 módulos JavaScript, que ningún notebook tenga errores ni
 quede sin ejecutar, que la auditoría de interfaz pase completa y que el
 reporte de la Actividad 7 no tenga cifras por revisar. El flujo de GitHub
 Actions `.github/workflows/validar.yml` las ejecuta en cada push y en cada
@@ -414,6 +421,149 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/08_actividad7_vali
 
 ---
 
+## Actividades 8–13 — Clasificación y predicción con redes neuronales y XGBoost
+
+Este bloque añade el componente de **machine learning** del proyecto: estima
+si un desastre será de alto impacto, cuántas personas podrían resultar
+afectadas y cuánto daño económico podría dejar. Se comparan de forma honesta
+una **red neuronal multicapa** y **XGBoost**, y el resultado se integra en la
+pestaña **Predecir** de la aplicación.
+
+### 1. Problema y variable objetivo
+
+| Elemento | Definición |
+|----------|------------|
+| **Unidad** | Un evento EM-DAT de 2000–2025 |
+| **Clasificación** | `alto_impacto = 1` si fallecidos ≥ **35** **o** afectados ≥ **50,000** |
+| **Umbrales** | Percentil 75 calculado **solo con entrenamiento** |
+| **Regresión 1** | `log1p(Total Affected)` |
+| **Regresión 2** | `log1p(Total Damage, Adjusted)` en miles de MXN |
+| **Particiones** | Entrenamiento 2000–2022 · Validación 2023 · Prueba 2024–2025 |
+
+La prueba (813 eventos) no se usa para elegir hiperparámetros, umbral ni
+calibración. El 2026 se excluye porque el año está incompleto y no tiene PIB.
+
+### 2. Variables y control de fuga
+
+Entran **7 variables categóricas** (tipo, subtipo, subgrupo, región,
+subregión, país y escala de magnitud) y **11 numéricas** (PIB per cápita,
+población, densidad, estacionalidad, duración, magnitud estandarizada y
+banderas de dato faltante).
+
+Quedan **prohibidas** fallecidos, heridos, afectados, daños, ayuda,
+declaratorias, costos de reconstrucción y fechas de actualización. El notebook
+09 y las pruebas automáticas verifican que ninguna entrada sea una variable de
+resultado.
+
+### 3. Modelos
+
+| Modelo | Configuración |
+|--------|---------------|
+| **Red neuronal** | Embeddings para las 7 categóricas + 2 capas ocultas (64 y 32) con ReLU y dropout; salida sigmoide; `pos_weight`; 5 semillas promediadas; calibración de temperatura |
+| **XGBoost** | Búsqueda aleatoria de 30 configuraciones; `early stopping` sobre ROC-AUC de validación; calibración de temperatura; TreeSHAP nativo |
+
+La inferencia final en la app **promedia las probabilidades de ambos modelos**
+para reducir la varianza y muestra el porcentaje de cada uno.
+
+### 4. Resultados de clasificación (prueba 2024–2025)
+
+| Métrica | Red neuronal | XGBoost |
+|---------|-------------:|--------:|
+| ROC-AUC | **0.820** | **0.827** |
+| PR-AUC | 0.765 | 0.771 |
+| F1 | 0.704 | 0.712 |
+| Precisión | 0.633 | 0.636 |
+| Recall | 0.794 | 0.807 |
+| Brier | 0.168 | 0.164 |
+
+La diferencia de ROC-AUC es de **0.007** y su intervalo bootstrap al 95 %
+(1,000 remuestreos) va de **−0.021 a 0.006**, por lo que **no se concluye que
+un modelo sea superior**. La red neuronal aporta una representación más
+compacta; XGBoost, mayor interpretabilidad por árbol y TreeSHAP.
+
+### 5. Predicción de impacto
+
+| Objetivo | Modelo | R² log | MAE log | Cobertura del intervalo 80 % |
+|----------|--------|-------:|--------:|-----------------------------:|
+| Personas afectadas | Red neuronal | **0.401** | 2.03 | — |
+| Personas afectadas | XGBoost | 0.397 | 2.06 | **80.9 %** |
+| Daño económico | Red neuronal | 0.213 | 1.57 | — |
+| Daño económico | XGBoost | 0.216 | 1.60 | **77.7 %** |
+
+En escala original el error es muy alto porque unos pocos eventos concentran
+pérdidas extremas. Por eso la app muestra **mediana e intervalo**, no una
+cifra única, y marca el daño como **exploratorio** (falta en cerca de 70 % de
+los eventos).
+
+### 6. Interpretabilidad, equidad y estabilidad
+
+* **Ablación:** quitar el PIB per cápita reduce la ROC-AUC en **0.018**; quitar
+  país/región/subregión, en **0.010**; la magnitud y la estacionalidad aportan
+  menos de **0.008**.
+* **SHAP:** las familias con mayor contribución son economía, duración,
+  población y tipo de desastre.
+* **Equidad:** se reportan ROC-AUC por región, cuartil de PIB y tipo. Los
+  grupos con menos eventos presentan mayor incertidumbre; la app advierte
+  cuando un país no tiene historial suficiente.
+* **Estabilidad:** XGBoost mantiene ROC-AUC de **0.833** en 2024 y **0.819** en
+  2025; la red neuronal, **0.828** y **0.808**.
+
+### 7. Integración en la aplicación
+
+La pestaña **Predecir** permite elegir país, tipo de desastre, mes y,
+opcionalmente, subtipo, magnitud y duración. Devuelve:
+
+* probabilidad de alto impacto y nivel de riesgo;
+* personas afectadas estimadas con intervalo al 80 %;
+* daño económico estimado (exploratorio);
+* comparación entre red neuronal y XGBoost;
+* factores que suben o bajan la estimación.
+
+La inferencia ocurre **en el navegador**: `app/modelos/modelo_prediccion.json`
+(≈ 3 MB) contiene vocabulario, medianas, pesos, árboles e intervalos. No hay
+API, no se envían datos a internet y funciona sin conexión. El notebook 14
+comprueba que JavaScript y Python producen la misma probabilidad (diferencia
+< 0.000001).
+
+![Pestaña Predecir de la aplicación](resultados/graficas/ml/actividad13_prediccion_escritorio.png)
+
+### 8. Evidencia y reproducción
+
+```bash
+# Entrenar todo (red, XGBoost, regresión y exportación a la app)
+python -m src.ml.entrenar
+
+# Solo una corrida rápida de validación
+python -m src.ml.entrenar --rapido
+
+# Tablas de interpretabilidad, equidad y estabilidad
+python -m src.ml.interpretabilidad
+
+# Ejecutar la evidencia de los notebooks 09–14
+jupyter nbconvert --to notebook --execute --inplace notebooks/09_actividad8_preparacion_ml.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/10_actividad9_red_neuronal.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/11_actividad10_xgboost.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/12_actividad11_regresion.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/13_actividad12_interpretabilidad.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/14_actividad13_integracion_prediccion.ipynb
+```
+
+| Evidencia | Contenido |
+|-----------|-----------|
+| `notebooks/09`–`14` | Formulación, red, XGBoost, regresión, interpretabilidad e integración |
+| `src/ml/` | Pipeline reproducible (datos, modelos, evaluación, exportación) |
+| `modelos/` | Pesos PyTorch, boosters, preprocesador y métricas |
+| `app/modelos/modelo_prediccion.json` | Paquete de inferencia para el navegador |
+| `resultados/ml/` | Predicciones, búsquedas, SHAP, ablación, equidad y estabilidad |
+| `resultados/graficas/ml/` | 27 gráficas de las actividades 8–13 |
+
+La auditoría de interfaz cubre **48 comprobaciones**, incluidas la pestaña, los
+controles y la paridad de inferencia; las pruebas de integridad cubren **21
+comprobaciones**, incluidos los seis notebooks, el paquete exportado y la
+ausencia de fuga de información.
+
+---
+
 ## Identidad visual
 
 La interfaz usa la paleta institucional del brand guide y tipografía
@@ -452,7 +602,10 @@ PROYECTO_DESASTRES/
 │   │   ├── capa_tematica.js     Capas 3D (color, elevación, deformación)
 │   │   ├── mexico_estados.js    Vista estatal: mapa, filtros, panel y fichas
 │   │   ├── app.js               Orquestador: filtros, modal, indicadores y rankings
+│   │   ├── prediccion.js        Inferencia de red + XGBoost en el navegador
 │   │   └── ui_shell.js          Integración: eventos, chips, buscador, atajos y móvil
+│   ├── modelos/
+│   │   └── modelo_prediccion.json  Paquete de modelos para la pestaña Predecir
 │   └── datos/
 │       ├── paises.geojson       Capa agregada (175 unidades cartográficas)
 │       ├── metadatos.json       Variables y estadísticos globales
@@ -476,7 +629,13 @@ PROYECTO_DESASTRES/
 │   ├── 05_actividad5_mexico_estados.ipynb
 │   ├── 06_actividad5_panel_pais.ipynb
 │   ├── 07_actividad6_integracion_ui.ipynb
-│   └── 08_actividad7_validacion_resultados.ipynb
+│   ├── 08_actividad7_validacion_resultados.ipynb
+│   ├── 09_actividad8_preparacion_ml.ipynb
+│   ├── 10_actividad9_red_neuronal.ipynb
+│   ├── 11_actividad10_xgboost.ipynb
+│   ├── 12_actividad11_regresion.ipynb
+│   ├── 13_actividad12_interpretabilidad.ipynb
+│   └── 14_actividad13_integracion_prediccion.ipynb
 ├── src/                         Código fuente del pipeline
 │   ├── config.py                Rutas centralizadas y tipo de cambio
 │   ├── moneda.py                Conversión de montos a pesos mexicanos
@@ -491,9 +650,11 @@ PROYECTO_DESASTRES/
 │   ├── servir_app.py            Servidor local de la aplicación
 │   ├── capturas.py              Generación de capturas (reporte)
 │   ├── validar_ui.py            Auditoría de accesibilidad e integración
-│   └── capturas_ui.py           Capturas de la interfaz integrada (Actividad 6)
-├── resultados/                  Evidencia: tablas, gráficas y capturas
-├── tests/                       Pruebas de integridad (datos, notebooks, UI)
+│   ├── capturas_ui.py           Capturas de la interfaz integrada (Actividad 6)
+│   └── ml/                      Pipeline de ML (datos, modelos, evaluación y exportación)
+├── modelos/                     Pesos, boosters, preprocesador y métricas
+├── resultados/                  Evidencia: tablas, gráficas, capturas y resultados/ml
+├── tests/                       Pruebas de integridad (datos, notebooks, UI y modelos)
 └── reportes/                    Reportes de cada actividad
 ```
 

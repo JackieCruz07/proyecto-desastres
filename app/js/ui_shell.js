@@ -659,8 +659,8 @@
         return;
       }
 
-      if (["1", "2", "3", "4"].includes(evento.key)) {
-        const nombres = ["resumen", "filtros", "capa", "mexico"];
+      if (["1", "2", "3", "4", "5"].includes(evento.key)) {
+        const nombres = ["resumen", "filtros", "capa", "mexico", "prediccion"];
         evento.preventDefault();
         irAPestana(nombres[Number(evento.key) - 1]);
         return;
